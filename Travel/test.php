@@ -2,13 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Document</title>
-
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/LOGOv2.png">
-
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -16,8 +11,8 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
 
-    <!-- SetUp -->
-    <?php include_once('../LinkScript.php') ?>
+    <!-- Link -->
+    <?php include_once('../include/inc_css_front.php') ?>
 
 </head>
 <style>
@@ -327,17 +322,11 @@
 
     </div>
 
-    <!-- Javascript Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
+    <!-- JS -->
+    <?php include_once('../include/inc_js_front.php') ?>
 
     <!-- WOW JS -->
     <script src="../assets/Js/wow.js"></script>
-
-    <!-- Script JS -->
-    <script src="../assets/Js/scriptNavbar.js"></script>
 
 </body>
 

@@ -26,10 +26,9 @@ session_start();
 <body>
     <div class="container">
         <form action="../Login/php_login.php" method="POST">
-            <div class="row">
 
-                <div class="col-md-2"></div>
-
+            <div class="row mt-5 justify-content-center align-item-center vh-50">
+      
                 <div class="col-md-4 col-sm-12 col-12 mt-5 mb-3 p-3 card-login">
                     <a href="../HomePage/index.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
@@ -60,7 +59,7 @@ session_start();
                         <button type="submit" name="submit" class="btn btn-primary"> เข้าสู่ระบบ</button>
                     </div>
 
-                    <div class="col-12 text-center">
+                    <div class="col-12 mb-5 text-center">
                         <a href="../Verify/Page_VerifyEmail_Repassword.php">ลืมรหัสผ่าน?</a>
                     </div>
 

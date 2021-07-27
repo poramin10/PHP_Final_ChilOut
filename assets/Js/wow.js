@@ -24,20 +24,19 @@ $(document).ready(function () {
       document.getElementById("card4").style.animation = "bounceInRight 2s 1";
     }
 
-    if ($(window).scrollTop() > 1000) {
+    if ($(window).scrollTop() > 800) {
       //scrolled past the other div?
       $("#card5").show(2000); //reached the desired point -- show div
-      document.getElementById("card5").style.animation = "fadeIn 2s 1";
+      document.getElementById("card5").style.animation = "bounceInUp 2s 1";
     }
 
-    if ($(window).scrollTop() > 1300) {
+    if ($(window).scrollTop() > 1000) {
         //scrolled past the other div?
         $("#card6").show(2000); //reached the desired point -- show div
         document.getElementById("card6").style.animation = "fadeIn 2s 1";
         $("#card7").show(2000); //reached the desired point -- show div
         document.getElementById("card7").style.animation = "fadeIn 2s 1";
       }
-
 
   });
 });
