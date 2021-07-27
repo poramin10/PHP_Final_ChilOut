@@ -1,0 +1,51 @@
+/* Profile Verify */
+
+.profile-img-verify{
+    text-align: center;
+    
+}
+.profile-img-verify img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+
+}
+
+.profile-img-verify img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+
+}
+
+.profile-img-verify .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: 0%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #1477dab8;
+}
+
+.profile-img-verify .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.img-profile-cycle-verify{
+    width: 150px !important; 
+    height: 150px !important;
+    border-radius: 50% !important;
+}
+
+.img-profile-cycle-email{
+    width: 150px !important; 
+    height: 150px !important;
+    border-radius: 100% !important;
+}
+
+

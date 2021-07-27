@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/LOGOv2.png">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- SetUp -->
+    <?php include_once('../LinkScript.php') ?>
+
+</head>
+<style>
+    .img-travel {
+        width: 100%;
+        height: 600px;
+        background-size: cover;
+        display: block;
+    }
+
+    .card-img-shadow {
+        box-shadow: 10px 10px 5px black;
+    }
+
+    .box-part {
+        background-color: #77ACF1;
+        border-radius: 0;
+        padding: 30px 10px;
+        margin: 20px 0px;
+        box-shadow: 5px 0px 5px black;
+    }
+
+
+    .card-header-color {
+        background-color: #F7D7AE;
+    }
+
+    .card .box-part {
+        background-color: #F2CAC8;
+        color: black !important;
+    }
+
+    .event-top {
+
+        margin: 0 0.5rem;
+
+        animation: backInDown;
+        /* referring directly to the animation's @keyframe declaration */
+        animation-duration: 2s;
+        /* don't forget to set a duration! */
+    }
+</style>
+
+<body>
+
+    <!-- Navbar -->
+    <?php include_once('../include/navbarV2.php') ?>
+
+    <img class="img-travel" src="https://images.unsplash.com/photo-1476673160081-cf065607f449?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80" alt="">
+
+
+    <div class="bg-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="card0" class="card card-img-shadow mt-4 mb-5">
+                        <div class="card-header card-header-color">
+                            <h3><b>ชื่อสถานที่ท่องเที่ยว</b></h3>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+                                <!-- ข้อมูลสถานที่ตั้ง -->
+                                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                    <div id="card1" class="box-part text-center text-light">
+
+                                        <i class="fas fa-map-marked-alt fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>สถานที่ตั้ง</b></h4>
+                                        </div>
+
+                                        <div class="text">
+                                            <span>ตำบล โคกปีบ อำเภอ ศรีมโหสถ จังหวัด ปราจีนบุรี 25190</span><br><br>
+
+                                            <div class="text-left">
+                                                <span>ตั้งอยู่ที่วัดสระมรกต ตำบลโคกไทย เป็นกลุ่มโบราณสถานทางพุทธศาสนาขนาดใหญ่ ที่สร้างซ้อนทับกันหลายสมัย เริ่มตั้งแต่ก่อนพุทธศตวรรษที่ 14 เป็นต้นมาจนถึงพุทธศตวรรษที่ 18 ประกอบด้วยสิ่งก่อสร้างศิลาแลงและอิฐ ส่วนใหญ่คงเหลือเฉพาะรากฐานอาคารเท่านั้น ระหว่างการขุดแต่งได้ค้นพบรอยพระพุทธบาทคู่สลักอยู่บนศิลาแลง ที่ฝ่าพระบาทสลักรูปธรรมจักรนูนทั้งสองข้าง และยังมีการสลักรูปกากบาท</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <hr>
+
+                                <!-- ข้อมูลรายละเอียด -->
+                                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                    <div id="card2" class="box-part my-element text-center text-light">
+
+                                        <i class="fas fa-book-open fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>รายละเอียด</b></h4>
+                                        </div>
+
+                                        <div class="text">
+
+
+                                            <div class="text-left">
+                                                <span> สิบปากว่าไม่เท่าตาเห็น มาปราจีนทั้งทีต้องหาโอกาสมาสัมผัสความยิ่งใหญ่ของศาสนสถานสำคัญที่สร้างตั้งแต่สมัยก่อนพุทธศตวรรษที่ 14 ถึงพุทธศตวรรษที่ 18 อย่าง 'กลุ่มโบราณสถานสระมรกต' ด้วยตัวเองสักครั้ง ชื่อสถานที่เรียกขานกันตามชื่อสระน้ำขนาดใหญ่ในบริเวณนั้น แต่ไฮไลต์ของที่นี่กลับเป็น รอยพระพุทธบาทคู่ยุคทวารวดีถึงยุคลพบุรีที่ขุดพบเป็นรอยสลักลึกบนแผ่นศิลาแลงตามธรรมชาติและด้วยความกว้างของสองพระบาทรวม 3.10 เมตร ยาวกว่า 3 เมตร ทำให้รอยพระบาทคู่นี้ถือว่าเก่าแก่และมีขนาดใหญ่ที่สุดในประเทศไทย เมื่อสังเกตบนฝ่าพระบาทจะพบรูปธรรมจักรนูนขึ้นมา และมีร่องรอยกากบาทอยู่ตรงกลางสันนิษฐานว่าเป็นร่องสำหรับปักฉัตรของกษัตริย์นั่นเอง ถัดมาไม่ไกลจะมีบ่อน้ำศักดิ์สิทธิ์ที่มีพระพุทธรูปและโบราณวัตถุจำนวนมากอยู่ในบ่อ เหลียวมองสิ่งก่อสร้างโดยรอบจะเห็นว่าได้รับอิทธิพลจากวัฒนธรรมเขมรโบราณ ไม่ว่าจะสระมรกต ซึ่งทำหน้าที่เป็นอ่างเก็บน้ำขนาดใหญ่ ลักษณะคล้ายบารายของเขมร นั่นคือเป็นสี่เหลี่ยมผืนผ้าขนาดใหญ่พอที่จะเก็บกักน้ำไว้ใช้ได้ตลอดปี โดยกรมศิลปากรยังดูแลให้มีน้ำเต็มเหมือนเมื่อครั้งอดีตด้วย นอกจากนี้ ที่แห่งนี้ยังมีสระแก้วและสระขวัญเป็นสระน้ำโบราณที่ใช้ประกอบพิธีกรรม สังเกตจากภาพสลักรูปสัตว์บน ศิลาแลงที่ขอบสระ ส่วนสระบัวหล้าและอาคารศรีมโหสถนั้นเป็นสถานที่จัดแสดงนิทรรศการความรู้เกี่ยวกับโบราณสถานเมืองศรีมโหสถและจัดแสดงโบราณวัตถุที่ขุดค้นพบในบริเวณนี้</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <hr>
+
+                                <!-- ข้อมูลกิจกรรม -->
+                                <section class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                    <div id="card3" class="box-part text-center text-light">
+
+                                        <i class="fas fa-hiking fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>กิจกรรม</b></h4>
+                                        </div>
+
+                                        <div class="text">
+
+                                            <span class="badge badge-pill badge-success mr-2"> ศึกษาประวัติศาสตร์</span>
+                                            <span class="badge badge-pill badge-success mr-2"> ชมพิพิธภัณฑ์</span>
+                                            <span class="badge badge-pill badge-success mr-2"> นมัสการศาสนสถาน</span>
+                                            <span class="badge badge-pill badge-success mr-2"> บูรพาจารย์</span>
+                                            <span class="badge badge-pill badge-success mr-2"> ขอพร</span>
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <!-- เหมาะสำหรับ -->
+                                <section class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                    <div id="card4" class="box-part text-center text-light">
+
+                                        <i class="fas fa-users fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>เหมาะสำหรับ</b></h4>
+                                        </div>
+
+                                        <div class="text">
+
+                                            <span class="badge badge-pill badge-success mr-2"> สำหรับกลุ่มผู้สูงอายุ</span>
+                                            <span class="badge badge-pill badge-success mr-2"> สำหรับครอบครัว</span>
+                                            <span class="badge badge-pill badge-success mr-2"> สำหรับนักท่องเที่ยวต่างชาติ</span>
+
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <!-- การเดินทาง -->
+                                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                    <div id="card5" class="box-part text-center text-light">
+
+                                        <i class="fas fa-route fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>การเดินทาง</b></h4>
+                                        </div>
+
+                                        <div class="text">
+
+
+                                            <div class="text-left">
+                                                <span> จากตัวเมืองปราจีนบุรีไปตามถนนสุวินทวงศ์ ใช้เส้นทางหมายเลข 319 สายปราจีนบุรี-อำเภอพนมสารคาม ระยะทางประมาณ 23 กิโลเมตร แล้วเลี้ยวซ้ายไปอีกประมาณ 500 เมตร ก็จะถึงกลุ่มโบราณสถานแห่งนี้</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <!-- ข้อมูลกิจกรรม -->
+                                <section class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                    <div id="card6" class="box-part text-center text-light">
+
+                                        <i class="fas fa-clock fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>วันทำการ</b></h4>
+                                        </div>
+
+
+
+                                        <table class="table table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">วัน</th>
+                                                    <th scope="col">เวลา</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">จันทร์</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">อังคาร</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">พุธ</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">พฤหัสบดี</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">ศุกร์</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">เสาร์</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">อาทิตย์</th>
+                                                    <td>09:00 - 16:00</td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+                                </section>
+
+                                <!-- เหมาะสำหรับ -->
+                                <section class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                                    <div id="card7" class="box-part text-center text-light">
+
+                                        <i class="fas fa-comment-alt fa-5x"></i>
+
+                                        <div class="title">
+                                            <h4><b>ข้อมูลติดต่อ</b></h4>
+                                        </div>
+
+                                        <div class="text">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col"></th>
+                                                        <th scope="col">รายละเอียด</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">เบอร์โทรศัพท์</th>
+                                                        <td>029563258</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">เบอร์มือถือ</th>
+                                                        <td>0859061736</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">แฟกซ์</th>
+                                                        <td>ไม่มี</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">อีเมล์</th>
+                                                        <td>poramin10@gmail.com</td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">เว็บไซต์</th>
+                                                        <td>poramin.com</td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+
+
+                                        </div>
+
+                                    </div>
+                                </section>
+
+                                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <iframe style="width: 100% ; height: 500px" src='https://map.longdo.com/snippet/iframe.php?locale=th&zoom=10&mode=icons&map=epsg3857&zoombar=yes&toolbar=no&mapselector=no&scalebar=yes&search=น้ำตกไทรโยคน้อย' frameborder="0"></iframe>
+                                </section>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Javascript Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+    <!-- WOW JS -->
+    <script src="../assets/Js/wow.js"></script>
+
+    <!-- Script JS -->
+    <script src="../assets/Js/scriptNavbar.js"></script>
+
+</body>
+
+</html>
