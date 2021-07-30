@@ -4,7 +4,7 @@
         searchEnabled: false,
         itemSelectText: '',
     });
-</script> 
+</script>
 
 <!-- Search สถานที่ท่องเที่ยวด้วย Axios -->
 
@@ -75,9 +75,7 @@
                                     document.getElementById("notify").hidden = false;
                                 } else {
                                     check = false;
-
                                 }
-
                             }
                         ).catch((e) => {
                             document.getElementById("notify").hidden = true;
@@ -140,7 +138,7 @@
     console.log(document.getElementById('selectValue').value);
     var data = [];
 
-    for (var i = 1; i <= 12 ; i++) {
+    for (var i = 1; i <= 12; i++) {
 
         axios
             .get(
@@ -167,9 +165,11 @@
 
                             document.getElementById("notify").hidden = true;
 
-                            dataElm.append(`<div class="col-md-4 mt-4 col-sm-12">
+                            dataElm.append(`
+
+                <div class="col-md-4 mt-4 col-sm-12">
                     <div class="col">
-                        <center>
+                        <center> 
                             <div class="card card-shadow mt-4 h-100">
                             <div class="img-hover-zoom img-hover-zoom--xyz">
                                 <img src="${
@@ -205,4 +205,3 @@
 </script>
 
 <!-- ../Travel/Detail.php?id=${res.place_id} -->
-

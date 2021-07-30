@@ -7,24 +7,6 @@ $result_popular = $conn->query($sql_popular);
 while ($row_popular = $result_popular->fetch_assoc()) {
     $dataT[$i] = $row_popular['id_travel'];
     $dataNum[$i] = $row_popular['count_travel'];
-
-    // echo '<script type="text/javascript">';
-
-    // echo "dataNum1 = '$dataNum[0]';";
-    // echo "dataNum2 = '$dataNum[1]';";
-    // echo "dataNum3 = '$dataNum[2]';";
-    // echo "dataNum4 = '$dataNum[3]';";
-    // echo "dataNum5 = '$dataNum[4]';";
-    // echo "dataNum6 = '$dataNum[5]';";
-    // echo "dataNum7 = '$dataNum[6]';";
-    // echo "dataNum8 = '$dataNum[7]';";
-    // echo "dataNum9 = '$dataNum[8]';";
-    // echo "dataNum10 = '$dataNum[9]';";
-    // echo "dataNum11 = '$dataNum[10]';";
-    // echo "dataNum12 = '$dataNum[11]';";
-
-    // echo '</script>';
-
     $i++;
 }
 ?>
@@ -83,15 +65,17 @@ while ($row_popular = $result_popular->fetch_assoc()) {
             dataElm.append(
 
                 `
-                <div class="hover01 column col-md-4 col-sm-6">
-                    <div class="card mb-3 h-card" style="height:auto">
+                
+                <div class="hover01 column col-md-4 col-sm-6 mb-4">
+                    <div class="card mb-3 h-card h-100">
                         <figure>
                             <img class="card-img-top" height="250px" src="${res['web_picture_urls'][0]}" alt="Card image cap">
                               <div class="img-popular">
                                 <h1 class="text-fixed-popular">${numPop}</h1>
                             </div>
                         </figure>
-                        <div class="card-body">  
+                        <div class="card-body"> 
+                           
                             <h3 class="card-title"><strong>${res['place_name']}</strong></h3>
                             <h5 class="text-pink"><strong> จังหวัด ${res['location']['province']} </strong></h5>
                             <p class="card-text">${res['place_information']['introduction']}</p>
@@ -99,14 +83,25 @@ while ($row_popular = $result_popular->fetch_assoc()) {
                             <hr>
                             <label for=""><b>กิจกรรม</b></label><br>
                                 ${dataAll} 
-                            <a type="button" href="../Travel/Detail.php?id=${res.place_id}" class="btn btn-danger btn-lg btn-block mt-4">ดูสถานที่ท่องเที่ยว</a>
+                           
+
+                         </div>  
+                         <div class="card-footer d-flext flex-column">
+                         <div class="mt-auto">
+                                <a href="../Travel/Detail.php?id=${res.place_id}">
+                                    <button type="button" class="button btn btn-danger btn-lg btn-block mt-4">
+                                        <span> ดูสถานที่ท่องเที่ยว</span>
+                                    </button>
+                                </a>
+                            </div>
                         </div>
+                            
                     </div>
                 </div>
                     `
-
+                
             )
-
+            document.getElementById("notify").hidden = true;
             numPop++;
         })
     }

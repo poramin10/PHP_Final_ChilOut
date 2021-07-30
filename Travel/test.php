@@ -15,46 +15,6 @@
     <?php include_once('../include/inc_css_front.php') ?>
 
 </head>
-<style>
-    .img-travel {
-        width: 100%;
-        height: 600px;
-        background-size: cover;
-        display: block;
-    }
-
-    .card-img-shadow {
-        box-shadow: 10px 10px 5px black;
-    }
-
-    .box-part {
-        background-color: #77ACF1;
-        border-radius: 0;
-        padding: 30px 10px;
-        margin: 20px 0px;
-        box-shadow: 5px 0px 5px black;
-    }
-
-
-    .card-header-color {
-        background-color: #F7D7AE;
-    }
-
-    .card .box-part {
-        background-color: #F2CAC8;
-        color: black !important;
-    }
-
-    .event-top {
-
-        margin: 0 0.5rem;
-
-        animation: backInDown;
-        /* referring directly to the animation's @keyframe declaration */
-        animation-duration: 2s;
-        /* don't forget to set a duration! */
-    }
-</style>
 
 <body>
 

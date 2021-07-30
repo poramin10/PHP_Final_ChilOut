@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+  console.log('เข้า')
+
   $("#card2").hide(); //hide your div initially
   $("#card3").hide();
   $("#card4").hide();

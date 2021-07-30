@@ -17,3 +17,6 @@
 
     <!-- Script JS Navbar -->
     <script src="../assets/Js/scriptNavbar.js"></script>
+
+    <!-- Animation Text Move -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>

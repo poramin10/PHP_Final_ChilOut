@@ -4,9 +4,23 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner"> 
+    <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" height="650px" src="https://images.unsplash.com/photo-1476673160081-cf065607f449?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80" alt="First slide">
+
+            <div class="img-carousel-1">
+                <img class="d-block w-100" height="650px" src="https://images.unsplash.com/photo-1476673160081-cf065607f449?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80" alt="First slide">
+            </div>
+
+            <div class="text-carousel-1">
+                <div class="effect-gapip">
+                    PaaFun
+                </div>
+                <div class="text-welcome">
+                    ยินดีต้อนรับ...
+                </div>
+
+            </div>
+
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" height="650px" src="https://static.thairath.co.th/media/HCtHFA7ele6Q2dULxQHo7L050BSosjICImTh8ts5B4x6T2txj4J5it4TDXimFjTszi.jpg" alt="Second slide">
@@ -24,8 +38,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-
 
 
 <!-- Carousel -->
