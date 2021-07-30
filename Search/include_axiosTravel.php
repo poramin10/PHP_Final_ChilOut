@@ -95,7 +95,7 @@
         data.forEach((res) => {
             if (res.category_code == "ATTRACTION" && res.thumbnail_url != "") {
                 document.getElementById("notData").hidden = true;
-                dataElm.append(`<div class="col-md-4 mt-4 col-sm-12">
+                dataElm.append(`<div class=" col-lg-4 col-md-6 mt-4 col-sm-12">
                     <div class="col">
                         <center>
                             <div class="card card-shadow mt-4 h-100">
@@ -167,7 +167,7 @@
 
                             dataElm.append(`
 
-                <div class="col-md-4 mt-4 col-sm-12">
+                <div class="col-lg-4 col-md-6 mt-4 col-sm-12">
                     <div class="col">
                         <center> 
                             <div class="card card-shadow mt-4 h-100">

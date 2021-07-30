@@ -10,7 +10,7 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v11.0&appId=2929601543773730&autoLogAppEvents=1" nonce="8aj6mVf9"></script>
     <script src="../assets/Js/apiLoginFB.js"></script>
 
-    <!-- Google+ Login -->
+    <!-- Google+ Login --> 
     <!-- Google -->
     <script src="../assets/Js/apiLoginGooglePlus.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -20,3 +20,6 @@
 
     <!-- Animation Text Move -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+    <!-- Multicard -->
+    <script src="../assets/lib/multicard/carousel.js"></script>

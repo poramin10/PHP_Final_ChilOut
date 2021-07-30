@@ -97,17 +97,18 @@ body {
 }
 
 /* Text Color */
-.text-color-pink{
+
+.text-color-pink {
   color: #FA6476;
 }
 
 /* hr */
+
 hr.hr-13 {
   height: 10px;
   border: 0;
   box-shadow: 0 10px 10px -10px #FA6476 inset;
 }
-
 
 hr.hr-17 {
   border: 0;
@@ -118,7 +119,6 @@ hr.hr-17 {
 hr.hr-17:after {
   content: "\00a0";
 }
-
 
 /* Section Register */
 
@@ -260,6 +260,7 @@ hr.hr-17:after {
 }
 
 /* Animation Button */
+
 .button span {
   cursor: pointer;
   display: inline-block;
@@ -290,7 +291,6 @@ hr.hr-17:after {
 nav ul li a {
   color: #FA6476 !important;
 }
-
 
 /* ขนาดปกติ */
 
@@ -351,7 +351,7 @@ nav.white ul {
 
 nav ul li {
   display: inline-block;
-  padding: 16px 40px;
+  padding: 16px 10px;
   ;
 }
 
@@ -449,6 +449,7 @@ nav.white ul li a {
 }
 
 /* Section Detail */
+
 .img-travel {
   width: 100%;
   height: 600px;
@@ -468,7 +469,6 @@ nav.white ul li a {
   box-shadow: 5px 0px 5px black;
 }
 
-
 .card-header-color {
   background-color: #F7D7AE;
 }
@@ -479,9 +479,7 @@ nav.white ul li a {
 }
 
 .event-top {
-
   margin: 0 0.5rem;
-
   animation: backInDown;
   /* referring directly to the animation's @keyframe declaration */
   animation-duration: 2s;
@@ -490,16 +488,16 @@ nav.white ul li a {
 
 /* Section Homepage */
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon{
+.carousel-control-prev-icon, .carousel-control-next-icon {
   display: none;
 }
 
-.img-carousel-1{
+.img-carousel-1 {
   position: relative;
-  background-size: cover ;
-  animation: zoom-in-zoom-out 10s ease-out 
+  background-size: cover;
+  animation: zoom-in-zoom-out 10s ease-out
 }
+
 @keyframes zoom-in-zoom-out {
   0% {
     transform: scale(1, 1);
@@ -512,7 +510,25 @@ nav.white ul li a {
   }
 }
 
-.text-carousel-1{
+.img-carousel-2 {
+  position: relative;
+  background-size: cover;
+  animation: zoom-out-carousel2 15s infinite;
+}
+
+@keyframes zoom-out-carousel2 {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.25, 1.25);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.text-carousel-1 {
   position: absolute;
   top: 250;
   left: 50;
@@ -520,7 +536,16 @@ nav.white ul li a {
   text-shadow: 10px;
 }
 
-.effect-gapip{
+.text-carousel-2 {
+  position: absolute;
+  top: 250;
+  right: 50;
+  font-size: 8vw;
+  color: #FA6476;
+  text-shadow: 10px;
+}
+
+.effect-gapip {
   font-size: 10vw;
   font-weight: bold;
   animation: pink 3s linear infinite;
@@ -529,14 +554,11 @@ nav.white ul li a {
 
 @keyframes pink {
   from {
-    text-shadow: 0 0 5px #FA6476,
-           0 0 15px #FA6476,
-           0 0 30px #FA6476,
-           0 0 60px #FA6476;
+    text-shadow: 0 0 5px #FA6476, 0 0 15px #FA6476, 0 0 30px #FA6476, 0 0 60px #FA6476;
   }
 }
 
-.text-welcome{
+.text-welcome {
   font-weight: bold;
   font-size: 5vw;
 }
@@ -546,3 +568,133 @@ nav.white ul li a {
   line-height: 1em;
 }
 
+.ml16, .ml15 {
+  font-weight: 800;
+  font-size: 10vh;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-shadow: 1px 1px 2px pink;
+}
+
+.ml15 .word1, .ml15 .word2 {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.img-carousel-3 {
+  position: relative;
+  background-size: cover;
+  animation: zoom-out-carousel3 15s infinite;
+}
+
+@keyframes zoom-out-carousel3 {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.25, 1.25);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+
+.text-carousel-3 {
+  position: absolute;
+  top: 50%;
+  left: 23%;
+  font-size: 5vw !important;
+  color: #FA6476;
+  text-shadow: 1px 1px 2px #FA6476;
+}
+
+.ml5 {
+  position: relative;
+  color: #FA6476;
+  font-size: 5vw !important;
+}
+
+.ml5 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+  line-height: 1em;
+}
+
+.ml5 .line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 3px;
+  width: 100%;
+  background-color: #FA6476;
+  transform-origin: 0.5 0;
+}
+
+.ml5 .ampersand {
+  font-family: Baskerville, serif;
+  font-style: italic;
+  font-weight: 400;
+  width: 1em;
+  margin-right: -0.1em;
+  margin-left: -0.1em;
+}
+
+.ml5 .letters {
+  display: inline-block;
+  opacity: 0;
+}
+
+/* Multicard */
+@media (min-width: 768px) {
+
+  .multi-card .carousel-inner .carousel-item-right.active,
+  .multi-card .carousel-inner .carousel-item-next {
+      transform: translateX(50%);
+  }
+
+  .multi-card .carousel-inner .carousel-item-left.active,
+  .multi-card .carousel-inner .carousel-item-prev {
+      transform: translateX(-50%);
+  }
+}
+
+/* large - display 3 */
+@media (min-width: 992px) {
+
+  .multi-card .carousel-inner .carousel-item-right.active,
+  .multi-card .carousel-inner .carousel-item-next {
+      transform: translateX(33%);
+  }
+
+  .multi-card .carousel-inner .carousel-item-left.active,
+  .multi-card .carousel-inner .carousel-item-prev {
+      transform: translateX(-33%);
+  }
+}
+
+@media (max-width: 768px) {
+  .multi-card .carousel-inner .carousel-item>div {
+      display: none;
+  }
+
+  .multi-card .carousel-inner .carousel-item>div:first-child {
+      display: block;
+  }
+}
+
+.multi-card .carousel-inner .carousel-item.active,
+.multi-card .carousel-inner .carousel-item-next,
+.multi-card .carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+.multi-card .carousel-inner .carousel-item-right,
+.multi-card .carousel-inner .carousel-item-left {
+  transform: translateX(0);
+}

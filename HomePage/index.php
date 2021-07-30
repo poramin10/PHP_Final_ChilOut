@@ -13,6 +13,7 @@ $result = $conn->query($sql);
     <title>HomePage</title>
     <!-- Link -->
     <?php include_once('../include/inc_css_front.php') ?>
+
 </head>
 
 <body>
@@ -32,16 +33,66 @@ $result = $conn->query($sql);
         <div class="row">
 
             <div class="col-md-12">
-                <div class="float-md-right text-center display-2 mt-5 text-color-pink">
-                    ยินดีต้อนรับ
+                <div class="flexslider carousel mt-4" id="f2" style="direction:rtl">
+                    <ul class="slides">
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                        <li>
+                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
+                        </li>
+                    </ul>
                 </div>
+
             </div>
 
             <div class="col-md-12">
-                <div class="float-right">
-                    <hr width="450px" class="hr-13">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="float-md-right text-center display-2 mt-5 text-color-pink">
+                            ยินดีต้อนรับ
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="float-right">
+                            <hr width="450px" class="hr-13">
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
 
         </div>
 
@@ -86,11 +137,41 @@ $result = $conn->query($sql);
     <!-- Script Popular -->
     <?php include_once('./include_axiosPopular.php') ?>
 
+    <!-- jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')
+    </script>
+
+    <script>
+        // $carousel.bind('slide.bs.carousel', function(e) {
+        //     console.log('slide event!');
+        // }); 
+
+        // setInterval(function() {
+
+        $('#carouselExampleIndicators').bind('slide.bs.carousel', function(e) {
+            let item1 = document.getElementById("item1");
+            let item2 = document.getElementById("item2");
+            let item3 = document.getElementById("item3");
+            if (item1.classList.contains("active")) {
+
+            }
+            if (item2.classList.contains("active")) {
+
+                textWelCome()
+            }
+            if (item3.classList.contains("active")) {
+                textWelCome()
+
+            }
+        });
+    </script>
+
     <!-- Animation Text Move -->
     <script>
         var textWrapper = document.querySelector('.text-welcome');
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
         anime.timeline({})
             .add({
                 targets: '.text-welcome .letter',
@@ -106,7 +187,126 @@ $result = $conn->query($sql);
                 easing: "easeOutExpo",
                 delay: 1000
             });
+
+
+        function textWelCome() {
+            var textWrapper = document.querySelector('.text-welcome');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+            anime.timeline({})
+                .add({
+                    targets: '.text-welcome .letter',
+                    scale: [4, 1],
+                    opacity: [0, 1],
+                    translateZ: 0,
+                    easing: "easeOutExpo",
+                    duration: 950,
+                    delay: (el, i) => 70 * i
+                }).add({
+                    targets: '.text-welcome',
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+        }
     </script>
+
+    <script>
+        anime.timeline({
+                loop: true
+            })
+
+            .add({
+                targets: '.ml15 .word1',
+                scale: [14, 1],
+                opacity: [0, 1],
+                easing: "easeOutCirc",
+                duration: 1000,
+                delay: (el, i) => 2000 * i
+            }).add({
+                targets: '.ml15 .word2',
+                scale: [14, 1],
+                opacity: [0, 1],
+                easing: "easeOutCirc",
+                duration: 1000,
+                delay: (el, i) => 1000 * i
+            }).add({
+                targets: '.ml15',
+                opacity: 0,
+                duration: 3000,
+                easing: "easeOutExpo",
+                delay: 2000
+            });
+    </script>
+
+    <script>
+        anime.timeline({
+                loop: true
+            })
+            .add({
+                targets: '.ml5 .line',
+                opacity: [0.5, 1],
+                scaleX: [0, 1],
+                easing: "easeInOutExpo",
+                duration: 700
+            }).add({
+                targets: '.ml5 .line',
+                duration: 600,
+                easing: "easeOutExpo",
+                translateY: (el, i) => (-0.625 + 0.625 * 2 * i) + "em"
+            }).add({
+                targets: '.ml5 .ampersand',
+                opacity: [0, 1],
+                scaleY: [0.5, 1],
+                easing: "easeOutExpo",
+                duration: 600,
+                offset: '-=600'
+            }).add({
+                targets: '.ml5 .letters-left',
+                opacity: [0, 1],
+                translateX: ["0.5em", 0],
+                easing: "easeOutExpo",
+                duration: 600,
+                offset: '-=300'
+            }).add({
+                targets: '.ml5 .letters-right',
+                opacity: [0, 1],
+                translateX: ["-0.5em", 0],
+                easing: "easeOutExpo",
+                duration: 5000,
+                offset: '-=600'
+            }).add({
+                targets: '.ml5',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+
+    <!-- Multicard -->
+    <!-- FlexSlider -->
+
+    <script defer src="../assets/lib/multicard/jquery.flexslider.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function() {
+            $('#f2').flexslider({
+                animation: "slide",
+                animationLoop: true,
+                itemWidth: 210,
+                itemMargin: 5,
+                pausePlay: true,
+                mousewheel: false,
+                rtl: true,
+                asNavFor: '.flexslider'
+            });
+        });
+    </script>
+
+
 
 
 </body>

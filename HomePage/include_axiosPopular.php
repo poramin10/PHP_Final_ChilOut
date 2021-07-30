@@ -66,7 +66,7 @@ while ($row_popular = $result_popular->fetch_assoc()) {
 
                 `
                 
-                <div class="hover01 column col-md-4 col-sm-6 mb-4">
+                <div class="hover01 column col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card mb-3 h-card h-100">
                         <figure>
                             <img class="card-img-top" height="250px" src="${res['web_picture_urls'][0]}" alt="Card image cap">

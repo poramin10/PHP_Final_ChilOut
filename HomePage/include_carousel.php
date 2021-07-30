@@ -1,13 +1,13 @@
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators3" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
+        <div id="item1" class="carousel-item active">
 
-            <div class="img-carousel-1">
+            <div id="carousel1" class="img-carousel-1">
                 <img class="d-block w-100" height="650px" src="https://images.unsplash.com/photo-1476673160081-cf065607f449?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80" alt="First slide">
             </div>
 
@@ -18,15 +18,40 @@
                 <div class="text-welcome">
                     ยินดีต้อนรับ...
                 </div>
-
             </div>
 
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" height="650px" src="https://static.thairath.co.th/media/HCtHFA7ele6Q2dULxQHo7L050BSosjICImTh8ts5B4x6T2txj4J5it4TDXimFjTszi.jpg" alt="Second slide">
+        <div id="item2" class="carousel-item">
+            <div id="carousel2" class="img-carousel-2">
+                <img class="d-block w-100" height="650px" src="https://static.thairath.co.th/media/HCtHFA7ele6Q2dULxQHo7L050BSosjICImTh8ts5B4x6T2txj4J5it4TDXimFjTszi.jpg" alt="Second slide">
+            </div>
+            <div class="text-carousel-2">
+                <h1 class="ml15">
+                    <span class="word1">ท่องเที่ยว</span>
+                </h1>
+                <h1 class="ml15">
+                    <span class="word2">ทั่วไทย</span>
+                </h1>
+            </div>
+
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" height="650px" src="https://2.bp.blogspot.com/-poE-cv1EbwQ/WJALLg6N4hI/AAAAAAAAAHA/Xlz3ZvNleXIIBBJvyNjVo-udXDIhbzXEwCLcB/s1600/152_2_4.jpg" alt="...">
+        <div id="item3" class="carousel-item"> 
+            <div id="carousel3" class="img-carousel-3">
+                <img class="d-block w-100" height="650px" src="https://www.checkinchill.com/wp-content/uploads/checkinchill-18-06-2018-10.jpg" alt="...">
+            </div>
+
+            <div class="text-carousel-3">
+                <h1 class="ml5">
+                    <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters letters-left">แปลกใหม่</span>
+                        <span class="letters ampersand">&amp;</span>
+                        <span class="letters letters-right">ไม่เหมือนใคร</span>
+                        <span class="line line2"></span>
+                    </span>
+                </h1>
+
+            </div>
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -38,6 +63,11 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+
+
+
+
 
 
 <!-- Carousel -->

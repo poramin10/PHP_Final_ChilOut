@@ -11,6 +11,8 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- flexslider CSS -->
+    <link rel="stylesheet" href="../assets/css/flexslider.css">
 
     <!-- Owl Carousel -->
     <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
