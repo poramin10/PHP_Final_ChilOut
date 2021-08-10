@@ -37,11 +37,12 @@ $result = $conn->query($sql);
                 <hr>
             </div>
         </div>
+    </div>
 
+    <!-- เนื้อหาสถานที่ท่องเที่ยว -->
+    <div class="container">
 
-        <!-- เนื้อหาสถานที่ท่องเที่ยว -->
         <div class="row" id="dataPopular">
-
         </div>
 
         <div id="notify" class="row justify-content-center align-item-center vh-100">
@@ -56,6 +57,9 @@ $result = $conn->query($sql);
         </div>
 
     </div>
+
+
+
 
     <!-- Footer -->
 

@@ -9,12 +9,12 @@ while ($row_popular = $result_popular->fetch_assoc()) {
     $dataNum[$i] = $row_popular['count_travel'];
     $i++;
 }
-$dataAllView = join(',',$dataNum);
+$dataAllView = join(',', $dataNum);
 ?>
 
 <!-- ส่งค่าจาก PHP ให้ Javascript -->
 <script>
-    var check = '<?=$dataAllView?>'
+    var check = '<?= $dataAllView ?>'
     var view = check.split(",");
     // console.log('check '+check)
     // console.log('arr '+view[0])
@@ -78,14 +78,14 @@ $dataAllView = join(',',$dataNum);
                        
                             <img class="card-img-top" height="250px" src="${res['web_picture_urls'][0]}" alt="Card image cap">
                             <div class="img-popular2">
-                                <img src="../assets/img/medal.png" width="100px" height="100px" alt="">
+                                <img src="../assets/img/medal.png" width="80px" height="80px" alt="">
                             </div>
                               <div class="img-popular">
                                  <h1 class="text-fixed-popular">${numPop}</h1>
                               </div>
 
                         </figure>
-                        <div class="text-center"><small>---- ยอดผู้เข้าชม ${view[numPop-1]} -----</small> </div> 
+                        <div class="text-center"><small>---- ยอดผู้เข้าชม ${view[numPop-1]} ----</small> </div> 
                         <div class="card-body"> 
                         
                             
