@@ -9,18 +9,9 @@ while ($row_popular = $result_popular->fetch_assoc()) {
     $dataNum[$i] = $row_popular['count_travel'];
     $i++;
 }
-$dataAllView = join(',',$dataNum);
+
+
 ?>
-
-<!-- ส่งค่าจาก PHP ให้ Javascript -->
-<script>
-    var check = '<?=$dataAllView?>'
-    var view = check.split(",");
-    // console.log('check '+check)
-    // console.log('arr '+view[0])
-</script>
-
-
 <script>
     fetchData();
     async function fetchData() {
@@ -28,8 +19,8 @@ $dataAllView = join(',',$dataNum);
         var data = [];
         var t = [];
 
-
-        <?php for ($i = 0; $i < 12; $i++) {
+        
+        <?php for ($i = 0; $i < 11; $i++) {
             $num++;
         ?>
             await axios
@@ -45,15 +36,19 @@ $dataAllView = join(',',$dataNum);
                     res => {
                         data = data.concat(res.data.result);
                         console.log(data);
+                    
+                        $.post("./storage.php", {data},
+                            function (data, textStatus, jqXHR) {
+                               console.log(jqXHR);
+                            }
+                        );
                     }
                 ).catch((e) => {
                     console.log(e);
                 })
 
         <?php } ?>
-
-
-        data.forEach((res, idx) => {
+        data.forEach((res,idx) => {
             dataTag = res['place_information']['activities']
             dataArr = [];
 
@@ -68,47 +63,42 @@ $dataAllView = join(',',$dataNum);
             dataAll = dataArr.join(" ");
             // console.log(dataAll);
             let dataElm = $("#dataPopular");
-
+           
             dataElm.append(
 
                 `
+
                 <div class="hover01 column col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card mb-3 h-card h-100">
                         <figure>
+                        <?php print_r($_POST)?>
                        
                             <img class="card-img-top" height="250px" src="${res['web_picture_urls'][0]}" alt="Card image cap">
-                            <div class="img-popular2">
-                                <img src="../assets/img/medal.png" width="100px" height="100px" alt="">
-                            </div>
                               <div class="img-popular">
-                                 <h1 class="text-fixed-popular">${numPop}</h1>
-                              </div>
+                                <h1 class="text-fixed-popular">${numPop}</h1>
+                            </div>
 
                         </figure>
-                        <div class="text-center"><small>---- ยอดผู้เข้าชม ${view[numPop-1]} -----</small> </div> 
                         <div class="card-body"> 
-                        
                             
                             <h3 class="card-title"><strong>${res['place_name']}</strong></h3>
                             <h5 class="text-pink"><strong> จังหวัด ${res['location']['province']} </strong></h5>
                             <p class="card-text">${res['place_information']['introduction']}</p>
                             
                             <hr>
-                            <label for=""><b>กิจกรรม</b> </label><br>
+                            <label for=""><b>กิจกรรม</b></label><br>
                                 ${dataAll} 
-                           
-
+                    
                          </div>  
                          <div class="card-footer d-flext flex-column">
-
-                            <div class="mt-auto">
-                                    <a href="../Travel/Detail.php?id=${res.place_id}">
-                                        <button type="button" class="button btn btn-danger btn-lg btn-block mt-4">
-                                            <span> ดูสถานที่ท่องเที่ยว</span>
-                                        </button>
-                                    </a>
-                                </div>
+                         <div class="mt-auto">
+                                <a href="../Travel/Detail.php?id=${res.place_id}">
+                                    <button type="button" class="button btn btn-danger btn-lg btn-block mt-4">
+                                        <span> ดูสถานที่ท่องเที่ยว</span>
+                                    </button>
+                                </a>
                             </div>
+                        </div>
 
                     </div>
                 </div>
@@ -117,8 +107,6 @@ $dataAllView = join(',',$dataNum);
             )
             document.getElementById("notify").hidden = true;
             numPop++;
-
         })
-
     }
 </script>

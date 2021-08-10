@@ -30,72 +30,6 @@ $result = $conn->query($sql);
 
     <div class="container">
 
-        <div class="row">
-
-            <div class="col-md-12">
-                <div class="flexslider carousel mt-4" id="f2" style="direction:rtl">
-                    <ul class="slides">
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                        <li>
-                            <img src="https://fwtx.com/downloads/22719/download/coming-soon.png?cb=ef8dbfa3204e40cc01f6514a1781bb25" />
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="float-md-right text-center display-2 mt-5 text-color-pink">
-                            ยินดีต้อนรับ
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="float-right">
-                            <hr width="450px" class="hr-13">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-        </div>
-
         <!-- หัวข้อ Card -->
         <div class="row">
             <div class="col-md-12 mt-4">
@@ -103,7 +37,6 @@ $result = $conn->query($sql);
                 <hr>
             </div>
         </div>
-
 
 
         <!-- เนื้อหาสถานที่ท่องเที่ยว -->
@@ -121,8 +54,6 @@ $result = $conn->query($sql);
                 </div>
             </div>
         </div>
-
-
 
     </div>
 
@@ -158,10 +89,11 @@ $result = $conn->query($sql);
 
             }
             if (item2.classList.contains("active")) {
-
+                console.log('กด');
                 textWelCome()
             }
             if (item3.classList.contains("active")) {
+
                 textWelCome()
 
             }
@@ -282,31 +214,6 @@ $result = $conn->query($sql);
                 delay: 1000
             });
     </script>
-
-    <!-- Multicard -->
-    <!-- FlexSlider -->
-
-    <script defer src="../assets/lib/multicard/jquery.flexslider.js"></script>
-
-    <script type="text/javascript">
-        $(function() {
-            SyntaxHighlighter.all();
-        });
-        $(window).load(function() {
-            $('#f2').flexslider({
-                animation: "slide",
-                animationLoop: true,
-                itemWidth: 210,
-                itemMargin: 5,
-                pausePlay: true,
-                mousewheel: false,
-                rtl: true,
-                asNavFor: '.flexslider'
-            });
-        });
-    </script>
-
-
 
 
 </body>

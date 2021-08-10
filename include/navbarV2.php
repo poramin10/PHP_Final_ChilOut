@@ -19,8 +19,9 @@
                     <img src="../assets/img/profile/avatarP.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
 
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="../Login/Page_FormLogin.php"> ข้อมูลประวัติ</a>
-                        <a class="dropdown-item" href="../Login/php_logout.php"> ออกจากระบบ</a>
+                        <a class="dropdown-item" href="../Profile/Page_Profile.php">ข้อมูลโปรไฟล์</a>
+                        <a class="dropdown-item" href="#">ระบบแนะนำสถานที่ท่องเที่ยว</a>
+                        <a class="dropdown-item" href="../Login/php_logout.php">ออกจากระบบ</a>
                     </div>
 
 
@@ -28,6 +29,7 @@
 
             </ul>
         </div>
+
     </nav>
 
 <?php } else { ?>
@@ -61,6 +63,8 @@
 
             </ul>
         </div>
+
+
     </nav>
 
 <?php } ?>

@@ -10,6 +10,7 @@
     Section Verify
     Section Detail
     Section HomePage
+    Section ProgressBar
 
  
   |--------------------------------------------------------------------------|
@@ -200,14 +201,14 @@ hr.hr-17:after {
   overflow: hidden;
 }
 
-.hover01 figure img {
+.hover01 figure .card-img-top {
   -webkit-transform: scale(1);
   transform: scale(1);
   -webkit-transition: .3s ease-in-out;
   transition: .3s ease-in-out;
 }
 
-.hover01 figure:hover img {
+.hover01 figure:hover .card-img-top {
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
 }
@@ -234,6 +235,16 @@ hr.hr-17:after {
 
 /* CardPopular */
 
+.img-popular2{
+  position: absolute;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  top: 5;
+  right: 41;
+}
+
 .img-popular {
   position: absolute;
   background-color: #dc3545;
@@ -241,8 +252,8 @@ hr.hr-17:after {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  top: 5;
-  right: 5;
+  top: 14;
+  right: 21;
 }
 
 .text-fixed-popular {
@@ -599,7 +610,6 @@ nav.white ul li a {
   }
 }
 
-
 .text-carousel-3 {
   position: absolute;
   top: 50%;
@@ -651,50 +661,40 @@ nav.white ul li a {
 }
 
 /* Multicard */
+
 @media (min-width: 768px) {
-
-  .multi-card .carousel-inner .carousel-item-right.active,
-  .multi-card .carousel-inner .carousel-item-next {
-      transform: translateX(50%);
+  .multi-card .carousel-inner .carousel-item-right.active, .multi-card .carousel-inner .carousel-item-next {
+    transform: translateX(50%);
   }
-
-  .multi-card .carousel-inner .carousel-item-left.active,
-  .multi-card .carousel-inner .carousel-item-prev {
-      transform: translateX(-50%);
+  .multi-card .carousel-inner .carousel-item-left.active, .multi-card .carousel-inner .carousel-item-prev {
+    transform: translateX(-50%);
   }
 }
 
 /* large - display 3 */
+
 @media (min-width: 992px) {
-
-  .multi-card .carousel-inner .carousel-item-right.active,
-  .multi-card .carousel-inner .carousel-item-next {
-      transform: translateX(33%);
+  .multi-card .carousel-inner .carousel-item-right.active, .multi-card .carousel-inner .carousel-item-next {
+    transform: translateX(33%);
   }
-
-  .multi-card .carousel-inner .carousel-item-left.active,
-  .multi-card .carousel-inner .carousel-item-prev {
-      transform: translateX(-33%);
+  .multi-card .carousel-inner .carousel-item-left.active, .multi-card .carousel-inner .carousel-item-prev {
+    transform: translateX(-33%);
   }
 }
 
 @media (max-width: 768px) {
   .multi-card .carousel-inner .carousel-item>div {
-      display: none;
+    display: none;
   }
-
   .multi-card .carousel-inner .carousel-item>div:first-child {
-      display: block;
+    display: block;
   }
 }
 
-.multi-card .carousel-inner .carousel-item.active,
-.multi-card .carousel-inner .carousel-item-next,
-.multi-card .carousel-inner .carousel-item-prev {
+.multi-card .carousel-inner .carousel-item.active, .multi-card .carousel-inner .carousel-item-next, .multi-card .carousel-inner .carousel-item-prev {
   display: flex;
 }
 
-.multi-card .carousel-inner .carousel-item-right,
-.multi-card .carousel-inner .carousel-item-left {
+.multi-card .carousel-inner .carousel-item-right, .multi-card .carousel-inner .carousel-item-left {
   transform: translateX(0);
 }
