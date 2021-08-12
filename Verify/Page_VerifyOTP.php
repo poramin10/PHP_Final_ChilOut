@@ -13,6 +13,8 @@ if ($resule->num_rows >= 1) {
     $row = $resule->fetch_assoc();
     $_SESSION["id_user"] = $row['id_user'];
 
+    $_SESSION["email_user"] = $_GET['email'];
+
     // echo "Email ของคุณคือ ".$row['email']." กรุณายืนยันตัวตน";
 }
 
@@ -31,7 +33,7 @@ if ($resule->num_rows >= 1) {
     <link rel="stylesheet" href="../assets/css/verify.css">
 
     <!-- Link SetUp Style -->
-    <?php include_once('../LinkStyle.php') ?>
+    <?php include_once('../include/inc_css_front.php') ?>
 
 </head>
 
@@ -83,6 +85,6 @@ if ($resule->num_rows >= 1) {
 <?php include_once('../include/sweetAlert.php') ?>
 
 <!-- SetUp -->
-<?php include_once("../LinkScript.php") ?>
+<?php include_once('../include/inc_js_front.php') ?>
 
 </html>

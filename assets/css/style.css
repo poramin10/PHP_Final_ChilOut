@@ -12,7 +12,7 @@
     Section HomePage
     Section ProgressBar
     Section Profile
-
+    Section Footer
  
   |--------------------------------------------------------------------------|
  */
@@ -85,13 +85,25 @@ body {
   border-color: #FA6476;
 }
 
+
+.btn-love .btn-pink {
+  background-color: #FA6476;
+  color: white;
+}
+
+.btn-love .btn-pink:hover {
+  border: 1px solid #FA6476;
+  background-color: white;
+  color: #FA6476;
+}
+
 .btn-secondary:hover {
   background-color: #FA6476;
   border-color: #FA6476;
 }
 
 .text-pink {
-  color: #FA6476;
+  color: #FA6476 !important;
 }
 
 .shadow-text {
@@ -250,16 +262,15 @@ hr.hr-17:after {
   position: absolute;
   background-color: #dc3545;
   color: #fff;
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  top: 6;
-  right: 12;
+  top: 19;
+  right: 23;
 }
 
 .text-fixed-popular {
   text-align: center;
-  padding: 6px;
 }
 
 .view-popular {
@@ -731,37 +742,108 @@ nav.white ul li a {
   font-size: 2.5rem !important;
 }
 
-@media (min-width : 1200px){
+@media (min-width: 1200px) {
   .text-name-profile {
     font-size: 2.5rem !important;
   }
 }
 
-.data-profile .list-group-item.active:hover,
-.data-profile .list-group-item.active {
+.data-profile .list-group-item.active:hover, .data-profile .list-group-item.active {
   z-index: 2;
-  color: #fff;
+  color: #fff !important;
   background-color: #FA6476 !important;
   border-color: #FA6476 !important;
 }
 
 .data-profile .list-group-item:hover {
   z-index: 2;
-  color: #fff;
+  color: #fff !important;
   background-color: #fd5269;
   border-color: #fd5269;
 }
 
-
-.data-profile a{
-  color:black
+.data-profile a {
+  color: black
 }
 
-.data-profile a:link{
-  text-decoration:none;
-  color:white
+.data-profile a:link {
+  text-decoration: none;
+  color: white
 }
 
 .data-profile .sticky-top {
   top: 88px !important;
+}
+
+/* Section Footer */
+
+.site-footer {
+  background-color: #26272b;
+  color: #737373;
+  padding: 45px;
+}
+
+.site-footer h6 {
+  color: #fff;
+  text-transform: uppercase;
+  /* เว้นระยะห่าง */
+  letter-spacing: 3px;
+}
+
+.site-footer a {
+  color: #737373;
+  /* เอาขีดออก */
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+.footer-links {
+  /* เอาจุดข่างหน้าออก */
+  list-style: none;
+  padding-left: 0;
+  /* เว้นช่องไฟ ล่างกับบน */
+  line-height: 30px;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.social-icons a {
+  color: #fff;
+  display: inline-block;
+  background-color: #33353d;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 100%;
+  margin-right: 8px;
+  transition: .4s;
+}
+
+.social-icons a.facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-icons a.youtube:hover {
+  background-color: #ff0000;
+}
+
+.social-icons a.instagram:hover {
+  background: #f09433;
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
 }

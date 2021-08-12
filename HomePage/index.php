@@ -58,10 +58,9 @@ $result = $conn->query($sql);
 
     </div>
 
-
-
-
     <!-- Footer -->
+    <?php include_once('../include/footer.php') ?>
+
 
     <!-- JS -->
     <?php include_once('../include/inc_js_front.php') ?>
@@ -78,6 +77,7 @@ $result = $conn->query($sql);
         window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')
     </script>
 
+    <!-- Animation Text Move -->
     <script>
         // $carousel.bind('slide.bs.carousel', function(e) {
         //     console.log('slide event!');
@@ -104,7 +104,6 @@ $result = $conn->query($sql);
         });
     </script>
 
-    <!-- Animation Text Move -->
     <script>
         var textWrapper = document.querySelector('.text-welcome');
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -218,6 +217,7 @@ $result = $conn->query($sql);
                 delay: 1000
             });
     </script>
+
 
 
 </body>

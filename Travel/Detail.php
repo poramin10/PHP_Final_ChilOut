@@ -1,4 +1,6 @@
 <?php
+require_once('../authen_frontend.php'); 
+
 include_once('../database/connectDB.php');
 $id_travel = $_GET['id'];
 
@@ -43,7 +45,8 @@ if ($result_count->num_rows == 1) {
 
     </div>
 
-
+    <!-- Footer -->
+    <?php include_once('../include/footer.php') ?>
 
     <!-- JS -->
     <?php include_once('../include/inc_js_front.php') ?>
@@ -106,6 +109,22 @@ if ($result_count->num_rows == 1) {
                                             <div id="card0" class="card card-img-shadow mt-4 mb-5">
                                                 <div class="card-header card-header-color">
                                                     <h3><b>${res.data.result['place_name']}</b></h3>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <h6>ยอดผู้เข้าชมจำนวน 25 คน</h6>
+                                                        </div>
+                                  
+                                                        <?php if(isset($_SESSION['id_user'])){ ?>
+                                                        <div class="col-md-6 btn-love">
+                                                            <?php if (true) { ?>
+                                                                <a href=""><button class="btn btn-pink float-right"><i class="fas fa-heart"></i> ชอบ</button></a>
+                                                            <?php } else { ?>
+                                                                <a href=""><button class="btn btn-pink float-right"><i class="far fa-heart"></i> คุณชื่นชอบแล้ว</button></a>
+                                                            <?php } ?>
+                                                        </div>
+                                                        <?php } ?>
+
+                                                    </div>
                                                 </div>
                                                 <div class="card-body">
 
@@ -119,7 +138,7 @@ if ($result_count->num_rows == 1) {
 
                                                                 <div class="title">
                                                                     <h4><b>สถานที่ตั้ง</b></h4>
-                                                                </div>
+                                                                </div> 
 
                                                                 <div class="text">
                                                                     <span> ${res.data.result['location']['address']} 
@@ -342,6 +361,7 @@ if ($result_count->num_rows == 1) {
                                                         <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <iframe style="width: 100% ; height: 500px" src='https://map.longdo.com/snippet/iframe.php?locale=th&zoom=10&mode=icons&map=epsg3857&zoombar=yes&toolbar=no&mapselector=no&scalebar=yes&search=${res.data.result['place_name']}' frameborder="0"></iframe>
                                                         </section>
+
                                                     </div>
 
                                                 </div>
@@ -359,8 +379,8 @@ if ($result_count->num_rows == 1) {
             )
     </script>
 
-
-
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5eb7889c7d4ec20012dc03fe&product=inline-share-buttons' async='async'></script>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=6113d87857814e0012ebd5c4&product=sop' async='async'></script>
 </body>
 
 </html>

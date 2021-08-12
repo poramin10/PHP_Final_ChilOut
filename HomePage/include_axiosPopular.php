@@ -81,7 +81,7 @@ $dataAllView = join(',', $dataNum);
                                 <img src="../assets/img/medal.png" width="80px" height="80px" alt="">
                             </div>
                               <div class="img-popular">
-                                 <h1 class="text-fixed-popular">${numPop}</h1>
+                                 <h3 class="text-fixed-popular">${numPop}</h3>
                               </div>
 
                         </figure>

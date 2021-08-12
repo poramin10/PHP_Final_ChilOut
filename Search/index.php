@@ -106,13 +106,13 @@ $result = $conn->query($sql);
     </div>
 
     <!-- Data Travel -->
-    <div class="container">
+    <div class="container mb-5">
         <div class="row" id="data">
         </div>
     </div>
 
-
     <!-- Footer -->
+    <?php include_once('../include/footer.php') ?>
 
 
     <!-- Link -->

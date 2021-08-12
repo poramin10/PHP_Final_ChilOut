@@ -16,11 +16,12 @@ if (isset($_POST['submit'])) {
         // ทำการเช็คค่าว่าง และเช็ค Password
         if (!empty($row_check && password_verify($password, $row_check['password']))) {
 
-            $_SESSION['id_user'] = $row_check['id_user'];
+            $_SESSION['id_user'] = $row_check['id_user']; 
             $_SESSION['firstname'] = $row_check['firstname'];
             $_SESSION['lastname'] = $row_check['lastname'];
             $_SESSION['gender'] = $row_check['gender'];
             $_SESSION['email'] = $row_check['email'];
+            $_SESSION['birthdate'] = $row_check['birthdate'];
             $_SESSION['phone'] = $row_check['phone'];
             $_SESSION['profile'] = $row_check['profile'];
             $_SESSION['username'] = $row_check['username'];

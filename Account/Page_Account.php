@@ -1,3 +1,5 @@
+<?php require_once('../authen_frontend.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +33,7 @@
 
     <section class="name-profile text-center">
         <h1 class="font-weight-bold text-pink text-name-profile"><strong>คุณปรมินทร์ เหลืองอมรศักดิ์</strong></h1>
-   
+
     </section>
 
     <section class="data-profile">
@@ -41,28 +43,24 @@
                 <div class="col-12 col-lg-11">
                     <div class="row">
                         <div class="col-lg-3">
-                            <ul class="list-group pt-3">
-                                <a href="../Profile/Page_Profile.php"><li class="list-group-item text-pink" > <i class="fas fa-address-card"></i> ข้อมูลโปรไฟล์</li></a> 
-                                <a href="./"><li class="list-group-item active" aria-current="true"><i class="fas fa-user-shield"></i> แก้ไขรหัสผ่าน</li></a> 
-                                <a href=""><li class="list-group-item text-pink"><i class="fas fa-heart"></i> สถานที่ท่องเที่ยวที่ชื่นชอบ</li></a> 
-                                <a href=""><li class="list-group-item text-pink"><i class="fas fa-map-marked-alt"></i> แนะนำสถานที่ท่องเที่ยว</li></a> 
-                            </ul>
+                            <?php include_once('../include/sideProfile.php') ?>
                         </div>
 
                         <div class="col-lg-9">
                             <div class="card card-profile p-3 my-3">
 
                                 <div class="row">
+                                    <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'] ?>"> 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"><strong>ชื่อผู้ใช้งาน (Username)</strong></label>
-                                            <input type="text" class="form-control" value="poraminZaZa" disabled>
+                                            <input type="text" class="form-control" value="<?php echo $_SESSION['username'] ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"><strong>รหัสผ่านเดิม</strong></label>
-                                            <input type="password" class="form-control" placeholder="กรุณากรอกรหัสผ่านเดิม" >
+                                            <input type="password" class="form-control" placeholder="กรุณากรอกรหัสผ่านเดิม">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -91,7 +89,8 @@
             </div>
         </div>
     </section>
-
+    
+    <?php include_once('../include/footer.php') ?>
 
 
 
@@ -103,4 +102,4 @@
 
 </body>
 
-</html> 
+</html>

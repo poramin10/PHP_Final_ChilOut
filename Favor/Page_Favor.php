@@ -1,3 +1,5 @@
+<?php require_once('../authen_frontend.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,20 +43,9 @@
                 <div class="col-12 col-lg-11">
                     <div class="row">
                         <div class="col-lg-3">
-                            <ul class="list-group sticky-top pt-3">
-                                <a href="../Profile/Page_Profile.php">
-                                    <li class="list-group-item text-pink"> <i class="fas fa-address-card"></i> ข้อมูลโปรไฟล์</li>
-                                </a>
-                                <a href="../Account/Page_Account.php">
-                                    <li class="list-group-item text-pink"><i class="fas fa-user-shield"></i> แก้ไขรหัสผ่าน</li>
-                                </a>
-                                <a href="./">
-                                    <li class="list-group-item active " aria-current="true"><i class="fas fa-heart"></i> สถานที่ท่องเที่ยวที่ชื่นชอบ</li>
-                                </a>
-                                <a href="">
-                                    <li class="list-group-item text-pink"><i class="fas fa-map-marked-alt"></i> แนะนำสถานที่ท่องเที่ยว</li>
-                                </a>
-                            </ul>
+
+                           <?php include_once('../include/sideProfile.php') ?>
+
                         </div>
 
                         <div class="col-lg-9">
@@ -63,7 +54,7 @@
                                 <div class="row p-2">
                                     <div class="row row-cols-1 row-cols-md-3">
                                         <div class="col mb-4">
-                                            <div class="card h-100">
+                                            <div class="card">
                                                 <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
                                                 <div class="card-body text-center">
                                                     <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
@@ -74,7 +65,7 @@
                                             </div>
                                         </div>
                                         <div class="col mb-4">
-                                            <div class="card h-100">
+                                            <div class="card">
                                                 <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
                                                 <div class="card-body text-center">
                                                     <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
@@ -85,7 +76,7 @@
                                             </div>
                                         </div>
                                         <div class="col mb-4">
-                                            <div class="card h-100">
+                                            <div class="card">
                                                 <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
                                                 <div class="card-body text-center">
                                                     <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
@@ -96,7 +87,7 @@
                                             </div>
                                         </div>
                                         <div class="col mb-4">
-                                            <div class="card h-100">
+                                            <div class="card">
                                                 <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
                                                 <div class="card-body text-center">
                                                     <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
@@ -118,6 +109,7 @@
         </div>
     </section>
 
+    <?php include_once('../include/footer.php') ?>
 
 
 

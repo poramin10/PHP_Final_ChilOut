@@ -1,23 +1,16 @@
-<?php 
+<?php
 // Connect DB
-    require_once('../database/connectDB.php');
+require_once('../database/connectDB.php');
 
 // กำหนดค่า SESSION
-    session_start();
+session_start();
 
-    // if(!isset($_SESSION['id_user'])){
-    //     header('location: ../Login/index.php');
-    // }
+// if (!isset($_SESSION['id_user'])) {
+//     header('location: ../Login/index.php');
+// }
 
 
 ?>
 
 <!-- Font Awesome -->
-<link rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
-      integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
-      crossorigin="anonymous" />
-
-
-
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous" />

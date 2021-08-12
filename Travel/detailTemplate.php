@@ -26,11 +26,28 @@
 
     <div class="bg-img">
         <div class="container">
-            <div class="row">
+            <div class="row"> 
                 <div class="col-md-12">
                     <div id="card0" class="card card-img-shadow mt-4 mb-5">
                         <div class="card-header card-header-color">
                             <h3><b>ชื่อสถานที่ท่องเที่ยว</b></h3>
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>ยอดผู้เข้าชมจำนวน 25 คน</h6>
+                                </div>
+
+                               
+                                <div class="col-md-6 btn-love">
+                                    <?php if(false){ ?>
+                                        <a href=""><button class="btn btn-pink float-right"><i class="fas fa-heart"></i> ชอบ</button></a>
+                                    <?php }else{ ?>
+                                        <a href=""><button class="btn btn-pink float-right"><i class="far fa-heart"></i> คุณชื่นชอบแล้ว</button></a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="card-body">
 

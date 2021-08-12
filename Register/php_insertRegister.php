@@ -238,6 +238,6 @@ if (isset($_POST['submit'])) {
         header('location: ./Page_FormRegister.php');
     }
     // } else {
-        // หากมี Error เกิดขึ้น อย่าลืมเช็ค App ที่มีความปลอดภัยน้อยที่สุดของ Email
+    //     หากมี Error เกิดขึ้น อย่าลืมเช็ค App ที่มีความปลอดภัยน้อยที่สุดของ Email
     // }
 }

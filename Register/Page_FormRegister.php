@@ -89,7 +89,7 @@ session_start();
                         <label for="birthday">วันเกิด (Birthday)<span class="text-danger">*</span></label>
                         <input id="testdate5" name="birthdate" class="form-control " required>
                         <div class="invalid-feedback">
-                            กรุณาเลือกวันที่
+                            กรุณาเลือกวันที่ 
                         </div>
                     </div>
                     <label for="">อีเมลล์ (Email)<span class="text-danger">*</span></label>

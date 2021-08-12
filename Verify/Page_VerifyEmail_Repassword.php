@@ -18,7 +18,7 @@ include_once('../database/connectDB.php');
     <link rel="stylesheet" href="../assets/css/verify.css">
 
     <!-- Link SetUp Style -->
-    <?php include_once('../LinkStyle.php') ?>
+    <?php include_once('../include/inc_css_front.php') ?>
 
 
 </head>
@@ -68,6 +68,6 @@ include_once('../database/connectDB.php');
 <?php include_once('../include/sweetAlert.php') ?>
 
 <!-- Link SetUp SetUp -->
-<?php include_once("../LinkScript.php") ?>
+<?php include_once('../include/inc_js_front.php') ?>
 
 </html>
