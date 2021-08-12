@@ -25,14 +25,15 @@
                     <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
                 </div>
                 <div class="col-12 col-lg-12">
-                    <img src="../assets/img/Avatar.png" class="img-fulid avatar" alt="">
+                <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+
                 </div>
             </div>
         </div>
     </section>
 
     <section class="name-profile text-center">
-        <h1 class="font-weight-bold text-pink text-name-profile"><strong>คุณปรมินทร์ เหลืองอมรศักดิ์</strong></h1>
+    <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
 
     </section>
 

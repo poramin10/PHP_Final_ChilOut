@@ -66,13 +66,19 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><strong>ชื่อจริง</strong></label>
-                                                <input type="text" name="firstname" class="form-control" placeholder="กรุณากรอกชื่อจริง" value="<?php echo $_SESSION['firstname'] ?>">
+                                                <input type="text" name="firstname" class="form-control" placeholder="กรุณากรอกชื่อจริง" value="<?php echo $_SESSION['firstname'] ?>" required>
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกชื่อจริง
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><strong>นามสกุล</strong></label>
-                                                <input type="text" name="lastname" class="form-control" placeholder="กรุณากรอกนามสกุล" value="<?php echo $_SESSION['lastname'] ?>">
+                                                <input type="text" name="lastname" class="form-control" placeholder="กรุณากรอกนามสกุล" value="<?php echo $_SESSION['lastname'] ?>" required>
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกนามสกุล
+                                                </div>
                                             </div>
                                         </div>
 
@@ -95,6 +101,9 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><strong>วัน/เดือน/ปีเกิด</strong></label>
                                                 <input id="testdate5" name="birthdate" value="<?php echo $_SESSION['birthdate'] ?>" class="form-control " required>
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกวันเดือนปีเกิด
+                                                </div>
                                             </div>
                                         </div>
 
@@ -108,6 +117,9 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><strong>เบอร์โทร</strong></label>
                                                 <input type="text" class="form-control" name="phone" placeholder="กรุณากรอกเบอร์โทร" value="<?php echo $_SESSION['phone'] ?>" required>
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกเบอร์โทร
+                                                </div>
                                             </div>
                                         </div>
 
@@ -252,6 +264,27 @@
             height: initial !important;
         }
     </style>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 
 
 </body>

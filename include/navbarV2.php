@@ -16,7 +16,7 @@
                 <li>
 
 
-                    <img src="../assets/img/profile/avatarP.png" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
+                    <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="../Profile/Page_Profile.php">ข้อมูลโปรไฟล์</a>

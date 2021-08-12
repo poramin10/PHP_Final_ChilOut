@@ -3,6 +3,7 @@
 // กำหนด Sessionn และ Connect DB
 session_start();
 include_once('../database/connectDB.php');
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 if (isset($_POST['submit'])) {
@@ -35,7 +36,7 @@ if (isset($_POST['submit'])) {
             if ($resule_checkEmail->num_rows == 0) {
 
                 // กรณีไม่ Upload ภาพ
-                if(!isset($_POST['fileUpload'])){
+                if ($_FILES['fileUpload']['name'] == "") {
                     $sql = "INSERT INTO `user` (
                         `id_user`, 
                         `firstname`, 
@@ -61,7 +62,7 @@ if (isset($_POST['submit'])) {
                      '" . $birthdate . "', 
                      'preview.png', 
                      '" . $username . "', 
-                     '".$hashed_password. "', 
+                     '" . $hashed_password . "', 
                      '0', 
                      '" . $profession . "', 
                      '" . $salary . "',
@@ -82,8 +83,8 @@ if (isset($_POST['submit'])) {
                     $name = "System";
                     $emailName = "system@gmail.com";
                     $subject = "มีการสมัครสมาชิกใหม่เว็บ Travel In Thailand";
-                    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email . 
-                    "<h2><strong>รหัสยืนยันตัวตนคือ " . $number."</h2></strong>
+                    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email .
+                        "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong>
                     <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
                     require_once "../assets/lib/PHPMailer/PHPMailer.php";
@@ -109,7 +110,7 @@ if (isset($_POST['submit'])) {
                     $mail->Subject = ("$emailName ($subject)");
                     $mail->Body = $body;
 
-                    if ($mail->send()) { 
+                    if ($mail->send()) {
                         $status = "success";
                         $response = "Email is sent!";
                         $result = $conn->query($sql) or die($conn->error);
@@ -125,11 +126,11 @@ if (isset($_POST['submit'])) {
 
                     if ($result) {
                         $_SESSION['Warning'] = "กรุณากรอกรหัส OTP";
-                        header('location: ./php_insertRegister.php');
-                    }          
-            
-                // กรณี Upload ภาพ
-                }else if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], '../assets/img/profile/' . $newName)) {
+                        header('location: ../Verify/Page_VerifyOTP.php?email=' . $email . ' ');
+                    }
+
+                    // กรณี Upload ภาพ
+                } else if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], '../assets/img/profile/' . $newName)) {
 
                     $sql = "INSERT INTO `user` (
                         `id_user`, 
@@ -179,8 +180,8 @@ if (isset($_POST['submit'])) {
                     $name = "System";
                     $emailName = "system@gmail.com";
                     $subject = "มีการสมัครสมาชิกใหม่เว็บ Travel In Thailand";
-                    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email . 
-                    "<h2><strong>รหัสยืนยันตัวตนคือ " . $number."</h2></strong>
+                    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email .
+                        "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong>
                     <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
                     require_once "../assets/lib/PHPMailer/PHPMailer.php";
@@ -215,8 +216,8 @@ if (isset($_POST['submit'])) {
                     } else {
                         $status = "failed";
                         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
-                        // $_SESSION['RegisterError'] = "อีเมลล์ไม่ถูกต้อง";
-                        // header('location: ./Page_FormRegister.php');
+                        $_SESSION['Failed'] = "อีเมลล์ไม่ถูกต้อง";
+                        header('location: ./Page_FormRegister.php');
                     }
                     exit(json_encode(array("status" => $status, "response" => $response)));
 

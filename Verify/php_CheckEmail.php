@@ -45,7 +45,7 @@ if ($result->num_rows == 1) {
 
     if ($mail->send()) {
         $status = "success";
-        $response = "Email is sent!";
+        $response = "Email is sent!"; 
         $result = $conn->query($sql) or die($conn->error);
         $_SESSION['Warning'] = "กรุณายืนยันตัวตน!";
         header('location: ./Page_VerifyOTP_Repassword.php?email=' . $email . ' ');

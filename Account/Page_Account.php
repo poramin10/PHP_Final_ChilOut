@@ -25,14 +25,14 @@
                     <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
                 </div>
                 <div class="col-12 col-lg-12">
-                    <img src="../assets/img/Avatar.png" class="img-fulid avatar" alt="">
+                    <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
                 </div>
             </div>
         </div>
     </section>
 
     <section class="name-profile text-center">
-        <h1 class="font-weight-bold text-pink text-name-profile"><strong>คุณปรมินทร์ เหลืองอมรศักดิ์</strong></h1>
+    <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
 
     </section>
 
@@ -48,40 +48,50 @@
 
                         <div class="col-lg-9">
                             <div class="card card-profile p-3 my-3">
-
-                                <div class="row">
-                                    <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'] ?>"> 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1"><strong>ชื่อผู้ใช้งาน (Username)</strong></label>
-                                            <input type="text" class="form-control" value="<?php echo $_SESSION['username'] ?>" disabled>
+                                <form action="./php_update.php" method="POST" class="needs-validation" novalidate>
+                                    <div class="row">
+                                        <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'] ?>">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><strong>ชื่อผู้ใช้งาน (Username)</strong></label>
+                                                <input type="text" class="form-control" value="<?php echo $_SESSION['username'] ?>" disabled>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1"><strong>รหัสผ่านเดิม</strong></label>
-                                            <input type="password" class="form-control" placeholder="กรุณากรอกรหัสผ่านเดิม">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><strong>รหัสผ่านเดิม</strong></label>
+                                                <input type="password" name="password" class="form-control" placeholder="กรุณากรอกรหัสผ่านเดิม" required>
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกรหัสผ่านเดิม
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1"><strong>รหัสผ่านใหม่</strong></label>
-                                            <input type="password" class="form-control" placeholder="กรุณากรอกรหัสผ่านใหม่">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><strong>รหัสผ่านใหม่</strong></label>
+                                                <input type="password" name="passwordNew" class="form-control" placeholder="กรุณากรอกรหัสผ่านใหม่" required>
+                                                <div class="invalid-feedback">
+                                                    กรุณากรอกรหัสผ่านใหม่
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1"><strong>ยืนยันรหัสผ่าน</strong></label>
-                                            <input type="password" class="form-control" placeholder="กรุณายืนยันรหัสผ่าน">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1"><strong>ยืนยันรหัสผ่าน</strong></label>
+                                                <input type="password" name="confirm_passwordNew" class="form-control" placeholder="กรุณายืนยันรหัสผ่าน" required>
+                                                <div class="invalid-feedback">
+                                                    กรุณายืนยันรหัสผ่าน
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <button type="submit" name="submit" class="btn btn-success btn-block">แก้ไขรหัสผ่าน</button>
+                                        </div>
+
                                     </div>
+                                </form>
 
-                                    <div class="col-md-12">
-                                        <button type="submit" name="submit" class="btn btn-success btn-block">แก้ไขรหัสผ่าน</button>
-                                    </div>
-
-
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -89,7 +99,9 @@
             </div>
         </div>
     </section>
-    
+
+
+    <!-- Footer -->
     <?php include_once('../include/footer.php') ?>
 
 
@@ -99,6 +111,27 @@
 
     <!-- Sweet Alert -->
     <?php include_once('../include/sweetAlert.php') ?>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 
 </body>
 
