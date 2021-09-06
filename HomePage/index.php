@@ -1,9 +1,13 @@
 <?php
 require_once('../authen_frontend.php');
 
-// DB ของจังหวัดในประเทศไทย
-$sql = "SELECT * FROM `provinces` ORDER BY `name_th` ASC ";
-$result = $conn->query($sql);
+
+// แสดงข้อมูลสถานที่ท่องเที่ยวที่เด่นๆ
+$sql_count = "SELECT * FROM `countertravel` ORDER BY `count_travel` DESC LIMIT 12";
+$result_count = $conn->query($sql_count);
+
+$number = 0;
+$_SESSION['Wait'] = NULL;
 ?>
 
 <!doctype html>
@@ -21,8 +25,23 @@ $result = $conn->query($sql);
     <!-- Navbar -->
     <?php include_once('../include/navbarV2.php') ?>
 
-    <!-- Carousel -->
-    <?php include_once('./include_carousel.php') ?>
+    <!-- Banner -->
+    <section class="banner">
+
+        <div class="banner-fixed">
+            <img src="../assets/img/BANNER.png" width="100%" height="100%" alt="">
+            <div class="train-fixed">
+                <img class="train" src="../assets/img/train.png" alt="">
+            </div>
+            <div class="plane-fixed">
+                <img class="plane" src="../assets/img/plane.png" alt="">
+            </div>
+            <div class="human-fixed">
+                <img class="human" src="../assets/img/human.png" alt="">
+            </div>
+        </div>
+
+    </section>
 
     <!-- Background Image -->
     <div class="bg-img">
@@ -41,11 +60,62 @@ $result = $conn->query($sql);
 
     <!-- เนื้อหาสถานที่ท่องเที่ยว -->
     <div class="container">
+        <div class="row">
 
-        <div class="row" id="dataPopular">
+            <?php while ($row_count = $result_count->fetch_assoc()) { ?>
+
+                <!-- <?php echo $row_count['id_travel'] ?> -->
+                <!-- หาสถานที่ท่องเที่ยวยอดนิยม -->
+                <?php
+                $sql_place = "SELECT * FROM `place` WHERE place_id = '" . $row_count['id_travel'] . "' ";
+                $result_place = $conn->query($sql_place);
+                $row_place = $result_place->fetch_assoc();
+
+                $number++;
+                ?>
+
+                <?php
+                if ($result_place) {
+                    $_SESSION['Wait'] = NULL;
+                } else {
+                    $_SESSION['Wait'] = 'Wait';
+                }
+
+                ?>
+
+                <div class="col-md-4 mt-3 mb-3">
+                    <a href="">
+                        <section class="card-v2">
+                            <div class="crop-zoom">
+                                <div class="card card-relative cardTop">
+                                    <div class="img-card" style=" background-image: url('<?php echo $row_place['picture'] ?>'); width: 100%">
+                                        <div class="card-color">
+                                        </div>
+                                    </div>
+                                    <div class="card-text">
+                                        <h5><?php echo $row_place['place_name'] ?></h5>
+                                        <p><?php echo $row_place['province'] ?></p>
+                                    </div>
+                                    <div class="card-text-view">
+                                        <small><i class="fas fa-eye"> </i><?php echo ' ' . $row_count['count_travel'] ?> </small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popular">
+                                <div class="popular-fixed">
+                                    <img src="../assets/img/pop-<?php echo $number ?>.png" alt="">
+                                </div>
+                            </div>
+                        </section>
+                    </a>
+
+                </div>
+
+            <?php } ?>
         </div>
 
-        <div id="notify" class="row justify-content-center align-item-center vh-100">
+
+        <!-- <div id="wait" class="row justify-content-center align-item-center vh-100">
             <div class="col-md-12 text-center py-5">
                 <img src="https://steamuserimages-a.akamaihd.net/ugc/499143799328359714/EE0470B9BD25872DC95E7973B2C2F7006B7B9FB8/" width="200px" height="100px" alt="">
                 <div class="mt-2">
@@ -54,7 +124,8 @@ $result = $conn->query($sql);
                     </h3>
                 </div>
             </div>
-        </div>
+        </div> -->
+
 
     </div>
 
@@ -69,7 +140,9 @@ $result = $conn->query($sql);
     <?php include_once('../include/sweetAlert.php') ?>
 
     <!-- Script Popular -->
-    <?php include_once('./include_axiosPopular.php') ?>
+    <?php
+    //  include_once('./include_axiosPopular.php') 
+    ?>
 
     <!-- jQuery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -78,7 +151,7 @@ $result = $conn->query($sql);
     </script>
 
     <!-- Animation Text Move -->
-    <script>
+    <!-- <script>
         // $carousel.bind('slide.bs.carousel', function(e) {
         //     console.log('slide event!');
         // }); 
@@ -216,7 +289,7 @@ $result = $conn->query($sql);
                 easing: "easeOutExpo",
                 delay: 1000
             });
-    </script>
+    </script> -->
 
 
 

@@ -85,6 +85,4 @@ if ($resule->num_rows >= 1) {
 <!-- Sweet Alert -->
 <?php include_once('../include/sweetAlert.php') ?> 
 
-
-
 </html>

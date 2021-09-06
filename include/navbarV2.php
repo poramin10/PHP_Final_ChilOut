@@ -5,7 +5,7 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <img src="../assets/img/LOGOv2.png" alt="">
+            <img src="../assets/img/LOGOv2.jpg" width="150px" height="150px" alt="">
         </div>
         <div class="menu">
             <ul>
@@ -39,7 +39,7 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <img src="../assets/img/LOGOv2.png" alt="">
+            <img src="../assets/img/LOGOv2.png" width="100px"  alt="">
         </div>
         <div class="menu">
             <ul>
