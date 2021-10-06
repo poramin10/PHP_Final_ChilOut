@@ -10,7 +10,7 @@ if (isset($_GET['email'])) {
     // RANDOM OTP
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
-    $_SESSION['timeOTP'] = 30;
+    $_SESSION['timeOTP'] = 60;
    
     
     $name = "System";
@@ -44,7 +44,7 @@ if (isset($_GET['email'])) {
     if ($mail->send()) {
         $status = "success";
         $response = "Email is sent!";
-        header('location: ./Page_VerifyOTP_Repassword.php?email=' . $email . ' ');
+        header('location: ./Page_VerifyOTP.php?email=' . $email . ' ');
     } else {
         $status = "failed";
         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;

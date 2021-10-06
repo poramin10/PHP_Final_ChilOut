@@ -36,25 +36,25 @@ if ($resule->num_rows >= 1) {
 <body>
     <div class="container">
 
-        <form action="./php_CheckVerify_Repassword.php" method="POST">
+        <form action="./php_CheckVerify.php" method="POST">
             <div class="row">
 
                 <div class="col-md-2"></div>
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify">
-                    <a href="../Register/Page_FormRegister.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
+                    <a href="./Page_SendEmail.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
 
                     <div class="mt-4 text-center">
-                        <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-verify" src="../assets/img/verify.png" alt="">
+                        <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-verify" src="../assets/img/OTP.png" width="150px" alt="">
                     </div>
 
                     <h2 class="my-1 text-center"><b>กรอกรหัส OTP</b></h2>
 
                     <label for="">รหัสยืนยัน</label>
-                    <input type="text" size="8" id="counter" disabled /> <!-- text box แสดงการนับถอยหลัง   -->
+                    <!-- <input type="text" size="8" id="counter" disabled />  -->
 
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
@@ -63,11 +63,14 @@ if ($resule->num_rows >= 1) {
                         <input type="hidden" name="email" value="<?php echo $_GET['email'] ?>" class="form-control style-form">
                         <input type="text" name="otp" class="form-control style-form" placeholder="กรุณากรอกรหัสยืนยัน">
                     </div>
+
+                    OTP <label id="count">10</label>
+
                     <div class="col-12 text-center mt-4 mb-2">
                         <button type="submit" name="submit" class="btn btn-primary form-control"> ยืนยันอีเมล์</button>
                     </div>
                     <div class="col-12 text-center mt-1 mb-5 my-2">
-                        <a href="./php_SendVerifyNew_Repassword.php?email=<?php echo $_GET['email'] ?>" type="button" class="btn btn-secondary form-control"> ส่งรหัสยืนยันใหม่อีกครั้ง</a>
+                        <a href="./php_SendOTPNew.php?email=<?php echo $_GET['email'] ?>" type="button" class="btn btn-secondary form-control"> ส่งรหัสยืนยันใหม่อีกครั้ง</a>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
@@ -96,7 +99,7 @@ if ($resule->num_rows >= 1) {
 
         var seconds = parseInt(sessionStorage.getItem("timeOTP"));
 
-        document.getElementById("counter").value = 'หมดเวลา'; //แสดงค่าเริ่มต้นใน 10 วินาที ใน text box
+        document.getElementById("count").innerHTML = 'หมดเวลา'; //แสดงค่าเริ่มต้นใน 10 วินาที ใน text box
 
         function display() { //function ใช้ในการ นับถอยหลัง
 
@@ -108,25 +111,26 @@ if ($resule->num_rows >= 1) {
                 return;
             } //เมื่อหมดเวลาแล้วจะหยุดการทำงานของ function display
 
-            document.getElementById("counter").value = seconds; //แสดงเวลาที่เหลือ
+            document.getElementById("count").innerHTML = 'จะหมดในอีก '+seconds+' วินาที'
+            // document.getElementById("count").innerHTML = seconds; //แสดงเวลาที่เหลือ
             setTimeout("display()", 1000); // สั่งให้ function display() ทำงาน หลังเวลาผ่านไป 1000 milliseconds ( 1000  milliseconds = 1 วินาที )
 
             if (seconds == 0) {
 
-                window.location = `./Page_VerifyOTP_Repassword.php?email=<?php echo $_GET['email'] ?>&expire=true`;
+                window.location = `./Page_VerifyOTP.php?email=<?php echo $_GET['email'] ?>&expire=true`;
 
-                document.getElementById("counter").value = 'หมดเวลา'
+                document.getElementById("count").innerHTML = 'หมดเวลา'
             }
 
             if (seconds <= 0) {
 
-                document.getElementById("counter").value = 'หมดเวลา'
+                document.getElementById("count").innerHTML = 'หมดเวลา'
             }
 
-            <?php 
-             if(isset($_GET['expire'])){
-                 $_SESSION['numberOTP'] = NULL;
-             }
+            <?php
+            if (isset($_GET['expire'])) {
+                $_SESSION['numberOTP'] = NULL;
+            }
             ?>
 
         }

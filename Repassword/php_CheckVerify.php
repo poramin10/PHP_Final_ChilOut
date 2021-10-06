@@ -11,14 +11,14 @@ if(isset($_POST['submit'])){
         $_SESSION['CheckVerify'] = true;
 
         $_SESSION['Warning'] = "กรุณาแก้ไขรหัสผ่าน";
-        header("location: ./Page_Verify_Repassword.php?email=".$email);
+        header("location: ./Page_Repassword.php?email=".$email);
     }else{
         
         // CheckVerify เช็คว่าผ่านรึเปล่า
         $_SESSION['CheckVerify'] = false;
 
         $_SESSION['Failed'] = "รหัส OTP ไม่ถูกต้อง";
-        header("location: ./Page_VerifyOTP_Repassword.php?email=".$email);
+        header("location: ./Page_VerifyOTP.php?email=".$email);
     }
 }
 

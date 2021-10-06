@@ -9,8 +9,6 @@ if(isset($_POST['submit'])){
     $password = $_POST['password'];
     $verifypassword = $_POST['verify_password'];
 
-    $_SESSION['CheckVerify'] = false;
-
     if($password === $verifypassword){
         $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
@@ -20,15 +18,17 @@ if(isset($_POST['submit'])){
         
         if($result){
             $_SESSION['Success'] = 'แก้ไขรหัสผ่านสำเร็จ';
+            $_SESSION['CheckVerify'] = false;
             header('location: ../Login/Page_FormLogin.php');
+            
         }else{
             $_SESSION['Failed'] = 'แก้ไขรหัสผ่านไม่สำเร็จ';
-            header('location: ./Page_Verify_Repassword.php?email='.$email);
+            header('location: ./Page_Repassword.php?email='.$email);
         }
         
     }else{
         $_SESSION['Failed'] = 'รหัสผ่านไม่ตรงกัน';
-        header('location: ./Page_Verify_Repassword.php?email='.$email);
+        header('location: ./Page_Repassword.php?email='.$email);
     }
    
 }

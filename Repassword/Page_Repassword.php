@@ -35,13 +35,13 @@ if ($_SESSION['CheckVerify'] == false) {
                 <div class="col-md-2"></div>
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify">
-                    <a href="../Register/Page_FormRegister.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
+                    <a href="./Page_SendEmail.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
 
-                    <div class="profile-img mt-4">
-                        <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-email" src="../assets/img/pngEmail.png" alt="">
+                    <div class="mt-4 text-center">
+                        <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-email" src="../assets/img/key.png" width="150px" alt="">
                     </div>
 
                     <h2 class="mt-2 mb-5 text-center"><b>แก้ไขรหัสผ่าน</b></h2>

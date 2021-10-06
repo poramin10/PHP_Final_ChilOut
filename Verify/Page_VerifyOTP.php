@@ -66,7 +66,7 @@ if ($resule->num_rows >= 1) {
                         <input type="text" name="otp" class="form-control style-form" placeholder="กรุณากรอกรหัสยืนยัน">
                     </div>
                     <div class="col-12 text-center mt-4 mb-2">
-                        <button type="submit" name="submit" class="btn btn-primary form-control"> ยืนยันอีเมล์</button>
+                        <button type="submit" name="submit" class="btn btn-pink form-control"> ยืนยันอีเมล์</button>
                     </div>
                     <div class="col-12 text-center mt-1 mb-5 my-2">
                         <a href="./php_SendVerifyNew.php?email=<?php echo $_GET['email'] ?>" type="button" class="btn btn-secondary form-control"> ส่งรหัสยืนยันใหม่อีกครั้ง</a>

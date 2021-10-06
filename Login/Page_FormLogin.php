@@ -59,7 +59,7 @@ session_start();
                     </div>
 
                     <div class="col-12 mb-5 text-center">
-                        <a href="../Verify/Page_VerifyEmail_Repassword.php">ลืมรหัสผ่าน?</a>
+                        <a href="../Repassword/Page_SendEmail.php">ลืมรหัสผ่าน?</a>
                     </div>
 
                 </div>
