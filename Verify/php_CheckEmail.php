@@ -12,13 +12,15 @@ $result = $conn->query($sql);
 if ($result->num_rows == 1) {
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
+    $_SESSION['timeOTP'] = 30;
+    
+    // echo '<script>sessionStorage.setItem("timeOTP", 30);</script>';
+
 
     $name = "System";
     $emailName = "system@gmail.com";
     $subject = "มีการสมัครสมาชิกใหม่เว็บ Travel In Thailand";
-    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ http://localhost:9000/Verify/Page_VerifyOTP_Repassword.php?email=" . $email .
-        "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong>
-                    <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
+    $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
     require_once "../assets/lib/PHPMailer/PHPMailer.php";
     require_once "../assets/lib/PHPMailer/SMTP.php";

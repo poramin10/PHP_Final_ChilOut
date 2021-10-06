@@ -42,7 +42,7 @@ require_once("./pagination_function.php");
 </head>
 
 <style>
-    .bg {
+    .bg{
         background-image: url(../assets/img/bg-search.jpg);
         width: 100%;
         background-size: cover;
@@ -59,35 +59,41 @@ require_once("./pagination_function.php");
     </div>
 
 
+
     <div class="fixed-bg-search">
-        <div class="bg">
+        <div class="bg" >
+            <div class="row">
+                <div class="col-lg-12">
+                        <h1 class="text-white text-center"><strong>คุณอยากไปเที่ยวไหน?</strong></h1>
+                        
+                </div>
+            </div>
+        </div>
+        <!-- <img src="../assets/img/bg-search.jpg" width="100%" height="650px" alt="">
+        <h1 class="title-fixed-bg-search"><strong>คุณอยากไปเที่ยวไหน? </strong></h1> -->
+    </div>
+
+
+    <!-- Search -->
+    <div class="container">
+
+        <center>
+            <div class="row">
+                <div class="col-md-12 mt-4">
+                    <h3><strong>
+                            ข้อมูลสถานที่ท่องเที่ยว
+                            <hr>
+                        </strong></h3>
+                </div>
+            </div>
             <div class="row my-4">
                 <div class="col-md-12 ">
-                    <h1 class="text-light text-center"><strong>คุณอยากไปเที่ยวไหน?</strong></h1>
+
                     <div class="inner-form">
                         <form action="./travelSearch.php" method="$_GET" name="test">
                             <!-- เลือกจังหวัด -->
-                            <div class="row justify-content-center">
-
-                                <div class="col-lg-10">
-
-                                    <div class="input-group flex-nowrap">
-                                        <input type="text" name="search" class="form-control" value="<?php echo $search ?>" placeholder="ค้นหาชื่อสถานที่ท่องเที่ยว" aria-describedby="addon-wrapping">
-                                        <span type="submit" onclick="test.submit();" class="input-group-text btn btn-primary" id="addon-wrapping"><i class="fas fa-search"></i></span>
-                                    </div>
-
-                                    <!-- ตัวสั่งให้ทำงาน -->
-                                    <input type="hidden" value="Click" />
-                                    <?php
-                                    if (isset($_GET['search'])) {
-                                        $search = $_GET['search'];
-                                        $province = $_GET['province'];
-                                    }
-                                    ?>
-
-                                </div>
-
-                                <div class="col-lg-4 mt-3">
+                            <div class="row">
+                                <div class="col-md-2">
 
                                     <select id="selectValue" name="province" onchange="test.submit();" class="input-field custom-select custom-select-md">
                                         <option <?php echo $province == 'แสดงจังหวัดทั้งหมด' ? 'selected' : '' ?> value="แสดงจังหวัดทั้งหมด">แสดงจังหวัดทั้งหมด</option>
@@ -107,15 +113,33 @@ require_once("./pagination_function.php");
 
                                 </div>
 
+
+                                <div class="col-md-10 col-8">
+
+                                    <div class="input-group flex-nowrap">
+                                        <input type="text" name="search" class="form-control" value="<?php echo $search ?>" placeholder="ค้นหาชื่อสถานที่ท่องเที่ยว" aria-describedby="addon-wrapping">
+
+                                        <span type="submit" onclick="test.submit();" class="input-group-text btn btn-primary" id="addon-wrapping"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <!-- ตัวสั่งให้ทำงาน -->
+                                    <input type="hidden" value="Click" />
+                                    <?php
+                                    if (isset($_GET['search'])) {
+                                        $search = $_GET['search'];
+                                        $province = $_GET['province'];
+                                    }
+                                    ?>
+
+                                </div>
+
                             </div>
                         </form>
                     </div>
                 </div>
+
             </div>
-        </div>
+        </center>
     </div>
-
-
 
     <!-- ข้อมูล -->
     <div class="container">

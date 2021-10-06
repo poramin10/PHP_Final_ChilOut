@@ -27,12 +27,8 @@ if ($resule->num_rows >= 1) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/verify.css">
-
-    <!-- Link SetUp Style -->
-    <?php include_once('../LinkStyle.php') ?>
-
+    <!-- Link -->
+    <?php include_once('../include/inc_css_front.php') ?>
 
 
 </head>
@@ -51,12 +47,15 @@ if ($resule->num_rows >= 1) {
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
 
-                    <div class="profile-img mt-4">
+                    <div class="mt-4 text-center">
                         <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-verify" src="../assets/img/verify.png" alt="">
                     </div>
 
                     <h2 class="my-1 text-center"><b>กรอกรหัส OTP</b></h2>
+
                     <label for="">รหัสยืนยัน</label>
+                    <input type="text" size="8" id="counter" disabled /> <!-- text box แสดงการนับถอยหลัง   -->
+
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open-text"></i></span>
@@ -72,19 +71,69 @@ if ($resule->num_rows >= 1) {
                     </div>
                 </div>
                 <div class="col-md-2"></div>
+
             </div>
 
         </form>
     </div>
+    <!-- Link -->
+    <?php include_once('../include/inc_js_front.php') ?>
+
+    <?php include_once('../include/sweetAlert.php') ?>
+
+    <script>
+        // กำหนดเวลาเริ่มต้น
+
+        <?php
+        if (isset($_SESSION['timeOTP'])) {
+        ?>
+            var time = '<?php echo $_SESSION['timeOTP'] ?>'
+            sessionStorage.setItem("timeOTP", time);
+            <?php $_SESSION['timeOTP'] = NULL ?>
+        <?php
+        }
+        ?>
+
+        var seconds = parseInt(sessionStorage.getItem("timeOTP"));
+
+        document.getElementById("counter").value = 'หมดเวลา'; //แสดงค่าเริ่มต้นใน 10 วินาที ใน text box
+
+        function display() { //function ใช้ในการ นับถอยหลัง
+
+            seconds -= 1; //ลบเวลาทีละหนึ่งวินาทีทุกครั้งที่ function ทำงาน
+            sessionStorage.setItem("timeOTP", seconds);
+
+            if (seconds == -1) {
+
+                return;
+            } //เมื่อหมดเวลาแล้วจะหยุดการทำงานของ function display
+
+            document.getElementById("counter").value = seconds; //แสดงเวลาที่เหลือ
+            setTimeout("display()", 1000); // สั่งให้ function display() ทำงาน หลังเวลาผ่านไป 1000 milliseconds ( 1000  milliseconds = 1 วินาที )
+
+            if (seconds == 0) {
+
+                window.location = `./Page_VerifyOTP_Repassword.php?email=<?php echo $_GET['email'] ?>&expire=true`;
+
+                document.getElementById("counter").value = 'หมดเวลา'
+            }
+
+            if (seconds <= 0) {
+
+                document.getElementById("counter").value = 'หมดเวลา'
+            }
+
+            <?php 
+             if(isset($_GET['expire'])){
+                 $_SESSION['numberOTP'] = NULL;
+             }
+            ?>
+
+        }
+        display(); //เปิดหน้าเว็บให้ทำงาน function  display()
+    </script>
+
 </body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
-<?php include_once('../include/sweetAlert.php') ?>
-
-<!-- SetUp -->
-<?php include_once("../LinkScript.php") ?>
 
 </html>

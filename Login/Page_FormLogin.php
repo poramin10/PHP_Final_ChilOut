@@ -12,10 +12,8 @@ session_start();
 
     <!-- CSS -->
     <?php include_once('../include/inc_css_front.php') ?>
-
-
-
 </head>
+
 <style>
     .abcRioButtonBlue {
         height: 35px !important;
@@ -25,15 +23,16 @@ session_start();
 
 <body>
     <div class="container">
-        <form action="../Login/php_login.php" method="POST">
 
+        <form action="../Login/php_login.php" method="POST">
             <div class="row mt-5 justify-content-center align-item-center vh-50">
-      
-                <div class="col-md-4 col-sm-12 col-12 mt-5 mb-3 p-3 card-login">
+
+                <!-- Back -->
+                <div class="col-md-5 col-lg-4 col-sm-12 col-12 mt-4 mb-3 p-3 card-login">
                     <a href="../HomePage/index.php"><button type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></button> </a>
                 </div>
 
-                <div class="col-md-4 col-sm-12 col-12 mt-5 mb-3 p-3 card-login2">
+                <div class="col-md-5 col-lg-4 col-sm-12 col-12 mt-4 mb-3 p-3 card-login2">
                     <div class="row text-right">
                         <div class="col-12">
                             คุณยังไม่ได้สมัครสมาชิก? <a href="../Register/Page_FormRegister.php"><button  href="../Register/Page_FormRegister.php" type="button" class="btn btn-outline-primary">สมัครสมาชิก</button> </a>
@@ -56,7 +55,7 @@ session_start();
                     </div>
 
                     <div class="col-12 text-center mt-4 mb-2">
-                        <button type="submit" name="submit" class="btn btn-primary"> เข้าสู่ระบบ</button>
+                        <button type="submit" name="submit" class="btn btn-pink btn-block"> เข้าสู่ระบบ</button>
                     </div>
 
                     <div class="col-12 mb-5 text-center">
@@ -64,7 +63,9 @@ session_start();
                     </div>
 
                 </div>
+                
         </form>
+
     </div>
 </body>
 

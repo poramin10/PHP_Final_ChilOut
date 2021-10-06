@@ -29,16 +29,41 @@ $_SESSION['Wait'] = NULL;
     <section class="banner">
 
         <div class="banner-fixed">
+
             <img src="../assets/img/BANNER.png" width="100%" height="100%" alt="">
+
+            <div class="cloud-fixed">
+                <img class="cloud" src="../assets/img/cloud.png" alt="">
+            </div>
+
+            <div class="build-fixed">
+                <img class="build" src="../assets/img/build.png" alt="">
+            </div>
+
+            <div class="road-fixed">
+                <img class="road" src="../assets/img/road.png" alt="">
+            </div> 
+
             <div class="train-fixed">
                 <img class="train" src="../assets/img/train.png" alt="">
             </div>
+
             <div class="plane-fixed">
                 <img class="plane" src="../assets/img/plane.png" alt="">
             </div>
+
             <div class="human-fixed">
                 <img class="human" src="../assets/img/human.png" alt="">
             </div>
+
+            <div class="text-banner">
+                <div style="display:flex;">
+                    <img src="../assets/img/LOGOv2.png" width="150px" alt="">
+                    <h1 class="text-pink"><strong>ดรีมเวล</strong></h1>
+                </div>
+                <h3><span class="text-green">ระบบแนะนำสถานที่ท่องเที่ยวที่เหมาะ </span><span class="text-pink"> สำหรับคุณ</span></h3>
+            </div>
+
         </div>
 
     </section>
@@ -60,7 +85,7 @@ $_SESSION['Wait'] = NULL;
 
     <!-- เนื้อหาสถานที่ท่องเที่ยว -->
     <div class="container">
-        <div class="row">
+        <div class="row row-card">
 
             <?php while ($row_count = $result_count->fetch_assoc()) { ?>
 
@@ -84,7 +109,7 @@ $_SESSION['Wait'] = NULL;
                 ?>
 
                 <div class="col-md-4 mt-3 mb-3">
-                    <a href="">
+                    <a href="../Travel/Detail.php?idTravel=<?php echo $row_place['place_id']  ?>">
                         <section class="card-v2">
                             <div class="crop-zoom">
                                 <div class="card card-relative cardTop">
@@ -101,11 +126,9 @@ $_SESSION['Wait'] = NULL;
                                     </div>
                                 </div>
                             </div>
-                            <div class="popular">
-                                <div class="popular-fixed">
-                                    <img src="../assets/img/pop-<?php echo $number ?>.png" alt="">
-                                </div>
-                            </div>
+
+                            <img class="popular-fixed" src="../assets/img/pop-<?php echo $number ?>.png" alt="">
+
                         </section>
                     </a>
 

@@ -43,7 +43,7 @@ session_start();
                 <div class="col-md-6 col-12 mt-5 mb-3 p-3 card-register">
                     <h3><strong>สมัครสมาชิก</strong></h3>
                     <hr>
-                    <label for="">ชื่อจริง (Firstname)<span class="text-danger">*</span></label>
+                    <label for="">ชื่อจริง (Firstname) <span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-address-book"></i></span>
@@ -53,7 +53,7 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-                    <label for="">นามสกุล (Lastname)<span class="text-danger">*</span></label>
+                    <label for=""> นามสกุล (Lastname)<span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-address-book"></i></span>
@@ -63,7 +63,7 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-                    <label for="">เพศ (Gender)<span class="text-danger">*</span></label>
+                    <label for="">เพศ (Gender) <span class="text-danger">*</span></label>
                     <div class="form-check">
 
                         <div class="form-check form-check-inline">
@@ -86,13 +86,13 @@ session_start();
 
                     </div>
                     <div class="mb-1">
-                        <label for="birthday">วันเกิด (Birthday)<span class="text-danger">*</span></label>
+                        <label for="birthday">วันเกิด (Birthday) <span class="text-danger">*</span></label>
                         <input id="testdate5" name="birthdate" class="form-control " required>
                         <div class="invalid-feedback">
                             กรุณาเลือกวันที่ 
                         </div>
                     </div>
-                    <label for="">อีเมลล์ (Email)<span class="text-danger">*</span></label>
+                    <label for="">อีเมลล์ (Email) <span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
@@ -102,7 +102,7 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-                    <label for="">เบอร์โทรศัพท์ (Phone)<span class="text-danger">*</span></label>
+                    <label for="">เบอร์โทรศัพท์ (Phone) <span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
@@ -112,7 +112,7 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-                    <label for="">ชื่อผู้ใช้งาน (Username)<span class="text-danger">*</span></label>
+                    <label for="">ชื่อผู้ใช้งาน (Username) <span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
@@ -122,7 +122,7 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-                    <label for="">รหัสผ่าน (Password)<span class="text-danger">*</span></label>
+                    <label for="">รหัสผ่าน (Password) <span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
@@ -132,7 +132,7 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-                    <label for="">ยืนยันรหัสผ่าน (Confirm-Password)<span class="text-danger">*</span></label>
+                    <label for="">ยืนยันรหัสผ่าน (Confirm-Password) <span class="text-danger">*</span></label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
@@ -168,7 +168,7 @@ session_start();
 
                     <div class="row pt-2">
                         <div class="col-12 text-right">
-                            <button type="submit" name="submit" id="submit" class="btn btn-primary">สมัครสมาชิก <i class="fas fa-arrow-circle-right"></i></button>
+                            <button type="submit" name="submit" id="submit" class="btn btn-pink">สมัครสมาชิก <i class="fas fa-arrow-circle-right"></i></button>
                         </div>
                     </div>
 

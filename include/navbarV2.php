@@ -5,12 +5,12 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <img src="../assets/img/LOGOv2.jpg" width="150px" height="150px" alt="">
+        <img src="../assets/img/LOGOv2.png" width="100px"  alt="">
         </div>
         <div class="menu">
             <ul>
                 <li><a href="../HomePage/"><i class="fas fa-home"></i> หน้าหลัก</a></li>
-                <li><a href="../Search"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
+                <li><a href="../Search/travelSearch.php"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
                 <li><a href="#"><i class="fas fa-robot"></i> แชทบอท</a></li>
                 <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
@@ -44,7 +44,7 @@
         <div class="menu">
             <ul>
                 <li><a href="../HomePage/"><i class="fas fa-home"></i> หน้าหลัก</a></li>
-                <li><a href="../Search"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
+                <li><a href="../Search/travelSearch.php"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
                 <li><a href="#"><i class="fas fa-robot"></i> แชทบอท</a></li>
                 <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>

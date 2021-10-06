@@ -13,7 +13,7 @@ if (isset($_GET['email'])) {
     $name = "System";
     $emailName = "system@gmail.com";
     $subject = "มีการสมัครสมาชิกใหม่เว็บ Travel In Thailand";
-    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกที่ลิงค์ http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email . " รหัสยืนยันตัวตนคือ " . $number;
+    $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
     require_once "../assets/lib/PHPMailer/PHPMailer.php";
     require_once "../assets/lib/PHPMailer/SMTP.php";

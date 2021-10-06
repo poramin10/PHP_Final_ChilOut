@@ -9,6 +9,8 @@ if(isset($_POST['submit'])){
     $password = $_POST['password'];
     $verifypassword = $_POST['verify_password'];
 
+    $_SESSION['CheckVerify'] = false;
+
     if($password === $verifypassword){
         $hashed_password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 

@@ -30,6 +30,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['salary'] = $row_check['salary'];
 
             $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
+            // print_r($row_check);
             header('location: ../HomePage/index.php');
         } else {
             $_SESSION['Failed'] = "เข้าสู่ระบบไม่สำเร็จ";

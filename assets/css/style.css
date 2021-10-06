@@ -14,6 +14,8 @@
     Section ProgressBar
     Section Profile
     Section Footer
+    Section Search
+    
  
   |--------------------------------------------------------------------------|
  */
@@ -28,10 +30,22 @@ body {
   background-color: #ffffff;
 }
 
+.btn-pink{
+  color: white;
+  background-color: #FA6476;
+  border-color: #FA6476;
+}
+
+.btn-pink:hover{
+  background-color: white;
+  color: #FA6476;
+  border-color: #FA6476;
+}
+
 .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
-  padding: 10px 16px;
+  padding: 14px 16px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 25px;
@@ -106,6 +120,18 @@ body {
   color: #FA6476 !important;
 }
 
+.bg-pink {
+  background-color: #FA6476 !important;
+}
+
+.text-green {
+  color: #5DBFD0;
+}
+
+.text-greeninfo {
+  color: #455A64;
+}
+
 .shadow-text {
   text-shadow: 2px 2px #000000;
 }
@@ -134,17 +160,26 @@ hr.hr-17:after {
   content: "\00a0";
 }
 
+/* Text Margin */
+
+@media (max-width: 576px) {
+  .center-text-sm {
+    text-align: center!important;
+  }
+}
+
 /* Section Banner */
 
 .banner .banner-fixed {
   position: relative;
   background-position: auto;
   overflow: hidden;
+  background-size: cover;
 }
 
 .banner .train-fixed {
   position: absolute;
-  left: -100%;
+  left: -300%;
   bottom: 26%;
   background-position: repeat;
   width: auto;
@@ -176,7 +211,7 @@ hr.hr-17:after {
 
 .banner .human-fixed {
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   width: auto;
   height: 70%;
 }
@@ -186,11 +221,50 @@ hr.hr-17:after {
   height: 100%;
 }
 
-.banner .plane-fixed {
+.banner .cloud-fixed {
   position: absolute;
-  bottom: -20%;
+  bottom: 0;
   width: auto;
   height: 70%;
+}
+
+.banner .cloud {
+  width: 100%;
+  height: 100%;
+}
+
+.banner .build-fixed {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: auto;
+  height: 70%;
+}
+
+.banner .build {
+  width: 100%;
+  height: 100%;
+}
+
+.banner .road-fixed {
+  position: absolute;
+  left: 0;
+  bottom: 122px;
+  background-position: repeat;
+  /* width: auto; */
+  height: 10%;
+}
+
+.banner .road {
+  width: 100%;
+  height: 280%;
+}
+
+.banner .plane-fixed {
+  position: absolute;
+  bottom: -23%;
+  width: auto;
+  height: 66%;
 }
 
 .banner .plane {
@@ -273,6 +347,23 @@ hr.hr-17:after {
   }
 }
 
+.text-banner {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+}
+
+.text-banner h1 {
+  font-size: 70px;
+  margin-top: 32px;
+}
+
+@media (max-width: 850px) {
+  .text-banner {
+    display: none;
+  }
+}
+
 /* Section Register */
 
 .bg-register {
@@ -305,7 +396,7 @@ hr.hr-17:after {
 
 /* Section Card */
 
-.card-v2{
+.card-v2 {
   position: relative;
 }
 
@@ -340,19 +431,17 @@ hr.hr-17:after {
 }
 
 .card-v2 .img-card:hover {
-  opacity: 100 !important;
+  /* opacity: 100 !important;
   margin: 0 auto;
   width: 100%;
   -ms-transform: scale(1.5);
-  /* IE 9 */
   -webkit-transform: scale(1.5);
-  /* Safari 3-8 */
   transform: scale(1.5);
-  transition: transform .2s;
+  transition: transform .2s; */
 }
 
 .card-v2 .img-card:hover .card-color {
-  opacity: 0;
+  /* opacity: 0; */
 }
 
 .card-v2 .crop-zoom {
@@ -368,20 +457,34 @@ hr.hr-17:after {
   color: #fff;
 }
 
-.card-v2 .popular{
+.card-v2 .popular {
   position: absolute;
   top: -37px;
   right: -58px;
 }
 
-.card-v2 .popular .popular-fixed{
+.card-v2 .popular {
   position: relative;
 }
-.card-v2 .popular .popular-fixed img{
+
+.card-v2 .popular {
   width: 90%;
 }
 
+.card-v2 {
+  position: relative;
+}
 
+.card-v2 .popular-fixed {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+}
+
+/* .row-card{
+  overflow: hidden;
+} */
 
 /* Shadow Card */
 
@@ -674,6 +777,11 @@ nav.white ul li a {
   background-color: #FA6476;
 }
 
+.badge-green {
+  color: #fff;
+  background-color: #75BBC7;
+}
+
 /* Section Verify */
 
 .card-verify {
@@ -690,40 +798,34 @@ nav.white ul li a {
 
 /* Section Detail */
 
-.img-travel {
-  width: 100%;
-  height: 600px;
-  background-size: cover;
-  display: block;
+.detailTravelContact {
+  border: #75BBC7 2px solid;
 }
 
-.card-img-shadow {
-  box-shadow: 10px 10px 5px black;
+.detailTravelContact .tab .active {
+  background-color: #75BBC7 !important;
+  color: white !important;
 }
 
-.box-part {
-  background-color: #77ACF1;
-  border-radius: 0;
-  padding: 30px 10px;
-  margin: 20px 0px;
-  box-shadow: 5px 0px 5px black;
+.detailTravelContact .tab {
+  border: #75BBC7 solid 1px;
 }
 
-.card-header-color {
-  background-color: #F7D7AE;
+.detailTravelContact .nav a {
+  color: #455a64 !important
 }
 
-.card .box-part {
-  background-color: #F2CAC8;
-  color: black !important;
+.detailTravelContact .nav-pills .nav-link {
+  border-radius: 0px !important;
 }
 
-.event-top {
-  margin: 0 0.5rem;
-  animation: backInDown;
-  /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s;
-  /* don't forget to set a duration! */
+.img-icon-detail {
+  text-align: center;
+  margin: 110px;
+}
+
+.img-icon-detail2 {
+  text-align: center;
 }
 
 /* Section Homepage */
@@ -1016,7 +1118,54 @@ nav.white ul li a {
   color: #fff;
 }
 
-.text-footer{
-  padding: 10px 0 ;
+.text-footer {
+  padding: 10px 0;
 }
 
+/* Section Search */
+
+.pagination .page-item .page-link {
+  color: #FA6476;
+}
+
+.pagination .page-item.disabled .page-link {
+  color: #727272;
+}
+
+.page-item.active .page-link {
+  background-color: hsl(353, 94%, 69%) !important;
+  color: white;
+  border-color: #FA6476;
+}
+
+.pagination .page-item .page-link:hover {
+  color: white;
+  background-color: #FA6476 !important;
+}
+
+.fixed-bg-search {
+  position: relative;
+}
+
+.title-fixed-bg-search {
+  position: absolute;
+  color: white;
+}
+
+/* Pagination */
+
+.respon-Navi-Mobile {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .respon-Navi-Web {
+    display: none;
+  }
+  .respon-Navi-Mobile {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Section  */

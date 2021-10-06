@@ -14,10 +14,7 @@ include_once('../database/connectDB.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/verify.css">
-
-    <!-- Link SetUp Style -->
+    <!-- Link -->
     <?php include_once('../include/inc_css_front.php') ?>
 
 
@@ -37,7 +34,7 @@ include_once('../database/connectDB.php');
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
 
-                    <div class="profile-img mt-4">
+                    <div class="mt-4">
                         <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-email" src="../assets/img/pngEmail.png" alt="">
                     </div>
 
@@ -55,19 +52,17 @@ include_once('../database/connectDB.php');
                 </div>
                 <div class="col-md-2"></div>
             </div>
-
         </form>
+
     </div>
+
+    <!-- Link -->
+    <?php include_once('../include/inc_js_front.php') ?>
+
+    <!-- Sweet Alert -->
+    <?php include_once('../include/sweetAlert.php') ?>
+
 </body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
-<!-- Sweet Alert -->
-<?php include_once('../include/sweetAlert.php') ?>
-
-<!-- Link SetUp SetUp -->
-<?php include_once('../include/inc_js_front.php') ?>
 
 </html>
