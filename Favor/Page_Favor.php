@@ -1,4 +1,13 @@
-<?php require_once('../authen_frontend.php'); ?>
+<?php
+require_once('../authen_frontend.php');
+
+$sql = "SELECT * FROM `love` JOIN place ON love.id_place = place.place_id WHERE id_user = '" . $_SESSION['id_user'] . "'";
+$result = $conn->query($sql);
+
+if (!isset($_SESSION['id_user'])) {
+    header('location: ../Login/Page_FormLogin.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,21 +28,12 @@
 
 
     <section class="profile-page">
-        <div class="container-fulid">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-12">
-                    <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
-                </div>
-                <div class="col-12 col-lg-12">
-                <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
-
-                </div>
-            </div>
-        </div>
+        <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
+        <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
     </section>
 
     <section class="name-profile text-center">
-    <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
+        <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
 
     </section>
 
@@ -45,65 +45,50 @@
                     <div class="row">
                         <div class="col-lg-3">
 
-                           <?php include_once('../include/sideProfile.php') ?>
+                            <?php include_once('../include/sideProfile.php') ?>
 
                         </div>
 
                         <div class="col-lg-9">
-                            <div class="card card-profile p-3 my-3">
+                            <div class="row">
+                                <?php while ($row = $result->fetch_assoc()) {
+                                    $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['place_id'] . "' ";
+                                    $result_count = $conn->query($sql_count);
+                                    $row_count = $result_count->fetch_assoc();
 
-                                <div class="row p-2">
-                                    <div class="row row-cols-1 row-cols-md-3">
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
-                                                <div class="card-body text-center">
-                                                    <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
-                                                    <hr>
-                                                    <p class="card-text">จังหวัดปทุมธานี</p>
-                                                    <button class="btn btn-primary btn-block">ดูข้อมูล</button>
+
+
+                                ?>
+                                    <div class="col-lg-4 mt-3 mb-3">
+                                        <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                            <section class="card-v2">
+                                                <div class="crop-zoom">
+                                                    <div class="card card-relative cardTop">
+                                                        <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                            <div class="card-color">
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-text">
+                                                            <h5><?php echo $row['place_name'] ?></h5>
+                                                            <p><?php echo $row['province'] ?></p>
+                                                        </div>
+                                                        <div class="card-text-view">
+                                                            <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
-                                                <div class="card-body text-center">
-                                                    <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
-                                                    <hr>
-                                                    <p class="card-text">จังหวัดปทุมธานี</p>
-                                                    <button class="btn btn-primary btn-block">ดูข้อมูล</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
-                                                <div class="card-body text-center">
-                                                    <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
-                                                    <hr>
-                                                    <p class="card-text">จังหวัดปทุมธานี</p>
-                                                    <button class="btn btn-primary btn-block">ดูข้อมูล</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col mb-4">
-                                            <div class="card">
-                                                <img src="https://images.unsplash.com/photo-1498598457418-36ef20772bb9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="card-img-top" alt="...">
-                                                <div class="card-body text-center">
-                                                    <h5 class="card-title">ฟิวเจอร์พาร์ค</h5>
-                                                    <hr>
-                                                    <p class="card-text">จังหวัดปทุมธานี</p>
-                                                    <button class="btn btn-primary btn-block">ดูข้อมูล</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            </section>
+                                        </a>
+
                                     </div>
-
-                                </div>
-
+                                <?php } ?>
                             </div>
+
                         </div>
+
+
+
+
                     </div>
                 </div>
             </div>

@@ -6,6 +6,23 @@ if (isset($_GET['idTravel'])) {
     $row = $result->fetch_assoc();
 }
 
+$sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['place_id'] . "' ";
+$result_count = $conn->query($sql_count);
+if ($result_count->num_rows == 0) {
+    $sql_insert = "INSERT INTO `countertravel` (`id_counter`, `id_travel`, `count_travel`) 
+        VALUES (NULL, '" . $row['place_id'] . "', '1');";
+    $result_insert = $conn->query($sql_insert);
+} else {
+    $row_count = $result_count->fetch_assoc();
+    $count = $row_count['count_travel'];
+    $total = $count + 1;
+
+    $sql_update_count = "UPDATE `countertravel` SET `count_travel` = '" . $total . "' WHERE `countertravel`.`id_travel` = '" . $row['place_id'] . "';";
+    $result_update_count = $conn->query($sql_update_count);
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +51,30 @@ if (isset($_GET['idTravel'])) {
             <div class="col-lg-6">
                 <h3 class="center-text-sm"><?php echo $row['province'] ?></h3>
             </div>
-            <div class="col-lg-6">
-                <h5 class="text-pink float-lg-right font-weight-bold center-text-sm">ข้อมูลสถานที่ท่องเที่ยว</h5>
+            <div class="col-lg-6 mb-2">
+                <div class="d-lg-flex align-items-end flex-column bd-highlight">
+                    <h5 class="text-pink bd-highlight font-weight-bold center-text-sm">ข้อมูลสถานที่ท่องเที่ยว</h5>
+
+                    <?php
+                    if (isset($_SESSION['id_user'])) {
+                        $sql_travel = "SELECT * FROM `love` WHERE id_user = '" . $_SESSION['id_user'] . "' AND id_place = '" . $row['place_id'] . "' ";
+                        $result_travel = $conn->query($sql_travel);
+                    ?>
+                        <?php if ($result_travel->num_rows == 0) { ?>
+                            <a class="bd-highlight btn-love" href="./php_love.php?id_user=<?php echo $_SESSION['id_user'] ?>&id_place=<?php echo $row['place_id']  ?>">
+                                <img src="../assets/img/love.png" alt="" width="25px"> ชื่นชอบ
+                            </a>
+                        <?php } else { ?>
+                            <a class="bd-highlight btn-love" href="./php_unlove.php?id_user=<?php echo $_SESSION['id_user'] ?>&id_place=<?php echo $row['place_id']  ?>">
+                                <img src="../assets/img/unlove.png" alt="" width="25px"> ชอบแล้ว
+                            </a>
+                        <?php } ?>
+
+                    <?php } ?>
+
+                </div>
             </div>
+
             <div class="col-lg-6">
                 <img src="<?php echo $row['picture'] ?>" alt="" width="100%">
             </div>
@@ -86,7 +124,7 @@ if (isset($_GET['idTravel'])) {
 
                                             for ($i = 0; $i < count($arrActivity); $i++) {
                                             ?>
-                                                <span class="badge badge-pink"><?php echo $arrActivity[$i] ?></span>
+                                                <span class="badge badge-pink"><?php echo $arrActivity[$i] != 'null' ? $arrActivity[$i] : 'ไม่พบข้อมูล' ?></span>
                                             <?php
                                             }
                                             ?>
@@ -104,7 +142,7 @@ if (isset($_GET['idTravel'])) {
 
                                             for ($i = 0; $i < count($arrTarget); $i++) {
                                             ?>
-                                                <span class="badge badge-green"><?php echo $arrTarget[$i] ?></span>
+                                                <span class="badge badge-green"><?php echo $arrTarget[$i] != 'null' ? $arrTarget[$i] : 'ไม่พบข้อมูล' ?></span>
                                             <?php
                                             }
                                             ?>
@@ -122,7 +160,7 @@ if (isset($_GET['idTravel'])) {
 
                                             for ($i = 0; $i < count($arrCategory); $i++) {
                                             ?>
-                                                <span class="badge badge-pink"><?php echo $arrCategory[$i] ?></span>
+                                                <span class="badge badge-pink"><?php echo $arrCategory[$i] != 'null' ? $arrCategory[$i] : 'ไม่พบข้อมูล' ?></span>
                                             <?php
                                             }
                                             ?>
@@ -144,31 +182,35 @@ if (isset($_GET['idTravel'])) {
                                             <strong>เบอร์โทรศัพท์: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <?php echo $row['phones'] ?>
+                                            <?php echo $row['phones'] == null ? $row['phones'] : 'ไม่พบข้อมูล' ?>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>เบอร์มือถือ: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <?php echo $row['mobiles'] ?>
+                                            <?php echo $row['mobiles'] == null ? $row['mobiles'] : 'ไม่พบข้อมูล' ?>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>FAX: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <?php echo $row['fax'] ?>
+                                            <?php echo $row['fax'] == null ? $row['fax'] : 'ไม่พบข้อมูล' ?>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>อีเมล์: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <div style="word-wrap: break-word;"><?php echo $row['emails'] ?></div>
+                                            <div style="word-wrap: break-word;"><?php echo $row['emails'] == null ? $row['emails'] : 'ไม่พบข้อมูล' ?></div>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>เว็บไซต์: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <a style="word-wrap: break-word;" href="<?php echo 'https://' . $row['urls'] ?>" target="_blank"> <?php echo $row['urls'] ?></a>
+                                            <?php if ($row['urls'] == null) { ?>
+
+                                            <?php } else { ?>
+                                                <a style="word-wrap: break-word;" href="<?php echo 'https://' . $row['urls'] ?>" target="_blank"> <?php echo $row['urls'] ?></a>
+                                            <?php } ?>
                                         </div>
                                     </div>
 
@@ -213,31 +255,31 @@ if (isset($_GET['idTravel'])) {
                             <tbody>
                                 <tr>
                                     <th scope="row">จันทร์</th>
-                                    <td><?php echo str_replace('จันทร์ - ', "", $arrTimes[0]); ?></td>
+                                    <td><?php echo str_replace('จันทร์ - ', "", isset($arrTimes[0]) ? $arrTimes[0] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">อังคาร</th>
-                                    <td><?php echo str_replace('อังคาร - ', "", $arrTimes[1]); ?></td>
+                                    <td><?php echo str_replace('อังคาร - ', "", isset($arrTimes[1]) ? $arrTimes[1] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">พุธ</th>
-                                    <td><?php echo str_replace('พุธ - ', "", $arrTimes[2]); ?></td>
+                                    <td><?php echo str_replace('พุธ - ', "", isset($arrTimes[2]) != '' ? $arrTimes[2] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">พฤหัส</th>
-                                    <td><?php echo str_replace('พฤหัสบดี - ', "", $arrTimes[3]); ?></td>
+                                    <td><?php echo str_replace('พฤหัสบดี - ', "", isset($arrTimes[3]) != '' ? $arrTimes[3] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">ศุกร์</th>
-                                    <td><?php echo str_replace('ศุกร์ - ', "", $arrTimes[4]); ?></td>
+                                    <td><?php echo str_replace('ศุกร์ - ', "", isset($arrTimes[4]) != '' ? $arrTimes[4] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">เสาร์</th>
-                                    <td><?php echo str_replace('เสาร์ - ', "", $arrTimes[5]); ?></td>
+                                    <td><?php echo str_replace('เสาร์ - ', "", isset($arrTimes[5]) != '' ? $arrTimes[5] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">อาทิตย์</th>
-                                    <td><?php echo str_replace('อาทิตย์ - ', "", $arrTimes[6]); ?></td>
+                                    <td><?php echo str_replace('อาทิตย์ - ', "", isset($arrTimes[6]) != '' ? $arrTimes[6] : 'ไม่ได้ระบุเวลาทำการ'); ?></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -257,12 +299,14 @@ if (isset($_GET['idTravel'])) {
                                     width: 100%;
                                     height: 350px;
                                 }
+
                                 .gmap_canvas {
                                     overflow: hidden;
                                     background: none !important;
                                     width: 100%;
                                     height: 350px;
                                 }
+
                                 .gmap_iframe {
                                     height: 350px !important;
                                 }
@@ -275,13 +319,11 @@ if (isset($_GET['idTravel'])) {
                             <h3 class="mt-3 text-greeninfo"><strong>การเดินทาง</strong></h3>
                         </div>
                         <h4>
-                            <?php echo $row['how_to_travel'] ?>
+                            <?php echo $row['how_to_travel'] = '' ? $row['how_to_travel'] : '<div class="text-center">ไม่พบข้อมูล</div>'  ?>
                         </h4>
                     </div>
                 </div>
             </div>
-
-
 
         </div>
     </div>
@@ -297,6 +339,8 @@ if (isset($_GET['idTravel'])) {
     <!-- Sweet Alert -->
     <?php include_once('../include/sweetAlert.php') ?>
 
+    <!-- Share -->
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5eb7889c7d4ec20012dc03fe&product=inline-share-buttons' async='async'></script>
 </body>
 
 </html>

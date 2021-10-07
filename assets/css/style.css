@@ -100,7 +100,7 @@ body {
   border-color: #FA6476;
 }
 
-.btn-love .btn-pink {
+/* .btn-love .btn-pink {
   background-color: #FA6476;
   color: white;
 }
@@ -109,6 +109,11 @@ body {
   border: 1px solid #FA6476;
   background-color: white;
   color: #FA6476;
+} */
+
+.btn-love{
+  text-decoration: none !important;
+  color:black
 }
 
 .btn-secondary:hover {

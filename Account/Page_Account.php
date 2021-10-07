@@ -1,4 +1,10 @@
-<?php require_once('../authen_frontend.php'); ?>
+<?php require_once('../authen_frontend.php');
+if (!isset($_SESSION['id_user'])) {
+    header('location: ../Login/Page_FormLogin.php');
+}
+?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,20 +25,12 @@
 
 
     <section class="profile-page">
-        <div class="container-fulid">
-            <div class="row justify-content-center">
-                <div class="col-12 col-lg-12">
-                    <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
-                </div>
-                <div class="col-12 col-lg-12">
-                    <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
-                </div>
-            </div>
-        </div>
+        <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
+        <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
     </section>
 
     <section class="name-profile text-center">
-    <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
+        <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
 
     </section>
 

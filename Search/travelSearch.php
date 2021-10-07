@@ -148,6 +148,11 @@ require_once("./pagination_function.php");
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
                             $num++;
+
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $result_count = $conn->query($sql_count);
+                            $row_count = $result_count->fetch_assoc();
+
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
                                 <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
@@ -163,7 +168,7 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                    <small><i class="fas fa-eye"> </i> 0 </small>
+                                                    <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,6 +216,11 @@ require_once("./pagination_function.php");
                     $result = $conn->query($sql) or die($conn->error);
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
+
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $result_count = $conn->query($sql_count);
+                            $row_count = $result_count->fetch_assoc();
+
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
@@ -227,7 +237,7 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                    <small><i class="fas fa-eye"> </i> 0 </small>
+                                                <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -280,6 +290,11 @@ require_once("./pagination_function.php");
                     $result = $conn->query($sql) or die($conn->error);
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
+
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $result_count = $conn->query($sql_count);
+                            $row_count = $result_count->fetch_assoc();
+
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
@@ -296,7 +311,7 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                    <small><i class="fas fa-eye"> </i> 0 </small>
+                                                <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
                                                 </div>
                                             </div>
                                         </div>
@@ -346,6 +361,11 @@ require_once("./pagination_function.php");
                     $result = $conn->query($sql) or die($conn->error);
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
+
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $result_count = $conn->query($sql_count);
+                            $row_count = $result_count->fetch_assoc();
+
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
@@ -362,7 +382,7 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                    <small><i class="fas fa-eye"> </i> 0 </small>
+                                                <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
                                                 </div>
                                             </div>
                                         </div>
