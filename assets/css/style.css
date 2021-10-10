@@ -30,16 +30,40 @@ body {
   background-color: #ffffff;
 }
 
-.btn-pink{
+/* .btn-pink {
   color: white;
   background-color: #FA6476;
   border-color: #FA6476;
 }
 
-.btn-pink:hover{
+.btn-pink:hover {
   background-color: white;
   color: #FA6476;
   border-color: #FA6476;
+} */
+
+.btn-blue {
+  background-color: #124E96;
+  color: white;
+  border-color: #124E96;
+}
+
+.btn-blue:hover {
+  background-color: #124E96;
+  color: white;
+  border-color: #124E96;
+}
+
+.btn-outline-blue{
+  background-color: white;
+  color: #0057FF;
+  border-color: #0057FF;
+}
+
+.btn-outline-blue:hover{
+  background-color: #0057FF;
+  color: white;
+  border-color: #0057FF;
 }
 
 .btn-circle.btn-lg {
@@ -79,7 +103,7 @@ body {
   border: none;
   border-radius: 0;
   font-size: 15px;
-  background: #1477dab8;
+  background: #0057FF;
 }
 
 .profile-img .file input {
@@ -95,38 +119,23 @@ body {
   border-radius: 50% !important;
 }
 
-.btn-primary:hover {
-  background-color: #FA6476;
-  border-color: #FA6476;
-}
 
-/* .btn-love .btn-pink {
-  background-color: #FA6476;
-  color: white;
-}
-
-.btn-love .btn-pink:hover {
-  border: 1px solid #FA6476;
-  background-color: white;
-  color: #FA6476;
-} */
-
-.btn-love{
+.btn-love {
   text-decoration: none !important;
-  color:black
+  color: black
 }
 
-.btn-secondary:hover {
+/* .btn-secondary:hover {
   background-color: #FA6476;
   border-color: #FA6476;
-}
+} */
 
 .text-pink {
   color: #FA6476 !important;
 }
 
-.bg-pink {
-  background-color: #FA6476 !important;
+.bg-blue {
+  background-color: #2170B8 !important;
 }
 
 .text-green {
@@ -145,6 +154,14 @@ body {
 
 .text-color-pink {
   color: #FA6476;
+}
+
+.text-red {
+  color: #D22129;
+}
+
+.text-blue {
+  color: #124E96;
 }
 
 /* hr */
@@ -377,12 +394,12 @@ hr.hr-17:after {
 
 .card-register {
   background-color: white;
-  box-shadow: 0 4px 8px 0 #FA6476, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 #0057FF, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-register2 {
-  background-color: #092E41;
-  box-shadow: 0 4px 8px 0 #FA6476, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #317ABD;
+  box-shadow: 0 4px 8px 0 #0057FF, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Section Login */
@@ -391,12 +408,12 @@ hr.hr-17:after {
   background-image: url("../img/img-login.png");
   background-position: center;
   background-size: cover;
-  box-shadow: 0 4px 8px 0 #FA6476, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 #0057FF, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-login2 {
   background-color: #E1E1E1;
-  box-shadow: 0 4px 8px 0 #FA6476, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 #0057FF, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* Section Card */
@@ -637,7 +654,7 @@ hr.hr-17:after {
 /* Section Navbar */
 
 nav ul li a {
-  color: #FA6476 !important;
+  color: #124E96 !important;
 }
 
 /* ขนาดปกติ */
@@ -694,7 +711,7 @@ nav ul {
 
 nav.white ul {
   background: rgb(255, 255, 255);
-  box-shadow: 4px 4px 4px #FA6476;
+  box-shadow: 4px 4px 4px #124E96;
 }
 
 nav ul li {
@@ -713,14 +730,14 @@ nav ul li a {
 nav ul li a:hover {
   text-decoration: none;
   font-size: 18px;
-  color: #FA6476 !important;
-  text-shadow: 0 0 0.1em #FA6476;
+  color: #124E96 !important;
+  text-shadow: 0 0 0.1em #124E96;
   font-weight: bold;
 }
 
 nav.white ul li a {
   text-decoration: none;
-  color: #FA6476 !important;
+  color: #124E96 !important;
   font-weight: bold;
 }
 
@@ -732,7 +749,7 @@ nav.white ul li a {
   box-sizing: border-box;
   padding: 25px 24px;
   cursor: pointer;
-  color: #FA6476;
+  color: #124E96;
   display: none;
 }
 
@@ -777,9 +794,9 @@ nav.white ul li a {
   background-color: red;
 }
 
-.badge-pink {
+.badge-blue {
   color: #fff;
-  background-color: #FA6476;
+  background-color: #2170B8;
 }
 
 .badge-green {
@@ -788,32 +805,57 @@ nav.white ul li a {
 }
 
 /* Section Verify */
-
 .card-verify {
   background-image: url("../img/viewVerify.jpg");
   background-position: center;
   background-size: cover;
-  box-shadow: 0 4px 8px 0 #FA6476, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 #2170B8, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 .card-verify2 {
   background-color: #E1E1E1;
-  box-shadow: 0 4px 8px 0 #FA6476, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 #2170B8, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+/* Email */
+.card-verify-1 {
+  background-image: url("../img//bg-repassword1.png");
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 4px 8px 0 #2170B8, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-verify2-1 {
+  background-color: #E1E1E1;
+  box-shadow: 0 4px 8px 0 #2170B8, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Repassword */
+.card-verify-2 {
+  background-image: url("../img//bg-repassword2.png");
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 4px 8px 0 #2170B8, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.card-verify2-2 {
+  background-color: #E1E1E1;
+  box-shadow: 0 4px 8px 0 #2170B8, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
 
 /* Section Detail */
 
 .detailTravelContact {
-  border: #75BBC7 2px solid;
+  border: #2170B8 2px solid;
 }
 
 .detailTravelContact .tab .active {
-  background-color: #75BBC7 !important;
+  background-color: #D22129 !important;
   color: white !important;
 }
 
 .detailTravelContact .tab {
-  border: #75BBC7 solid 1px;
+  border: #2170B8 solid 1px;
 }
 
 .detailTravelContact .nav a {
@@ -1073,17 +1115,17 @@ nav.white ul li a {
 }
 
 .data-profile .list-group-item.active:hover, .data-profile .list-group-item.active {
-  z-index: 2;
+  z-index: 2 !important;
   color: #fff !important;
-  background-color: #FA6476 !important;
-  border-color: #FA6476 !important;
+  background-color: #124E96 !important;
+  border-color: #124E96 !important;
 }
 
 .data-profile .list-group-item:hover {
   z-index: 2;
   color: #fff !important;
-  background-color: #fd5269;
-  border-color: #fd5269;
+  background-color: #124E96;
+  border-color: #124E96;
 }
 
 .data-profile a {
@@ -1102,8 +1144,8 @@ nav.white ul li a {
 /* Section Footer */
 
 .site-footer {
-  background-color: #26272b;
-  color: #737373;
+  background-color: #2170B8;
+  color: #fff;
 }
 
 .site-footer h6 {
@@ -1114,13 +1156,13 @@ nav.white ul li a {
 }
 
 .site-footer a {
-  color: #737373;
+  color: #fff;
   /* เอาขีดออก */
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #fff;
+  color: #FBAD26;
 }
 
 .text-footer {
@@ -1130,7 +1172,7 @@ nav.white ul li a {
 /* Section Search */
 
 .pagination .page-item .page-link {
-  color: #FA6476;
+  color: #124E96;
 }
 
 .pagination .page-item.disabled .page-link {
@@ -1138,14 +1180,14 @@ nav.white ul li a {
 }
 
 .page-item.active .page-link {
-  background-color: hsl(353, 94%, 69%) !important;
+  background-color: #124E96 !important;
   color: white;
-  border-color: #FA6476;
+  border-color: #124E96;
 }
 
 .pagination .page-item .page-link:hover {
   color: white;
-  background-color: #FA6476 !important;
+  background-color: #124E96 !important;
 }
 
 .fixed-bg-search {

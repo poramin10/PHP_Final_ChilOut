@@ -53,7 +53,7 @@ if ($result_count->num_rows == 0) {
             </div>
             <div class="col-lg-6 mb-2">
                 <div class="d-lg-flex align-items-end flex-column bd-highlight">
-                    <h5 class="text-pink bd-highlight font-weight-bold center-text-sm">ข้อมูลสถานที่ท่องเที่ยว</h5>
+                    <h5 class="text-blue bd-highlight font-weight-bold center-text-sm">ข้อมูลสถานที่ท่องเที่ยว</h5>
 
                     <?php
                     if (isset($_SESSION['id_user'])) {
@@ -124,7 +124,7 @@ if ($result_count->num_rows == 0) {
 
                                             for ($i = 0; $i < count($arrActivity); $i++) {
                                             ?>
-                                                <span class="badge badge-pink"><?php echo $arrActivity[$i] != 'null' ? $arrActivity[$i] : 'ไม่พบข้อมูล' ?></span>
+                                                <span class="badge badge-blue"><?php echo $arrActivity[$i] != 'null' ? $arrActivity[$i] : 'ไม่พบข้อมูล' ?></span>
                                             <?php
                                             }
                                             ?>
@@ -142,7 +142,7 @@ if ($result_count->num_rows == 0) {
 
                                             for ($i = 0; $i < count($arrTarget); $i++) {
                                             ?>
-                                                <span class="badge badge-green"><?php echo $arrTarget[$i] != 'null' ? $arrTarget[$i] : 'ไม่พบข้อมูล' ?></span>
+                                                <span class="badge badge-blue"><?php echo $arrTarget[$i] != 'null' ? $arrTarget[$i] : 'ไม่พบข้อมูล' ?></span>
                                             <?php
                                             }
                                             ?>
@@ -160,7 +160,7 @@ if ($result_count->num_rows == 0) {
 
                                             for ($i = 0; $i < count($arrCategory); $i++) {
                                             ?>
-                                                <span class="badge badge-pink"><?php echo $arrCategory[$i] != 'null' ? $arrCategory[$i] : 'ไม่พบข้อมูล' ?></span>
+                                                <span class="badge badge-blue"><?php echo $arrCategory[$i] != 'null' ? $arrCategory[$i] : 'ไม่พบข้อมูล' ?></span>
                                             <?php
                                             }
                                             ?>
@@ -223,7 +223,7 @@ if ($result_count->num_rows == 0) {
             </div>
 
             <div class="col-lg-12 mt-3">
-                <div style="display:flex">
+                <div style="display:flex;align-items: center;">
                     <img src="../assets/img/planeicon.svg" alt="">
                     <h3 class="ml-3 text-greeninfo"><strong>ข้อมูลสถานที่ท่องเที่ยว</strong></h3>
                 </div>
@@ -248,8 +248,8 @@ if ($result_count->num_rows == 0) {
                         <table class="table table-sm table-bordered text-center">
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="bg-pink text-white" scope="col">วัน</th>
-                                    <th class="bg-pink text-white" scope="col">เวลา</th>
+                                    <th class="bg-blue text-white" scope="col">วัน</th>
+                                    <th class="bg-blue text-white" scope="col">เวลา</th>
                                 </tr>
                             </thead>
                             <tbody>

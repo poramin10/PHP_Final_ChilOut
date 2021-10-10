@@ -30,8 +30,7 @@ if (!isset($_SESSION['id_user'])) {
     </section>
 
     <section class="name-profile text-center">
-        <h1 class="font-weight-bold text-pink text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
-
+        <h1 class="font-weight-bold text-blue text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
     </section>
 
     <section class="data-profile">

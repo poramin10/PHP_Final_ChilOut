@@ -19,6 +19,11 @@ session_start();
         height: 35px !important;
         width: 250px !important;
     }
+
+    .g-recaptcha {
+        transform-origin: left top;
+        -webkit-transform-origin: left top;
+    }
 </style>
 
 <body>
@@ -35,7 +40,7 @@ session_start();
                 <div class="col-md-5 col-lg-4 col-sm-12 col-12 mt-4 mb-3 p-3 card-login2">
                     <div class="row text-right">
                         <div class="col-12">
-                            คุณยังไม่ได้สมัครสมาชิก? <a href="../Register/Page_FormRegister.php"><button  href="../Register/Page_FormRegister.php" type="button" class="btn btn-outline-primary">สมัครสมาชิก</button> </a>
+                            คุณยังไม่ได้สมัครสมาชิก? <a href="../Register/Page_FormRegister.php"><button href="../Register/Page_FormRegister.php" type="button" class="btn btn-outline-blue">สมัครสมาชิก</button> </a>
                         </div>
                     </div>
                     <h2 class="my-5 text-center"><b>เข้าสู่ระบบ</b></h2>
@@ -54,8 +59,13 @@ session_start();
                         <input type="password" name="password" class="form-control style-form" placeholder="กรุณากรอกรหัสผ่าน" aria-label="password" aria-describedby="basic-addon1">
                     </div>
 
+                    <div class="mt-3">
+                        <div class="g-recaptcha" data-callback="recapCallback" data-sitekey="6LfcC7scAAAAAP-bVlmuVMpg7uBaERxhQ44iTyAE"></div>
+                    </div>
+
+
                     <div class="col-12 text-center mt-4 mb-2">
-                        <button type="submit" name="submit" class="btn btn-pink btn-block"> เข้าสู่ระบบ</button>
+                        <button type="submit" name="submit" id="btn-submit" class="btn btn-blue btn-block" disabled> เข้าสู่ระบบ</button>
                     </div>
 
                     <div class="col-12 mb-5 text-center">
@@ -63,7 +73,7 @@ session_start();
                     </div>
 
                 </div>
-                
+
         </form>
 
     </div>
@@ -75,6 +85,41 @@ session_start();
 
 <!-- Sweet Alert -->
 <?php include_once('../include/sweetAlert.php') ?>
+
+<!-- Recaptcha -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Responsive Recaptcha -->
+<script>
+    function scaleCaptcha(elementWidth) {
+        var reCaptchaWidth = 304;
+
+        var containerWidth = $('.container').width();
+
+
+        if (reCaptchaWidth > containerWidth) {
+
+            var captchaScale = containerWidth / reCaptchaWidth;
+
+            $('.g-recaptcha').css({
+                'transform': 'scale(' + captchaScale + ')'
+            });
+        }
+    }
+
+    $(function() {
+        scaleCaptcha();
+        $(window).resize($.throttle(100, scaleCaptcha));
+
+    });
+</script>
+
+<!-- Recaptcha CallBack -->
+<script>
+    function recapCallback() {
+        $('#btn-submit').removeAttr('disabled')
+    }
+</script>
 
 
 

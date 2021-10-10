@@ -6,38 +6,58 @@ if (isset($_POST['submit'])) {
     $username = $conn->real_escape_string($_POST['username']);
     $password = $conn->real_escape_string($_POST['password']);
 
-    $sql_check = "SELECT * FROM `user` WHERE `username` = '" . $username . "' OR `email` = '" . $username . "'  AND `status` = '1' ";
-    $result_check = $conn->query($sql_check);
-    $row_check = $result_check->fetch_assoc();
 
-    if ($result_check) {
+    // Recaptcha
+    $secretKey = '6LfcC7scAAAAADQhbeN06701ef8ydrriJsQh1Puh';
+    $response = $_POST['g-recaptcha-response'];
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$response&remoteip=$remoteip";
+    $resp = json_decode(file_get_contents($url));
+    // Recaptcha ตรวจสอบ
+    if ($resp->success) {
 
-        // Hash Password ต้องมีอย่างน้อย 60 ตัวอักษร 
-        // ทำการเช็คค่าว่าง และเช็ค Password
-        if (!empty($row_check && password_verify($password, $row_check['password']))) {
+        // นำข้อมูลเข้าสู่ Database
+        $sql_check = "SELECT * FROM `user` WHERE `username` = '" . $username . "' OR `email` = '" . $username . "'  AND `status` = '1' ";
+        $result_check = $conn->query($sql_check);
+        $row_check = $result_check->fetch_assoc();
 
-            $_SESSION['id_user'] = $row_check['id_user']; 
-            $_SESSION['firstname'] = $row_check['firstname'];
-            $_SESSION['lastname'] = $row_check['lastname'];
-            $_SESSION['gender'] = $row_check['gender'];
-            $_SESSION['email'] = $row_check['email'];
-            $_SESSION['birthdate'] = $row_check['birthdate'];
-            $_SESSION['phone'] = $row_check['phone'];
-            $_SESSION['profile'] = $row_check['profile'];
-            $_SESSION['username'] = $row_check['username'];
-            $_SESSION['status'] = $row_check['status'];
-            $_SESSION['profession'] = $row_check['profession'];
-            $_SESSION['salary'] = $row_check['salary'];
+        if ($result_check) {
 
-            $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
-            // print_r($row_check);
-            header('location: ../HomePage/index.php');
+            // Hash Password ต้องมีอย่างน้อย 60 ตัวอักษร 
+            // ทำการเช็คค่าว่าง และเช็ค Password
+            if (!empty($row_check && password_verify($password, $row_check['password']))) {
+
+                $_SESSION['id_user'] = $row_check['id_user'];
+                $_SESSION['firstname'] = $row_check['firstname'];
+                $_SESSION['lastname'] = $row_check['lastname'];
+                $_SESSION['gender'] = $row_check['gender'];
+                $_SESSION['email'] = $row_check['email'];
+                $_SESSION['birthdate'] = $row_check['birthdate'];
+                $_SESSION['phone'] = $row_check['phone'];
+                $_SESSION['profile'] = $row_check['profile'];
+                $_SESSION['username'] = $row_check['username'];
+                $_SESSION['status'] = $row_check['status'];
+                $_SESSION['profession'] = $row_check['profession'];
+                $_SESSION['salary'] = $row_check['salary'];
+
+                $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
+                // print_r($row_check);
+                header('location: ../HomePage/index.php');
+            } else {
+                $_SESSION['Failed'] = "เข้าสู่ระบบไม่สำเร็จ";
+                header('location: ./Page_FormLogin.php');
+            }
         } else {
             $_SESSION['Failed'] = "เข้าสู่ระบบไม่สำเร็จ";
             header('location: ./Page_FormLogin.php');
         }
-       
     } else {
-        $_SESSION['Failed'] = "เข้าสู่ระบบไม่สำเร็จ";
+        $_SESSION['Failed'] = "Verify Recaptchar Failed!";
+        header('location: ./Page_FormLogin.php');
     }
+
+    // echo '<pre>',print_r($_POST),'</pre>';
+
+
+
 }

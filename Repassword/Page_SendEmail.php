@@ -28,11 +28,11 @@ include_once('../database/connectDB.php');
 
                 <div class="col-md-2"></div>
 
-                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify">
+                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify-2">
                     <a href="../Login/Page_FormLogin.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
 
-                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
+                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2-2">
 
                     <div class="mt-4 text-center">
                         <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-email" src="../assets/img/gmail.png" width="150px" alt="">
@@ -47,7 +47,7 @@ include_once('../database/connectDB.php');
                         <input type="text" name="email" class="form-control style-form" placeholder="กรุณากรอกอีเมล์">
                     </div>
                     <div class="col-12 text-center mt-4 mb-2">
-                        <button type="submit" name="submit" class="btn btn-pink form-control"> ส่งรหัสยืนยัน</button>
+                        <button type="submit" name="submit" class="btn btn-blue form-control"> ส่งรหัสยืนยัน</button>
                     </div>
                 </div>
                 <div class="col-md-2"></div>

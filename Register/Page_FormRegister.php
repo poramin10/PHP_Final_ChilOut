@@ -168,7 +168,7 @@ session_start();
 
                     <div class="row pt-2">
                         <div class="col-12 text-right">
-                            <button type="submit" name="submit" id="submit" class="btn btn-pink">สมัครสมาชิก <i class="fas fa-arrow-circle-right"></i></button>
+                            <button type="submit" name="submit" id="submit" class="btn btn-blue">สมัครสมาชิก <i class="fas fa-arrow-circle-right"></i></button>
                         </div>
                     </div>
 
