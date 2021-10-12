@@ -7,6 +7,10 @@ if ($_SESSION['CheckVerify'] == false) {
     header('location: ../HomePage/index.php');
 }
 
+if(!isset($_SESSION['email_check'])){
+    header('location: ../HomePage/index.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +32,7 @@ if ($_SESSION['CheckVerify'] == false) {
     <div class="container">
 
         <form action="./php_EditPassword.php" method="POST" class="needs-validation" novalidate>
-            <input type="hidden" name="email" value="<?php echo $_GET['email'] ?>" class="form-control style-form">
+            <input type="hidden" name="email" value="<?php echo $_SESSION['email_check'] ?>" class="form-control style-form">
 
             <div class="row">
 

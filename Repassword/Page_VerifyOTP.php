@@ -45,7 +45,7 @@ if ($resule->num_rows >= 1) {
                     <a href="./Page_SendEmail.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
 
-                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
+                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2"> 
 
                     <div class="mt-4 text-center">
                         <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-verify" src="../assets/img/OTP.png" width="150px" alt="">
@@ -66,9 +66,12 @@ if ($resule->num_rows >= 1) {
 
                     OTP <label id="count">10</label>
 
+                    <input type="hidden" name="email_check" value="<?php echo $_GET['email'] ?>">
+
                     <div class="col-12 text-center mt-4 mb-2">
                         <button type="submit" name="submit" class="btn btn-primary form-control"> ยืนยันอีเมล์</button>
                     </div>
+
                     <div class="col-12 text-center mt-1 mb-5 my-2">
                         <a href="./php_SendOTPNew.php?email=<?php echo $_GET['email'] ?>" type="button" class="btn btn-secondary form-control"> ส่งรหัสยืนยันใหม่อีกครั้ง</a>
                     </div>

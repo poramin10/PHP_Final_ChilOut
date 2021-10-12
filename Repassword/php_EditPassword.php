@@ -19,16 +19,17 @@ if(isset($_POST['submit'])){
         if($result){
             $_SESSION['Success'] = 'แก้ไขรหัสผ่านสำเร็จ';
             $_SESSION['CheckVerify'] = false;
+            $_SESSION['email_check'] = NULL;
             header('location: ../Login/Page_FormLogin.php');
             
         }else{
             $_SESSION['Failed'] = 'แก้ไขรหัสผ่านไม่สำเร็จ';
-            header('location: ./Page_Repassword.php?email='.$email);
+            header('location: ./Page_Repassword.php');
         }
         
     }else{
         $_SESSION['Failed'] = 'รหัสผ่านไม่ตรงกัน';
-        header('location: ./Page_Repassword.php?email='.$email);
+        header('location: ./Page_Repassword.php');
     }
    
 }
