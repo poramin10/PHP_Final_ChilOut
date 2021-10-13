@@ -3,11 +3,12 @@ require_once('../authen_frontend.php');
 
 
 // แสดงข้อมูลสถานที่ท่องเที่ยวที่เด่นๆ
-$sql_count = "SELECT * FROM `countertravel` ORDER BY `count_travel` DESC LIMIT 12";
-$result_count = $conn->query($sql_count);
-
+$sql = "SELECT * FROM `countertravel` 
+    JOIN place ON countertravel.id_travel = place.place_id 
+ORDER BY countertravel.count_travel DESC LIMIT 12";
+$result = $conn->query($sql);
 $number = 0;
-$_SESSION['Wait'] = NULL;
+
 ?>
 
 <!doctype html>
@@ -62,14 +63,13 @@ $_SESSION['Wait'] = NULL;
                         <img src="../assets/img/LOGOv2.png" width="150px" alt="">
                         <h1 class="text-red"><strong>ดรีมเวล</strong></h1>
                     </div>
-                    <h3 class="text-blue">ระบบแนะนำสถานที่ท่องเที่ยวที่เหมาะ  สำหรับคุณ</h3>
+                    <h3 class="text-blue">ระบบแนะนำสถานที่ท่องเที่ยวที่เหมาะ สำหรับคุณ</h3>
                 </div>
 
             </div>
 
         </section>
     </div>
-
 
     <!-- Background Image -->
     <div class="bg-img">
@@ -90,48 +90,31 @@ $_SESSION['Wait'] = NULL;
     <div class="container">
         <div class="row row-card">
 
-            <?php while ($row_count = $result_count->fetch_assoc()) { ?>
+            <?php while ($row = $result->fetch_assoc()) { ?>
 
-                <!-- <?php echo $row_count['id_travel'] ?> -->
                 <!-- หาสถานที่ท่องเที่ยวยอดนิยม -->
                 <?php
-                $sql_place = "SELECT * FROM `place` WHERE place_id = '" . $row_count['id_travel'] . "' ";
-                $result_place = $conn->query($sql_place);
-                $row_place = $result_place->fetch_assoc();
-
                 $number++;
                 ?>
 
-                <?php
-                if ($result_place) {
-                    $_SESSION['Wait'] = NULL;
-                } else {
-                    $_SESSION['Wait'] = 'Wait';
-                }
-
-                ?>
-
                 <div class="col-md-4 mt-3 mb-3">
-                    <a href="../Travel/Detail.php?idTravel=<?php echo $row_place['place_id']  ?>">
+                    <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
                         <section class="card-v2">
                             <div class="crop-zoom">
                                 <div class="card card-relative cardTop">
-                                    <div class="img-card" style=" background-image: url('<?php echo $row_place['picture'] ?>'); width: 100%">
+                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                         <div class="card-color">
                                         </div>
                                     </div>
                                     <div class="card-text">
-                                        <h5><?php echo $row_place['place_name'] ?></h5>
-                                        <p><?php echo $row_place['province'] ?></p>
+                                        <h5><?php echo $row['place_name'] ?></h5>
+                                        <p><?php echo $row['province'] ?></p>
                                     </div>
                                     <div class="card-text-view">
-                                        <small><i class="fas fa-eye"> </i><?php echo ' ' . $row_count['count_travel'] ?> </small>
+                                        <small><i class="fas fa-eye"> </i> <?php echo $result->num_rows != 0 ? $row['count_travel'] : 0 ?> </small>
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- <img class="popular-fixed" src="../assets/img/pop-<?php echo $number ?>.png" alt=""> -->
-
                         </section>
                     </a>
 
@@ -141,16 +124,6 @@ $_SESSION['Wait'] = NULL;
         </div>
 
 
-        <!-- <div id="wait" class="row justify-content-center align-item-center vh-100">
-            <div class="col-md-12 text-center py-5">
-                <img src="https://steamuserimages-a.akamaihd.net/ugc/499143799328359714/EE0470B9BD25872DC95E7973B2C2F7006B7B9FB8/" width="200px" height="100px" alt="">
-                <div class="mt-2">
-                    <h3>
-                        <strong>กำลังโหลด...</strong>
-                    </h3>
-                </div>
-            </div>
-        </div> -->
 
 
     </div>
@@ -164,17 +137,6 @@ $_SESSION['Wait'] = NULL;
 
     <!-- Sweet Alert -->
     <?php include_once('../include/sweetAlert.php') ?>
-
-    <!-- Script Popular -->
-    <?php
-    //  include_once('./include_axiosPopular.php') 
-    ?>
-
-    <!-- jQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script>
-        window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')
-    </script>
 
 
 
