@@ -6,19 +6,27 @@ if (isset($_GET['idTravel'])) {
     $row = $result->fetch_assoc();
 }
 
-$sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['place_id'] . "' ";
-$result_count = $conn->query($sql_count);
-if ($result_count->num_rows == 0) {
-    $sql_insert = "INSERT INTO `countertravel` (`id_counter`, `id_travel`, `count_travel`) 
-        VALUES (NULL, '" . $row['place_id'] . "', '1');";
-    $result_insert = $conn->query($sql_insert);
-} else {
-    $row_count = $result_count->fetch_assoc();
-    $count = $row_count['count_travel'];
-    $total = $count + 1;
+if (!isset($_SESSION['time_count' . $row['place_id']])) {
 
-    $sql_update_count = "UPDATE `countertravel` SET `count_travel` = '" . $total . "' WHERE `countertravel`.`id_travel` = '" . $row['place_id'] . "';";
-    $result_update_count = $conn->query($sql_update_count);
+    $_SESSION['time_count' . $row['place_id']] = 'นับจำนวน';
+
+    $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['place_id'] . "' ";
+    $result_count = $conn->query($sql_count);
+    if ($result_count->num_rows == 0) {
+
+        $sql_insert = "INSERT INTO `countertravel` (`id_counter`, `id_travel`, `count_travel`) 
+        VALUES (NULL, '" . $row['place_id'] . "', '1');";
+        $result_insert = $conn->query($sql_insert);
+    } else {
+        $row_count = $result_count->fetch_assoc();
+        $count = $row_count['count_travel'];
+        $total = $count + 1;
+
+        $sql_update_count = "UPDATE `countertravel` SET `count_travel` = '" . $total . "' WHERE `countertravel`.`id_travel` = '" . $row['place_id'] . "';";
+        $result_update_count = $conn->query($sql_update_count);
+    }
+} else {
+    // ไม่มีอะไรเกิดขึ้น
 }
 
 

@@ -73,13 +73,13 @@ if (isset($_POST['submit'])) {
 
                     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
                     $_SESSION['numberOTP'] = $number;
+                    $_SESSION['timeOTP'] = 60;
 
                     $name = "PaaFun";
                     $emailName = "PaaFun@gmail.com";
                     $subject = "มีการสมัครสมาชิกใหม่เว็บ PaaFun";
-                    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ <br> http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email .
-                        "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong>
-                    <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมิน Email นี้</strong>";
+                    $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
+
 
                     require_once "../assets/lib/PHPMailer/PHPMailer.php";
                     require_once "../assets/lib/PHPMailer/SMTP.php";
@@ -162,13 +162,12 @@ if (isset($_POST['submit'])) {
 
                     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
                     $_SESSION['numberOTP'] = $number;
+                    $_SESSION['timeOTP'] = 60;
 
                     $name = "PaaFun";
                     $emailName = "PaaFun@gmail.com";
                     $subject = "มีการสมัครสมาชิกใหม่เว็บ PaaFun";
-                    $body = "กรุณาเข้าไปยืนยันตัวตนเพื่อยืนยันการสมัครสมาชิกได้ที่ลิงค์ <br> http://localhost:9000/Verify/Page_VerifyOTP.php?email=" . $email .
-                        "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong>
-                    <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมิน Email นี้</strong>";
+                    $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
                     require_once "../assets/lib/PHPMailer/PHPMailer.php";
                     require_once "../assets/lib/PHPMailer/SMTP.php";

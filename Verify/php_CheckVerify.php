@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
         echo $row_error['email'];
         $_SESSION['id_user'] == NULL;
         $_SESSION['Failed'] = "รหัส OTP ไม่ถูกต้อง";
-        header("location: ./Page_Verify.php?email=".$row_error['email']);
+        header("location: ./Page_VerifyOTP.php?email=".$row_error['email']);
     }
 }
 

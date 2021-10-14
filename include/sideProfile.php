@@ -18,7 +18,7 @@
     <a href="../Favor/Page_Favor.php">
         <li class="list-group-item <?php echo $name == 'Favor' ? 'active' : 'text-blue ' ?> " aria-current="true"><i class="fas fa-heart"></i> สถานที่ท่องเที่ยวที่ชื่นชอบ</li>
     </a>
-    <a href="">
-        <li class="list-group-item text-blue"><i class="fas fa-map-marked-alt"></i> แนะนำสถานที่ท่องเที่ยว</li>
+    <a href="../Recommend/page1.php">
+        <li class="list-group-item <?php echo $name == 'Recommend' ? 'active' : 'text-blue ' ?> "><i class="fas fa-map-marked-alt"></i> แนะนำสถานที่ท่องเที่ยว</li>
     </a>
 </ul>

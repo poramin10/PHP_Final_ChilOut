@@ -28,7 +28,12 @@ if (!isset($_SESSION['id_user'])) {
 
     <section class="profile-page">
         <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
-        <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+        <?php if (isset($_SESSION['access_token'])) { ?>
+            <img src="<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+        <?php } else { ?>
+            <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+        <?php } ?>
+
     </section>
 
     <section class="name-profile text-center">
@@ -154,13 +159,20 @@ if (!isset($_SESSION['id_user'])) {
                                         <div class="col-md-12">
                                             <div class="text-center">
                                                 <h4><strong>ภาพโปรไฟล์</strong></h4>
-                                                <div class="figure mx-auto">
-                                                    <img id="imgUpload" class="figure-img img-fluid rounded" src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" width="300px" height="300px" alt="">
-                                                </div>
-                                                <br>
-                                                <div class="file">
-                                                    <input type="file" id="fileUpload" name="fileUpload" class="form-control" onchange="readURL(this)">
-                                                </div>
+                                                <?php if (isset($_SESSION['access_token'])) { ?>
+                                                    <div class="figure mx-auto">
+                                                        <img id="imgUpload" class="figure-img img-fluid rounded" src="<?php echo $_SESSION['profile'] ?>" width="300px" height="300px" alt="">
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="figure mx-auto">
+                                                        <img id="imgUpload" class="figure-img img-fluid rounded" src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" width="300px" height="300px" alt="">
+                                                    </div>
+                                                    <br>
+                                                    <div class="file">
+                                                        <input type="file" id="fileUpload" name="fileUpload" class="form-control" onchange="readURL(this)">
+                                                    </div>
+                                                <?php } ?>
+
                                             </div>
                                         </div>
 

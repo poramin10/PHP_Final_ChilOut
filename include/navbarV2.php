@@ -5,7 +5,7 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-        <img src="../assets/img/LOGOv2.png" width="100px"  alt="">
+            <img src="../assets/img/LOGOv2.png" width="100px" alt="">
         </div>
         <div class="menu">
             <ul>
@@ -15,12 +15,15 @@
                 <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
 
-
-                    <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
+                    <?php if(isset($_SESSION['access_token'])){ ?>
+                        <img src="<?php echo $_SESSION['profile'] ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
+                    <?php }else{ ?>
+                        <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
+                    <?php } ?>
 
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="../Profile/Page_Profile.php">ข้อมูลโปรไฟล์</a>
-                        <a class="dropdown-item" href="#">ระบบแนะนำสถานที่ท่องเที่ยว</a>
+                        <a class="dropdown-item" href="../Recommend/page1.php">ระบบแนะนำสถานที่ท่องเที่ยว</a>
                         <a class="dropdown-item" href="../Login/php_logout.php">ออกจากระบบ</a>
                     </div>
 
@@ -39,7 +42,7 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <img src="../assets/img/LOGOv2.png" width="100px"  alt="">
+            <img src="../assets/img/LOGOv2.png" width="100px" alt="">
         </div>
         <div class="menu">
             <ul>

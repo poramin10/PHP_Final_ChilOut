@@ -1,5 +1,10 @@
 <?php
 session_start();
+require './fb-init.php';
+
+if (isset($_SESSION['access_token'])) {
+    header('Location: ../HomePage/index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +73,13 @@ session_start();
                         <button type="submit" name="submit" id="btn-submit" class="btn btn-blue btn-block" disabled> เข้าสู่ระบบ</button>
                     </div>
 
-                    <div class="col-12 mb-5 text-center">
+                    <div class="col-12 mb-2 text-center">
                         <a href="../Repassword/Page_SendEmail.php">ลืมรหัสผ่าน?</a>
                     </div>
 
+                    <div class="btn-facebook">
+                        <a href="<?php echo $login_url ?>" class="btn btn-outline-primary btn-block"><span class="float-left"><i class="fab fa-facebook-f"></i></span> Facebook</a>
+                    </div>
                 </div>
 
         </form>
@@ -120,10 +128,6 @@ session_start();
         $('#btn-submit').removeAttr('disabled')
     }
 </script>
-
-
-
-
 
 
 

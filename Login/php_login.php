@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
                 $_SESSION['gender'] = $row_check['gender'];
                 $_SESSION['email'] = $row_check['email'];
                 $_SESSION['birthdate'] = $row_check['birthdate'];
-                $_SESSION['phone'] = $row_check['phone'];
+                $_SESSION['phone'] = $row_check['phone']; 
                 $_SESSION['profile'] = $row_check['profile'];
                 $_SESSION['username'] = $row_check['username'];
                 $_SESSION['status'] = $row_check['status'];

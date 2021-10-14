@@ -23,6 +23,8 @@ $number = 0;
 
 <body>
 
+
+
     <!-- Navbar -->
     <?php include_once('../include/navbarV2.php') ?>
 
@@ -35,16 +37,16 @@ $number = 0;
                 <img src="../assets/img/BANNER.png" width="100%" height="100%" alt="">
 
                 <!-- <div class="cloud-fixed">
-                    <img class="cloud" src="../assets/img/cloud.png" alt="">
-                </div>
+                <img class="cloud" src="../assets/img/cloud.png" alt="">
+            </div>
 
-                <div class="build-fixed">
-                    <img class="build" src="../assets/img/build.png" alt="">
-                </div>
+            <div class="build-fixed">
+                <img class="build" src="../assets/img/build.png" alt="">
+            </div>
 
-                <div class="road-fixed">
-                    <img class="road" src="../assets/img/road.png" alt="">
-                </div> -->
+            <div class="road-fixed">
+                <img class="road" src="../assets/img/road.png" alt="">
+            </div> -->
 
                 <div class="train-fixed">
                     <img class="train" src="../assets/img/train.png" alt="">
@@ -76,7 +78,6 @@ $number = 0;
     </div>
 
     <div class="container">
-
         <!-- หัวข้อ Card -->
         <div class="row">
             <div class="col-md-12 mt-4">
@@ -123,9 +124,6 @@ $number = 0;
             <?php } ?>
         </div>
 
-
-
-
     </div>
 
     <!-- Footer -->
@@ -137,8 +135,6 @@ $number = 0;
 
     <!-- Sweet Alert -->
     <?php include_once('../include/sweetAlert.php') ?>
-
-
 
 
 </body>

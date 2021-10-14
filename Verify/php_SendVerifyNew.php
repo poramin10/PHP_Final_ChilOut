@@ -9,6 +9,7 @@ if (isset($_GET['email'])) {
 
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
+    $_SESSION['timeOTP'] = 60;
 
     $name = "System";
     $emailName = "system@gmail.com";
@@ -41,7 +42,6 @@ if (isset($_GET['email'])) {
     if ($mail->send()) {
         $status = "success";
         $response = "Email is sent!";
-        $_SESSION['Success'] = "สมัครสมาชิกสำเร็จ";
         header('location: ./Page_VerifyOTP.php?email=' . $email . ' ');
     } else {
         $status = "failed";

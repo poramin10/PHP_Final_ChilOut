@@ -103,7 +103,15 @@ if (!isset($_SESSION['id_user'])) {
                             </div>
 
                             <?php
-                            page_navi($total, (isset($_GET['page'])) ? $_GET['page'] : 1, $e_page);
+                           
+                            if ($result->num_rows != 0) {
+                                page_navi($total, (isset($_GET['page'])) ? $_GET['page'] : 1, $e_page);
+                            }else{
+                            ?>
+                                <div class="text-center mt-2"><img src="../assets/img/404.png" width="30%" alt=""></div>
+                                <h3 class="text-center mt-2">คุณยังไม่มีสถานที่ท่องเที่ยวที่ชื่นชอบ! </h3>
+                            <?php
+                            }
                             ?>
 
                         </div>
