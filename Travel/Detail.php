@@ -110,10 +110,10 @@ if (!isset($_SESSION['time_count' . $row['place_id']])) {
                                         <div style="margin-left: 2.5rem!important;">
                                             <?php
                                             echo $row['address'] . ' ' .
-                                                $row['sub_district'] . ' ' .
-                                                $row['district'] . ' ' .
-                                                $row['province'] . ' ' .
-                                                $row['postcode']
+                                                '<b>ตำบล </b>'.$row['sub_district'] . ' ' .
+                                                '<b>อำเภอ </b>'.$row['district'] . ' ' .
+                                                '<b>จังหวัด </b>'.$row['province'] . ' ' .
+                                                '<b>รหัสไปรษณีย์ </b>'.$row['postcode']
                                             ?> <br>
                                             <?php
                                             echo str_replace('"', "", $row['Introduction']);

@@ -28,9 +28,13 @@ if (!isset($_SESSION['id_user'])) {
 
     <section class="profile-page">
         <img src="../assets/img/img-Profile.jpg" class="img-fulid cover" width="100%" height="500px" alt="">
-        <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+        <?php if (isset($_SESSION['access_token'])) { ?>
+            <img src="<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+        <?php } else { ?>
+            <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
+        <?php } ?>
     </section>
-
+    
     <section class="name-profile text-center">
         <h1 class="font-weight-bold text-blue text-name-profile"><strong><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] ?></strong></h1>
     </section>

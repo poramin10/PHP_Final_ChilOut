@@ -143,7 +143,7 @@ session_start();
                         </div>
                     </div>
 
-                    <label for="">อาชีพ (Profession)</label>
+                    <!-- <label for="">อาชีพ (Profession)</label>
                     <select class="form-select form-control" name="profession" aria-label="Default select example">
                         <option value="ไม่ได้ระบุอาชีพ" selected>เลือกอาชีพ</option>
                         <option value="นักเรียน/นักศึกษา">นักเรียน/นักศึกษา</option>
@@ -164,7 +164,7 @@ session_start();
                         <option value="15,001 - 20,000 บาท">15,001 - 20,000 บาท</option>
                         <option value="20,001 - 25,000 บาท">20,001 - 25,000 บาท</option>
                         <option value="มากกว่า 25,000 บาทขึ้นไป">มากกว่า 25,000 บาทขึ้นไป</option>
-                    </select>
+                    </select> -->
 
                     <div class="row pt-2">
                         <div class="col-12 text-right">

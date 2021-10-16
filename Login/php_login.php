@@ -37,8 +37,6 @@ if (isset($_POST['submit'])) {
                 $_SESSION['profile'] = $row_check['profile'];
                 $_SESSION['username'] = $row_check['username'];
                 $_SESSION['status'] = $row_check['status'];
-                $_SESSION['profession'] = $row_check['profession'];
-                $_SESSION['salary'] = $row_check['salary'];
 
                 $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
                 // print_r($row_check);

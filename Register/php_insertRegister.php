@@ -22,8 +22,6 @@ if (isset($_POST['submit'])) {
         $birthdate = $_POST['birthdate'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
-        $profession = $_POST['profession'];
-        $salary = $_POST['salary'];
 
         //if Check ว่ามี Username นี้เปล่า 
         $sql_checkUsername = "SELECT * FROM `user` WHERE `username` = '" . $_POST['username'] . "' and `status` = 1 ";
@@ -49,8 +47,6 @@ if (isset($_POST['submit'])) {
                         `username`, 
                         `password`, 
                         `status`, 
-                        `profession`, 
-                        `salary`,
                         `create_at`, 
                         `update_at`) 
                      VALUES (NULL, 
@@ -64,8 +60,6 @@ if (isset($_POST['submit'])) {
                      '" . $username . "', 
                      '" . $hashed_password . "', 
                      '0', 
-                     '" . $profession . "', 
-                     '" . $salary . "',
                      '" . date("Y-m-d H:i:s") . "',
                      '" . date("Y-m-d H:i:s") . "'
                      );";
@@ -138,8 +132,6 @@ if (isset($_POST['submit'])) {
                         `username`, 
                         `password`, 
                         `status`, 
-                        `profession`, 
-                        `salary`,
                         `create_at`, 
                         `update_at`) 
                          
@@ -154,8 +146,6 @@ if (isset($_POST['submit'])) {
                      '" . $username . "', 
                      '" . $hashed_password . "', 
                      '0', 
-                     '" . $profession . "', 
-                     '" . $salary . "',
                      '" . date("Y-m-d H:i:s") . "',
                      '" . date("Y-m-d H:i:s") . "'
                      );";

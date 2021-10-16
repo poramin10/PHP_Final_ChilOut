@@ -33,7 +33,6 @@ if (!isset($_SESSION['id_user'])) {
         <?php } else { ?>
             <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" class="img-fulid avatar" alt="">
         <?php } ?>
-
     </section>
 
     <section class="name-profile text-center">
@@ -125,37 +124,6 @@ if (!isset($_SESSION['id_user'])) {
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"><strong>อาชีพ</strong></label>
-                                                <select id="inputState" name="profession" class="form-control">
-                                                    <option <?php echo $_SESSION['profession'] == 'ไม่ได้ระบุอาชีพ' ? 'selected' : '' ?> value="ไม่ได้ระบุอาชีพ">เลือกอาชีพ</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'นักเรียน/นักศึกษา' ? 'selected' : '' ?> value="นักเรียน/นักศึกษา">นักเรียน/นักศึกษา</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'พนักงานบริษัท' ? 'selected' : '' ?> value="พนักงานบริษัท">พนักงานบริษัท</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'ข้าราชการ' ? 'selected' : '' ?> value="ข้าราชการ">ข้าราชการ</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'รับจ้าง' ? 'selected' : '' ?> value="รับจ้าง">รับจ้าง</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'เกษตรกร' ? 'selected' : '' ?> value="เกษตรกร">เกษตรกร</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'ค้าขาย/ธุรกิจส่วนตัว' ? 'selected' : '' ?> value="ค้าขาย/ธุรกิจส่วนตัว">ค้าขาย/ธุรกิจส่วนตัว</option>
-                                                    <option <?php echo $_SESSION['profession'] == 'อื่นๆ' ? 'selected' : '' ?> value="อื่นๆ">อื่นๆ</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1"><strong>รายได้</strong></label>
-                                                <select id="inputState" name="salary" class="form-control">
-                                                    <option <?php echo $_SESSION['salary'] == 'ไม่มี' ? 'selected' : '' ?> value="ไม่มี">ไม่มี</option>
-                                                    <option <?php echo $_SESSION['salary'] == 'ต่ำกว่า 5,000 บาท' ? 'selected' : '' ?> value="ต่ำกว่า 5,000 บาท">ต่ำกว่า 5,000 บาท</option>
-                                                    <option <?php echo $_SESSION['salary'] == '5,001 - 10,000 บาท' ? 'selected' : '' ?> value="5,001 - 10,000 บาท">5,001 - 10,000 บาท</option>
-                                                    <option <?php echo $_SESSION['salary'] == '10,001 - 15,000 บาท' ? 'selected' : '' ?> value="10,001 - 15,000 บาท">10,001 - 15,000 บาท</option>
-                                                    <option <?php echo $_SESSION['salary'] == '15,001 - 20,000 บาท' ? 'selected' : '' ?> value="15,001 - 20,000 บาท">15,001 - 20,000 บาท</option>
-                                                    <option <?php echo $_SESSION['salary'] == '20,001 - 25,000 บาท' ? 'selected' : '' ?> value="20,001 - 25,000 บาท">20,001 - 25,000 บาท</option>
-                                                    <option <?php echo $_SESSION['salary'] == 'มากกว่า 25,000 บาทขึ้นไป' ? 'selected' : '' ?> value="มากกว่า 25,000 บาทขึ้นไป">มากกว่า 25,000 บาทขึ้นไป</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
                                         <div class="col-md-12">
                                             <div class="text-center">
                                                 <h4><strong>ภาพโปรไฟล์</strong></h4>
@@ -177,7 +145,11 @@ if (!isset($_SESSION['id_user'])) {
                                         </div>
 
                                         <div class="col-md-12 mt-4">
-                                            <button type="submit" name="submit" class="btn btn-success btn-block">แก้ไขข้อมูล</button>
+                                            <?php if (isset($_SESSION['access_token'])) { ?>
+                                                <button type="submit" name="submitFB" class="btn btn-success btn-block">แก้ไขข้อมูล</button>
+                                            <?php } else { ?>
+                                                <button type="submit" name="submit" class="btn btn-success btn-block">แก้ไขข้อมูล</button>
+                                            <?php } ?>
                                         </div>
 
 
