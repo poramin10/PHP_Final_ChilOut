@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
                 `lastname` = '" . $lastname . "', 
                 `gender` = '" . $gender . "', 
                 `phone` = '" . $phone . "', 
+                `profile` = '" . $newName . "', 
                 `birthdate` = '" . $birthdate . "' 
             WHERE `user`.`id_user` = '" . $id_user . "' ";
 
@@ -47,6 +48,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['gender'] = $gender;
         $_SESSION['birthdate'] = $birthdate;
         $_SESSION['phone'] = $phone;
+
         $_SESSION['Success'] = "แก้ไขข้อมูลสำเร็จ";
         header('location: ./Page_Profile.php');
     }
