@@ -30,9 +30,12 @@ if ($result->num_rows == 1) {
 
     //SMTP Settings
     $mail->isSMTP();
+    // $mail->SMTPDebug = 1;
+    $mail->Mailer = "smtp";
     $mail->CharSet = "utf-8";
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
+    // $mail->SMTPAutoTLS = false;
     $mail->Username = "travelinthailand90@gmail.com"; //enter you email address
     $mail->Password = 'rootroot'; //enter you email password
     $mail->Port = 465;

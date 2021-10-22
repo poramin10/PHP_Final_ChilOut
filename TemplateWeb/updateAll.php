@@ -1,7 +1,7 @@
 <?php
 require_once('../authen_frontend.php');
 $_SESSION['check'] = 'ไม่สำเร็จ';
-$number = 0;
+$number = 0; 
 
 $sql_id = "SELECT * FROM `place`";
 $result_id = $conn->query($sql_id);

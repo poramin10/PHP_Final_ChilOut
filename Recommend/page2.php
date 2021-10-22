@@ -7,7 +7,7 @@ if (!isset($_SESSION['id_user'])) {
 if (!isset($_SESSION['page1'])) {
     header('location: ./page1.php');
 }
-
+ 
 // Check ว่า Page 2 ที่ทำไปแล้วคืออันไหนบ้าง
 if (isset($_SESSION['objective_recom'])) {
     $checkObjective = explode(',', $_SESSION['objective_recom']);
@@ -203,7 +203,7 @@ $arrFriend = [
                         <div class="choice mt-3">
                             <label for="career"> 7. ความต้องการในการมาท่องเที่ยวของท่าน </label>
                             <div class="row">
-
+ 
                                 <table class="table table-bordered">
                                     <thead class="text-center">
                                         <tr class="title-table-head bg-blue text-light">

@@ -2,7 +2,37 @@
 if (!isset($_SESSION['id_user'])) {
     header('location: ../Login/Page_FormLogin.php');
 }
+
+// หัวข้อ: ความต้องการในการมาท่องเที่ยวของท่าน
+$arrDecideTravel = [
+    "สถานที่ท่องเที่ยวที่มีความปลอดภัย",
+    "สถานที่ท่องเที่ยวที่มีบรรยากาศดี",
+    "เป็นเอกลักษณ์",
+    "มีความสวยงามเป็นธรรมชาติ",
+    "ความงดงามของสถานที่ท่องเที่ยว",
+    "ความหลากหลายของแหล่งท่องเที่ยว",
+    "มีสถานที่ควรค่าแก่การสักการะ",
+    "มีความสมบูรณ์ทางโบราณวัตถุ",
+    "มีความทันสมัยทางด้านเทคโนโลยี",
+    "มีหลากหลายเส้นทางการเข้าถึง",
+    "สภาพถนนไม่ขรุขระ",
+    "มีแหล่งศึกษาวัฒนธรรม",
+    "ได้เปิดโลกกว้าง",
+    "ได้ความรู้ในการท่องเที่ยว",
+    "มีสินค้าท้องถิ่นจัดจำหน่าย",
+
+];
+$arrDecideChoice = [
+    '5',
+    '4',
+    '3',
+    '2',
+    '1'
+];
+
 ?>
+
+
 
 
 <!DOCTYPE html>
@@ -12,7 +42,7 @@ if (!isset($_SESSION['id_user'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Recommend</title>
     <!-- CSS -->
     <?php include_once('../include/inc_css_front.php') ?>
 
@@ -71,173 +101,63 @@ if (!isset($_SESSION['id_user'])) {
                 <div class="row">
 
                     <div class="col-lg-12">
-
-                        <h3><strong>ข้อมูลการท่องเที่ยว</strong></h3>
-
-                        <div class="choice-3">
-                            <label for="career">3. วัตถุประสงค์หลักในการเดินทางมาท่องเที่ยว (ตอบได้มากกว่า 1 ข้อ)</label>
+                        <h3><strong>ปัจจัยที่มีผลต่อการตัดสินใจของท่าน</strong></h3>
+                        <div class="choice mt-3">
+                            <label for="career"> 11. ปัจจัยที่มีผลต่อการตัดสินใจ </label>
                             <div class="row">
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            1) ท่องเที่ยว/พักผ่อน
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            2) เยี่ยมญาติ/เพื่อน
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            3) ประชุม/สัมมนา
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            4) สักการะสิ่งศักดิ์สิทธิ์
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            5) ปฏิบัติงาน/ติดต่อธุรกิจ
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            6) เป็นทางผ่านในการเดินทาง
-                                        </label>
-                                    </div>
-                                </div>
+
+                                <table class="table table-bordered">
+                                    <thead class="text-center">
+                                        <tr class="title-table-head bg-blue text-light">
+                                            <th rowspan="2">ลำดับ</th>
+                                            <th rowspan="2">หัวข้อ</th>
+                                            <th colspan="5">คะแนนการเห็นด้วย</th>
+                                        </tr>
+                                        <tr class="bg-blue text-light">
+                                            <th>5</th>
+                                            <th>4</th>
+                                            <th>3</th>
+                                            <th>2</th>
+                                            <th>1</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+                                        $num = 0;
+                                        for ($i = 0; $i < count($arrDecideTravel); $i++) {
+                                            $num++;
+                                        ?>
+                                            <tr>
+                                                <th class="text-center" scope="row"><?php echo $num ?></th>
+                                                <td><?php echo $arrDecideTravel[$i] ?></td>
+                                                <?php for ($y = 0; $y < count($arrDecideChoice); $y++) { ?>
+                                                    <td class="text-center">
+                                                        <input <?php echo isset($_SESSION['decide_travel-'.$i]) && $_SESSION['decide_travel-'.$i] == $arrDecideChoice[$y] ? 'checked' : '' ?> class="form-check-input mr-3" name="decide_travel-<?php echo $i ?>" type="radio" value="<?php echo $arrDecideChoice[$y] ?>" id="decide_travel-<?php echo $y ?>">
+                                                        <?php //echo $_SESSION['need_travel-'.$i].' == '.$arrDecideChoice[$y] 
+                                                        ?>
+                                                    </td>
+                                                <?php } ?>
+                                            </tr>
+                                        <?php } ?>
+
+                                    </tbody>
+                                </table>
+
                             </div>
 
-                        </div>
+                            <!-- กรณีไม่พบการกรอกข้อมูล -->
+                            <?php if (isset($_SESSION['validate_decide'])) { ?>
+                                <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                                    <strong>คุณยังไม่กรอกข้อมูล</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
 
-                        <div class="choice-4 mt-3">
-                            <label for="career"> 4.การเดินทางมาเที่ยวในครั้งนี้ท่านเดินทางมาอย่างไร</label>
-                            <div class="row">
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="radio" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        1) รถส่วนตัว
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="radio" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        2) รถโดยสารประจำทาง
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="radio" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        3) รถรับจ้าง/เหมา
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="radio" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        4) กรุ๊ปทัวร์
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="radio" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        5) อื่นๆ
-                                        </label>
-                                    </div>
-                                </div>
-                               
-                            </div>
 
-                        </div>
-
-                        <div class="choice-5 mt-3">
-                            <label for="career"> 5.ท่านรับรู้ข้อมูลข่าวสารจากแหล่งใดที่ทำให้ท่านสนใจเดินทางมาเที่ยวจังหวัดอุบลฯ(ตอบได้มากกว่า 1 ข้อ)</label>
-                            <div class="row">
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        1) การบอกเล่าปากต่อปากจากคนรู้จัก
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        2) หนังสือนำเที่ยว
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        3) หนังสือพิมพ์/นิตยสาร
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        4) วิทยุ/โทรทัศน์
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        5) อินเทอร์เน็ต,เว็บไซต์
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        6) แอพพลิเคชั่นแนะนำสถานที่ท่องเที่ยว
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 mt-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input mr-3" type="checkbox" value="" id="defaultCheck1">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                        7) อื่นๆ
-                                        </label>
-                                    </div>
-                                </div>
-                               
-                            </div>
+                            <hr>
 
                         </div>
 
@@ -245,6 +165,7 @@ if (!isset($_SESSION['id_user'])) {
                         <button type="submit" name="submitChoice4" class="btn btn-blue mt-3 float-right px-5">ประมวลผลแบบสอบถาม</button>
 
                     </div>
+
                 </div>
             </div>
         </form>
