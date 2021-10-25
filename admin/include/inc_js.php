@@ -32,3 +32,5 @@
 <script src="../dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard.js"></script>
+<!-- ScriptSweetAlert -->
+<script src="../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>

@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $result_check = $conn->query($sql_check);
     $row_check = $result_check->fetch_assoc();
 
-    if ($result_check) {
+    if ($result_check) { 
         if (!empty($row_check && password_verify($password, $row_check['password']))) {
             $passwordNew = $_POST['passwordNew'];
             $confirm_passwordNew = $_POST['confirm_passwordNew'];

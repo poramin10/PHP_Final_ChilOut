@@ -1,3 +1,9 @@
+<?php 
+  include_once('../authen_backend.php');
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,6 +52,11 @@
 
 
     <?php include_once('../include/inc_js.php') ?>
+
+    <!-- ScriptSweetAlert -->
+    <script src="../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <!-- Sweet Alert -->
+    <?php include_once('../include/sweetAlert.php') ?>
 
   </div>
 

@@ -215,7 +215,7 @@ include_once('./include/connectDB.php');
         </footer>
 
 
-        <?php include_once('./include/inc_js.php') ?>
+        <?php include_once('./include/inc_js.php') ?> 
 
         <!-- DataTables  & Plugins -->
         <script src="plugins/datatables/jquery.dataTables.min.js"></script>
