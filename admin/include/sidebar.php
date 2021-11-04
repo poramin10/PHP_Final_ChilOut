@@ -72,7 +72,7 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                 </li>
 
                 <li class="nav-item">
-                    <a href="place.php" class="nav-link <?php echo $name == 'place.php' ? 'active' : '' ?>">
+                    <a href="../DataPlace/index.php" class="nav-link <?php echo $name == 'DataPlace' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-globe"></i>
                         <p>
                             ข้อมูลสถานที่ท่องเที่ยวทั้งหมด

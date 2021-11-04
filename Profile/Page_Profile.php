@@ -83,14 +83,10 @@ if (!isset($_SESSION['id_user'])) {
                                             </div>
                                         </div>
 
-
-
                                         <div class="col-md-4">
-
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><strong>เพศ</strong></label>
                                                 <select id="inputState" name="gender" class="form-control">
-
                                                     <option <?php echo $_SESSION['gender'] == 'ไม่ระบุ' ? 'selected' : '' ?> value="ไม่ระบุ">ไม่ระบุ</option>
                                                     <option <?php echo $_SESSION['gender'] == 'ชาย' ? 'selected' : '' ?> value="ชาย">ชาย</option>
                                                     <option <?php echo $_SESSION['gender'] == 'หญิง' ? 'selected' : '' ?> value="หญิง">หญิง</option>
@@ -137,7 +133,7 @@ if (!isset($_SESSION['id_user'])) {
                                                     </div>
                                                     <br>
                                                     <div class="file">
-                                                        <input type="file" id="fileUpload" name="fileUpload" class="form-control" onchange="readURL(this)">
+                                                        <input type="file" id="fileUpload" name="fileUpload" class="form-control" onchange="readURL(this)" multiple>
                                                     </div>
                                                 <?php } ?>
 
@@ -240,6 +236,7 @@ if (!isset($_SESSION['id_user'])) {
             reader.readAsDataURL(input.files[0]);
         }
     </script>
+
     <style>
         #fileUpload {
             height: initial !important;

@@ -1,6 +1,5 @@
 <?php
-
-include_once('../include/connectDB.php');
+include_once('../authen_backend.php');
 
 // Member Status 1
 $sql = "SELECT * FROM `user` WHERE status = 1";
@@ -10,6 +9,10 @@ $result = $conn->query($sql);
 $sql_notMember = "SELECT count(*) FROM `user` WHERE status = 0";
 $result_notMember = $conn->query($sql_notMember);
 $row_notMember = $result_notMember->fetch_assoc();
+
+$sql_Member = "SELECT count(*) FROM `user` WHERE status = 1";
+$result_Member = $conn->query($sql_Member);
+$row_Member = $result_Member->fetch_assoc();
 
 ?>
 
@@ -64,25 +67,22 @@ $row_notMember = $result_notMember->fetch_assoc();
 
           <div class="row">
             <div class="col-lg-2">
-            <form action="php_deleteData.php" method="POST">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">ข้อมูลขยะ</h3>
-                </div>
-                <div class="card-body" style="text-align: center;">
-                  <input type="text" class="knob" data-readonly="true" value="<?php echo $row_notMember['count(*)'] ?>" data-width="80" data-height="80" data-fgColor="#39CCCC">
-                </div>
 
-                
+              <form action="php_deleteData.php" method="POST">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="card-title">ข้อมูลขยะ</h3>
+                  </div>
+                  <div class="card-body" style="text-align: center;">
+                    <input type="text" class="knob" data-readonly="true" value="<?php echo $row_notMember['count(*)'] ?>" data-width="80" data-height="80" data-fgColor="#39CCCC">
+                  </div>
                   <button type="submit" name="deleteData" class="btn btn-primary">ล้างข้อมูลขยะ</button>
-                
-
-              </div>
+                </div>
               </form>
+
             </div>
+
           </div>
-
-
 
           <div iv class="card">
             <div class="card-header">
@@ -145,6 +145,12 @@ $row_notMember = $result_notMember->fetch_assoc();
 
     <?php include_once('../include/inc_js.php') ?>
 
+    <!-- ScriptSweetAlert -->
+    <script src="../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <!-- Sweet Alert -->
+    <?php include_once('../include/sweetAlert.php') ?>
+
+
     <!-- DataTables  & Plugins -->
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -165,7 +171,24 @@ $row_notMember = $result_notMember->fetch_assoc();
           "responsive": true,
           "lengthChange": false,
           "autoWidth": false,
-          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+          "language": {
+            "sProcessing": "รอดำเนินการ...",
+            "sLengthMenu": "แสดง_MENU_ แถว",
+            "sZeroRecords": "ไม่พบข้อมูล",
+            "sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ แถว",
+            "sInfoEmpty": "แสดง 0 ถึง 0 จาก 0 แถว",
+            "sInfoFiltered": "(กรองข้อมูล _MAX_ ทุกแถว)",
+            "sInfoPostFix": "",
+            "sSearch": "ค้นหา:",
+            "sUrl": "",
+            "oPaginate": {
+              "sFirst": "เิริ่มต้น",
+              "sPrevious": "ก่อนหน้า",
+              "sNext": "ถัดไป",
+              "sLast": "สุดท้าย"
+            }
+          }
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
           "paging": true,
@@ -175,7 +198,9 @@ $row_notMember = $result_notMember->fetch_assoc();
           "info": true,
           "autoWidth": false,
           "responsive": true,
+
         });
+
       });
     </script>
 

@@ -1,70 +1,70 @@
 <?php
-// require_once('../authen_frontend.php');
-// $_SESSION['Check'] = 'ไม่สำเร็จ';
+require_once('../authen_frontend.php');
+$_SESSION['Check'] = 'ไม่สำเร็จ';
 
-// // header('Content-Type: application/json');
-// $number = 0;
+// header('Content-Type: application/json');
+$number = 0;
 
-// $sql = "SELECT * FROM `provinces`";
-// $result = $conn->query($sql);
+$sql = "SELECT * FROM `provinces`";
+$result = $conn->query($sql);
 
-// while ($row = $result->fetch_assoc()) {
-//     for ($page = 0; $page <= 60; $page++) {
-//         $curl = curl_init();
-//         curl_setopt_array($curl, array(
-//             CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?&provinceName='.$row['name_th'].'&radius=20&numberOfResult=100&pagenumber=' . $page,
-//             CURLOPT_RETURNTRANSFER => true,
-//             CURLOPT_ENCODING => '',
-//             CURLOPT_MAXREDIRS => 10,
-//             CURLOPT_TIMEOUT => 0,
-//             CURLOPT_FOLLOWLOCATION => true,
-//             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-//             CURLOPT_CUSTOMREQUEST => 'GET',
-//             CURLOPT_HTTPHEADER => array(
-//                 'Content-Type: application/json',
-//                 'Authorization: Bearer GiYml8OQO42CUxN0VCRr23w3lLqzxpHFmc6OBgb(lEvJF(hu)xdP1d2bI7nqDxOOIDTbvLKAUqk)L04ptZemKA0=====2',
-//                 'Accept-Language: th'
-//             ),
-//         ));
+while ($row = $result->fetch_assoc()) {
+    for ($page = 0; $page <= 60; $page++) {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/places/search?&provinceName='.$row['name_th'].'&radius=20&numberOfResult=100&pagenumber=' . $page,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'Authorization: Bearer GiYml8OQO42CUxN0VCRr23w3lLqzxpHFmc6OBgb(lEvJF(hu)xdP1d2bI7nqDxOOIDTbvLKAUqk)L04ptZemKA0=====2',
+                'Accept-Language: th'
+            ),
+        ));
 
-//         $response = curl_exec($curl);
+        $response = curl_exec($curl);
 
-//         curl_close($curl);
-//         $dataTravel = json_decode($response);
+        curl_close($curl);
+        $dataTravel = json_decode($response);
 
-//         if (!isset($dataTravel->result)) {
-//         } else {
-//             for ($i = 0; $i < count($dataTravel->result); $i++) {
-//                 if ($dataTravel->result[$i]->category_code == 'ATTRACTION' && $dataTravel->result[$i]->thumbnail_url != "") {
+        if (!isset($dataTravel->result)) {
+        } else {
+            for ($i = 0; $i < count($dataTravel->result); $i++) {
+                if ($dataTravel->result[$i]->category_code == 'ATTRACTION' && $dataTravel->result[$i]->thumbnail_url != "") {
 
-//                     echo $number.'<br>';
-//                     echo "ชื่อสถานที่: ".json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
-//                     echo "จังหวัดสถานที่: ".json_encode($dataTravel->result[$i]->location->province, JSON_UNESCAPED_UNICODE) . '<br>';
-//                     echo "ที่ตั้ง: ".json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
-//                     echo '<hr>';
+                    echo $number.'<br>';
+                    echo "ชื่อสถานที่: ".json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
+                    echo "จังหวัดสถานที่: ".json_encode($dataTravel->result[$i]->location->province, JSON_UNESCAPED_UNICODE) . '<br>';
+                    echo "ที่ตั้ง: ".json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
+                    echo '<hr>';
 
-//                     $place_id = str_replace('"', "", json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
+                    $place_id = str_replace('"', "", json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
 
-//                     $sql_insert = "INSERT INTO `place` (
-//                     `id_travel`, 
-//                     `place_id`
-//                         ) VALUES (NULL, 
-//                     '" . $place_id . "'
-//                     );";
-//                     $result_insert = $conn->query($sql_insert);
+                    $sql_insert = "INSERT INTO `place` (
+                    `id_travel`, 
+                    `place_id`
+                        ) VALUES (NULL, 
+                    '" . $place_id . "'
+                    );";
+                    $result_insert = $conn->query($sql_insert);
 
-//                     if($result_insert){
-//                         $_SESSION['Check'] = 'สำเร็จ';
-//                     }
+                    if($result_insert){
+                        $_SESSION['Check'] = 'สำเร็จ';
+                    }
 
-//                     $number++;
-//                 }
-//             }
-//         }
-//     }
-// }
+                    $number++;
+                }
+            }
+        }
+    }
+}
 
-// echo $_SESSION['Check']
+echo $_SESSION['Check']
 
 
 

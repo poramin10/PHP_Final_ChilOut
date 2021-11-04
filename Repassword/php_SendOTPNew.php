@@ -10,7 +10,9 @@ if (isset($_GET['email'])) {
     // RANDOM OTP
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
-    $_SESSION['timeOTP'] = 60;
+    
+    $timestamp = strtotime(date('H:i:s')) + 60;
+    $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
    
     
     $name = "System";

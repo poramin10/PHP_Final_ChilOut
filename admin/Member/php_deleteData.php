@@ -1,5 +1,5 @@
 <?php
-include_once('../include/connectDB.php');
+  include_once('../authen_backend.php');
 
 if (isset($_POST['deleteData'])) {
     $sql = "DELETE FROM `user` WHERE `user`.`status` = 0";

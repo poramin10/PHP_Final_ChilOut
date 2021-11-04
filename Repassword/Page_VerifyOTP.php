@@ -1,10 +1,10 @@
 <?php
 session_start();
+
 include_once('../database/connectDB.php');
 $sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $_GET['email'] . "' AND `status` LIKE '1'   ORDER BY `id_user` DESC";
 $resule = $conn->query($sql);
 
-echo "<br>";
 if ($resule->num_rows >= 1) {
     // echo "Email นี้ผ่านการยืนยันตัวตนแล้ว";
 } else {
@@ -33,7 +33,7 @@ if ($resule->num_rows >= 1) {
 
 </head>
 
-<body>
+<body onload="StartClock24()">
     <div class="container">
 
         <form action="./php_CheckVerify.php" method="POST">
@@ -45,7 +45,7 @@ if ($resule->num_rows >= 1) {
                     <a href="./Page_SendEmail.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
 
-                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2"> 
+                <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2">
 
                     <div class="mt-4 text-center">
                         <img id="imgUpload" class="figure-img img-fluid rounded img-profile-cycle-verify" src="../assets/img/OTP.png" width="150px" alt="">
@@ -64,7 +64,7 @@ if ($resule->num_rows >= 1) {
                         <input type="text" name="otp" class="form-control style-form" placeholder="กรุณากรอกรหัสยืนยัน">
                     </div>
 
-                    OTP <label id="count">10</label>
+                    OTP <label id="count">หมดเวลา</label>
 
                     <input type="hidden" name="email_check" value="<?php echo $_GET['email'] ?>">
 
@@ -87,57 +87,85 @@ if ($resule->num_rows >= 1) {
 
     <?php include_once('../include/sweetAlert.php') ?>
 
-    <script>
-        // กำหนดเวลาเริ่มต้น
-
-        <?php
-        if (isset($_SESSION['timeOTP'])) {
-        ?>
-            var time = '<?php echo $_SESSION['timeOTP'] ?>'
-            sessionStorage.setItem("timeOTP", time);
-            <?php $_SESSION['timeOTP'] = NULL ?>
-        <?php
+    <!-- เวลา RealTime -->
+    <script LANGUAGE="JavaScript">
+        function showFilled(Value) {
+            return (Value > 9) ? "" + Value : "0" + Value;
         }
-        ?>
 
-        var seconds = parseInt(sessionStorage.getItem("timeOTP"));
+        function StartClock24() {
 
-        document.getElementById("count").innerHTML = 'หมดเวลา'; //แสดงค่าเริ่มต้นใน 10 วินาที ใน text box
+            TheTime = new Date;
 
-        function display() { //function ใช้ในการ นับถอยหลัง
+            // document.clock.showTime.value = showFilled(TheTime.getHours()) + ":" +
+            //     showFilled(TheTime.getMinutes()) + ":" + showFilled(TheTime.getSeconds());
 
-            seconds -= 1; //ลบเวลาทีละหนึ่งวินาทีทุกครั้งที่ function ทำงาน
-            sessionStorage.setItem("timeOTP", seconds);
+            const timeCur = showFilled(TheTime.getHours()) + ":" + showFilled(TheTime.getMinutes()) + ":" + showFilled(TheTime.getSeconds());
+          
+            
 
-            if (seconds == -1) {
+            setTimeout("StartClock24()", 1000)
+            <?php
 
-                return;
-            } //เมื่อหมดเวลาแล้วจะหยุดการทำงานของ function display
-
-            document.getElementById("count").innerHTML = 'จะหมดในอีก '+seconds+' วินาที'
-            // document.getElementById("count").innerHTML = seconds; //แสดงเวลาที่เหลือ
-            setTimeout("display()", 1000); // สั่งให้ function display() ทำงาน หลังเวลาผ่านไป 1000 milliseconds ( 1000  milliseconds = 1 วินาที )
-
-            if (seconds == 0) {
-
-                window.location = `./Page_VerifyOTP.php?email=<?php echo $_GET['email'] ?>&expire=true`;
-
-                document.getElementById("count").innerHTML = 'หมดเวลา'
-            }
-
-            if (seconds <= 0) {
-
-                document.getElementById("count").innerHTML = 'หมดเวลา'
-            }
+            if (isset($_SESSION['timeOTP'])) {
+            ?>
+                var time = '<?php echo $_SESSION['timeOTP'] ?>'
+                sessionStorage.setItem("timeOTP", time);
 
             <?php
-            if (isset($_GET['expire'])) {
-                $_SESSION['numberOTP'] = NULL;
             }
             ?>
 
+            // document.getElementById("timeOTP").value = sessionStorage.getItem("timeOTP");
+
+            // TimeCur
+            const HourCur = Number(showFilled(TheTime.getHours()));
+            const MinuteCur = Number(showFilled(TheTime.getMinutes()));
+            const SecondCur = Number(showFilled(TheTime.getSeconds()));
+
+            // TimeSetOTP 
+            const HourSet = Number(sessionStorage.getItem("timeOTP").substring(0, 2));
+            const MinuteSet = Number(sessionStorage.getItem("timeOTP").substring(3, 5));
+            const SecondSet = Number(sessionStorage.getItem("timeOTP").substring(6, 8));
+
+
+            if (MinuteSet < MinuteCur) {
+                HourSet - 1, MinuteSet + 60, SecondSet;
+            }
+
+            if (SecondSet < SecondCur) {
+                HourSet,
+                MinuteSet - 1,
+                SecondSet + 60;
+            }
+
+            const Hour = HourSet - HourCur;
+            const Minute = MinuteSet - MinuteCur;
+            const Second = SecondSet - SecondCur;
+
+            if (timeCur >= sessionStorage.getItem("timeOTP")) {
+
+                document.getElementById("count").innerHTML = 'หมดเวลา'
+
+                let check = true
+                <?php
+                if (isset($_GET['expire'])) {
+                    $_SESSION['numberOTP'] = NULL;
+                ?>
+                    let check = false
+                <?php 
+                }
+                ?>
+                if(check == true){
+                    <?php sleep(1) ?>
+                    window.location = `./Page_VerifyOTP.php?email=<?php echo $_GET['email'] ?>&expire=true`;
+                }
+                
+
+            } else {
+                document.getElementById("count").innerHTML = ((Hour) * 60 * 60) + (Minute * 60) + Second;
+            }
         }
-        display(); //เปิดหน้าเว็บให้ทำงาน function  display()
     </script>
 
 </body>

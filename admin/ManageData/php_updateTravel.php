@@ -3,7 +3,7 @@ include_once('../authen_backend.php');
 
 $number = 0;
 
-$sql_id = "SELECT * FROM `place` LIMIT 50";
+$sql_id = "SELECT * FROM `place` LIMIT 100";
 $result_id = $conn->query($sql_id);
 
 
@@ -39,7 +39,6 @@ $result_id = $conn->query($sql_id);
 
                     <?php
                     while ($row_id = $result_id->fetch_assoc()) {
-
                         $curl = curl_init();
                         curl_setopt_array($curl, array(
                             CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/' . $row_id['place_id'],
@@ -76,7 +75,12 @@ $result_id = $conn->query($sql_id);
                         $detail = str_replace(array("'", "&quot;"), '', json_encode($dataTravel->result->place_information->detail, JSON_UNESCAPED_UNICODE));
                         $category = str_replace('"', "", json_encode($dataTravel->result->place_information->attraction_types[0]->description, JSON_UNESCAPED_UNICODE));
                         $activity = str_replace(str_split('\\/:*?"<>|[]'), '', json_encode($dataTravel->result->place_information->activities, JSON_UNESCAPED_UNICODE));
-                        $target = str_replace(str_split('\\/:*?"<>|[]'), '', json_encode($dataTravel->result->place_information->targets, JSON_UNESCAPED_UNICODE));
+                        
+                        if(json_encode($dataTravel->result->place_information->targets, JSON_UNESCAPED_UNICODE) != NULL){
+                            $target = str_replace(str_split('\\/:*?"<>|[]'), '', json_encode($dataTravel->result->place_information->targets, JSON_UNESCAPED_UNICODE));
+                        }else{
+                            $target = '';
+                        }
 
                         $phones = str_replace(str_split('"[]'), '', json_encode($dataTravel->result->contact->phones, JSON_UNESCAPED_UNICODE));
                         $mobiles = str_replace(str_split('"[]'), '', json_encode($dataTravel->result->contact->mobiles, JSON_UNESCAPED_UNICODE));
@@ -195,9 +199,9 @@ $result_id = $conn->query($sql_id);
                                 }
                                 ?>
                             <?php
+                            } else {
+                                $_SESSION['check'] = 'สำเร็จ';
                             }
-                            ?>
-                    <?php
                         }
                     }
                     ?>
@@ -207,13 +211,38 @@ $result_id = $conn->query($sql_id);
         </div>
 
         <?php if (isset($_SESSION['check'])) { ?>
-            <?php header('Location: ./index.php') ?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+
+            <?php
+            $sql_updateHistory = "INSERT INTO `history_update_place` 
+                (`id_update_place`, 
+                `title_update_place`, 
+                `data_update_place`, 
+                `date_update_place`, 
+                `status_update_place`) 
+            VALUES (NULL, 
+                'อัพเดตข้อมูล', 
+                'อัพเดตข้อมูลสถานที่ท่องเที่ยวจำนวน " . $number . " แห่ง', 
+                '" . date('Y-m-d H:i:s') . "', 
+                '1');";
+            $result_updateHistory = $conn->query($sql_updateHistory);
+
+
+            $_SESSION['SuccessConfirm'] = 'อัพเดตข้อมูลสำเร็จ';
+            $_SESSION['dataConfirm'] = 'อัพเดตข้อมูลสถานที่ท่องเที่ยวจำนวน ' . $number . ' แห่ง';
+
+            header('Location: ./index.php');
+
+            ?>
+
+
+            <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>สำเร็จ!</strong> คุณอัพเดตข้อมูลสำเร็จ.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
+            </div> -->
+
+
         <?php } ?>
 
     </div>

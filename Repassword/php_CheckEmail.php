@@ -12,8 +12,10 @@ $result = $conn->query($sql);
 if ($result->num_rows == 1) {
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
-    $_SESSION['timeOTP'] = 60;
-    
+
+    $timestamp = strtotime(date('H:i:s')) + 60;
+    $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
+
     // echo '<script>sessionStorage.setItem("timeOTP", 30);</script>';
 
 
@@ -50,7 +52,7 @@ if ($result->num_rows == 1) {
 
     if ($mail->send()) {
         $status = "success";
-        $response = "Email is sent!"; 
+        $response = "Email is sent!";
         $result = $conn->query($sql) or die($conn->error);
         $_SESSION['Warning'] = "กรุณายืนยันตัวตน!";
         header('location: ./Page_VerifyOTP.php?email=' . $email . ' ');
@@ -59,7 +61,6 @@ if ($result->num_rows == 1) {
         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
     }
     exit(json_encode(array("status" => $status, "response" => $response)));
-
 } else {
     $_SESSION['Failed'] = "ไม่พบ Email นี้ในระบบ";
     header('location: ./Page_SendEmail.php');
