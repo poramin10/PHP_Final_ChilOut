@@ -48,7 +48,7 @@ session_start();
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-address-book"></i></span>
                         </div>
-                        <input type="text" name="firstname" class="form-control style-form" placeholder="กรุณากรอกชื่อจริง" aria-label="Firstname" aria-describedby="basic-addon1" required>
+                        <input type="text" value="<?php echo isset($_SESSION['check_firstname']) != NULL ? $_SESSION['check_firstname'] : '' ?>" name="firstname" class="form-control style-form" placeholder="กรุณากรอกชื่อจริง" aria-label="Firstname" aria-describedby="basic-addon1" required>
                         <div class="invalid-feedback">
                             กรุณากรอกข้อมูล!!
                         </div>
@@ -58,7 +58,7 @@ session_start();
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-address-book"></i></span>
                         </div>
-                        <input type="text" name="lastname" class="form-control style-form" placeholder="กรุณากรอกนามสกุล" aria-label="Lastname" aria-describedby="basic-addon1" required>
+                        <input type="text" value="<?php echo isset($_SESSION['check_lastname']) != NULL ? $_SESSION['check_lastname'] : '' ?>" name="lastname" class="form-control style-form" placeholder="กรุณากรอกนามสกุล" aria-label="Lastname" aria-describedby="basic-addon1" required>
                         <div class="invalid-feedback">
                             กรุณากรอกข้อมูล!!
                         </div>
@@ -67,19 +67,19 @@ session_start();
                     <div class="form-check">
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" value="ชาย" type="radio" name="inlineRadioOptions" id="inlineRadio1" checked>
+                            <input class="form-check-input"  name="gender" value="ชาย" type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'ชาย' ? 'checked' : '' ?>>
                             <label class="form-check-label"   for="inlineRadio1" >ชาย</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" value="หญิง" type="radio" name="inlineRadioOptions" id="inlineRadio1">
+                            <input class="form-check-input"  name="gender" value="หญิง" type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'หญิง' ? 'checked' : '' ?>>
                             <label class="form-check-label"   for="inlineRadio1" >หญิง</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" value="LGBT"  type="radio" name="inlineRadioOptions" id="inlineRadio1">
+                            <input class="form-check-input" name="gender" value="LGBT"  type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'LGBT' ? 'checked' : '' ?>>
                             <label class="form-check-label"  for="inlineRadio1" >LGBT</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" value="ไม่ระบุ"  type="radio" name="inlineRadioOptions" id="inlineRadio1">
+                            <input class="form-check-input" name="gender" value="ไม่ระบุ"  type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'ไม่ระบุ' ? 'checked' : '' ?>>
                             <label class="form-check-label"  for="inlineRadio1" >ไม่ระบุ</label>
                         </div>
                         
@@ -87,7 +87,7 @@ session_start();
                     </div>
                     <div class="mb-1">
                         <label for="birthday">วันเกิด (Birthday) <span class="text-danger">*</span></label>
-                        <input id="testdate5" name="birthdate" class="form-control " required>
+                        <input id="testdate5" value="<?php echo isset($_SESSION['check_birthdate']) != NULL ? $_SESSION['check_birthdate'] : '' ?>" name="birthdate" class="form-control " required>
                         <div class="invalid-feedback">
                             กรุณาเลือกวันที่ 
                         </div>
@@ -97,7 +97,7 @@ session_start();
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="text" name="email" class="form-control style-form" placeholder="กรุณากรอกอีเมลล์" aria-label="email" aria-describedby="basic-addon1" required>
+                        <input type="text" name="email"  value="<?php echo isset($_SESSION['check_email']) != NULL ? $_SESSION['check_email'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกอีเมลล์" aria-label="email" aria-describedby="basic-addon1" required>
                         <div class="invalid-feedback">
                             กรุณากรอกข้อมูล!!
                         </div>
@@ -107,7 +107,7 @@ session_start();
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
                         </div>
-                        <input type="text" name="phone" class="form-control style-form" placeholder="กรุณากรอกเบอร์โทรศัพท์" aria-label="phone" aria-describedby="basic-addon1" required>
+                        <input type="text" name="phone" value="<?php echo isset($_SESSION['check_phone']) != NULL ? $_SESSION['check_phone'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกเบอร์โทรศัพท์" aria-label="phone" aria-describedby="basic-addon1" required>
                         <div class="invalid-feedback">
                             กรุณากรอกข้อมูล!!
                         </div>
@@ -117,7 +117,7 @@ session_start();
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="username" class="form-control style-form" placeholder="กรุณากรอกชื่อผู้ใช้งาน" aria-label="phone" aria-describedby="basic-addon1" required>
+                        <input type="text" name="username" value="<?php echo isset($_SESSION['check_username']) != NULL ? $_SESSION['check_username'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกชื่อผู้ใช้งาน" aria-label="phone" aria-describedby="basic-addon1" required>
                         <div class="invalid-feedback">
                             กรุณากรอกข้อมูล!!
                         </div>
@@ -142,30 +142,6 @@ session_start();
                             กรุณากรอกข้อมูล!!
                         </div>
                     </div>
-
-                    <!-- <label for="">อาชีพ (Profession)</label>
-                    <select class="form-select form-control" name="profession" aria-label="Default select example">
-                        <option value="ไม่ได้ระบุอาชีพ" selected>เลือกอาชีพ</option>
-                        <option value="นักเรียน/นักศึกษา">นักเรียน/นักศึกษา</option>
-                        <option value="พนักงานบริษัท">พนักงานบริษัท</option>
-                        <option value="ข้าราชการ">ข้าราชการ</option>
-                        <option value="รับจ้าง">รับจ้าง</option>
-                        <option value="เกษตรกร">เกษตรกร</option>
-                        <option value="ค้าขาย/ธุรกิจส่วนตัว">ค้าขาย/ธุรกิจส่วนตัว</option>
-                        <option value="อื่นๆ">อื่นๆ</option>
-                    </select>
-
-                    <label for="">รายได้ (Salary)</label>
-                    <select class="form-select form-control" name="salary" aria-label="Default select example">
-                        <option value="ไม่ได้ระบุรายได้" selected>เลือกรายได้</option>
-                        <option value="ต่ำกว่า 5,000 บาท">ต่ำกว่า 5,000 บาท</option>
-                        <option value="5,001 - 10,000 บาท">5,001 - 10,000 บาท</option>
-                        <option value="10,001 - 15,000 บาท">10,001 - 15,000 บาท</option>
-                        <option value="15,001 - 20,000 บาท">15,001 - 20,000 บาท</option>
-                        <option value="20,001 - 25,000 บาท">20,001 - 25,000 บาท</option>
-                        <option value="มากกว่า 25,000 บาทขึ้นไป">มากกว่า 25,000 บาทขึ้นไป</option>
-                    </select> -->
-
                     <div class="row pt-2">
                         <div class="col-12 text-right">
                             <button type="submit" name="submit" id="submit" class="btn btn-blue">สมัครสมาชิก <i class="fas fa-arrow-circle-right"></i></button>

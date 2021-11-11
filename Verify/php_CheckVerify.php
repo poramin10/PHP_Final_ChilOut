@@ -10,9 +10,9 @@ if(isset($_POST['submit'])){
         $sql_delete = "DELETE FROM `user` WHERE `email` = '".$_SESSION['email_user']."' AND status <> 1 ";
         $result_delete = $conn->query($sql_delete);
 
-        $_SESSION['id_user'] == NULL;
-        $_SESSION['email_user'] == NULL;
-
+        $_SESSION['id_user'] = NULL;
+        $_SESSION['email_user'] = NULL;
+        $_SESSION['email_Verify_Regis'] = NULL;
         $_SESSION['Success'] = "สมัครสมาชิกสำเร็จ";
 
 
@@ -22,9 +22,9 @@ if(isset($_POST['submit'])){
         $result_error = $conn->query($sql_error) or die($conn->error);
         $row_error = $result_error->fetch_assoc();
         echo $row_error['email'];
-        $_SESSION['id_user'] == NULL;
+        $_SESSION['id_user'] = NULL;
         $_SESSION['Failed'] = "รหัส OTP ไม่ถูกต้อง";
-        header("location: ./Page_VerifyOTP.php?email=".$row_error['email']);
+        header("location: ./Page_VerifyOTP.php");
     }
 }
 

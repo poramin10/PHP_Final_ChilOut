@@ -55,7 +55,8 @@ if ($result->num_rows == 1) {
         $response = "Email is sent!";
         $result = $conn->query($sql) or die($conn->error);
         $_SESSION['Warning'] = "กรุณายืนยันตัวตน!";
-        header('location: ./Page_VerifyOTP.php?email=' . $email . ' ');
+        $_SESSION['email_Verify'] = $email;
+        header('location: ./Page_VerifyOTP.php');
     } else {
         $status = "failed";
         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;

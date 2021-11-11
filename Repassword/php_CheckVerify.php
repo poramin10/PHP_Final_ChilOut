@@ -11,6 +11,8 @@ if(isset($_POST['submit'])){
         // CheckVerify เช็คว่าผ่านรึเปล่า
         $_SESSION['CheckVerify'] = true;
 
+        $_SESSION['email_Verify'] = NULL;
+
         $_SESSION['Warning'] = "กรุณาแก้ไขรหัสผ่าน";
         header("location: ./Page_Repassword.php");
     }else{
@@ -19,7 +21,7 @@ if(isset($_POST['submit'])){
         $_SESSION['CheckVerify'] = false;
 
         $_SESSION['Failed'] = "รหัส OTP ไม่ถูกต้อง";
-        header("location: ./Page_VerifyOTP.php?email=".$email);
+        header("location: ./Page_VerifyOTP.php");
     }
 }
 

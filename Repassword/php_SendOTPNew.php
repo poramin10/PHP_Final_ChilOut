@@ -4,8 +4,8 @@ include_once('../database/connectDB.php');
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-if (isset($_GET['email'])) { 
-    $email = $_GET['email'];
+if (isset($_SESSION['email_Verify'])) { 
+    $email = $_SESSION['email_Verify'];
 
     // RANDOM OTP
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
@@ -46,7 +46,7 @@ if (isset($_GET['email'])) {
     if ($mail->send()) {
         $status = "success";
         $response = "Email is sent!";
-        header('location: ./Page_VerifyOTP.php?email=' . $email . ' ');
+        header('location: ./Page_VerifyOTP.php');
     } else {
         $status = "failed";
         $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;

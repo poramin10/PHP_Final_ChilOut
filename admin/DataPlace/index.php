@@ -120,7 +120,7 @@ $result = $conn->query($sql);
                                                             <td><?php echo $row['category'] ?></td>
                                                             <td><?php echo date_format(new DateTime($row['update_date']), 'd/m/Y H:i:s'); ?></td>
                                                             <td>
-                                                                <a href="" class="btn btn-primary mt-2">ดูข้อมูล</a>
+                                                                <a href="./data.php?id=<?php echo $row['place_id'] ?>" class="btn btn-primary mt-2">ดูข้อมูล</a>
                                                                 <button onclick="DeleteDataTravel(
                                                                     '<?php echo $row['place_name'] ?>',
                                                                     '<?php echo $row['place_id'] ?>'

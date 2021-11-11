@@ -190,25 +190,25 @@ if (!isset($_SESSION['time_count' . $row['place_id']])) {
                                             <strong>เบอร์โทรศัพท์: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <?php echo $row['phones'] == null ? $row['phones'] : 'ไม่พบข้อมูล' ?>
+                                            <?php echo $row['phones'] != null ? $row['phones'] : 'ไม่พบข้อมูล' ?>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>เบอร์มือถือ: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <?php echo $row['mobiles'] == null ? $row['mobiles'] : 'ไม่พบข้อมูล' ?>
+                                            <?php echo $row['mobiles'] != null ? $row['mobiles'] : 'ไม่พบข้อมูล' ?>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>FAX: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <?php echo $row['fax'] == null ? $row['fax'] : 'ไม่พบข้อมูล' ?>
+                                            <?php echo $row['fax'] != null ? $row['fax'] : 'ไม่พบข้อมูล' ?>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>อีเมล์: </strong>
                                         </div>
                                         <div class="col-6 mt-2">
-                                            <div style="word-wrap: break-word;"><?php echo $row['emails'] == null ? $row['emails'] : 'ไม่พบข้อมูล' ?></div>
+                                            <div style="word-wrap: break-word;"><?php echo $row['emails'] != null ? $row['emails'] : 'ไม่พบข้อมูล' ?></div>
                                         </div>
                                         <div class="col-6 mt-2">
                                             <strong>เว็บไซต์: </strong>

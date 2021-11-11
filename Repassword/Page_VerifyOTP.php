@@ -2,19 +2,33 @@
 session_start();
 
 include_once('../database/connectDB.php');
-$sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $_GET['email'] . "' AND `status` LIKE '1'   ORDER BY `id_user` DESC";
+
+/**
+ * ===========
+ * Check Email
+ * ===========
+ */
+if(!isset($_SESSION['email_Verify'])){
+    header('Location:./Page_SendEmail.php');
+}else{
+    $email_Verify = $_SESSION['email_Verify'];
+}
+
+
+$sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email_Verify . "' AND `status` LIKE '1'   ORDER BY `id_user` DESC";
 $resule = $conn->query($sql);
 
 if ($resule->num_rows >= 1) {
     // echo "Email นี้ผ่านการยืนยันตัวตนแล้ว";
 } else {
-    $sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $_GET['email'] . "' ORDER BY `id_user` DESC";
+    $sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email_Verify . "' ORDER BY `id_user` DESC";
     $resule = $conn->query($sql);
     $row = $resule->fetch_assoc();
     $_SESSION["id_user"] = $row['id_user'];
 
     // echo "Email ของคุณคือ ".$row['email']." กรุณายืนยันตัวตน";
 }
+
 
 ?>
 
@@ -35,7 +49,6 @@ if ($resule->num_rows >= 1) {
 
 <body onload="StartClock24()">
     <div class="container">
-
         <form action="./php_CheckVerify.php" method="POST">
             <div class="row">
 
@@ -52,6 +65,7 @@ if ($resule->num_rows >= 1) {
                     </div>
 
                     <h2 class="my-1 text-center"><b>กรอกรหัส OTP</b></h2>
+                    <h6>ยืนยัน Email: <?php echo $email_Verify ?></h6>
 
                     <label for="">รหัสยืนยัน</label>
                     <!-- <input type="text" size="8" id="counter" disabled />  -->
@@ -60,20 +74,20 @@ if ($resule->num_rows >= 1) {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope-open-text"></i></span>
                         </div>
-                        <input type="hidden" name="email" value="<?php echo $_GET['email'] ?>" class="form-control style-form">
+                        <input type="hidden" name="email" value="<?php echo $email_Verify ?>" class="form-control style-form">
                         <input type="text" name="otp" class="form-control style-form" placeholder="กรุณากรอกรหัสยืนยัน">
                     </div>
 
                     OTP <label id="count">หมดเวลา</label>
 
-                    <input type="hidden" name="email_check" value="<?php echo $_GET['email'] ?>">
+                    <input type="hidden" name="email_check" value="<?php echo $email_Verify ?>">
 
                     <div class="col-12 text-center mt-4 mb-2">
                         <button type="submit" name="submit" class="btn btn-primary form-control"> ยืนยันอีเมล์</button>
                     </div>
 
                     <div class="col-12 text-center mt-1 mb-5 my-2">
-                        <a href="./php_SendOTPNew.php?email=<?php echo $_GET['email'] ?>" type="button" class="btn btn-secondary form-control"> ส่งรหัสยืนยันใหม่อีกครั้ง</a>
+                        <a href="./php_SendOTPNew.php" type="button" class="btn btn-secondary form-control"> ส่งรหัสยืนยันใหม่อีกครั้ง</a>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
@@ -82,6 +96,7 @@ if ($resule->num_rows >= 1) {
 
         </form>
     </div>
+
     <!-- Link -->
     <?php include_once('../include/inc_js_front.php') ?>
 
@@ -157,8 +172,7 @@ if ($resule->num_rows >= 1) {
                 }
                 ?>
                 if(check == true){
-                    <?php sleep(1) ?>
-                    window.location = `./Page_VerifyOTP.php?email=<?php echo $_GET['email'] ?>&expire=true`;
+                    window.location = `./Page_VerifyOTP.php?expire=true`;
                 }
                 
 
