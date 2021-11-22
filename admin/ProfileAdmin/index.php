@@ -1,4 +1,11 @@
-<?php include_once('../authen_backend.php') ?>
+<?php 
+include_once('../authen_backend.php');
+
+$sql = "SELECT * FROM `admin` WHERE id_admin = '".$_SESSION['id_admin']."' ";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +50,17 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
-                                    <h5 class="card-header">ข้อมูลประวัติ</h5>
+
+                                    <h5 class="card-header">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                ข้อมูลประวัติ
+                                                <span class="float-right"><small>แก้ไขเมื่อวันที่: <?php echo date_format(new DateTime($row['update_at']), 'd/m/Y H:i:s'); ?></small></span>
+
+                                            </div>
+                                        </div>
+                                    </h5>
+
                                     <div class="card-body">
                                         <div class="row">
 

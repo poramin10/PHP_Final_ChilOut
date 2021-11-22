@@ -63,14 +63,14 @@ if (isset($_POST['submitFB'])) {
     $phone = $_POST['phone'];
     $birthdate = $_POST['birthdate'];
 
-    $sql = "UPDATE `user_fb` SET 
-        `firstname_fb` = '" . $firstname . "', 
-        `lastname_fb` = '" . $lastname . "', 
-        `gender_fb` = '" . $gender . "', 
-        `phone_fb` = '" . $phone . "', 
-        `birthdate_fb` = '" . $birthdate . "',
-        `updated_fb` = '" . date("Y-m-d H:i:s") . "'
-    WHERE `id_user_fb` = '" . $id_user . "' ";
+    $sql = "UPDATE `user` SET 
+        `firstname` = '" . $firstname . "', 
+        `lastname` = '" . $lastname . "', 
+        `gender` = '" . $gender . "', 
+        `phone` = '" . $phone . "', 
+        `birthdate` = '" . $birthdate . "',
+        `update_at` = '" . date("Y-m-d H:i:s") . "'
+    WHERE `id_user` = '" . $id_user . "' ";
     $result = $conn->query($sql) or die($conn->error);
 
 

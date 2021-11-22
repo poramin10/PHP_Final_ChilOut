@@ -54,7 +54,7 @@ if (!isset($_SESSION['id_user'])) {
                                 <?php
 
                                 $num = 0;
-                                $sql = "SELECT * FROM `love` JOIN place ON love.id_place = place.place_id AND love.id_user = '" . $_SESSION['id_user'] . "' ";
+                                $sql = "SELECT * FROM `favor` JOIN place ON favor.id_place = place.id_place AND favor.id_user = '" . $_SESSION['id_user'] . "' ";
                                 $result = $conn->query($sql);
                                 $total = $result->num_rows;
 
@@ -71,17 +71,17 @@ if (!isset($_SESSION['id_user'])) {
                                     $s_page = $s_page * $e_page;
                                 }
 
-                                $sql .= " ORDER BY love.id_love LIMIT " . $s_page . ",$e_page";
+                                $sql .= " ORDER BY favor.id_favor LIMIT " . $s_page . ",$e_page";
                                 $result = $conn->query($sql);
 
                                 if ($result && $result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['place_id'] . "' ";
+                                        $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
                                         $result_count = $conn->query($sql_count);
                                         $row_count = $result_count->fetch_assoc();
                                 ?>
                                         <div class="col-lg-4 mt-3 mb-3">
-                                            <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                            <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                                 <section class="card-v2">
                                                     <div class="crop-zoom">
                                                         <div class="card card-relative cardTop">

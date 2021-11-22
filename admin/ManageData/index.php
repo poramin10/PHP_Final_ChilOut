@@ -1,6 +1,6 @@
 <?php
 include_once('../authen_backend.php');
-$sql_date = "SELECT * FROM `history_update_place` ORDER BY `history_update_place`.`id_update_place` DESC";
+$sql_date = "SELECT * FROM `manage_place` ORDER BY `manage_place`.`id_manage_place` DESC";
 $result_date = $conn->query($sql_date);
 $row_date = $result_date->fetch_assoc();
 ?>
@@ -56,7 +56,7 @@ $row_date = $result_date->fetch_assoc();
                     <div class="row">
                         <div class="col-lg-6">
                             <?php if($result_date->num_rows != 0){ ?>
-                                <h4>วันที่อัพเดตข้อมูลล่าสุด: <?php echo date_format(new DateTime($row_date['date_update_place']), 'd/m/Y H:i:s')  ?></h4>
+                                <h4>วันที่อัพเดตข้อมูลล่าสุด: <?php echo date_format(new DateTime($row_date['created_manage_place']), 'd/m/Y H:i:s')  ?></h4>
                             <?php }else{ ?>
                                 <h4>วันที่อัพเดตข้อมูลล่าสุด: ยังไม่มีวันที่ล่าสุด</h4>
                             <?php } ?>
@@ -87,7 +87,7 @@ $row_date = $result_date->fetch_assoc();
                                             </tr>
                                         </thead>
                                         <?php
-                                        $sql = "SELECT * FROM `history_update_place`  ORDER BY `history_update_place`.`id_update_place` DESC";
+                                        $sql = "SELECT * FROM `manage_place`  ORDER BY `manage_place`.`id_manage_place` DESC";
                                         $result = $conn->query($sql);
                                         ?>
                                         <tbody>
@@ -99,11 +99,11 @@ $row_date = $result_date->fetch_assoc();
 
                                                 <tr>
                                                     <td><?php echo $num ?></td>
-                                                    <td><?php echo $row['title_update_place'] ?></td>
-                                                    <td><?php echo $row['data_update_place'] ?></td>
-                                                    <td><?php echo date_format(new DateTime($row['date_update_place']), 'd/m/Y H:i:s') ?></td>
+                                                    <td><?php echo $row['title_manage_place'] ?></td>
+                                                    <td><?php echo $row['data_manage_place'] ?></td>
+                                                    <td><?php echo date_format(new DateTime($row['created_manage_place']), 'd/m/Y H:i:s') ?></td>
                                                     <td>
-                                                        <?php if ($row['status_update_place'] == 1) { ?>
+                                                        <?php if ($row['status_manage_place'] == 1) { ?>
                                                             <span class="badge badge-pill badge-success">ปกติ</span>
                                                         <?php } else { ?>
                                                             <span class="badge badge-pill badge-danger">ผิดปกติ</span>

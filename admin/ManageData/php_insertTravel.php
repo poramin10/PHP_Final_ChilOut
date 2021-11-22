@@ -37,19 +37,19 @@ while ($row = $result->fetch_assoc()) {
             for ($i = 0; $i < count($dataTravel->result); $i++) {
                 if ($dataTravel->result[$i]->category_code == 'ATTRACTION' && $dataTravel->result[$i]->thumbnail_url != "") {
 
-                    $place_id = str_replace('"', "", json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
+                    $id_place = str_replace('"', "", json_encode($dataTravel->result[$i]->id_place, JSON_UNESCAPED_UNICODE));
 
-                    $sql_check = "SELECT * FROM `place` WHERE place_id = '" . $place_id . "';";
+                    $sql_check = "SELECT * FROM `place` WHERE id_place = '" . $id_place . "';";
                     $result_check = $conn->query($sql_check);
 
-                    // echo $place_id.'<br>';
+                    // echo $id_place.'<br>';
                     // echo $result_check->num_rows.'<br>';
 
 
                     if ($result_check->num_rows == 0) {
 
                         echo $number . '<br>';
-                        echo "id: " . $place_id . '<br>';
+                        echo "id: " . $id_place . '<br>';
                         echo "ชื่อสถานที่: " . json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
                         echo "จังหวัดสถานที่: " . json_encode($dataTravel->result[$i]->location->province, JSON_UNESCAPED_UNICODE) . '<br>';
                         echo "ที่ตั้ง: " . json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
@@ -57,16 +57,16 @@ while ($row = $result->fetch_assoc()) {
 
                         $sql_insert = "INSERT INTO `place` (
                             `id_travel`, 
-                            `place_id`
+                            `id_place`
                                 ) VALUES (NULL, 
-                            '" . $place_id . "'
+                            '" . $id_place . "'
                             );";
                         $result_insert = $conn->query($sql_insert);
                         if ($result_insert) {
 
                             $curl2 = curl_init();
                             curl_setopt_array($curl2, array(
-                                CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/' . $place_id,
+                                CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/' . $id_place,
                                 CURLOPT_RETURNTRANSFER => true,
                                 CURLOPT_ENCODING => '',
                                 CURLOPT_MAXREDIRS => 10,
@@ -198,7 +198,7 @@ while ($row = $result->fetch_assoc()) {
                                     `payment` = '" . $payment . "',
                                     `how_to_travel` = '" . $how_to_tarvel . "',
                                     `update_date` = '" . $update . "' 
-                                    WHERE  `place_id` = '" . $place_id . "'  ";
+                                    WHERE  `id_place` = '" . $id_place . "'  ";
 
                                 $number++;
 ?>
@@ -222,12 +222,12 @@ while ($row = $result->fetch_assoc()) {
 if ($_SESSION['Check'] == 'สำเร็จ') {
     // echo 'เพิ่มข้อมูลสถานที่ท่องเที่ยวจำนวน ' . $number . ' แห่ง';
 
-    $sql_updateHistory = "INSERT INTO `history_update_place` 
-    (`id_update_place`, 
-    `title_update_place`, 
-    `data_update_place`, 
-    `date_update_place`, 
-    `status_update_place`) 
+    $sql_updateHistory = "INSERT INTO `manage_place` 
+    (`id_manage_place`, 
+    `title_manage_place`, 
+    `data_manage_place`, 
+    `created_manage_place`, 
+    `status_manage_place`) 
 VALUES (NULL, 
     'เพิ่มข้อมูลสำเร็จ', 
     'เพิ่มข้อมูลสถานที่ท่องเที่ยวจำนวน " . $number . " แห่ง', 
@@ -240,12 +240,12 @@ VALUES (NULL,
     header('Location: ./index.php');
 } else {
 
-    $sql_updateHistory = "INSERT INTO `history_update_place` 
-    (`id_update_place`, 
-    `title_update_place`, 
-    `data_update_place`, 
-    `date_update_place`, 
-    `status_update_place`) 
+    $sql_updateHistory = "INSERT INTO `manage_place` 
+    (`id_manage_place`, 
+    `title_manage_place`, 
+    `data_manage_place`, 
+    `created_manage_place`, 
+    `status_manage_place`) 
 VALUES (NULL, 
     'เพิ่มข้อมูลสำเร็จ', 
     'ไม่พบข้อมูลสถานที่ท่องเที่ยวที่ใหม่กว่า', 

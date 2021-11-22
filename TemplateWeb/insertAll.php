@@ -43,13 +43,13 @@ while ($row = $result->fetch_assoc()) {
                     echo "ที่ตั้ง: ".json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
                     echo '<hr>';
 
-                    $place_id = str_replace('"', "", json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
+                    $id_place = str_replace('"', "", json_encode($dataTravel->result[$i]->id_place, JSON_UNESCAPED_UNICODE));
 
                     $sql_insert = "INSERT INTO `place` (
                     `id_travel`, 
-                    `place_id`
+                    `id_place`
                         ) VALUES (NULL, 
-                    '" . $place_id . "'
+                    '" . $id_place . "'
                     );";
                     $result_insert = $conn->query($sql_insert);
 

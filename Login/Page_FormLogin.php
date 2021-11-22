@@ -5,6 +5,7 @@ require './fb-init.php';
 if (isset($_SESSION['access_token'])) {
     header('Location: ../HomePage/index.php');
 }
+
 ?>
 
 <!DOCTYPE html>

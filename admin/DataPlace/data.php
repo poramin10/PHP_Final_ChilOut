@@ -1,6 +1,6 @@
 <?php
 include_once('../authen_backend.php');
-$sql = "SELECT * FROM `place` WHERE place_id = '" . $_GET['id'] . "' ";
+$sql = "SELECT * FROM `place` WHERE id_place = '" . $_GET['id'] . "' ";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 

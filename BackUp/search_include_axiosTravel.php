@@ -117,7 +117,7 @@
                                     <p class="card-text" style="color: #FA6476">${
                                     res.location['province']
                                     }</p>
-                                    <a  href="../Travel/Detail.php?id=${res.place_id}" class="btn btn-primary ">อ่านรายละเอียด</a>
+                                    <a  href="../Travel/Detail.php?id=${res.id_place}" class="btn btn-primary ">อ่านรายละเอียด</a>
                                     
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                                     res.location['province']
                                     }</p>
                                    
-                                    <a onClick="ClickCount('${res.place_id}')" name="submit" href="../Travel/Detail.php?id=${res.place_id}" class="btn btn-primary ">อ่านรายละเอียด</a>
+                                    <a onClick="ClickCount('${res.id_place}')" name="submit" href="../Travel/Detail.php?id=${res.id_place}" class="btn btn-primary ">อ่านรายละเอียด</a>
                                 </div>
                             </div>
                             </center>
@@ -204,4 +204,4 @@
     }
 </script>
 
-<!-- ../Travel/Detail.php?id=${res.place_id} -->
+<!-- ../Travel/Detail.php?id=${res.id_place} -->

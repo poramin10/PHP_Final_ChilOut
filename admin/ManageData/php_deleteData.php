@@ -1,6 +1,6 @@
 <?php 
 include_once('../authen_backend.php');
-$sql = "DELETE FROM `history_update_place`";
+$sql = "DELETE FROM `manage_place`";
 $result = $conn->query($sql);
 
 if($result){

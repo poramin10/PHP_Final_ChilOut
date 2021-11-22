@@ -100,7 +100,7 @@ $dataAllView = join(',', $dataNum);
                          <div class="card-footer d-flext flex-column">
 
                             <div class="mt-auto">
-                                    <a href="../Travel/Detail.php?id=${res.place_id}">
+                                    <a href="../Travel/Detail.php?id=${res.id_place}">
                                         <button type="button" class="button btn btn-danger btn-lg btn-block mt-4">
                                             <span> ดูสถานที่ท่องเที่ยว</span>
                                         </button>

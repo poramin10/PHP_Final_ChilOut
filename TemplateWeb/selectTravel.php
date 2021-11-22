@@ -33,20 +33,20 @@ for ($page = 0; $page <= 80; $page++) {
             if ($dataTravel->result[$i]->category_code == 'ATTRACTION' && $dataTravel->result[$i]->thumbnail_url != "") {
                 echo $number.")  ";
 
-                $place_id = str_replace('"',"",json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
+                $id_place = str_replace('"',"",json_encode($dataTravel->result[$i]->id_place, JSON_UNESCAPED_UNICODE));
                 $place_name = str_replace('"',"",json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE));
                 $location_address = str_replace('"',"",json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE));
 
 
                 $sql_insert = "INSERT INTO `place` (
                     `id_travel`, 
-                    `place_id`
+                    `id_place`
                 ) VALUES (NULL, 
-                    '".$place_id."'
+                    '".$id_place."'
                     );";
                 $result_insert = $conn->query($sql_insert);
 
-                echo "รหัสสถานที่: ".json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE) . '<br>';
+                echo "รหัสสถานที่: ".json_encode($dataTravel->result[$i]->id_place, JSON_UNESCAPED_UNICODE) . '<br>';
                 echo "ชื่อสถานที่: ".json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
                 echo "ที่ตั้ง: ".json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
                 echo "ตำบล: ".json_encode($dataTravel->result[$i]->location->sub_district, JSON_UNESCAPED_UNICODE) . '<br>';

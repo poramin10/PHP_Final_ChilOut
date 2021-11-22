@@ -109,7 +109,7 @@ $result = $conn->query($sql);
                                                     ?>
                                                         <tr>
                                                             <td><?php echo $num ?></td>
-                                                            <td><?php echo $row['place_id'] ?></td>
+                                                            <td><?php echo $row['id_place'] ?></td>
                                                             <td><?php echo $row['place_name'] ?></td>
                                                             <td><?php echo $row['address'] ?></td>
                                                             <td><?php echo $row['sub_district'] ?></td>
@@ -120,10 +120,10 @@ $result = $conn->query($sql);
                                                             <td><?php echo $row['category'] ?></td>
                                                             <td><?php echo date_format(new DateTime($row['update_date']), 'd/m/Y H:i:s'); ?></td>
                                                             <td>
-                                                                <a href="./data.php?id=<?php echo $row['place_id'] ?>" class="btn btn-primary mt-2">ดูข้อมูล</a>
+                                                                <a href="./data.php?id=<?php echo $row['id_place'] ?>" class="btn btn-primary mt-2">ดูข้อมูล</a>
                                                                 <button onclick="DeleteDataTravel(
                                                                     '<?php echo $row['place_name'] ?>',
-                                                                    '<?php echo $row['place_id'] ?>'
+                                                                    '<?php echo $row['id_place'] ?>'
                                                                 )" class="btn btn-danger mt-2">ลบข้อมูล</button>
                                                             </td>
                                                         </tr>

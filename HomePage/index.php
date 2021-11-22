@@ -4,7 +4,7 @@ require_once('../authen_frontend.php');
 
 // แสดงข้อมูลสถานที่ท่องเที่ยวที่เด่นๆ
 $sql = "SELECT * FROM `countertravel` 
-    JOIN place ON countertravel.id_travel = place.place_id 
+    JOIN place ON countertravel.id_travel = place.id_place 
 ORDER BY countertravel.count_travel DESC LIMIT 12";
 $result = $conn->query($sql);
 $number = 0;
@@ -93,13 +93,19 @@ $number = 0;
 
             <?php while ($row = $result->fetch_assoc()) { ?>
 
+                <?php
+                $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row['id_place'] . "';";
+                $result_avg = $conn->query($sql_avg);
+                $row_avg = $result_avg->fetch_assoc();
+                ?>
+
                 <!-- หาสถานที่ท่องเที่ยวยอดนิยม -->
                 <?php
                 $number++;
                 ?>
 
                 <div class="col-md-4 mt-3 mb-3">
-                    <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                    <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                         <section class="card-v2">
                             <div class="crop-zoom">
                                 <div class="card card-relative cardTop">
@@ -111,9 +117,29 @@ $number = 0;
                                         <h5><?php echo $row['place_name'] ?></h5>
                                         <p><?php echo $row['province'] ?></p>
                                     </div>
+
                                     <div class="card-text-view">
                                         <small><i class="fas fa-eye"> </i> <?php echo $result->num_rows != 0 ? $row['count_travel'] : 0 ?> </small>
                                     </div>
+
+                                    <div class="card-star">
+                                        <div class="rating-comment-avg-card mt-2">
+                                            <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
+                                            <label for="rating-comment-5"></label>
+                                            <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
+                                            <label for="rating-comment-4"></label>
+                                            <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
+                                            <label for="rating-comment-3"></label>
+                                            <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
+                                            <label for="rating-comment-2"></label>
+                                            <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
+                                            <label for="rating-comment-1"></label>
+                                        </div>
+                                        <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
+                                    </div>
+
+                                  
+
                                 </div>
                             </div>
                         </section>

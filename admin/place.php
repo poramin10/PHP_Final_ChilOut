@@ -107,7 +107,7 @@ include_once('./include/connectDB.php');
                                                 ?>
                                                     <tr>
                                                         <td><?php echo $num ?></td>
-                                                        <td><?php echo $row['place_id'] ?></td>
+                                                        <td><?php echo $row['id_place'] ?></td>
                                                         <td><img src="<?php echo $row['picture'] ?>" width="50px" height="50px" alt=""></td>
                                                         <td><?php echo $row['place_name'] ?></td>
                                                         <td><?php echo $row['address'] ?></td>

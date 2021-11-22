@@ -149,13 +149,17 @@ require_once("./pagination_function.php");
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
                             $num++;
 
-                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
                             $result_count = $conn->query($sql_count);
                             $row_count = $result_count->fetch_assoc();
 
+                            $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row['id_place'] . "';";
+                            $result_avg = $conn->query($sql_avg);
+                            $row_avg = $result_avg->fetch_assoc();
+
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -169,6 +173,21 @@ require_once("./pagination_function.php");
                                                 </div>
                                                 <div class="card-text-view">
                                                     <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                </div>
+                                                <div class="card-star">
+                                                    <div class="rating-comment-avg-card mt-2">
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
+                                                        <label for="rating-comment-5"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
+                                                        <label for="rating-comment-4"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
+                                                        <label for="rating-comment-3"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
+                                                        <label for="rating-comment-2"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
+                                                        <label for="rating-comment-1"></label>
+                                                    </div>
+                                                    <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
                                                 </div>
                                             </div>
                                         </div>
@@ -217,14 +236,18 @@ require_once("./pagination_function.php");
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
                             $result_count = $conn->query($sql_count);
                             $row_count = $result_count->fetch_assoc();
+
+                            $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row['id_place'] . "';";
+                            $result_avg = $conn->query($sql_avg);
+                            $row_avg = $result_avg->fetch_assoc();
 
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -237,7 +260,22 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                    <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                </div>
+                                                <div class="card-star">
+                                                    <div class="rating-comment-avg-card mt-2">
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
+                                                        <label for="rating-comment-5"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
+                                                        <label for="rating-comment-4"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
+                                                        <label for="rating-comment-3"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
+                                                        <label for="rating-comment-2"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
+                                                        <label for="rating-comment-1"></label>
+                                                    </div>
+                                                    <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
                                                 </div>
                                             </div>
                                         </div>
@@ -291,14 +329,18 @@ require_once("./pagination_function.php");
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
                             $result_count = $conn->query($sql_count);
                             $row_count = $result_count->fetch_assoc();
+
+                            $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row['id_place'] . "';";
+                            $result_avg = $conn->query($sql_avg);
+                            $row_avg = $result_avg->fetch_assoc();
 
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -311,7 +353,22 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                    <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                </div>
+                                                <div class="card-star">
+                                                    <div class="rating-comment-avg-card mt-2">
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
+                                                        <label for="rating-comment-5"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
+                                                        <label for="rating-comment-4"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
+                                                        <label for="rating-comment-3"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
+                                                        <label for="rating-comment-2"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
+                                                        <label for="rating-comment-1"></label>
+                                                    </div>
+                                                    <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
                                                 </div>
                                             </div>
                                         </div>
@@ -362,14 +419,18 @@ require_once("./pagination_function.php");
                     if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                         while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '".$row['place_id'] ."' ";
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
                             $result_count = $conn->query($sql_count);
                             $row_count = $result_count->fetch_assoc();
+
+                            $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row['id_place'] . "';";
+                            $result_avg = $conn->query($sql_avg);
+                            $row_avg = $result_avg->fetch_assoc();
 
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -382,7 +443,22 @@ require_once("./pagination_function.php");
                                                     <p><?php echo $row['province'] ?></p>
                                                 </div>
                                                 <div class="card-text-view">
-                                                <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                    <small><i class="fas fa-eye"> </i> <?php echo $result_count->num_rows != 0 ? $row_count['count_travel'] : 0 ?> </small>
+                                                </div>
+                                                <div class="card-star">
+                                                    <div class="rating-comment-avg-card mt-2">
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
+                                                        <label for="rating-comment-5"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
+                                                        <label for="rating-comment-4"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
+                                                        <label for="rating-comment-3"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
+                                                        <label for="rating-comment-2"></label>
+                                                        <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
+                                                        <label for="rating-comment-1"></label>
+                                                    </div>
+                                                    <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
                                                 </div>
                                             </div>
                                         </div>

@@ -29,7 +29,7 @@ $dataTravel = json_decode($response);
 if (!isset($dataTravel->result)) {
 } else {
     echo $number . ")  ";
-    echo "<b>รหัสสถานที่:</b> ".json_encode($dataTravel->result->place_id, JSON_UNESCAPED_UNICODE) . '<br>';
+    echo "<b>รหัสสถานที่:</b> ".json_encode($dataTravel->result->id_place, JSON_UNESCAPED_UNICODE) . '<br>';
     echo "<b>ชื่อสถานที่:</b> ".json_encode($dataTravel->result->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
     
     // echo "<h3><b>ข้อมูลสถานที่ตั้ง</b></h3>";

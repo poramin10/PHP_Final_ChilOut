@@ -174,7 +174,7 @@ require_once("./pagination_function.php");
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -238,7 +238,7 @@ require_once("./pagination_function.php");
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -307,7 +307,7 @@ require_once("./pagination_function.php");
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">
@@ -373,7 +373,7 @@ require_once("./pagination_function.php");
                             $num++;
                     ?>
                             <div class="col-md-4 mt-3 mb-3">
-                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['place_id']  ?>">
+                                <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                     <section class="card-v2">
                                         <div class="crop-zoom">
                                             <div class="card card-relative cardTop">

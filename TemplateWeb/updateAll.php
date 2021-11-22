@@ -9,7 +9,7 @@ $result_id = $conn->query($sql_id);
 while ($row_id = $result_id->fetch_assoc()) {
     $curl = curl_init();
     curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/'.$row_id['place_id'],
+        CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/'.$row_id['id_place'],
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -136,10 +136,10 @@ while ($row_id = $result_id->fetch_assoc()) {
          `payment` = '" . $payment . "',
          `how_to_travel` = '" . $how_to_tarvel . "',
          `update_date` = '" . $update . "' 
-         WHERE `place`.`place_id` = '".$row_id['place_id']."' ";
+         WHERE `place`.`id_place` = '".$row_id['id_place']."' ";
 
         echo $number . ")  ";
-        echo $row_id['place_id'].' ';
+        echo $row_id['id_place'].' ';
         echo $introduction. '<br>';
         echo $detail. '<br>';
         echo $place_name . '<br>';
@@ -286,10 +286,10 @@ echo $_SESSION['check'];
 //          `payment` = '" . $payment . "',
 //          `how_to_travel` = '" . $how_to_tarvel . "',
 //          `update_date` = '" . $update . "' 
-//          WHERE `place`.`place_id` = 'P03013269' ";
+//          WHERE `place`.`id_place` = 'P03013269' ";
 
 //     echo $number . ")  ";
-//     // echo $row_id['place_id'] . ' ';
+//     // echo $row_id['id_place'] . ' ';
 //     echo $introduction . '<br>';
 //     echo $activity . '<br>';
 //     echo $detail . '<br>';

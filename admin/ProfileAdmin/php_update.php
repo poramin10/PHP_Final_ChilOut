@@ -58,7 +58,8 @@ if (isset($_POST['submit'])) {
                         `phone_admin` = '" . $phone . "', 
                         `email_admin` = '" . $email . "', 
                         `profile_admin` = '" . $newName . "', 
-                        `password_admin` = '" . $hashed_password . "' 
+                        `password_admin` = '" . $hashed_password . "',
+                        `update_at` = '" . date('d-m-Y H:i:s') . "'
                     WHERE `admin`.`id_admin` = '" . $_SESSION['id_admin'] . "';";
                     $result = $conn->query($sql);
 
@@ -80,7 +81,8 @@ if (isset($_POST['submit'])) {
                           `lastname_admin` = '" . $lastname . "', 
                           `phone_admin` = '" . $phone . "', 
                           `email_admin` = '" . $email . "', 
-                          `password_admin` = '" . $hashed_password . "' 
+                          `password_admin` = '" . $hashed_password . "',
+                          `update_at` = '" . date('d-m-Y H:i:s') . "'
                       WHERE `admin`.`id_admin` = '" . $_SESSION['id_admin'] . "';";
                     $result = $conn->query($sql);
 
@@ -121,7 +123,8 @@ if (isset($_POST['submit'])) {
                 `lastname_admin` = '" . $lastname . "', 
                 `phone_admin` = '" . $phone . "', 
                 `email_admin` = '" . $email . "', 
-                `profile_admin` = '" . $newName . "'
+                `profile_admin` = '" . $newName . "',
+                `update_at` = '" . date('d-m-Y H:i:s') . "'
             WHERE `admin`.`id_admin` = '" . $_SESSION['id_admin'] . "';";
             $result = $conn->query($sql);
 
@@ -142,7 +145,8 @@ if (isset($_POST['submit'])) {
                   `firstname_admin` = '" . $firstname . "', 
                   `lastname_admin` = '" . $lastname . "', 
                   `phone_admin` = '" . $phone . "', 
-                  `email_admin` = '" . $email . "'
+                  `email_admin` = '" . $email . "',
+                  `update_at` = '" . date('Y-m-d H:i:s') . "'
               WHERE `admin`.`id_admin` = '" . $_SESSION['id_admin'] . "';";
             $result = $conn->query($sql);
 

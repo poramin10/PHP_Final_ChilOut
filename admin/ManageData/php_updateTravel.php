@@ -41,7 +41,7 @@ $result_id = $conn->query($sql_id);
                     while ($row_id = $result_id->fetch_assoc()) {
                         $curl = curl_init();
                         curl_setopt_array($curl, array(
-                            CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/' . $row_id['place_id'],
+                            CURLOPT_URL => 'https://tatapi.tourismthailand.org/tatapi/v5/attraction/' . $row_id['id_place'],
                             CURLOPT_RETURNTRANSFER => true,
                             CURLOPT_ENCODING => '',
                             CURLOPT_MAXREDIRS => 10,
@@ -147,7 +147,7 @@ $result_id = $conn->query($sql_id);
                         if (!isset($dataTravel->result)) {
                         } else {
 
-                            $sql_check = "SELECT * FROM `place` WHERE place_id = '" . $row_id['place_id'] . "' AND update_date <> '" . $update . "' ";
+                            $sql_check = "SELECT * FROM `place` WHERE id_place = '" . $row_id['id_place'] . "' AND update_date <> '" . $update . "' ";
                             $result_check = $conn->query($sql_check);
 
                             if ($result_check->num_rows != 0) {
@@ -178,7 +178,7 @@ $result_id = $conn->query($sql_id);
                                 `payment` = '" . $payment . "',
                                 `how_to_travel` = '" . $how_to_tarvel . "',
                                 `update_date` = '" . $update . "' 
-                                WHERE  `place_id` = '" . $row_id['place_id'] . "' AND update_date <> '" . $update . "'   ";
+                                WHERE  `id_place` = '" . $row_id['id_place'] . "' AND update_date <> '" . $update . "'   ";
 
                                 $number++;
                     ?>
@@ -213,12 +213,12 @@ $result_id = $conn->query($sql_id);
         <?php if (isset($_SESSION['check'])) { ?>
 
             <?php
-            $sql_updateHistory = "INSERT INTO `history_update_place` 
-                (`id_update_place`, 
-                `title_update_place`, 
-                `data_update_place`, 
-                `date_update_place`, 
-                `status_update_place`) 
+            $sql_updateHistory = "INSERT INTO `manage_place` 
+                (`id_manage_place`, 
+                `title_manage_place`, 
+                `data_manage_place`, 
+                `created_manage_place`, 
+                `status_manage_place`) 
             VALUES (NULL, 
                 'อัพเดตข้อมูล', 
                 'อัพเดตข้อมูลสถานที่ท่องเที่ยวจำนวน " . $number . " แห่ง', 

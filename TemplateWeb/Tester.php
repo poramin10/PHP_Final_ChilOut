@@ -286,7 +286,7 @@ $result = $conn->query($sql);
         <?php } ?>
     </script>
 
-    <!-- ../Travel/Detail.php?id=${res.place_id} -->
+    <!-- ../Travel/Detail.php?id=${res.id_place} -->
 
 </body>
 

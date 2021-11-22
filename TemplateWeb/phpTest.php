@@ -24,5 +24,5 @@ curl_close($curl);
 $dataTravel = json_decode($response);
 // echo gettype($dataTravel->result);
 echo count($dataTravel->result);
-echo json_encode($dataTravel->result[0]->place_id , JSON_UNESCAPED_UNICODE);
+echo json_encode($dataTravel->result[0]->id_place , JSON_UNESCAPED_UNICODE);
 ?>

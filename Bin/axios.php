@@ -77,7 +77,7 @@
                                     res.location['province']
                                     }</p>
                                     <p class="text-danger">ยอดผู้ติดเชื้อวันนี้ 0</p>
-                                    <a href="../Travel/Detail.php?id=${res.place_id}" class="btn btn-primary ">อ่านรายละเอียด</a>
+                                    <a href="../Travel/Detail.php?id=${res.id_place}" class="btn btn-primary ">อ่านรายละเอียด</a>
                                     
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                     res.location['province']
                                     }</p>
                                     <p class="text-danger">ยอดผู้ติดเชื้อวันนี้ 0</p>
-                                    <a href="../Travel/Detail.php?id=${res.place_id}" class="btn btn-primary ">อ่านรายละเอียด</a>
+                                    <a href="../Travel/Detail.php?id=${res.id_place}" class="btn btn-primary ">อ่านรายละเอียด</a>
                                 </div>
                             </div>
                             </center>

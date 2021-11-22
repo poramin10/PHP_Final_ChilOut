@@ -47,6 +47,7 @@ if (isset($_POST['submit'])) {
                         `username`, 
                         `password`, 
                         `status`, 
+                        `register_by`, 
                         `create_at`, 
                         `update_at`) 
                      VALUES (NULL, 
@@ -60,6 +61,7 @@ if (isset($_POST['submit'])) {
                      '" . $username . "', 
                      '" . $hashed_password . "', 
                      '0', 
+                     'system',
                      '" . date("Y-m-d H:i:s") . "',
                      '" . date("Y-m-d H:i:s") . "'
                      );";

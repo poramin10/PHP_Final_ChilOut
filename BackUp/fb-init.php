@@ -38,10 +38,10 @@ if (isset($_SESSION['access_token'])) {
         $res = $fb->get('me?fields=id,name,first_name,last_name,email,gender,birthday,age_range,picture.type(large)');
         $user = $res->getGraphUser();
         $picture = $user->getField('picture');
-        $id_user_fb = $user->getField('id');
+        $id_user = $user->getField('id');
 
 
-        $sql_fb = "SELECT * FROM `user` WHERE id_user_fb = '" . $id_user_fb . "' ";
+        $sql_fb = "SELECT * FROM `user_fb` WHERE id_user_fb = '" . $id_user . "' ";
         $result_fb = $conn->query($sql_fb);
 
         if ($result_fb->num_rows == 0) {
@@ -65,77 +65,66 @@ if (isset($_SESSION['access_token'])) {
 
             // $profile = $picture->getField('url');
 
-            $sql_insert = "INSERT INTO `user` (
-                `id_user`, 
+            $sql_insert = "INSERT INTO `user_fb` (
                 `id_user_fb`, 
-                `firstname`, 
-                `lastname`, 
-                `gender`, 
-                `email`, 
-                `phone`, 
-                `birthdate`, 
-                `profile`, 
-                `register_by`, 
-                `username`, 
-                `password`, 
-                `status`, 
-                `create_at`, 
-                `update_at`) 
-            VALUES (NULL, 
-                '" . $id_user_fb . "', 
+                `firstname_fb`, 
+                `lastname_fb`,  
+                `email_fb`, 
+                `phone_fb`, 
+                `username_fb`, 
+                `gender_fb`,
+                `profile_fb`,
+                `birthdate_fb`,
+                `created_fb`,
+                `updated_fb`) 
+            VALUES (
+                '" . $id_user . "', 
                 '" . $firstname . "', 
                 '" . $lastname . "', 
-                '" . $gender . "', 
                 '" . $email . "', 
                 '" . $phone . "', 
-                '" . $birthdate . "', 
-                '" . $picture->getField('url') . "', 
-                'facebook', 
-                '-', 
-                '-', 
-                '1', 
-                '" . date("Y-m-d H:i:s") . "', 
-                '" . date("Y-m-d H:i:s") . "');";
-
+                '" . $username . "', 
+                '" . $gender . "',
+                '" . $picture->getField('url') . "',
+                '" . $birthdate . "',
+                '" . date("Y-m-d H:i:s") . "',
+                '" . date("Y-m-d H:i:s") . "'
+            
+            );";
             $result_insert = $conn->query($sql_insert);
 
             if ($result_insert) {
 
-                $sql = "SELECT * FROM `user` WHERE id_user_fb = '" . $id_user_fb . "' ";
+                $sql = "SELECT * FROM `user_fb` WHERE id_user_fb = '" . $id_user . "' ";
                 $result = $conn->query($sql);
                 $row = $result->fetch_assoc();
 
-                $_SESSION['id_user'] = $row['id_user'];
-                $_SESSION['firstname'] = $row['firstname'];
-                $_SESSION['lastname'] = $row['lastname'];
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['email'] = $row['email'];
-                $_SESSION['gender'] = $row['gender'];
+                $_SESSION['id_user'] = $row['id_user_fb'];
+                $_SESSION['firstname'] = $row['firstname_fb'];
+                $_SESSION['lastname'] = $row['lastname_fb'];
+                $_SESSION['username'] = $row['username_fb'];
+                $_SESSION['email'] = $row['email_fb'];
+                $_SESSION['gender'] = $row['gender_fb'];
                 $_SESSION['profile'] = $picture->getField('url');
-                $_SESSION['birthdate'] = $row['birthdate'];
-                $_SESSION['phone'] = $row['phone'];
-
-                $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
+                $_SESSION['birthdate'] = $row['birthdate_fb'];
+                $_SESSION['phone'] = $row['phone_fb'];
             }
         } else {
 
-            $sql = "SELECT * FROM `user` WHERE id_user_fb = '" . $id_user_fb . "' ";
+            $sql = "SELECT * FROM `user_fb` WHERE id_user_fb = '" . $id_user . "' ";
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
 
             // echo $id_user;
-            $_SESSION['id_user'] = $row['id_user'];
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['gender'] = $row['gender'];
+            $_SESSION['id_user'] = $row['id_user_fb'];
+            $_SESSION['firstname'] = $row['firstname_fb'];
+            $_SESSION['lastname'] = $row['lastname_fb'];
+            $_SESSION['username'] = $row['username_fb'];
+            $_SESSION['email'] = $row['email_fb'];
+            $_SESSION['gender'] = $row['gender_fb'];
             $_SESSION['profile'] = $picture->getField('url');
-            $_SESSION['birthdate'] = $row['birthdate'];
-            $_SESSION['phone'] = $row['phone'];
-
-            $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
-
+            $_SESSION['birthdate'] = $row['birthdate_fb'];
+            $_SESSION['phone'] = $row['phone_fb'];
         }
 
         // $_SESSION['id_user'] = $user->getField('id');
