@@ -1422,7 +1422,6 @@ nav.white ul li a {
 
 /* Rating Comment */
 
-
 .rating {
   display: flex;
   width: 100%;
@@ -1541,7 +1540,7 @@ nav.white ul li a {
 
 .rating-comment {
   display: flex;
-  width: 100%;
+  width: 100%; 
   overflow: hidden;
   flex-direction: row-reverse;
   position: relative;

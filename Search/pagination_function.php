@@ -1,11 +1,11 @@
 <?php
-function page_navi($total_item, $search, $province , $cur_page, $per_page = 10, $query_str = "", $min_page = 10)
+function page_navi($total_item, $search, $province , $category , $cur_page, $per_page = 10, $query_str = "", $min_page = 10)
 {
 
     // echo 'total_item' . $total_item . '<br>';
     // echo 'cur_page' . $cur_page . '<br>';
     // echo 'per_page' . $per_page . '<br>';
-    // echo 'min_page' . $min_page . '<br>';
+    // echo 'min_page' . $min_page . '<br>'; 
     // echo 'search' . $search . '<br>';
     // echo 'province' . $province.'<br>';
 
@@ -44,42 +44,42 @@ function page_navi($total_item, $search, $province , $cur_page, $per_page = 10, 
     echo '<div class="my-3">
       <ul class="pagination justify-content-center">
         <li class="page-item">
-        <a class="page-link" href="' . $query_str . $mark_char . 'page=1&search=' . $search . '&province='.$province.'"> หน้าแรก</a>
+        <a class="page-link" href="' . $query_str . $mark_char . 'page=1&search=' . $search . '&province='.$province .'&category='.$category.'"> หน้าแรก</a>
         </li>
         ';
     echo '
         <li class="page-item ' . (($cur_page == 1) ? "disabled" : "") . '">
-          <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $prev_page . '&search=' . $search . '&province='.$province.'"> ย้อนกลับ</a> 
+          <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $prev_page . '&search=' . $search . '&province='.$province.'&category='.$category.'"> ย้อนกลับ</a> 
         </li> 
     ';
     for ($i = $f_num_page; $i <= $show_page; $i++) {
         echo '     
         <li class="page-item ' . (($i == $cur_page) ? "active" : "") . '"> 
-          <a class="page-link" href="' . $query_str . $mark_char . 'page=' . $i . '&search=' . $search . '&province='.$province.'"> ' . $i . ' </a> 
+          <a class="page-link" href="' . $query_str . $mark_char . 'page=' . $i . '&search=' . $search . '&province='.$province.'&category='.$category.'"> ' . $i . ' </a> 
         </li>     
     ';
     }
     echo '
         <li class="page-item ' . (($next_page > $total_page) ? "disabled" : "") . '"> 
-            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $next_page . '&search=' . $search . '&province='.$province.'"> ถัดไป</a> 
+            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $next_page . '&search=' . $search . '&province='.$province.'&category='.$category.'"> ถัดไป</a> 
         </li>     
     ';
     echo '
     <li class="page-item">
         <input type="number" class="form-control" min="1" max="' . $total_page . '"
-                style="width:80px;" onClick="this.select()" onchange="window.location=\'' . $query_str . $mark_char . 'search='.$search.'&province='.$province.'&page=\'+this.value"  value="' . $cur_page . '" />
+                style="width:80px;" onClick="this.select()" onchange="window.location=\'' . $query_str . $mark_char . 'search='.$search.'&province='.$province.'&category='.$category.'&page=\'+this.value"  value="' . $cur_page . '" />
     </li> 
     ';
     echo '
         <li class="page-item"> 
-            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $total_page . '&search=' . $search . '&province='.$province.'"> หน้าสุดท้าย</a> 
+            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $total_page . '&search=' . $search . '&province='.$province.'&category='.$category.'"> หน้าสุดท้าย</a> 
         </li>     
       </ul>
     </div>        
     ';
 }
 
-function page_navi_mobile($total_item, $search, $province , $cur_page, $per_page = 10, $query_str = "", $min_page = 10)
+function page_navi_mobile($total_item, $search, $province , $category , $cur_page, $per_page = 10, $query_str = "", $min_page = 10)
 {
 
     // echo 'total_item' . $total_item . '<br>';
@@ -124,18 +124,18 @@ function page_navi_mobile($total_item, $search, $province , $cur_page, $per_page
     echo '<div class="my-3">
       <ul class="pagination justify-content-center">
               <li class="page-item">
-        <a class="page-link" href="' . $query_str . $mark_char . 'page=1&search=' . $search . '&province='.$province.'"> หน้าแรก</a>
+        <a class="page-link" href="' . $query_str . $mark_char . 'page=1&search=' . $search . '&province='.$province.'&category='.$category.'"> หน้าแรก</a>
         </li>
         ';
     echo '
         <li class="page-item ' . (($cur_page == 1) ? "disabled" : "") . '">
-          <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $prev_page . '&search=' . $search . '&province='.$province.'"> ย้อนกลับ</a> 
+          <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $prev_page . '&search=' . $search . '&province='.$province.'&category='.$category.'"> ย้อนกลับ</a> 
         </li> 
     ';
    
     echo '
         <li class="page-item ' . (($next_page > $total_page) ? "disabled" : "") . '"> 
-            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $next_page . '&search=' . $search . '&province='.$province.'"> ถัดไป</a> 
+            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $next_page . '&search=' . $search . '&province='.$province.'&category='.$category.'"> ถัดไป</a> 
         </li>     
     ';
     echo '
@@ -146,7 +146,7 @@ function page_navi_mobile($total_item, $search, $province , $cur_page, $per_page
     ';
     echo '
         <li class="page-item"> 
-            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $total_page . '&search=' . $search . '&province='.$province.'"> หน้าสุดท้าย</a> 
+            <a class="page-link"  href="' . $query_str . $mark_char . 'page=' . $total_page . '&search=' . $search . '&province='.$province.'&category='.$category.'"> หน้าสุดท้าย</a> 
         </li>     
       </ul>
     </div>        

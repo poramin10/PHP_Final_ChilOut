@@ -14,6 +14,18 @@ $sql_Member = "SELECT count(*) FROM `user` WHERE status = 1";
 $result_Member = $conn->query($sql_Member);
 $row_Member = $result_Member->fetch_assoc();
 
+$sql_Member_system = "SELECT count(*) FROM `user` WHERE status = 1 AND `register_by` = 'system' ";
+$result_Member_system = $conn->query($sql_Member_system);
+$row_Member_system = $result_Member_system->fetch_assoc();
+
+$sql_Member_facebook = "SELECT count(*) FROM `user` WHERE status = 1 AND `register_by` = 'facebook' ";
+$result_Member_facebook = $conn->query($sql_Member_facebook);
+$row_Member_facebook = $result_Member_facebook->fetch_assoc();
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -70,16 +82,60 @@ $row_Member = $result_Member->fetch_assoc();
 
               <form action="php_deleteData.php" method="POST">
                 <div class="card">
-                  <div class="card-header">
+                  <div class="card-header bg-primary">
                     <h3 class="card-title">ข้อมูลขยะ</h3>
                   </div>
                   <div class="card-body" style="text-align: center;">
                     <input type="text" class="knob" data-readonly="true" value="<?php echo $row_notMember['count(*)'] ?>" data-width="80" data-height="80" data-fgColor="#39CCCC">
                   </div>
-                  <button type="submit" name="deleteData" class="btn btn-primary">ล้างข้อมูลขยะ</button>
+                  <button type="submit" name="deleteData" class="btn btn-warning">ล้างข้อมูลขยะ</button>
                 </div>
               </form>
 
+            </div>
+            
+            <div class="col-lg-2 col-6">
+              <div class="card">
+                <div class="card-header bg-primary">
+                  <h3 class="card-title">จำนวนสมาชิกทั้งหมด</h3>
+                </div>
+                <div class="card-body" style="text-align: center;">
+                  <h1><strong><?php echo $row_Member['count(*)'] ?></strong></h1>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-6">
+              <div class="card">
+                <div class="card-header bg-primary">
+                  <h3 class="card-title">เข้าสู่ระบบด้วย System</h3>
+                </div>
+                <div class="card-body" style="text-align: center;">
+                  <h1><strong><?php echo $row_Member_system['count(*)'] ?></strong></h1>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-6">
+              <div class="card">
+                <div class="card-header bg-primary">
+                  <h3 class="card-title">เข้าสู่ระบบด้วย Facebook</h3>
+                </div>
+                <div class="card-body" style="text-align: center;">
+                  <h1><strong><?php echo $row_Member_facebook['count(*)'] ?></strong></h1>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-6">
+              <div class="card">
+                <div class="card-header bg-primary">
+                  <h3 class="card-title">เข้าสู่ระบบด้วย Google+</h3>
+                </div>
+                <div class="card-body" style="text-align: center;">
+                  <h1><strong><?php echo 0 ?></strong></h1>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -98,6 +154,7 @@ $row_Member = $result_Member->fetch_assoc();
                       <th>ภาพโปรไฟล์</th>
                       <th>ชื่อจริง-นามสกุล</th>
                       <th>เพศ</th>
+                      <th>วิธีการสมัคร</th>
                       <th>วันที่สมัครสมาชิก</th>
                     </tr>
                   </thead>
@@ -110,9 +167,15 @@ $row_Member = $result_Member->fetch_assoc();
                     ?>
                       <tr>
                         <td><?php echo $num ?></td>
-                        <td><img src="../../assets/img/profile/<?php echo $row['profile'] ?>" width="50px" height="50px" alt=""></td>
+                        <?php if ($row['register_by'] == 'facebook') { ?>
+                          <td><img src="<?php echo $row['profile'] ?>" width="50px" height="50px" alt=""></td>
+                        <?php } else { ?>
+                          <td><img src="../../assets/img/profile/<?php echo $row['profile'] ?>" width="50px" height="50px" alt=""></td>
+
+                        <?php } ?>
                         <td><?php echo $row['firstname'] . ' ' . $row['lastname'] ?></td>
                         <td><?php echo $row['gender'] ?></td>
+                        <td><?php echo $row['register_by'] ?></td>
                         <td><?php echo date_format(new DateTime($row['create_at']), 'd/m/Y H:i:s'); ?></td>
                       </tr>
                     <?php } ?>
@@ -125,6 +188,7 @@ $row_Member = $result_Member->fetch_assoc();
                       <th>ภาพโปรไฟล์</th>
                       <th>ชื่อจริง-นามสกุล</th>
                       <th>เพศ</th>
+                      <th>วิธีการสมัคร</th>
                       <th>วันที่สมัครสมาชิก</th>
                     </tr>
                   </tfoot>

@@ -80,6 +80,15 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="../ManageCategory/index.php" class="nav-link">
+                        <i class="nav-icon fas fa-pager"></i>
+                        <p>
+                            จัดการประเภทสถานที่ท่องเที่ยว
+                        </p>
+                    </a>
+                </li>
+
 
                 <li class="nav-item">
                     <a href="index.php" class="nav-link">
@@ -92,37 +101,31 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
 
 
                 <li class="nav-item">
-
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link 
+                    <?php echo $name == 'RatingPlace' ? 'active' : '' ||
+                               $name == 'ViewPlace' ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             ข้อมูลสถิติ
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
+                            <a href="../RatingPlace/index.php" class="nav-link <?php echo $name == 'RatingPlace' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>สถานที่ท่องเที่ยวที่นิยม
+                                <p><small>คะแนนรีวิวสถานที่</small>
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./index2.html" class="nav-link">
+                            <a href="../ViewPlace/index.php" class="nav-link <?php echo $name == 'ViewPlace' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v2</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./index3.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Dashboard v3</p>
+                                <p><small>จำนวนยอดผู้เข้าชมสถานที่</small>
+                                </p>
                             </a>
                         </li>
                     </ul>
-
                 </li>
 
                 <li class="nav-item">

@@ -345,7 +345,7 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
             <div class="row">
                 <div class="col-lg-12">
 
-                    <h3 class="mt-3"><strong>รีวิวสถานที่ท่องเที่ยว</strong></h3>
+                    <h3 class="mt-5"><strong>รีวิวสถานที่ท่องเที่ยว</strong></h3>
 
                     <?php if (isset($_SESSION['id_user'])) { ?>
 
@@ -360,7 +360,7 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
                             <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'] ?>">
                             <input type="hidden" name="id_place" value="<?php echo $_GET['idTravel'] ?>">
 
-                            <textarea name="comment" class="form-control mt-3" id="" cols="30" rows="5" placeholder="แสดงความคิดเห็น"></textarea>
+                            <textarea name="comment" class="form-control mt-3" id="" cols="30" rows="5" placeholder="รีวิวสถานที่ท่องเที่ยว"></textarea>
 
                             <!-- Emoji -->
                             <div class="container">
@@ -467,14 +467,14 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
                                 </div>
                             </div>
 
-                            <button type="sutmit" name="submit" class="btn btn-primary btn-block mt-3">แสดงความคิดเห็น</button>
+                            <button type="sutmit" name="submit" class="btn btn-primary btn-block mt-3">รีวิวสถานทึ่ท่องเที่ยว</button>
 
                         <?php } else { ?>
 
                             <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'] ?>">
                             <input type="hidden" name="id_place" value="<?php echo $_GET['idTravel'] ?>">
 
-                            <textarea name="comment" class="form-control mt-3" id="" cols="30" rows="5" placeholder="แสดงความคิดเห็น">
+                            <textarea name="comment" class="form-control mt-3" id="" cols="30" rows="5" placeholder="รีวิวสถานที่ท่องเที่ยว">
 <?php echo $row_check_comment['comment_rating'] ?></textarea>
 
                             <!-- Emoji -->
@@ -582,13 +582,13 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
                                 </div>
                             </div>
 
-                            <button type="sutmit" name="submitUpdate" class="btn btn-primary btn-block mt-3">แก้ไขความคิดเห็น</button>
+                            <button type="sutmit" name="submitUpdate" class="btn btn-primary btn-block mt-3">แก้ไขรีวิว</button>
 
 
                         <?php } ?>
 
                     <?php } else { ?>
-                        <h3 class="text-center"><strong>เข้าสู่ระบบเพื่อแสดงความคิดเห็น</strong></h3>
+                        <h4 class="text-center"><strong>เข้าสู่ระบบเพื่อรีวิวสถานที่ท่องเที่ยว</strong></h4>
                     <?php } ?>
                     <hr>
                 </div>
@@ -607,7 +607,7 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
                 if ($result->num_rows == 0) {
                 ?>
                     <div class="mt-4">
-                        <h5 class="text-center"><strong>ยังไม่มีการแสดงความคิดเห็น</strong></h5>
+                        <h5 class="text-center"><strong>ยังไม่มีการรีวิว</strong></h5>
                     </div>
 
 
@@ -683,6 +683,9 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
                                     <label for="rating-comment-2"></label>
                                     <input <?php echo $row['ratestar'] == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
                                     <label for="rating-comment-1"></label>
+                                </div>
+                                <div class="float-right">
+                                    <small>รีวิวเมื่อวันที่: <?php echo date_format(new DateTime($row['update_at']), 'd/m/Y H:i:s');  ?></small>
                                 </div>
 
                             </div>

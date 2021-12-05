@@ -1,15 +1,19 @@
 <!-- jQuery -->
 <script src="../plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+
 <!-- Bootstrap 4 -->
 <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="../plugins/chart.js/Chart.min.js"></script>
+
 <!-- Sparkline -->
 <script src="../plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
@@ -34,3 +38,10 @@
 <script src="../dist/js/pages/dashboard.js"></script>
 <!-- ScriptSweetAlert -->
 <script src="../../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+<!-- FLOT CHARTS -->
+<script src="../plugins/flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="../plugins/flot/plugins/jquery.flot.resize.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="../plugins/flot/plugins/jquery.flot.pie.js"></script>

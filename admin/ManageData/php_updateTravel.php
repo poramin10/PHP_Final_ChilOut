@@ -3,7 +3,7 @@ include_once('../authen_backend.php');
 
 $number = 0;
 
-$sql_id = "SELECT * FROM `place` LIMIT 100";
+$sql_id = "SELECT * FROM `place` LIMIT 50"; 
 $result_id = $conn->query($sql_id);
 
 

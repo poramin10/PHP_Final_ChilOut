@@ -62,7 +62,7 @@ $row_date = $result_date->fetch_assoc();
                             <?php } ?>
                         </div>
                         <div class="col-lg-6">
-                            <button onclick="DeleteData()" type="button" class="btn btn-primary float-right">ล้างข้อมูล</button>
+                            <button onclick="DeleteData()" type="button" class="btn btn-primary float-right">ล้างข้อมูลตาราง</button>
                             <a href="./php_updateTravel.php" type="button" class="btn btn-primary float-right mr-2">อัพเดตข้อมูลเดิม</a>
                             <a href="./php_insertTravel.php" type="button" class="btn btn-primary float-right mr-2">เพิ่มข้อมูล API</a>
                         </div>

@@ -5,7 +5,7 @@ $_SESSION['Check'] = 'ไม่สำเร็จ';
 // header('Content-Type: application/json');
 $number = 0;
 
-$sql = "SELECT * FROM `provinces` LIMIT 2";
+$sql = "SELECT * FROM `provinces` LIMIT 10";
 $result = $conn->query($sql);
 
 while ($row = $result->fetch_assoc()) {
@@ -37,7 +37,15 @@ while ($row = $result->fetch_assoc()) {
             for ($i = 0; $i < count($dataTravel->result); $i++) {
                 if ($dataTravel->result[$i]->category_code == 'ATTRACTION' && $dataTravel->result[$i]->thumbnail_url != "") {
 
-                    $id_place = str_replace('"', "", json_encode($dataTravel->result[$i]->id_place, JSON_UNESCAPED_UNICODE));
+                
+                    $id_place = str_replace('"', "", json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
+
+                    // echo $number . '<br>';
+                    // echo "id: " . $id_place . '<br>';
+                    // echo "ชื่อสถานที่: " . json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
+                    // echo "จังหวัดสถานที่: " . json_encode($dataTravel->result[$i]->location->province, JSON_UNESCAPED_UNICODE) . '<br>';
+                    // echo "ที่ตั้ง: " . json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
+                    // echo '<hr>';
 
                     $sql_check = "SELECT * FROM `place` WHERE id_place = '" . $id_place . "';";
                     $result_check = $conn->query($sql_check);
@@ -47,7 +55,7 @@ while ($row = $result->fetch_assoc()) {
 
 
                     if ($result_check->num_rows == 0) {
-
+                        echo "เจอ";
                         echo $number . '<br>';
                         echo "id: " . $id_place . '<br>';
                         echo "ชื่อสถานที่: " . json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';

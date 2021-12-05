@@ -1,6 +1,6 @@
 <?php
 include_once('../authen_backend.php');
-$sql = "SELECT * FROM `place` ORDER BY `place`.`province` ASC";
+$sql = "SELECT * FROM `place` ORDER BY `place`.`province` ASC LIMIT 60";
 $result = $conn->query($sql);
 ?>
 
@@ -98,7 +98,7 @@ $result = $conn->query($sql);
                                                         <th>postcode</th>
                                                         <th>ประเภท</th>
                                                         <th>อัพเดตเมื่อวันที่</th>
-                                                        <th>คลิกดู</th>
+                                                        <th>จัดการ</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -141,7 +141,7 @@ $result = $conn->query($sql);
                                                         <th>postcode</th>
                                                         <th>ประเภท</th>
                                                         <th>อัพเดตเมื่อวันที่</th>
-                                                        <th>คลิกดู</th>
+                                                        <th>จัดการ</th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
