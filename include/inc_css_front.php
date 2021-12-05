@@ -32,5 +32,4 @@
 
     <!-- Wow JS -->
     <link rel="stylesheet" href="../node_modules/wowjs/css/libs/animate.css">
-
     

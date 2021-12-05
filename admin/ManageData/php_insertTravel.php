@@ -40,19 +40,8 @@ while ($row = $result->fetch_assoc()) {
                 
                     $id_place = str_replace('"', "", json_encode($dataTravel->result[$i]->place_id, JSON_UNESCAPED_UNICODE));
 
-                    // echo $number . '<br>';
-                    // echo "id: " . $id_place . '<br>';
-                    // echo "ชื่อสถานที่: " . json_encode($dataTravel->result[$i]->place_name, JSON_UNESCAPED_UNICODE) . '<br>';
-                    // echo "จังหวัดสถานที่: " . json_encode($dataTravel->result[$i]->location->province, JSON_UNESCAPED_UNICODE) . '<br>';
-                    // echo "ที่ตั้ง: " . json_encode($dataTravel->result[$i]->location->address, JSON_UNESCAPED_UNICODE) . '<br>';
-                    // echo '<hr>';
-
                     $sql_check = "SELECT * FROM `place` WHERE id_place = '" . $id_place . "';";
                     $result_check = $conn->query($sql_check);
-
-                    // echo $id_place.'<br>';
-                    // echo $result_check->num_rows.'<br>';
-
 
                     if ($result_check->num_rows == 0) {
                         echo "เจอ";

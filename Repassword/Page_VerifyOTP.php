@@ -8,14 +8,14 @@ include_once('../database/connectDB.php');
  * Check Email
  * ===========
  */
-if(!isset($_SESSION['email_Verify'])){
+if (!isset($_SESSION['email_Verify'])) {
     header('Location:./Page_SendEmail.php');
-}else{
+} else {
     $email_Verify = $_SESSION['email_Verify'];
 }
 
 
-$sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email_Verify . "' AND `status` LIKE '1'   ORDER BY `id_user` DESC";
+$sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email_Verify . "' AND `status` LIKE '1' ORDER BY `id_user` DESC";
 $resule = $conn->query($sql);
 
 if ($resule->num_rows >= 1) {
@@ -116,8 +116,6 @@ if ($resule->num_rows >= 1) {
             //     showFilled(TheTime.getMinutes()) + ":" + showFilled(TheTime.getSeconds());
 
             const timeCur = showFilled(TheTime.getHours()) + ":" + showFilled(TheTime.getMinutes()) + ":" + showFilled(TheTime.getSeconds());
-          
-            
 
             setTimeout("StartClock24()", 1000)
             <?php
@@ -168,13 +166,13 @@ if ($resule->num_rows >= 1) {
                     $_SESSION['numberOTP'] = NULL;
                 ?>
                     let check = false
-                <?php 
+                <?php
                 }
                 ?>
-                if(check == true){
+                if (check == true) {
                     window.location = `./Page_VerifyOTP.php?expire=true`;
                 }
-                
+
 
             } else {
                 document.getElementById("count").innerHTML = ((Hour) * 60 * 60) + (Minute * 60) + Second;

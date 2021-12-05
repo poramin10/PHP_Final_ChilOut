@@ -4,7 +4,7 @@ require_once('../authen_frontend.php');
 
 // แสดงข้อมูลสถานที่ท่องเที่ยวที่เด่นๆ
 $sql = "SELECT * FROM `countertravel` 
-    JOIN place ON countertravel.id_travel = place.id_place 
+    JOIN place ON countertravel.id_place = place.id_place 
 ORDER BY countertravel.count_travel DESC LIMIT 12";
 $result = $conn->query($sql);
 $number = 0;
