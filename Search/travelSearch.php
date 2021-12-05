@@ -104,6 +104,25 @@ require_once("./pagination_function.php");
 
                                     <div class="row">
 
+                                    <div class="col-lg-6">
+                                            <select id="selectValue" name="category" onchange="test.submit();" class="input-field custom-select custom-select-md">
+                                                <option <?php echo $category == 'ประเภทสถานที่ท่องเที่ยวทั้งหมด' ? 'selected' : '' ?> value="ประเภทสถานที่ท่องเที่ยวทั้งหมด">ประเภทสถานที่ท่องเที่ยวทั้งหมด</option>
+                                                <?php while ($row_cat = $result_cat->fetch_assoc()) { ?>
+                                                    <option <?php echo $category == $row_cat['name_cat'] ? 'selected' : '' ?> value="<?php echo $row_cat['name_cat'] ?>"><?php echo $row_cat['name_cat'] ?></option>
+                                                <?php } ?>
+                                            </select>
+
+                                            <!-- ตัวสั่งให้ทำงาน -->
+                                            <input type="hidden" value="Click" />
+                                            <?php
+                                            if (isset($_GET['category'])) {
+                                                $province = $_GET['province'];
+                                                $search = $_GET['search'];
+                                                $category = $_GET['category'];
+                                            }
+                                            ?>
+                                        </div>
+
                                         <div class="col-lg-6">
                                             <select id="selectValue" name="province" onchange="test.submit();" class="input-field custom-select custom-select-md">
                                                 <option <?php echo $province == 'แสดงจังหวัดทั้งหมด' ? 'selected' : '' ?> value="แสดงจังหวัดทั้งหมด">แสดงจังหวัดทั้งหมด</option>
@@ -123,24 +142,10 @@ require_once("./pagination_function.php");
                                             ?>
                                         </div>
 
-                                        <div class="col-lg-6">
-                                            <select id="selectValue" name="category" onchange="test.submit();" class="input-field custom-select custom-select-md">
-                                                <option <?php echo $category == 'ประเภทสถานที่ท่องเที่ยวทั้งหมด' ? 'selected' : '' ?> value="ประเภทสถานที่ท่องเที่ยวทั้งหมด">ประเภทสถานที่ท่องเที่ยวทั้งหมด</option>
-                                                <?php while ($row_cat = $result_cat->fetch_assoc()) { ?>
-                                                    <option <?php echo $category == $row_cat['name_cat'] ? 'selected' : '' ?> value="<?php echo $row_cat['name_cat'] ?>"><?php echo $row_cat['name_cat'] ?></option>
-                                                <?php } ?>
-                                            </select>
+                                        
+                                        
 
-                                            <!-- ตัวสั่งให้ทำงาน -->
-                                            <input type="hidden" value="Click" />
-                                            <?php
-                                            if (isset($_GET['category'])) {
-                                                $province = $_GET['province'];
-                                                $search = $_GET['search'];
-                                                $category = $_GET['category'];
-                                            }
-                                            ?>
-                                        </div>
+
                                     </div>
 
 
