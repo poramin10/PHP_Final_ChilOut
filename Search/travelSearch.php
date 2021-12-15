@@ -105,7 +105,7 @@ require_once("./pagination_function.php");
                                     <div class="row">
 
                                     <div class="col-lg-6">
-                                            <select id="selectValue" name="category" onchange="test.submit();" class="input-field custom-select custom-select-md">
+                                            <select id="selectValue" name="category" onchange="test.submit();" class="input-field custom-select custom-select-md mt-3">
                                                 <option <?php echo $category == 'ประเภทสถานที่ท่องเที่ยวทั้งหมด' ? 'selected' : '' ?> value="ประเภทสถานที่ท่องเที่ยวทั้งหมด">ประเภทสถานที่ท่องเที่ยวทั้งหมด</option>
                                                 <?php while ($row_cat = $result_cat->fetch_assoc()) { ?>
                                                     <option <?php echo $category == $row_cat['name_cat'] ? 'selected' : '' ?> value="<?php echo $row_cat['name_cat'] ?>"><?php echo $row_cat['name_cat'] ?></option>
@@ -124,7 +124,7 @@ require_once("./pagination_function.php");
                                         </div>
 
                                         <div class="col-lg-6">
-                                            <select id="selectValue" name="province" onchange="test.submit();" class="input-field custom-select custom-select-md">
+                                            <select id="selectValue" name="province" onchange="test.submit();" class="input-field custom-select custom-select-md mt-3">
                                                 <option <?php echo $province == 'แสดงจังหวัดทั้งหมด' ? 'selected' : '' ?> value="แสดงจังหวัดทั้งหมด">แสดงจังหวัดทั้งหมด</option>
                                                 <?php while ($row = $result->fetch_assoc()) { ?>
                                                     <option <?php echo $province == $row['name_th'] ? 'selected' : '' ?> value="<?php echo $row['name_th'] ?>"><?php echo $row['name_th'] ?></option>
@@ -141,15 +141,7 @@ require_once("./pagination_function.php");
                                             }
                                             ?>
                                         </div>
-
-                                        
-                                        
-
-
                                     </div>
-
-
-
                                 </div>
 
                             </div>
@@ -198,7 +190,7 @@ require_once("./pagination_function.php");
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
                                 $num++;
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -284,7 +276,7 @@ require_once("./pagination_function.php");
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
                                 $num++;
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -378,7 +370,7 @@ require_once("./pagination_function.php");
                         if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -465,7 +457,7 @@ require_once("./pagination_function.php");
                         if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -563,7 +555,7 @@ require_once("./pagination_function.php");
                         if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -648,7 +640,7 @@ require_once("./pagination_function.php");
                         if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -742,7 +734,7 @@ require_once("./pagination_function.php");
                         if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -827,7 +819,7 @@ require_once("./pagination_function.php");
                         if ($result && $result->num_rows > 0) {  // คิวรี่ข้อมูลสำเร็จหรือไม่ และมีรายการข้อมูลหรือไม่
                             while ($row = $result->fetch_assoc()) { // วนลูปแสดงรายการ
 
-                                $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                 $result_count = $conn->query($sql_count);
                                 $row_count = $result_count->fetch_assoc();
 
@@ -909,7 +901,6 @@ require_once("./pagination_function.php");
         <div class="respon-Navi-Mobile">
             <?php page_navi_mobile($total, $search, $province, $category, (isset($_GET['page'])) ? $_GET['page'] : 1, $e_page); ?>
         </div>
-
 
     <?php
     }

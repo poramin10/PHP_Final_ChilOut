@@ -1,6 +1,6 @@
 
 <!-- Footer -->
-<img src="../assets/img/bg-footer.png" width="100%" alt="">
+<img src="../assets/img/bg-footer.png" width="100%" alt="" style="display: block;">
 <footer class="site-footer">
     <div class="container">
         <div class="row text-center">

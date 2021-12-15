@@ -1,30 +1,17 @@
 <?php require_once('../authen_frontend.php');
-if (!isset($_SESSION['id_user'])) {
-    header('location: ../Login/Page_FormLogin.php');
-}
+// if (!isset($_SESSION['id_user'])) {
+//     header('location: ../Login/Page_FormLogin.php');
+// }
 
 // Check ว่า Page 1 ทำครบหรือยัง
 if (!isset($_SESSION['page2'])) {
     header('location: ./page2.php');
 }
 
-// หัวข้อ: ระยะเวลาในการท่องเที่ยวของท่าน
-$arrTimeTravel = [
-    "วันเดียว (ไปเช้าเย็นกลับ)",
-    "2 วัน 1 คืน",
-    "3 วัน 2 คืน",
-    "5 วัน 4 คืน",
-    "7 วัน 6 คืน",
-    "มากกว่า 7 วัน"
-];
-// หัวข้อ: ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร  ค่าที่พัก และอื่นๆ)
-$arrExpenses  = [
-    "ต่ำกว่า 1,000 บาท",
-    "1,001 - 3,000 บาท",
-    "3,001 - 5,000 บาท",
-    "5,001 - 8,000 บาท",
-    "มากกว่า 8,000 บาท",
-];
+include_once('./choice.php');
+
+
+
 
 
 
@@ -51,7 +38,7 @@ $arrExpenses  = [
     <!-- Navbar -->
     <?php include_once('../include/navbarV2.php') ?>
 
-    <img src="../assets/img/img-recom.png" width="100%" alt="">
+    <!-- <img src="../assets/img/img-recom.png" width="100%" alt=""> -->
 
     <div class="container">
         <div class="row">
@@ -99,15 +86,15 @@ $arrExpenses  = [
                         <h3><strong>ข้อมูลการท่องเที่ยว</strong></h3>
 
                         <div class="choice mt-3">
-                            <label for="car"> 9. ระยะเวลาในการท่องเที่ยวของท่าน</label>
+                            <label for="car"> <strong>12. ระยะเวลาในการท่องเที่ยวของท่าน</strong> </label>
                             <div class="row">
 
-                                <?php for ($i = 0; $i < count($arrTimeTravel); $i++) { ?>
+                                <?php for ($i = 0; $i < count($arr_time_travel); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
                                         <div class="form-check">
-                                            <input <?php echo isset($_SESSION['timetravel_recom']) && $_SESSION['timetravel_recom'] == $arrTimeTravel[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="timetravel_recom" type="radio" value="<?php echo $arrTimeTravel[$i] ?>" id="timetravel_recom-<?php echo $i ?>">
+                                            <input <?php echo isset($_SESSION['Recom']['timetravel_recom']) && $_SESSION['Recom']['timetravel_recom'] == $arr_time_travel_choice[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="timetravel_recom" type="radio" value="<?php echo $arr_time_travel_choice[$i] ?>" id="timetravel_recom-<?php echo $i ?>">
                                             <label class="form-check-label" for="timetravel_recom-<?php echo $i ?>">
-                                                <?php echo $arrTimeTravel[$i] ?>
+                                                <?php echo $arr_time_travel[$i] ?>
                                             </label>
                                         </div>
                                     </div>
@@ -116,7 +103,7 @@ $arrExpenses  = [
                             </div>
 
                             <!-- กรณีไม่พบการกรอกข้อมูล -->
-                            <?php if (isset($_SESSION['validate_timetravel'])) { ?>
+                            <?php if (isset($_SESSION['Recom']['validate_timetravel'])) { ?>
                                 <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                                     <strong>คุณยังไม่กรอกข้อมูล</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -130,15 +117,15 @@ $arrExpenses  = [
                         </div>
 
                         <div class="choice mt-3">
-                            <label for="car"> 10. ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร ค่าที่พัก และอื่นๆ)</label>
+                            <label for="car"> <strong>13. ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร ค่าที่พัก และอื่นๆ)</strong> </label>
                             <div class="row">
 
-                                <?php for ($i = 0; $i < count($arrExpenses); $i++) { ?>
+                                <?php for ($i = 0; $i < count($arr_expenses_travel); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
                                         <div class="form-check">
-                                            <input <?php echo isset($_SESSION['expenses_recom']) && $_SESSION['expenses_recom'] == $arrExpenses[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="expenses_recom" type="radio" value="<?php echo $arrExpenses[$i] ?>" id="expenses_recom-<?php echo $i ?>">
+                                            <input <?php echo isset($_SESSION['Recom']['expenses_recom']) && $_SESSION['Recom']['expenses_recom'] == $arr_expenses_travel_choice[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="expenses_recom" type="radio" value="<?php echo $arr_expenses_travel_choice[$i] ?>" id="expenses_recom-<?php echo $i ?>">
                                             <label class="form-check-label" for="expenses_recom-<?php echo $i ?>">
-                                                <?php echo $arrExpenses[$i] ?>
+                                                <?php echo $arr_expenses_travel[$i] ?>
                                             </label>
                                         </div>
                                     </div>
@@ -147,7 +134,7 @@ $arrExpenses  = [
                             </div>
 
                             <!-- กรณีไม่พบการกรอกข้อมูล -->
-                            <?php if (isset($_SESSION['validate_expenses'])) { ?>
+                            <?php if (isset($_SESSION['Recom']['validate_expenses'])) { ?>
                                 <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                                     <strong>คุณยังไม่กรอกข้อมูล</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

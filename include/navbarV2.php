@@ -11,7 +11,7 @@
             <ul>
                 <li><a href="../HomePage/"><i class="fas fa-home"></i> หน้าหลัก</a></li>
                 <li><a href="../Search/travelSearch.php"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
-                <li><a href="#"><i class="fas fa-robot"></i> แชทบอท</a></li>
+                <li><a href="../Recommend/page1.php"><i class="fas fa-passport"></i> ระบบแนะนำสถานที่ท่องเที่ยว (สำหรับการประเมิน)</a></li>
                 <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
 
@@ -48,7 +48,7 @@
             <ul>
                 <li><a href="../HomePage/"><i class="fas fa-home"></i> หน้าหลัก</a></li>
                 <li><a href="../Search/travelSearch.php"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
-                <li><a href="#"><i class="fas fa-robot"></i> แชทบอท</a></li>
+                <li><a href="../Recommend/page1.php"><i class="fas fa-passport"></i> ระบบแนะนำสถานที่ท่องเที่ยว (สำหรับการประเมิน)</a></li>
                 <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
                     <div class="btn-group dropup">

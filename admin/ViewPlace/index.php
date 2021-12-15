@@ -71,7 +71,7 @@ $result_count = $conn->query($sql_count);
                                         $num = 0;
                                         while ($row_count = $result_count->fetch_assoc()) {
                                             $num++;
-                                            $sql_place = "SELECT * FROM `place` WHERE id_place = '" . $row_count['id_travel'] . "';";
+                                            $sql_place = "SELECT * FROM `place` WHERE id_place = '" . $row_count['id_place'] . "';";
                                             $result_place = $conn->query($sql_place);
                                             $row_place = $result_place->fetch_assoc();
                                         ?>

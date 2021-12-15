@@ -44,10 +44,16 @@ body {
   border-color: #124E96;
 }
 
-.btn-blue:hover {
-  background-color: #124E96;
-  color: white;
+.btn-blue-active{
+  background-color: #ffffff;
+  color: 124E96;
   border-color: #124E96;
+}
+
+.btn-blue:hover {
+  background-color: #0866d8;
+  color: white;
+  border-color: #0866d8;
 }
 
 .btn-outline-blue{

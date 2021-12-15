@@ -1,34 +1,9 @@
 <?php require_once('../authen_frontend.php');
-if (!isset($_SESSION['id_user'])) {
-    header('location: ../Login/Page_FormLogin.php');
-}
+// if (!isset($_SESSION['id_user'])) {
+//     header('location: ../Login/Page_FormLogin.php');
+// }
 
-// หัวข้อ: ความต้องการในการมาท่องเที่ยวของท่าน
-$arrDecideTravel = [
-    "สถานที่ท่องเที่ยวที่มีความปลอดภัย",
-    "สถานที่ท่องเที่ยวที่มีบรรยากาศดี",
-    "เป็นเอกลักษณ์",
-    "มีความสวยงามเป็นธรรมชาติ",
-    "ความงดงามของสถานที่ท่องเที่ยว",
-    "ความหลากหลายของแหล่งท่องเที่ยว",
-    "มีสถานที่ควรค่าแก่การสักการะ",
-    "มีความสมบูรณ์ทางโบราณวัตถุ",
-    "มีความทันสมัยทางด้านเทคโนโลยี",
-    "มีหลากหลายเส้นทางการเข้าถึง",
-    "สภาพถนนไม่ขรุขระ",
-    "มีแหล่งศึกษาวัฒนธรรม",
-    "ได้เปิดโลกกว้าง",
-    "ได้ความรู้ในการท่องเที่ยว",
-    "มีสินค้าท้องถิ่นจัดจำหน่าย",
-
-];
-$arrDecideChoice = [
-    '5',
-    '4',
-    '3',
-    '2',
-    '1'
-];
+include_once('./choice.php');
 
 ?>
 
@@ -47,7 +22,7 @@ $arrDecideChoice = [
     <?php include_once('../include/inc_css_front.php') ?>
 
     <!-- Icheck -->
-    <link href="../assets/lib/icheck/skins/square/blue.css" rel="stylesheet">
+    <link href="../assets/lib/icheck/skins/square/blue.css" rel="stylesheet ">
 
 </head>
 
@@ -56,7 +31,7 @@ $arrDecideChoice = [
     <!-- Navbar -->
     <?php include_once('../include/navbarV2.php') ?>
 
-    <img src="../assets/img/img-recom.png" width="100%" alt="">
+    <!-- <img src="../assets/img/img-recom.png" width="100%" alt=""> -->
 
     <div class="container">
         <div class="row">
@@ -125,15 +100,15 @@ $arrDecideChoice = [
 
                                         <?php
                                         $num = 0;
-                                        for ($i = 0; $i < count($arrDecideTravel); $i++) {
+                                        for ($i = 0; $i < count($arr_decide_Travel); $i++) {
                                             $num++;
                                         ?>
                                             <tr>
                                                 <th class="text-center" scope="row"><?php echo $num ?></th>
-                                                <td><?php echo $arrDecideTravel[$i] ?></td>
+                                                <td><?php echo $arr_decide_Travel[$i] ?></td>
                                                 <?php for ($y = 0; $y < count($arrDecideChoice); $y++) { ?>
                                                     <td class="text-center">
-                                                        <input <?php echo isset($_SESSION['decide_travel-'.$i]) && $_SESSION['decide_travel-'.$i] == $arrDecideChoice[$y] ? 'checked' : '' ?> class="form-check-input mr-3" name="decide_travel-<?php echo $i ?>" type="radio" value="<?php echo $arrDecideChoice[$y] ?>" id="decide_travel-<?php echo $y ?>">
+                                                        <input <?php echo isset($_SESSION['Recom']['Decide']['decide_travel-' . $i]) && $_SESSION['Recom']['Decide']['decide_travel-' . $i] == $arrDecideChoice[$y] ? 'checked' : '' ?> class="form-check-input mr-3" name="decide_travel-<?php echo $i ?>" type="radio" value="<?php echo $arrDecideChoice[$y] ?>" id="decide_travel-<?php echo $y ?>">
                                                         <?php //echo $_SESSION['need_travel-'.$i].' == '.$arrDecideChoice[$y] 
                                                         ?>
                                                     </td>
@@ -161,8 +136,14 @@ $arrDecideChoice = [
 
                         </div>
 
-                        <button name="backChoice3" class="btn btn-secondary mt-3 float-left px-5">ย้อนกลับ</button>
-                        <button type="submit" name="submitChoice4" class="btn btn-blue mt-3 float-right px-5">ประมวลผลแบบสอบถาม</button>
+                        <div class="col-lg-3">
+                            <button name="backChoice3" class="btn btn-secondary mt-3 float-left px-5 btn-block">ย้อนกลับ</button>
+                        </div>
+
+                        <div class="col-lg-4 float-right">
+                            <button type="submit" name="submitChoice4" class="btn btn-blue mt-3 px-5 btn-block">ประมวลผลแบบสอบถาม</button>
+
+                        </div>
 
                     </div>
 

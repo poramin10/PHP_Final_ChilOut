@@ -66,7 +66,6 @@ if ($resule->num_rows >= 1) {
                     <h2 class="my-1 text-center"><b>กรอกรหัส OTP</b></h2>
                     <h6>ยืนยัน Email: <?php echo $email_Verify_Regis ?></h6>
                     <label for="">รหัสยืนยัน</label>
-                    <!-- <input type="text" size="8" id="counter" disabled />  -->
 
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">

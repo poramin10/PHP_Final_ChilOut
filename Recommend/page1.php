@@ -1,7 +1,11 @@
 <?php require_once('../authen_frontend.php');
-if (!isset($_SESSION['id_user'])) {
-    header('location: ../Login/Page_FormLogin.php');
-}
+// if (!isset($_SESSION['id_user'])) {
+//     header('location: ../Login/Page_FormLogin.php');
+// }
+
+include_once('./choice.php');
+
+
 ?>
 
 
@@ -15,6 +19,9 @@ if (!isset($_SESSION['id_user'])) {
     <title>Recommend</title>
     <!-- CSS -->
     <?php include_once('../include/inc_css_front.php') ?>
+
+    <!-- Icheck -->
+    <link href="../assets/lib/icheck/skins/square/blue.css" rel="stylesheet">
 
 </head>
 
@@ -68,68 +75,101 @@ if (!isset($_SESSION['id_user'])) {
                 <div class="row">
                     <div class="col-lg-12">
                         <h3><strong>ข้อมูลส่วนตัว</strong></h3>
-                        <div class="choice">
-                            <label for="education_recom">1. การศึกษา</label>
+
+                        <div class="choice label-gender mt-3">
+                            <label for=""><strong>1. เพศ</strong></label>
+                            <div class="row">
+
+                                <?php for ($i = 0; $i < count($arr_Gender); $i++) { ?>
+                                    <div class="col-lg-4 mt-3">
+                                        <div class="form-check">
+                                            <input <?php echo isset($_SESSION['Recom']['gender_recom']) && $_SESSION['Recom']['gender_recom'] == $arr_Gender_Choice[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="gender_recom" type="radio" value="<?php echo $arr_Gender_Choice[$i] ?>" id="gender_recom">
+                                            <label class="form-check-label" for="gender_recom">
+                                                <?php echo $arr_Gender[$i] ?>
+                                            </label>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
+                            </div>
+
+                            <!-- กรณีไม่พบการกรอกข้อมูล -->
+                            <?php if (isset($_SESSION['Recom']['validate_gender'])) { ?>
+                                <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                                    <strong>คุณยังไม่กรอกข้อมูล</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
+
+                            <hr>
+
+                        </div>
+
+                        <div class="choice label-age mt-3">
+                            <label for="age_recom"><strong>2. อายุ</strong> </label>
+                            <select class="custom-select" name="age_recom" id="inputGroupSelect01" required>
+                                <option <?php echo !isset($_SESSION['Recom']['age_recom']) ? 'selected' : '' ?> value="">ช่วงอายุ</option>
+                                <?php for ($i = 0; $i < count($arr_age); $i++) { ?>
+                                    <option <?php echo isset($_SESSION['Recom']['age_recom']) && $_SESSION['Recom']['age_recom'] == $arr_age_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_age_choice[$i] ?>"><?php echo $arr_age[$i] ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                คุณยังไม่ได้กรอกข้อมูล
+                            </div>
+                        </div>
+
+                        <div class="choice label-education mt-3">
+                            <label for="education_recom"><strong>3. การศึกษา</strong></label>
                             <select class="custom-select" name="education_recom" id="inputGroupSelect01" required>
-                                <option <?php echo !isset($_SESSION['education_recom']) ? 'selected' : '' ?> value="">เลือกการศึกษา</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'ประถมศึกษา' ? 'selected' : ''  ?> value="ประถมศึกษา">ประถมศึกษา</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'มัธยมศึกษาตอนต้น' ? 'selected' : ''  ?> value="มัธยมศึกษาตอนต้น">มัธยมศึกษาตอนต้น</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'มัธยมศึกษาตอนปลาย/ปวช' ? 'selected' : ''  ?> value="มัธยมศึกษาตอนปลาย/ปวช">มัธยมศึกษาตอนปลาย/ปวช</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'อนุปริญญา/ปวส' ? 'selected' : ''  ?> value="อนุปริญญา/ปวส">อนุปริญญา/ปวส</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'ปริญญาตรี' ? 'selected' : ''  ?> value="ปริญญาตรี">ปริญญาตรี</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'ปริญญาโท' ? 'selected' : ''  ?> value="ปริญญาโท">ปริญญาโท</option>
-                                <option <?php echo isset($_SESSION['education_recom']) && $_SESSION['education_recom'] == 'ปริญญาเอก' ? 'selected' : ''  ?> value="ปริญญาเอก">ปริญญาเอก</option>
+                                <option <?php echo !isset($_SESSION['Recom']['education_recom']) ? 'selected' : '' ?> value="">เลือกการศึกษา</option>
+                                <?php for ($i = 0; $i < count($arr_education); $i++) { ?>
+                                    <option <?php echo isset($_SESSION['Recom']['education_recom']) && $_SESSION['Recom']['education_recom'] == $arr_education_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_education_choice[$i] ?>"><?php echo $arr_education[$i] ?></option>
+                                <?php } ?>
                             </select>
                             <div class="invalid-feedback">
                                 คุณยังไม่ได้กรอกข้อมูล
                             </div>
                         </div>
 
-                        <div class="choice mt-3">                  
-                            <label for="career_recom">2. อาชีพ</label>
+                        <div class="choice label-career mt-3">
+                            <label for="career_recom"><strong>4. อาชีพ</strong> </label>
                             <select class="custom-select" name="career_recom" id="inputGroupSelect01" required>
-                                <option <?php echo !isset($_SESSION['career_recom']) ? 'selected' : '' ?> value="">เลือกอาชีพ</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'พนักงานบริษัทเอกชน' ? 'selected' : ''  ?> value="พนักงานบริษัทเอกชน">พนักงานบริษัทเอกชน</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'ธุรกิจส่วนตัว' ? 'selected' : ''  ?> value="ธุรกิจส่วนตัว">ธุรกิจส่วนตัว</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'นิสิต/นักศึกษา' ? 'selected' : ''  ?> value="นิสิต/นักศึกษา">นิสิต/นักศึกษา</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'นักเรียน' ? 'selected' : ''  ?> value="นักเรียน">นักเรียน</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'รับจ้าง' ? 'selected' : ''  ?> value="รับจ้าง">รับจ้าง</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'ข้าราชการ/รัฐวิสาหกิจ' ? 'selected' : ''  ?> value="ข้าราชการ/รัฐวิสาหกิจ">ข้าราชการ/รัฐวิสาหกิจ</option>
-                                <option <?php echo isset($_SESSION['career_recom']) && $_SESSION['career_recom'] == 'ว่างงาน' ? 'selected' : ''  ?> value="ว่างงาน">ว่างงาน</option>
+                                <option <?php echo !isset($_SESSION['Recom']['career_recom']) ? 'selected' : '' ?> value="">เลือกอาชีพ</option>
+
+                                <?php for ($i = 0; $i < count($arr_career); $i++) { ?>
+                                    <option <?php echo isset($_SESSION['Recom']['career_recom']) && $_SESSION['Recom']['career_recom'] == $arr_career_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_career_choice[$i] ?>"><?php echo $arr_career[$i] ?></option>
+                                <?php } ?>
+
                             </select>
                             <div class="invalid-feedback">
                                 คุณยังไม่ได้กรอกข้อมูล
                             </div>
                         </div>
 
-                        <div class="choice mt-3">
-                            <label for="salary_recom">3. รายได้เฉลี่ยต่อเดือน </label>
+                        <div class="choice label-salary mt-3">
+                            <label for="salary_recom"><strong>5. รายได้เฉลี่ยต่อเดือน</strong> </label>
                             <select class="custom-select" name="salary_recom" id="inputGroupSelect01" required>
-                                <option <?php echo !isset($_SESSION['salary_recom']) ? 'selected' : '' ?> value="">เลือกรายได้เฉลี่ย</option>
-                                <option <?php echo isset($_SESSION['salary_recom']) && $_SESSION['salary_recom'] == 'ต่ำกว่า 5,000 บาท' ? 'selected' : ''  ?> value="ต่ำกว่า 5,000 บาท">ต่ำกว่า 5,000 บาท</option>
-                                <option <?php echo isset($_SESSION['salary_recom']) && $_SESSION['salary_recom'] == '5,001 - 10,000 บาท' ? 'selected' : ''  ?> value="5,001 - 10,000 บาท">5,001 - 10,000 บาท</option>
-                                <option <?php echo isset($_SESSION['salary_recom']) && $_SESSION['salary_recom'] == '10,001 - 15,000 บาท' ? 'selected' : ''  ?> value="10,001 - 15,000 บาท">10,001 - 15,000 บาท</option>
-                                <option <?php echo isset($_SESSION['salary_recom']) && $_SESSION['salary_recom'] == '15,001 - 20,000 บาท' ? 'selected' : ''  ?> value="15,001 - 20,000 บาท">15,001 - 20,000 บาท</option>
-                                <option <?php echo isset($_SESSION['salary_recom']) && $_SESSION['salary_recom'] == '20,001 - 25,000 บาท' ? 'selected' : ''  ?> value="20,001 - 25,000 บาท">20,001 - 25,000 บาท</option>
-                                <option <?php echo isset($_SESSION['salary_recom']) && $_SESSION['salary_recom'] == 'มากกว่า 25,000 บาทขึ้นไป' ? 'selected' : ''  ?> value="มากกว่า 25,000 บาทขึ้นไป">มากกว่า 25,000 บาทขึ้นไป</option>
+                                <option <?php echo !isset($_SESSION['Recom']['salary_recom']) ? 'selected' : '' ?> value="">เลือกรายได้เฉลี่ย</option>
+
+                                <?php for ($i = 0; $i < count($arr_salary); $i++) { ?>
+                                    <option <?php echo isset($_SESSION['Recom']['salary_recom']) && $_SESSION['Recom']['salary_recom'] == $arr_salary_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_salary_choice[$i] ?>"><?php echo $arr_salary[$i] ?></option>
+                                <?php } ?>
+
                             </select>
                             <div class="invalid-feedback">
                                 คุณยังไม่ได้กรอกข้อมูล
                             </div>
                         </div>
 
-                        <div class="choice mt-3">
-                            <label for="domicile_recom">4. ภูมิลำเนา </label>
+                        <div class="choice label-domiclie mt-3">
+                            <label for="domicile_recom"><strong>6. ภูมิลำเนา</strong></label>
                             <select class="custom-select" name="domicile_recom" id="inputGroupSelect01" required>
-                                <option <?php echo !isset($_SESSION['domicile_recom']) ? 'selected' : '' ?> value="">เลือกภูมิลำเนาของท่าน</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'กรุงเทพ' ? 'selected' : ''  ?> value="กรุงเทพ">กรุงเทพ</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ปริมณฑล' ? 'selected' : ''  ?> value="ปริมณฑล">ปริมณฑล</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ภาคเหนือ' ? 'selected' : ''  ?> value="ภาคเหนือ">ภาคเหนือ</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ภาคกลาง' ? 'selected' : ''  ?> value="ภาคกลาง">ภาคกลาง</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ภาคใต้' ? 'selected' : ''  ?> value="ภาคใต้">ภาคใต้</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ภาคตะวันออก' ? 'selected' : ''  ?> value="ภาคตะวันออก">ภาคตะวันออก</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ภาคตะวันตก' ? 'selected' : ''  ?> value="ภาคตะวันตก">ภาคตะวันตก</option>
-                                <option <?php echo isset($_SESSION['domicile_recom']) && $_SESSION['domicile_recom'] == 'ภาคตะวันออกเฉียงเหนือ' ? 'selected' : ''  ?> value="ภาคตะวันออกเฉียงเหนือ">ภาคตะวันออกเฉียงเหนือ</option>
+                                <option <?php echo !isset($_SESSION['Recom']['domicile_recom']) ? 'selected' : '' ?> value="">เลือกภูมิลำเนาของท่าน</option>
+                                <?php for ($i = 0; $i < count($arr_domicile); $i++) { ?>
+                                    <option <?php echo isset($_SESSION['Recom']['domicile_recom']) && $_SESSION['Recom']['domicile_recom'] == $arr_domicile_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_domicile_choice[$i] ?>"><?php echo $arr_domicile[$i] ?></option>
+                                <?php } ?>
                             </select>
                             <div class="invalid-feedback">
                                 คุณยังไม่ได้กรอกข้อมูล
@@ -177,6 +217,29 @@ if (!isset($_SESSION['id_user'])) {
                 });
             }, false);
         })();
+    </script>
+
+    <!-- ICheck -->
+    <script src="../assets/lib/icheck/icheck.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square',
+                radioClass: 'iradio_square',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
     </script>
 </body>
 

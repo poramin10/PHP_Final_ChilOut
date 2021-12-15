@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 
 $email = $_POST['email'];
 
-$sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email . "' AND `status` LIKE '1'";
+$sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email . "' AND `status` LIKE '1' AND id_user_fb LIKE '0'";
 $result = $conn->query($sql);
 
 if ($result->num_rows == 1) {

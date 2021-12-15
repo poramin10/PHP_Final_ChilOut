@@ -1,73 +1,21 @@
 <?php require_once('../authen_frontend.php');
-if (!isset($_SESSION['id_user'])) {
-    header('location: ../Login/Page_FormLogin.php');
-}
+// if (!isset($_SESSION['id_user'])) {
+//     header('location: ../Login/Page_FormLogin.php');
+// }
 
 // Check ว่า Page 1 ทำครบหรือยัง
 if (!isset($_SESSION['page1'])) {
     header('location: ./page1.php');
 }
- 
+
 // Check ว่า Page 2 ที่ทำไปแล้วคืออันไหนบ้าง
-if (isset($_SESSION['objective_recom'])) {
-    $checkObjective = explode(',', $_SESSION['objective_recom']);
+if (isset($_SESSION['Recom']['objective_recom'])) {
+    $checkObjective = explode(',', $_SESSION['Recom']['objective_recom']);
 } else {
     $checkObjective = [''];
 }
 
-// หัวข้อ: วัตถุประสงค์ในการท่องเที่ยวของท่าน
-$arrObjective = [
-    "ท่องเที่ยว/พักผ่อน",
-    "เยี่ยมญาติ/เพื่อน",
-    "มาเพื่อประชุม/สัมมนา",
-    "มาเพื่อสักการะสิ่งศักสิทธิ์",
-    "มาเพื่อปฏิบัติงาน/ติดต่อธุรกิจ",
-    "เป็นทางผ่านในการเดินทาง",
-];
-
-// หัวข้อ: ท่านเดินทางมาท่องเที่ยวอย่างไร
-$arrCarTravel = [
-    "จักรยาน",
-    "จักรยานยนต์",
-    "รถยนต์ส่วนตัว",
-    "รถโดยสารประจำทาง",
-    "รถรับจ้าง/เหมา",
-    "เครื่องบิน",
-    "รถไฟ",
-    "เรือ",
-    "อื่นๆ",
-];
-
-// หัวข้อ: ความต้องการในการมาท่องเที่ยวของท่าน
-$arrNeedTravel = [
-    "ต้องการเพื่อชมความงดงามของสถานที่",
-    "ต้องการพักผ่อนหย่อนใจ",
-    "ต้องการใช้เป็นแหล่งศึกษาหาความรู้",
-    "ต้องการทำธุรกิจ",
-    "ต้องการหากิจกรรมในวันหยุด",
-    "ต้องการท่องเที่ยวผจญภัย",
-    "ต้องการความตื่นเต้นความบันเทิง",
-    "ต้องการศึกษาวัฒนธรรม",
-    "ต้องการค้นหาความแปลกใหม่",
-];
-$arrNeedChoice = [
-    'มากที่สุด',
-    'มาก',
-    'ปานกลาง',
-    'น้อย',
-    'น้อยที่สุด'
-];
-
-// หัวข้อ: บุคคลที่ท่องเที่ยวร่วมกับท่าน
-$arrFriend = [
-    "เที่ยวคนเดียว",
-    "กลุ่มเพื่อน",
-    "ครอบครัวหรือญาติ",
-    "คนพิเศษ",
-    "บริษัททัวร์",
-];
-
-
+include_once('./choice.php');
 
 ?>
 
@@ -93,7 +41,7 @@ $arrFriend = [
     <!-- Navbar -->
     <?php include_once('../include/navbarV2.php') ?>
 
-    <img src="../assets/img/img-recom.png" width="100%" alt="">
+    <!-- <img src="../assets/img/img-recom.png" width="100%" alt=""> -->
 
     <div class="container">
         <div class="row">
@@ -140,15 +88,28 @@ $arrFriend = [
                     <div class="col-lg-12">
                         <h3><strong>ข้อมูลการท่องเที่ยว</strong></h3>
 
-                        <div class="choice">
-                            <label for="career">5. วัตถุประสงค์หลักในการเดินทางมาท่องเที่ยว <span class="text-red"><strong>(ตอบได้มากกว่า 1 ข้อ)</strong></span> </label>
+                        <div class="choice label-planning mt-3">
+                            <label for="planning_recom"><strong>7. การวางแผนในการท่องเที่ยวของท่าน</strong> </label>
+                            <select class="custom-select" name="planning_recom" id="inputGroupSelect01" required>
+                                <option <?php echo !isset($_SESSION['Recom']['planning_recom']) ? 'selected' : '' ?> value="">การวางแผนในการท่องเที่ยว</option>
+                                <?php for ($i = 0; $i < count($arr_planning); $i++) { ?>
+                                    <option <?php echo isset($_SESSION['Recom']['planning_recom']) && $_SESSION['Recom']['planning_recom'] == $arr_planning_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_planning_choice[$i] ?>"><?php echo $arr_planning[$i] ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="invalid-feedback">
+                                คุณยังไม่ได้กรอกข้อมูล
+                            </div>
+                        </div>
+
+                        <div class="choice label-objective mt-3">
+                            <label for="career"><strong>8. วัตถุประสงค์หลักในการเดินทางมาท่องเที่ยว</strong> </label>
                             <div class="form-check">
                                 <div class="row">
-                                    <?php for ($i = 0; $i < count($arrObjective); $i++) { ?>
+                                    <?php for ($i = 0; $i < count($arr_objective); $i++) { ?>
                                         <div class="col-lg-6 mt-3">
-                                            <input <?php echo in_array($arrObjective[$i], $checkObjective) ? 'checked' : '' ?> class="form-check-input mr-3" type="checkbox" name="objective_recom[]" value="<?php echo $arrObjective[$i] ?>" id="objective_recom-<?php echo $i ?>">
+                                            <input <?php echo in_array($arr_objective_choice[$i], $checkObjective) ? 'checked' : '' ?> class="form-check-input mr-3" type="radio" name="objective_recom" value="<?php echo $arr_objective_choice[$i] ?>" id="objective_recom-<?php echo $i ?>">
                                             <label class="form-check-label" for="objective_recom-<?php echo $i ?>">
-                                                <?php echo $arrObjective[$i] ?>
+                                                <?php echo $arr_objective[$i] ?>
                                             </label>
                                         </div>
                                     <?php } ?>
@@ -157,7 +118,7 @@ $arrFriend = [
                             </div>
 
                             <!-- กรณีไม่พบการกรอกข้อมูล -->
-                            <?php if (isset($_SESSION['validate_objective'])) { ?>
+                            <?php if (isset($_SESSION['Recom']['validate_objective'])) { ?>
                                 <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                                     <strong>คุณยังไม่กรอกข้อมูล</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -169,16 +130,16 @@ $arrFriend = [
                             <hr>
                         </div>
 
-                        <div class="choice mt-3">
-                            <label for="car"> 6.การเดินทางมาเที่ยวในครั้งนี้ท่านเดินทางมาอย่างไร</label>
+                        <div class="choice label-carTravel mt-3">
+                            <label for="car"><strong>9.การเดินทางมาเที่ยวในครั้งนี้ท่านเดินทางมาอย่างไร</strong> </label>
                             <div class="row">
 
-                                <?php for ($i = 0; $i < count($arrCarTravel); $i++) { ?>
+                                <?php for ($i = 0; $i < count($arr_car_travel); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
                                         <div class="form-check">
-                                            <input <?php echo isset($_SESSION['car_recom']) && $_SESSION['car_recom'] == $arrCarTravel[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="car_recom" type="radio" value="<?php echo $arrCarTravel[$i] ?>" id="car_recom-<?php echo $i ?>">
+                                            <input <?php echo isset($_SESSION['Recom']['car_recom']) && $_SESSION['Recom']['car_recom'] == $arr_car_travel_choice[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="car_recom" type="radio" value="<?php echo $arr_car_travel_choice[$i] ?>" id="car_recom-<?php echo $i ?>">
                                             <label class="form-check-label" for="car_recom-<?php echo $i ?>">
-                                                <?php echo $arrCarTravel[$i] ?>
+                                                <?php echo $arr_car_travel[$i] ?>
                                             </label>
                                         </div>
                                     </div>
@@ -200,10 +161,10 @@ $arrFriend = [
 
                         </div>
 
-                        <div class="choice mt-3">
-                            <label for="career"> 7. ความต้องการในการมาท่องเที่ยวของท่าน </label>
+                        <div class="choice label-needTravel mt-3">
+                            <label for="career"><strong>10. ความต้องการในการมาท่องเที่ยวของท่าน</strong></label>
                             <div class="row">
- 
+
                                 <table class="table table-bordered">
                                     <thead class="text-center">
                                         <tr class="title-table-head bg-blue text-light">
@@ -223,17 +184,16 @@ $arrFriend = [
 
                                         <?php
                                         $num = 0;
-                                        for ($i = 0; $i < count($arrNeedTravel); $i++) {
+                                        for ($i = 0; $i < count($arr_need_travel); $i++) {
                                             $num++;
                                         ?>
                                             <tr>
                                                 <th class="text-center" scope="row"><?php echo $num ?></th>
-                                                <td><?php echo $arrNeedTravel[$i] ?></td>
+                                                <td><?php echo $arr_need_travel[$i] ?></td>
                                                 <?php for ($y = 0; $y < count($arrNeedChoice); $y++) { ?>
                                                     <td class="text-center">
-                                                        <input <?php echo isset($_SESSION['need_travel-' . $i]) && $_SESSION['need_travel-' . $i] == $arrNeedChoice[$y] ? 'checked' : '' ?> class="form-check-input mr-3" name="need_travel-<?php echo $i ?>" type="radio" value="<?php echo $arrNeedChoice[$y] ?>" id="need_travel-1<?php echo $y ?>">
-                                                        <?php //echo $_SESSION['need_travel-'.$i].' == '.$arrNeedChoice[$y] 
-                                                        ?>
+                                                        <input <?php echo isset($_SESSION['Recom']['Need']['need_travel-' . $i]) && $_SESSION['Recom']['Need']['need_travel-' . $i] == $arrNeedChoice[$y] ? 'checked' : '' ?> class="form-check-input mr-3" name="need_travel-<?php echo $i ?>" type="radio" value="<?php echo $arrNeedChoice[$y] ?>" id="need_travel-1<?php echo $y ?>">
+
                                                     </td>
                                                 <?php } ?>
                                             </tr>
@@ -260,20 +220,18 @@ $arrFriend = [
                         </div>
 
                         <div class="choice mt-3">
-                            <label for="car"> 8. บุคคลที่ท่องเที่ยวร่วมกัน</label>
+                            <label for="car"><strong>11. บุคคลที่ท่องเที่ยวร่วมกัน</strong> </label>
                             <div class="row">
-
-                                <?php for ($i = 0; $i < count($arrFriend); $i++) { ?>
+                                <?php for ($i = 0; $i < count($arr_friend); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
                                         <div class="form-check">
-                                            <input <?php echo isset($_SESSION['friend_recom']) && $_SESSION['friend_recom'] == $arrFriend[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="friend_recom" type="radio" value="<?php echo $arrFriend[$i] ?>" id="friend_recom-<?php echo $i ?>">
+                                            <input <?php echo isset($_SESSION['Recom']['friend_recom']) && $_SESSION['Recom']['friend_recom'] == $arr_friend_choice[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="friend_recom" type="radio" value="<?php echo $arr_friend_choice[$i] ?>" id="friend_recom-<?php echo $i ?>">
                                             <label class="form-check-label" for="friend_recom-<?php echo $i ?>">
-                                                <?php echo $arrFriend[$i] ?>
+                                                <?php echo $arr_friend[$i] ?>
                                             </label>
                                         </div>
                                     </div>
                                 <?php } ?>
-
                             </div>
 
                             <!-- กรณีไม่พบการกรอกข้อมูล -->

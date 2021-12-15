@@ -10,11 +10,11 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
 
     $_SESSION['time_count' . $row['id_place']] = 'นับจำนวน';
 
-    $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+    $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
     $result_count = $conn->query($sql_count);
     if ($result_count->num_rows == 0) {
 
-        $sql_insert = "INSERT INTO `countertravel` (`id_counter`, `id_travel`, `count_travel`) 
+        $sql_insert = "INSERT INTO `countertravel` (`id_counter`, `id_place`, `count_travel`) 
         VALUES (NULL, '" . $row['id_place'] . "', '1');";
         $result_insert = $conn->query($sql_insert);
     } else {
@@ -22,7 +22,7 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
         $count = $row_count['count_travel'];
         $total = $count + 1;
 
-        $sql_update_count = "UPDATE `countertravel` SET `count_travel` = '" . $total . "' WHERE `countertravel`.`id_travel` = '" . $row['id_place'] . "';";
+        $sql_update_count = "UPDATE `countertravel` SET `count_travel` = '" . $total . "' WHERE `countertravel`.`id_place` = '" . $row['id_place'] . "';";
         $result_update_count = $conn->query($sql_update_count);
     }
 } else {
@@ -33,7 +33,7 @@ if (!isset($_SESSION['time_count' . $row['id_place']])) {
  * SQL สถานที่ท่องเที่ยวแนะนำ
  */
 $sql_multi_carousel = "SELECT * FROM `place` 
-WHERE `province` = '" . $row['province'] . "' AND `id_place` <> '".$row['id_place']."' LIMIT 20";
+WHERE `province` = '" . $row['province'] . "' AND `id_place` <> '" . $row['id_place'] . "' LIMIT 20";
 $result_multi_carousel = $conn->query($sql_multi_carousel);
 
 
@@ -379,59 +379,70 @@ $result_multi_carousel = $conn->query($sql_multi_carousel);
 
     <section class="multicarousel-data">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <section class="regular slider">
-                    <?php while ($row_multi = $result_multi_carousel->fetch_assoc()) {
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3><strong>สถานที่ท่องเที่ยวอื่นๆ </strong> </h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="container-fulid" style="overflow: hidden;">
 
-                        $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row_multi['id_place'] . "';";
-                        $result_avg = $conn->query($sql_avg);
-                        $row_avg = $result_avg->fetch_assoc();
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="regular slider">
+                        <?php while ($row_multi = $result_multi_carousel->fetch_assoc()) {
 
-                        $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '".$row_multi['id_place']."' ";
-                        $result_count = $conn->query($sql_count);
-                        $row_count = $result_count->fetch_assoc();
-                    ?>
+                            $sql_avg = "SELECT AVG(ratestar) FROM `comment_rating` WHERE id_place = '" . $row_multi['id_place'] . "';";
+                            $result_avg = $conn->query($sql_avg);
+                            $row_avg = $result_avg->fetch_assoc();
 
-                        <a href="../Travel/Detail.php?idTravel=<?php echo $row_multi['id_place'] ?>">
-                            <section class="card-v2">
-                                <div class="crop-zoom">
-                                    <div class="card card-relative cardTop">
-                                        <div class="img-card" style=" background-image: url('<?php echo $row_multi['picture'] ?>'); width: 100%">
-                                            <div class="card-color">
+                            $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row_multi['id_place'] . "' ";
+                            $result_count = $conn->query($sql_count);
+                            $row_count = $result_count->fetch_assoc();
+                        ?>
+
+                            <a href="../Travel/Detail.php?idTravel=<?php echo $row_multi['id_place'] ?>">
+                                <section class="card-v2">
+                                    <div class="crop-zoom">
+                                        <div class="card card-relative cardTop">
+                                            <div class="img-card" style=" background-image: url('<?php echo $row_multi['picture'] ?>'); width: 100%">
+                                                <div class="card-color">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card-text">
-                                            <h5><?php echo $row_multi['place_name'] ?></h5>
-                                            <p><?php echo $row_multi['province']  ?></p>
-                                        </div>
-
-                                        <div class="card-text-view">
-                                            <small><i class="fas fa-eye"> </i> <?php echo $row_count['count_travel'] ?? 0 ?> </small>
-                                        </div>
-
-                                        <div class="card-star">
-                                            <div class="rating-comment-avg-card mt-2">
-                                                <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
-                                                <label for="rating-comment-5"></label>
-                                                <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
-                                                <label for="rating-comment-4"></label>
-                                                <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
-                                                <label for="rating-comment-3"></label>
-                                                <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
-                                                <label for="rating-comment-2"></label>
-                                                <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
-                                                <label for="rating-comment-1"></label>
+                                            <div class="card-text">
+                                                <h5><?php echo $row_multi['place_name'] ?></h5>
+                                                <p><?php echo $row_multi['province']  ?></p>
                                             </div>
-                                            <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
-                                        </div>
 
+                                            <div class="card-text-view">
+                                                <small><i class="fas fa-eye"> </i> <?php echo $row_count['count_travel'] ?? 0 ?> </small>
+                                            </div>
+
+                                            <div class="card-star">
+                                                <div class="rating-comment-avg-card mt-2">
+                                                    <input <?php echo floor($row_avg['AVG(ratestar)']) == 5 ? 'checked' : '' ?> type="radio" value="5" id="rating-comment-5" disabled>
+                                                    <label for="rating-comment-5"></label>
+                                                    <input <?php echo floor($row_avg['AVG(ratestar)']) == 4 ? 'checked' : '' ?> type="radio" value="4" id="rating-comment-4" disabled>
+                                                    <label for="rating-comment-4"></label>
+                                                    <input <?php echo floor($row_avg['AVG(ratestar)']) == 3 ? 'checked' : '' ?> type="radio" value="3" id="rating-comment-3" disabled>
+                                                    <label for="rating-comment-3"></label>
+                                                    <input <?php echo floor($row_avg['AVG(ratestar)']) == 2 ? 'checked' : '' ?> type="radio" value="2" id="rating-comment-2" disabled>
+                                                    <label for="rating-comment-2"></label>
+                                                    <input <?php echo floor($row_avg['AVG(ratestar)']) == 1 ? 'checked' : '' ?> type="radio" value="1" id="rating-comment-1" disabled>
+                                                    <label for="rating-comment-1"></label>
+                                                </div>
+                                                <strong style="margin-top: 6px; margin-left: 2px"> <?php echo number_format($row_avg['AVG(ratestar)'], '1', '.', '') ?></strong>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
-                            </section>
-                        </a>
-                    <?php } ?>
-                </section>
+                                </section>
+                            </a>
+                        <?php } ?>
+                    </section>
+                </div>
             </div>
         </div>
 
