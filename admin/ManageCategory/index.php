@@ -189,7 +189,7 @@ include_once('../authen_backend.php');
                                         <?php
                                         $sql = "SELECT * FROM `category` ";
                                         $result = $conn->query($sql);
-                                        ?>
+                                        ?> 
                                         <tbody>
                                             <?php
                                             $num = 0;
@@ -336,7 +336,7 @@ include_once('../authen_backend.php');
                     "sSearch": "ค้นหา:",
                     "sUrl": "",
                     "oPaginate": {
-                        "sFirst": "เิริ่มต้น",
+                        "sFirst": "เริ่มต้น",
                         "sPrevious": "ก่อนหน้า",
                         "sNext": "ถัดไป",
                         "sLast": "สุดท้าย"

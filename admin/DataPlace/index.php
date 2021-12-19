@@ -45,6 +45,20 @@ $result = $conn->query($sql);
         }
     </style>
 
+    <!-- bootstrap toggle Select -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
+
+    <style>
+        .toggle.btn {
+            min-width: 5.7rem !important;
+            min-height: 2.15rem;
+        }
+
+        .toggle-handle {
+            background-color: #888888 !important;
+        }
+    </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -91,12 +105,9 @@ $result = $conn->query($sql);
                                                         <th>ลำดับ</th>
                                                         <th>ไอดีสถานที่ท่องเที่ยว</th>
                                                         <th>ชื่อสถานที่ท่องเที่ยว</th>
-                                                        <th>ที่อยู่</th>
-                                                        <th>ตำบล</th>
-                                                        <th>อำเภอ</th>
                                                         <th>จังหวัด</th>
-                                                        <th>postcode</th>
                                                         <th>ประเภท</th>
+                                                        <th>สถานะการแนะนำ (ปิด/เปิด)</th>
                                                         <th>อัพเดตเมื่อวันที่</th>
                                                         <th>จัดการ</th>
                                                     </tr>
@@ -111,13 +122,23 @@ $result = $conn->query($sql);
                                                             <td><?php echo $num ?></td>
                                                             <td><?php echo $row['id_place'] ?></td>
                                                             <td><?php echo $row['place_name'] ?></td>
-                                                            <td><?php echo $row['address'] ?></td>
-                                                            <td><?php echo $row['sub_district'] ?></td>
-                                                            <td><?php echo $row['district'] ?></td>
                                                             <td><?php echo $row['province'] ?></td>
-                                                            <td><?php echo $row['postcode'] ?></td>
-
                                                             <td><?php echo $row['category'] ?></td>
+                                                            <td>
+                                                                <?php
+                                                                $sql_select_pop = "SELECT * FROM `popular` WHERE id_place = '" . $row['id_place'] . "' ";
+                                                                $result_select_pop = $conn->query($sql_select_pop);
+                                                                ?>
+
+                                                                <!-- <div class="form-group">
+                                                                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                                                        <input onchange="SelectPopular('<?php echo $row['id_place'] ?>')" type="checkbox" class="custom-control-input" id="customSwitch<?php echo $num ?>" <?php echo $result_select_pop->num_rows == 1 ? 'checked' : ''; ?>>
+                                                                        <label class="custom-control-label" for="customSwitch<?php echo $num ?>"></label>
+                                                                    </div>
+                                                                </div> -->
+                                                                <input type="checkbox" <?php echo $result_select_pop->num_rows == 1 ? 'checked' : ''; ?> name="status_cat" onchange="SelectPopular('<?php echo $row['id_place'] ?>')" data-toggle="toggle" data-onstyle="success" data-on="เด่น" data-off="ไม่เด่น" data-style="ios">
+
+                                                            </td>
                                                             <td><?php echo date_format(new DateTime($row['update_date']), 'd/m/Y H:i:s'); ?></td>
                                                             <td>
                                                                 <a href="./data.php?id=<?php echo $row['id_place'] ?>" class="btn btn-primary mt-2">ดูข้อมูล</a>
@@ -134,12 +155,9 @@ $result = $conn->query($sql);
                                                         <th>ลำดับ</th>
                                                         <th>ไอดีสถานที่ท่องเที่ยว</th>
                                                         <th>ชื่อสถานที่ท่องเที่ยว</th>
-                                                        <th>ที่อยู่</th>
-                                                        <th>ตำบล</th>
-                                                        <th>อำเภอ</th>
                                                         <th>จังหวัด</th>
-                                                        <th>postcode</th>
                                                         <th>ประเภท</th>
+                                                        <th>สถานะการแนะนำ (ปิด/เปิด)</th>
                                                         <th>อัพเดตเมื่อวันที่</th>
                                                         <th>จัดการ</th>
                                                     </tr>
@@ -178,6 +196,10 @@ $result = $conn->query($sql);
         <!-- Ajax -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
+           <!-- bootstrap toggle select -->
+           <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+
         <script type="text/javascript">
             $(function() {
                 $("#overlay").fadeOut();
@@ -205,23 +227,17 @@ $result = $conn->query($sql);
                     "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
-                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                    "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                    "fnDrawCallback": function() {
+                        $('.toggle-event').bootstrapToggle();
+                    }
                 }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false,
-                    "responsive": true,
-                });
             });
         </script>
 
         <!-- Script Modal ปุ่มลบ -->
         <script>
-            function DeleteDataTravel(nameTravel,idTravel) {
+            function DeleteDataTravel(nameTravel, idTravel) {
                 Swal.fire({
                     title: `คุณต้องการลบ ${nameTravel} ใช่หรือไม่`,
                     text: `หากกดยืนยันแล้ว จะไม่สามารถยกเลิกการเปลี่ยนแปลงได้`,
@@ -239,6 +255,23 @@ $result = $conn->query($sql);
                 })
             }
         </script>
+
+        <script>
+            function SelectPopular(id_place) {
+                console.log(id_place);
+                $.ajax({
+                    type: "POST",
+                    url: "./selectPopular.php",
+                    data: {
+                        dataPop: id_place
+                    }
+                }).done(function() {
+                    // location.replace("recom_travel.php?category=ประเภททั้งหมด");
+                });
+            }
+        </script>
+
+     
     </div>
 
 

@@ -80,11 +80,9 @@ require_once("./pagination_function.php");
                         <form action="./travelSearch.php" method="$_GET" name="test">
                             <!-- เลือกจังหวัด -->
                             <div class="row justify-content-center">
-
                                 <div class="col-lg-10">
-
                                     <div class="input-group flex-nowrap">
-                                        <input type="text" name="search" class="form-control" value="<?php echo $search ?>" placeholder="ค้นหาชื่อสถานที่ท่องเที่ยว" aria-describedby="addon-wrapping">
+                                        <input type="text" name="search" class="form-control" value="<?php echo $search ?>" placeholder="ค้นหาชื่อสถานที่ท่องเที่ยว น้ำตก , ชายหาด , ดอย" aria-describedby="addon-wrapping">
                                         <span type="submit" onclick="test.submit();" class="input-group-text btn btn-primary" id="addon-wrapping"><i class="fas fa-search"></i></span>
                                     </div>
 
@@ -203,8 +201,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -289,8 +287,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -384,8 +382,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -471,8 +469,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -569,8 +567,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -654,8 +652,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -748,8 +746,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -833,8 +831,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style="border-radius: 8% ;  background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>

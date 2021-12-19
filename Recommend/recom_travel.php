@@ -448,8 +448,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style=" border-radius: 8% ; background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -528,8 +528,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style=" border-radius: 8% ; background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -624,8 +624,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style=" border-radius: 8% ; background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>
@@ -703,8 +703,8 @@ require_once("./pagination_function.php");
                                     <a href="../Travel/Detail.php?idTravel=<?php echo $row['id_place']  ?>">
                                         <section class="card-v2">
                                             <div class="crop-zoom">
-                                                <div class="card card-relative cardTop">
-                                                    <div class="img-card" style=" background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
+                                                <div class="card card-relative cardTop" style="border-radius: 8% ;">
+                                                    <div class="img-card" style=" border-radius: 8% ; background-image: url('<?php echo $row['picture'] ?>'); width: 100%">
                                                         <div class="card-color">
                                                         </div>
                                                     </div>

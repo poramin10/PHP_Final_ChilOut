@@ -45,7 +45,7 @@ include_once('./choice.php');
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="margin-top: 150px;">
                 <h3 class="text-blue mt-3"><strong>ระบบแนะนำสถานที่ท่องเที่ยว</strong></h3>
                 <h6>กรุณาป้อนข้อมูลของท่านเพื่อระบบจะแนะนำกิจกรรมการท่องเที่ยวที่เหมาะสำหรับคุณ</h6>
             </div>
@@ -83,7 +83,7 @@ include_once('./choice.php');
     <section class="choice">
         <form action="./php_sessionChoice.php" method="POST" class="needs-validation" novalidate>
             <div class="container">
-                <div class="row">
+                <div class="row" >
 
                     <div class="col-lg-12">
                         <h3><strong>ข้อมูลการท่องเที่ยว</strong></h3>

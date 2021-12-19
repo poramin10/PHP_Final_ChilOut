@@ -66,7 +66,6 @@ $row_date = $result_date->fetch_assoc();
                             <a href="./php_updateTravel.php" type="button" class="btn btn-primary float-right mr-2">อัพเดตข้อมูลเดิม</a>
                             <a href="./php_insertTravel.php" type="button" class="btn btn-primary float-right mr-2">เพิ่มข้อมูล API</a>
                         </div>
-
                     </div>
                     <hr>
                     <div class="row">

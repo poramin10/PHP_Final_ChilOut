@@ -387,8 +387,8 @@ $result_multi_carousel = $conn->query($sql_multi_carousel);
                 </div>
             </div>
         </div>
-        <div class="container-fulid" style="overflow: hidden;">
 
+        <div class="container-fulid" style="overflow: hidden;">
             <div class="row">
                 <div class="col-lg-12">
                     <section class="regular slider">
@@ -824,6 +824,7 @@ $result_multi_carousel = $conn->query($sql_multi_carousel);
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
     <script src="../assets/lib/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
+    <!-- Multicare -->
     <script type="text/javascript">
         $(document).on('ready', function() {
             $(".regular").slick({

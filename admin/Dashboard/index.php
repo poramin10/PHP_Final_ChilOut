@@ -20,6 +20,7 @@ $row_counter_travel = $result_counter_travel->fetch_assoc();
 $sql_category_all = "SELECT category , COUNT(category) FROM `place` GROUP BY category;";
 $result_category_all = $conn->query($sql_category_all);
 $result_category_all_2 = $conn->query($sql_category_all);
+$result_category_all_3 = $conn->query($sql_category_all);
 
 
 ?>
@@ -76,7 +77,6 @@ $result_category_all_2 = $conn->query($sql_category_all);
               <div class="small-box bg-primary">
                 <div class="inner">
                   <h3><?php echo $row_user['COUNT(*)'] ?></h3>
-
                   <p>จำนวนสมาชิกทั้งหมด</p>
                 </div>
                 <div class="icon">
@@ -91,7 +91,6 @@ $result_category_all_2 = $conn->query($sql_category_all);
               <div class="small-box bg-primary">
                 <div class="inner">
                   <h3><?php echo $row_place['COUNT(*)'] ?></h3>
-
                   <p>จำนวนสถานที่ท่องเที่ยวทั้งหมด</p>
                 </div>
                 <div class="icon">
@@ -124,7 +123,7 @@ $result_category_all_2 = $conn->query($sql_category_all);
                   <p>ประเภทสถานที่ท่องเที่ยวทั้งหมด</p>
                 </div>
                 <div class="icon">
-                  <i class="fas fa-hiking"></i>
+                <i class="fas fa-archway"></i>
                 </div>
                 <a href="#" class="small-box-footer">ดูข้อมูล <i class="fas fa-arrow-circle-right"></i></a>
               </div>
@@ -136,7 +135,7 @@ $result_category_all_2 = $conn->query($sql_category_all);
                 <div class="card-header">
                   <h3 class="card-title">
                     <i class="far fa-chart-bar"></i>
-                    ข้อมูลสถิติประเภทสถานที่ท่องเที่ยว
+                    ข้อมูลจำนวนสถานที่ประเภทสถานที่ท่องเที่ยวทั้งหมด
                   </h3>
 
                   <div class="card-tools">
@@ -158,10 +157,56 @@ $result_category_all_2 = $conn->query($sql_category_all);
                       <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
                         <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
                       </div>
-                    </div> 
-                    
+                    </div>
+
                     <canvas id="chart-line" width="450" height="450" class="chartjs-render-monitor" style="display: block; width: 299px; height: 200px;"></canvas>
-                  
+
+                  </div>
+
+
+                </div>
+
+                <!-- TABLE: LATEST ORDERS -->
+                <div class="card">
+                  <div class="card-header border-transparent">
+                    <h3 class="card-title">ชื่อประเภทตามลำดับตัวเลข</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table m-0">
+                        <thead>
+                          <tr>
+                            <th>ลำดับ</th>
+                            <th>ชื่อประเภทสถานที่ท่องเที่ยว</th>
+                            <th>จำนวนสถานที่</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php 
+                          $num = 0;
+                          while ($row_category_all = $result_category_all_3->fetch_assoc()) { 
+                            $num++;
+                            ?>
+                            <tr>
+                              <td><?php echo $num ?></td>
+                              <td><?php echo $row_category_all['category'] ?></td>
+                              <td><?php echo $row_category_all['COUNT(category)'] ?></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.table-responsive -->
                   </div>
 
                 </div>
@@ -200,7 +245,12 @@ $result_category_all_2 = $conn->query($sql_category_all);
         type: 'bar',
         data: {
           labels: [
-            <?php while ($row_category_all = $result_category_all->fetch_assoc()) { ?> "<?php echo $row_category_all['category'] ?>",
+            <?php
+            $num = 0;
+            while ($row_category_all = $result_category_all->fetch_assoc()) {
+              $num++;
+            ?>
+              <?php echo $num ?>,
             <?php } ?>
 
           ],

@@ -5,7 +5,7 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <img src="../assets/img/LOGOv2.png" width="100px" alt="">
+            <img src="../assets/img/LOGOv2.png" width="40px" alt="">
         </div>
         <div class="menu">
             <ul>
@@ -15,9 +15,9 @@
                 <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
 
-                    <?php if(isset($_SESSION['access_token'])){ ?>
+                    <?php if (isset($_SESSION['access_token'])) { ?>
                         <img src="<?php echo $_SESSION['profile'] ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
-                    <?php }else{ ?>
+                    <?php } else { ?>
                         <img src="../assets/img/profile/<?php echo $_SESSION['profile'] ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle dropup" width="50px" height="50px" style="border-radius: 100%" alt="">
                     <?php } ?>
 
@@ -42,7 +42,7 @@
             <i class="fa fa-bars fa-2x"></i>
         </div>
         <div class="logo">
-            <img src="../assets/img/LOGOv2.png" width="100px" alt="">
+            <img src="../assets/img/LOGOv2.png" width="40px" alt="">
         </div>
         <div class="menu">
             <ul>
@@ -66,7 +66,6 @@
 
             </ul>
         </div>
-
 
     </nav>
 
