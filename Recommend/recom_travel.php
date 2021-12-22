@@ -16,7 +16,9 @@ if (isset($_GET['category'])) {
  */
 
 $num = 0;
+
 foreach ($_SESSION['stat_recom'] as $category_name => $category_value) {
+
     if (max($_SESSION['stat_recom']) == $category_value) {
 
         if ($category_name == 'eco') {
@@ -81,6 +83,7 @@ foreach ($_SESSION['stat_recom'] as $category_name => $category_value) {
         }
     }
 }
+
 
 /**
  * Main Lebel สถานที่ท่องเที่ยว
@@ -302,7 +305,7 @@ require_once("./pagination_function.php");
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h1>สถานที่ท่องเที่ยวที่ท่านต้องการจะไปคือ: <br> <span><strong class="text-blue">"<?php echo $nameCategory ?>"</strong></span> </h1>
-                    <h3>คุณมี <?php echo count($arrCategoryNumber) - 1 ?> อันดับ ประเภทที่คะแนนใกล้เคียง</h3>
+                    <h3>คุณมี <?php echo count($arrCategoryNumber) - 1 ?> อันดับ ประเภทที่คะแนนเท่ากัน</h3>
 
                     <?php for ($i = 0; $i < count($arrCategoryNumber); $i++) { ?>
                         <?php if ($arrCategoryNumber[$i] != $nameCategory) { ?>
@@ -311,7 +314,10 @@ require_once("./pagination_function.php");
                     <?php } ?>
 
                     <div>
-                        <a href="./page1.php" class="btn btn-warning text-light mt-3">ทำแบบทดสอบใหม่อีกครั้ง</a>
+                        <!-- <a href="./page1.php" class="btn btn-warning text-light mt-3">ทำแบบทดสอบใหม่อีกครั้ง</a> -->
+                        <form action="page1.php" method="POST">
+                            <button type="submit" name="submitReCom" href="./page1.php" class="btn btn-warning text-light mt-3">ทำแบบทดสอบใหม่อีกครั้ง</button>
+                        </form>
                     </div>
 
                     <hr>

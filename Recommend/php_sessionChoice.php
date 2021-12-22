@@ -251,9 +251,7 @@ if (isset($_POST['submitChoice4'])) {
         $decide13 = $_SESSION['Recom']['Decide']['decide_travel-13'];
         $decide14 = $_SESSION['Recom']['Decide']['decide_travel-14'];
 
-       
 
-    
         $arrColumn = [
             "Gender",
             "Age",
@@ -328,12 +326,12 @@ if (isset($_POST['submitChoice4'])) {
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://ussouthcentral.services.azureml.net/workspaces/ddaece509e5646a1bd5e039d6ddf1f02/services/fa2048fa4b724d63a6a2060665286fb6/execute?api-version=2.0&details=true',
+            CURLOPT_URL => 'https://ussouthcentral.services.azureml.net/workspaces/ddaece509e5646a1bd5e039d6ddf1f02/services/93702eb5d0764401b5328d80e4d6ba59/execute?api-version=2.0&details=true',
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($payload),
-                'Authorization: Bearer JXXdzGYXyTkWYoeVCR3z30OyWzMI3kO4D+mtDfzVFBMjHFUpkFTJudb9HYAe4pkoxOw/gYZ2QlxFNm75SqXgMQ==',
+                'Authorization: Bearer ER/2W/XHeNbdodvJbc3nIvgC6VAdtPnIQgGqZVAn/UycOlAJdd4Nd2SV9NL1iWiN9i4z8lOLOUW76uU2siV38w==',
                 'Content-Type: application/json',
             ),
             CURLOPT_POST => 1,
@@ -351,7 +349,7 @@ if (isset($_POST['submitChoice4'])) {
             if ($dataRecommed) {
                 $index = array_search($keyword, $dataRecommed->Results->output1->value->ColumnNames);
                 $dataVlues = $dataRecommed->Results->output1->value->Values[0][$index];
-                $_SESSION['Recom'] = NULL;
+                // $_SESSION['Recom'] = NULL;
                 return $dataVlues;
             }
         }
@@ -372,7 +370,9 @@ if (isset($_POST['submitChoice4'])) {
         $_SESSION['stat_recom']['island'] = mapLabelValue("Scored Probabilities for Class \"island\"", $dataRecommed);
         $_SESSION['stat_recom']['rapids'] = mapLabelValue("Scored Probabilities for Class \"rapids\"", $dataRecommed);
 
-
+        // echo '<pre>';
+        // print_r($_SESSION['stat_recom']);
+        // echo '</pre>';
         header("Location: ./recom_travel.php");
 
     } else {

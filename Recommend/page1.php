@@ -5,6 +5,9 @@
 
 include_once('./choice.php');
 
+if(isset($_POST['submitReCom'])){
+    $_SESSION['Recom'] = NULL;
+}
 
 ?>
 
