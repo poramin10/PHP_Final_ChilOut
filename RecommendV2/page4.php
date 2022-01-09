@@ -3,9 +3,9 @@ if (!isset($_SESSION['id_user'])) {
     header('location: ../Login/Page_FormLogin.php');
 }
 
-if(isset($_SESSION['Travel_Recommend'])){
-    header('Location: ./recom_travel.php');
-}
+// if(isset($_SESSION['Travel_Recommend'])){
+//     header('Location: ./recom_travel.php');
+// }
 
 
 include_once('./choice.php');
@@ -53,22 +53,22 @@ include_once('./choice.php');
             <div class="breadcrumb">
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 1</span>
-                    <span class="show-mobile">ส่วนที่ 1</span>
+                    <span class="hide-mobile">ข้อมูลทั่วไป</span>
+                    <span class="show-mobile">ส่วน 1</span>
                 </div>
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 2</span>
-                    <span class="show-mobile">ส่วนที่ 2</span>
+                    <span class="hide-mobile">ข้อมูลในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 2</span>
                 </div>
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 3</span>
-                    <span class="show-mobile">ส่วนที่ 3</span>
+                    <span class="hide-mobile">แผนในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 3</span>
                 </div>
                 <div class="item active">
-                    <span class="hide-mobile">ส่วนที่ 4</span>
-                    <span class="show-mobile">ส่วนที่ 4</span>
+                    <span class="hide-mobile">ปัจจัยที่ตัดสินใจท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 4</span>
                 </div>
             </div>
         </section>

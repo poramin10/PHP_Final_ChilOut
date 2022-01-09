@@ -13,7 +13,7 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="../../assets/img/LOGOv2.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Chill Out</span>
     </a>
 
     <!-- Sidebar -->
@@ -62,48 +62,58 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                 </li>
 
                 <li class="nav-item">
-                    <a href="../ManageData/index.php" class="nav-link <?php echo $name == 'ManageData' ? 'active' : '' ?>">
-
-                        <i class="nav-icon fas fa-passport"></i>
+                    <a href="#" class="nav-link 
+                    <?php echo $name == 'ManageData' ? 'active' : '' ||
+                        $name == 'DataPlace' ? 'active' : '' ||
+                        $name == 'ManageCategory' ? 'active' : ''
+                    ?>">
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            จัดการข้อมูล
+                            สถานที่ท่องเที่ยว
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="../ManageData/index.php" class="nav-link <?php echo $name == 'ManageData' ? 'active' : '' ?>">
+
+                                <i class="nav-icon fas fa-passport"></i>
+                                <p>
+                                <small>จัดการข้อมูลสถานที่ท่องเที่ยว API</small>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../DataPlace/index.php" class="nav-link <?php echo $name == 'DataPlace' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-globe"></i>
+                                <p>
+                                    <small>ข้อมูลสถานที่ท่องเที่ยวทั้งหมด</small> 
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="../ManageCategory/index.php" class="nav-link <?php echo $name == 'ManageCategory' ? 'active' : '' ?>">
+                                <i class="nav-icon fas fa-pager"></i>
+                                <p>
+                                    <small>จัดการประเภทสถานที่ท่องเที่ยว (TAG)</small> 
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
-                <li class="nav-item">
-                    <a href="../DataPlace/index.php" class="nav-link <?php echo $name == 'DataPlace' ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-globe"></i>
-                        <p>
-                            ข้อมูลสถานที่ท่องเที่ยวทั้งหมด
-                        </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="../ManageCategory/index.php" class="nav-link <?php echo $name == 'ManageCategory' ? 'active' : '' ?>">
-                        <i class="nav-icon fas fa-pager"></i>
-                        <p>
-                            จัดการประเภทสถานที่ท่องเที่ยว
-                        </p>
-                    </a>
-                </li>
 
 
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link">
-                        <i class="nav-icon fas fa-pager"></i>
-                        <p>
-                            ระบบแนะนำ
-                        </p>
-                    </a>
-                </li>
 
 
                 <li class="nav-item">
                     <a href="#" class="nav-link 
                     <?php echo $name == 'RatingPlace' ? 'active' : '' ||
-                               $name == 'ViewPlace' ? 'active' : '' ?>">
+                        $name == 'ViewPlace' ? 'active' : '' ||
+                        $name == 'Recommed' ? 'active' : ''
+                    ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             ข้อมูลสถิติ
@@ -122,6 +132,14 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                             <a href="../ViewPlace/index.php" class="nav-link <?php echo $name == 'ViewPlace' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p><small>จำนวนยอดผู้เข้าชมสถานที่</small>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../Recommed/index.php" class="nav-link <?php echo $name == 'Recommed' ? 'active' : '' ?>">
+                            <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                <small> ข้อมูลการแนะนำ</small>
                                 </p>
                             </a>
                         </li>

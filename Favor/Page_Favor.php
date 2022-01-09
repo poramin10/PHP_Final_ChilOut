@@ -76,7 +76,7 @@ if (!isset($_SESSION['id_user'])) {
 
                                 if ($result && $result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
-                                        $sql_count = "SELECT * FROM `countertravel` WHERE id_travel = '" . $row['id_place'] . "' ";
+                                        $sql_count = "SELECT * FROM `countertravel` WHERE id_place = '" . $row['id_place'] . "' ";
                                         $result_count = $conn->query($sql_count);
                                         $row_count = $result_count->fetch_assoc();
                                 ?>

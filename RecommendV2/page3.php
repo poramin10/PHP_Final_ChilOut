@@ -3,9 +3,9 @@ if (!isset($_SESSION['id_user'])) {
     header('location: ../Login/Page_FormLogin.php');
 }
 
-if(isset($_SESSION['Travel_Recommend'])){
-    header('Location: ./recom_travel.php');
-}
+// if(isset($_SESSION['Travel_Recommend'])){
+//     header('Location: ./recom_travel.php');
+// }
 
 // Check ว่า Page 1 ทำครบหรือยัง
 if (!isset($_SESSION['page2'])) {
@@ -46,7 +46,7 @@ include_once('./choice.php');
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12"  style="margin-top: 150px;">
+            <div class="col-lg-12" style="margin-top: 150px;">
                 <h3 class="text-blue mt-3"><strong>ระบบแนะนำสถานที่ท่องเที่ยว</strong></h3>
                 <h6>กรุณาป้อนข้อมูลของท่านเพื่อระบบจะแนะนำกิจกรรมการท่องเที่ยวที่เหมาะสำหรับคุณ</h6>
             </div>
@@ -59,22 +59,22 @@ include_once('./choice.php');
             <div class="breadcrumb">
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 1</span>
-                    <span class="show-mobile">ส่วนที่ 1</span>
+                    <span class="hide-mobile">ข้อมูลทั่วไป</span>
+                    <span class="show-mobile">ส่วน 1</span>
                 </div>
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 2</span>
-                    <span class="show-mobile">ส่วนที่ 2</span>
+                    <span class="hide-mobile">ข้อมูลในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 2</span>
                 </div>
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 3</span>
-                    <span class="show-mobile">ส่วนที่ 3</span>
+                    <span class="hide-mobile">แผนในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 3</span>
                 </div>
                 <div class="item">
-                    <span class="hide-mobile">ส่วนที่ 4</span>
-                    <span class="show-mobile">ส่วนที่ 4</span>
+                    <span class="hide-mobile">ปัจจัยที่ตัดสินใจท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 4</span>
                 </div>
             </div>
         </section>
@@ -90,7 +90,7 @@ include_once('./choice.php');
                         <h3><strong>ข้อมูลการท่องเที่ยว</strong></h3>
 
                         <div class="choice mt-3">
-                            <label for="car"> <strong>12. ระยะเวลาในการท่องเที่ยวของท่าน</strong> </label>
+                            <label for="car"> <strong>10. ระยะเวลาในการท่องเที่ยวของท่าน</strong> </label>
                             <div class="row">
 
                                 <?php for ($i = 0; $i < count($arr_time_travel); $i++) { ?>
@@ -107,7 +107,7 @@ include_once('./choice.php');
                             </div>
 
                             <!-- กรณีไม่พบการกรอกข้อมูล -->
-                            <?php if (isset($_SESSION['Recom']['validate_timetravel'])) { ?>
+                            <?php if (isset($_SESSION['validate_timetravel'])) { ?>
                                 <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                                     <strong>คุณยังไม่กรอกข้อมูล</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -121,9 +121,8 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice mt-3">
-                            <label for="car"> <strong>13. ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร ค่าที่พัก และอื่นๆ)</strong> </label>
+                            <label for="car"> <strong>11. ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร ค่าที่พัก และอื่นๆ)</strong> </label>
                             <div class="row">
-
                                 <?php for ($i = 0; $i < count($arr_expenses_travel); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
                                         <div class="form-check">
@@ -134,11 +133,9 @@ include_once('./choice.php');
                                         </div>
                                     </div>
                                 <?php } ?>
-
                             </div>
-
                             <!-- กรณีไม่พบการกรอกข้อมูล -->
-                            <?php if (isset($_SESSION['Recom']['validate_expenses'])) { ?>
+                            <?php if (isset($_SESSION['validate_expenses'])) { ?>
                                 <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
                                     <strong>คุณยังไม่กรอกข้อมูล</strong>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -148,7 +145,33 @@ include_once('./choice.php');
                             <?php } ?>
 
                             <hr>
+                        </div>
 
+                        <div class="choice mt-3">
+                            <label for="car"> <strong>12. ภาคที่ท่านต้องการไป</strong> </label>
+                            <div class="row">
+                                <select name="region_recom" class="form-control">
+                                    <option value="">
+                                        เลือกภาคที่ท่านต้องการจะไป
+                                    </option>
+                                    <?php for ($i = 0; $i < count($arrRegion); $i++) { ?>
+                                        <option <?php echo isset($_SESSION['Recom']['region_recom']) && $_SESSION['Recom']['region_recom'] == $arrRegion_choice[$i] ? 'selected' : '' ?> value="<?php echo $arrRegion_choice[$i]  ?>"><?php echo $arrRegion[$i]  ?></option>
+                                    <?php } ?>
+
+                                </select>
+
+                            </div>
+                            <!-- กรณีไม่พบการกรอกข้อมูล -->
+                            <?php if (isset($_SESSION['validate_region'])) { ?>
+                                <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                                    <strong>คุณยังไม่กรอกข้อมูล</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php } ?>
+
+                            <hr>
                         </div>
 
 

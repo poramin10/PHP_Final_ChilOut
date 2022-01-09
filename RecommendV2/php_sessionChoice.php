@@ -28,9 +28,6 @@ if (isset($_POST['submitChoice1'])) {
     // เงินเดือน
     $_SESSION['Recom']['salary_recom'] = $_POST['salary_recom'];
 
-    // ภูมิลำเนา
-    $_SESSION['Recom']['domicile_recom'] = $_POST['domicile_recom'];
-
     if ($check_number1 == 'true') {
         $_SESSION['page1'] = true;
         header("Location: ./page2.php");
@@ -101,12 +98,14 @@ if (isset($_POST['submitChoice2'])) {
 if (isset($_POST['submitChoice3'])) {
     $check_number1 = false;
     $check_number2 = false;
+    $check_number3 = false;
 
     if (!isset($_POST['timetravel_recom'])) {
         $_SESSION['validate_timetravel'] = 'กรุณากรอกข้อมูล';
         $check_number1 = false;
     } else {
         $_SESSION['Recom']['timetravel_recom'] = $_POST['timetravel_recom'];
+        $_SESSION['validate_timetravel'] = NULL;
         $check_number1 = true;
     }
 
@@ -115,11 +114,23 @@ if (isset($_POST['submitChoice3'])) {
         $check_number2 = false;
     } else {
         $_SESSION['Recom']['expenses_recom'] = $_POST['expenses_recom'];
+        $_SESSION['validate_expenses'] = NULL;
         $check_number2 = true;
     }
 
-    if ($check_number1 && $check_number2) {
+    if (!isset($_POST['region_recom']) || $_POST['region_recom'] == '') {
+        $_SESSION['validate_region'] = 'กรุณากรอกข้อมูล';
+        $check_number3 = false;
+    } else {
+        $_SESSION['Recom']['region_recom'] = $_POST['region_recom'];
+        $_SESSION['validate_region'] = NULL;
+        $check_number3 = true;
+    }
+
+    if ($check_number1 && $check_number2 && $check_number3) {
         $_SESSION['validate_timetravel'] = NULL;
+        $_SESSION['validate_expenses'] = NULL;
+        $_SESSION['validate_region'] = NULL;
 
         // print_r($_SESSION['Recom']);
         header("Location: ./page4.php");
@@ -198,6 +209,7 @@ if (isset($_POST['submitChoice4'])) {
         $timetravel = $_SESSION['Recom']['timetravel_recom'];
         $firend = $_SESSION['Recom']['friend_recom'];
         $travel_expenses = $_SESSION['Recom']['expenses_recom'];
+        $regionx = $_SESSION['Recom']['region_recom'];
         $decide0 = $_SESSION['Recom']['Decide']['decide_travel-0'];
         $decide1 = $_SESSION['Recom']['Decide']['decide_travel-1'];
         $decide2 = $_SESSION['Recom']['Decide']['decide_travel-2'];
@@ -226,6 +238,7 @@ if (isset($_POST['submitChoice4'])) {
             "Length-of-your-travel",
             "Person-traveling-with-you",
             "travel-expenses",
+            "region",
             "Safe-travel",
             "Good-atmosphere",
             "Unique",
@@ -254,6 +267,7 @@ if (isset($_POST['submitChoice4'])) {
             "$timetravel",
             "$firend",
             "$travel_expenses",
+            "$region",
             "$decide0",
             "$decide1",
             "$decide2",
@@ -285,126 +299,126 @@ if (isset($_POST['submitChoice4'])) {
 
         $payload = json_encode($data);
 
-        // echo $payload;
+        echo $payload;
 
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://ussouthcentral.services.azureml.net/workspaces/ddaece509e5646a1bd5e039d6ddf1f02/services/93702eb5d0764401b5328d80e4d6ba59/execute?api-version=2.0&details=true',
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($payload),
-                'Authorization: Bearer ER/2W/XHeNbdodvJbc3nIvgC6VAdtPnIQgGqZVAn/UycOlAJdd4Nd2SV9NL1iWiN9i4z8lOLOUW76uU2siV38w==',
-                'Content-Type: application/json',
-            ),
-            CURLOPT_POST => 1,
-            CURLOPT_POSTFIELDS => $payload
-        ));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($curl);
+        // $curl = curl_init();
+        // curl_setopt_array($curl, array(
+        //     CURLOPT_URL => 'https://ussouthcentral.services.azureml.net/workspaces/ddaece509e5646a1bd5e039d6ddf1f02/services/93702eb5d0764401b5328d80e4d6ba59/execute?api-version=2.0&details=true',
+        //     CURLOPT_CUSTOMREQUEST => 'POST',
+        //     CURLOPT_HTTPHEADER => array(
+        //         'Content-Type: application/json',
+        //         'Content-Length: ' . strlen($payload),
+        //         'Authorization: Bearer ER/2W/XHeNbdodvJbc3nIvgC6VAdtPnIQgGqZVAn/UycOlAJdd4Nd2SV9NL1iWiN9i4z8lOLOUW76uU2siV38w==',
+        //         'Content-Type: application/json',
+        //     ),
+        //     CURLOPT_POST => 1,
+        //     CURLOPT_POSTFIELDS => $payload
+        // ));
+        // curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        // $response = curl_exec($curl);
 
-        echo $response;
+        // echo $response;
 
-        $dataRecommed = json_decode($response);
-        curl_close($curl);
-        function mapLabelValue($keyword, $dataRecommed)
-        {
-            if ($dataRecommed) {
-                $index = array_search($keyword, $dataRecommed->Results->output1->value->ColumnNames);
-                $dataVlues = $dataRecommed->Results->output1->value->Values[0][$index];
-                $_SESSION['Recom'] = NULL;
-                return $dataVlues;
-            }
-        }
+        // $dataRecommed = json_decode($response);
+        // curl_close($curl);
+        // function mapLabelValue($keyword, $dataRecommed)
+        // {
+        //     if ($dataRecommed) {
+        //         $index = array_search($keyword, $dataRecommed->Results->output1->value->ColumnNames);
+        //         $dataVlues = $dataRecommed->Results->output1->value->Values[0][$index];
+        //         $_SESSION['Recom'] = NULL;
+        //         return $dataVlues;
+        //     }
+        // }
 
         
 
-        $Label = mapLabelValue('Scored Labels', $dataRecommed);
-        $eco = floatval(mapLabelValue("Scored Probabilities for Class \"eco\"", $dataRecommed));
-        // echo 's='.$eco;
-        $art_science = floatval(mapLabelValue("Scored Probabilities for Class \"art science\"", $dataRecommed));
-        $history = floatval(mapLabelValue("Scored Probabilities for Class \"history\"", $dataRecommed));
-        $nature =  floatval(mapLabelValue("Scored Probabilities for Class \"nature\"", $dataRecommed));
-        $recreation = floatval(mapLabelValue("Scored Probabilities for Class \"recreation\"", $dataRecommed));
-        $culture = floatval(mapLabelValue("Scored Probabilities for Class \"culture\"", $dataRecommed));
-        $natural_hot_springs =  floatval(mapLabelValue("Scored Probabilities for Class \"natural hot springs\"", $dataRecommed));
-        $beach = floatval(mapLabelValue("Scored Probabilities for Class \"beach\"", $dataRecommed));
-        $waterfall = floatval(mapLabelValue("Scored Probabilities for Class \"waterfall\"", $dataRecommed));
-        $cave = floatval(mapLabelValue("Scored Probabilities for Class \"cave\"", $dataRecommed));
-        $island = floatval(mapLabelValue("Scored Probabilities for Class \"island\"", $dataRecommed));
-        $rapids = floatval(mapLabelValue("Scored Probabilities for Class \"rapids\"", $dataRecommed));
+        // $Label = mapLabelValue('Scored Labels', $dataRecommed);
+        // $eco = floatval(mapLabelValue("Scored Probabilities for Class \"eco\"", $dataRecommed));
+        // // echo 's='.$eco;
+        // $art_science = floatval(mapLabelValue("Scored Probabilities for Class \"art science\"", $dataRecommed));
+        // $history = floatval(mapLabelValue("Scored Probabilities for Class \"history\"", $dataRecommed));
+        // $nature =  floatval(mapLabelValue("Scored Probabilities for Class \"nature\"", $dataRecommed));
+        // $recreation = floatval(mapLabelValue("Scored Probabilities for Class \"recreation\"", $dataRecommed));
+        // $culture = floatval(mapLabelValue("Scored Probabilities for Class \"culture\"", $dataRecommed));
+        // $natural_hot_springs =  floatval(mapLabelValue("Scored Probabilities for Class \"natural hot springs\"", $dataRecommed));
+        // $beach = floatval(mapLabelValue("Scored Probabilities for Class \"beach\"", $dataRecommed));
+        // $waterfall = floatval(mapLabelValue("Scored Probabilities for Class \"waterfall\"", $dataRecommed));
+        // $cave = floatval(mapLabelValue("Scored Probabilities for Class \"cave\"", $dataRecommed));
+        // $island = floatval(mapLabelValue("Scored Probabilities for Class \"island\"", $dataRecommed));
+        // $rapids = floatval(mapLabelValue("Scored Probabilities for Class \"rapids\"", $dataRecommed));
 
 
-        $sql_select = "SELECT * FROM `recommed` WHERE id_user = '".$_SESSION['id_user']."' ;";
-        $result_select = $conn->query($sql_select);
+        // $sql_select = "SELECT * FROM `recommed` WHERE id_user = '".$_SESSION['id_user']."' ;";
+        // $result_select = $conn->query($sql_select);
 
-        if ($result_select->num_rows == 0) {
-            $sql_insertLabel = "INSERT INTO `recommed` (
-                `id_recom`, 
-                `label-categories`, 
-                `score_eco`, 
-                `score_art_science`, 
-                `score_history`, 
-                `score_nature`, 
-                `score_recreation`, 
-                `score_culture`, 
-                `score_natural_hot_springs`, 
-                `score_beach`, 
-                `score_waterfall`, 
-                `score_cave`, 
-                `score_island`, 
-                `score_rapids`, 
-                `id_user`) VALUES (NULL, 
-                '" . $Label . "', 
-                '" . $eco . "', 
-                '" . $art_science . "', 
-                '" . $history . "', 
-                '" . $nature . "', 
-                '" . $recreation . "', 
-                '" . $culture . "', 
-                '" . $natural_hot_springs . "', 
-                '" . $beach . "', 
-                '" . $waterfall . "', 
-                '" . $cave . "', 
-                '" . $island . "', 
-                '" . $rapids . "', 
-                '" . $_SESSION['id_user'] . "');";
-            $result_insertLabel = $conn->query($sql_insertLabel);
-        }else{
-            $sql_updateLabel = "UPDATE `recommed` SET 
-                `label-categories` = '".$Label."', 
-                `score_eco` = '".$eco."', 
-                `score_art_science` = '".$art_science."', 
-                `score_history` = '".$history."', 
-                `score_nature` = '".$nature."', 
-                `score_recreation` = '".$recreation."', 
-                `score_culture` = '".$culture."', 
-                `score_natural_hot_springs` = '".$natural_hot_springs."', 
-                `score_beach` = '".$beach."', 
-                `score_waterfall` = '".$waterfall."', 
-                `score_cave` = '".$cave."', 
-                `score_island` = '".$island."', 
-                `score_rapids` = '".$rapids."'
-            WHERE `recommed`.`id_user` = '".$_SESSION['id_user']."' ;";
-            $result_updateLabel = $conn->query($sql_updateLabel);
-        }
+        // if ($result_select->num_rows == 0) {
+        //     $sql_insertLabel = "INSERT INTO `recommed` (
+        //         `id_recom`, 
+        //         `label-categories`, 
+        //         `score_eco`, 
+        //         `score_art_science`, 
+        //         `score_history`, 
+        //         `score_nature`, 
+        //         `score_recreation`, 
+        //         `score_culture`, 
+        //         `score_natural_hot_springs`, 
+        //         `score_beach`, 
+        //         `score_waterfall`, 
+        //         `score_cave`, 
+        //         `score_island`, 
+        //         `score_rapids`, 
+        //         `id_user`) VALUES (NULL, 
+        //         '" . $Label . "', 
+        //         '" . $eco . "', 
+        //         '" . $art_science . "', 
+        //         '" . $history . "', 
+        //         '" . $nature . "', 
+        //         '" . $recreation . "', 
+        //         '" . $culture . "', 
+        //         '" . $natural_hot_springs . "', 
+        //         '" . $beach . "', 
+        //         '" . $waterfall . "', 
+        //         '" . $cave . "', 
+        //         '" . $island . "', 
+        //         '" . $rapids . "', 
+        //         '" . $_SESSION['id_user'] . "');";
+        //     $result_insertLabel = $conn->query($sql_insertLabel);
+        // }else{
+        //     $sql_updateLabel = "UPDATE `recommed` SET 
+        //         `label-categories` = '".$Label."', 
+        //         `score_eco` = '".$eco."', 
+        //         `score_art_science` = '".$art_science."', 
+        //         `score_history` = '".$history."', 
+        //         `score_nature` = '".$nature."', 
+        //         `score_recreation` = '".$recreation."', 
+        //         `score_culture` = '".$culture."', 
+        //         `score_natural_hot_springs` = '".$natural_hot_springs."', 
+        //         `score_beach` = '".$beach."', 
+        //         `score_waterfall` = '".$waterfall."', 
+        //         `score_cave` = '".$cave."', 
+        //         `score_island` = '".$island."', 
+        //         `score_rapids` = '".$rapids."'
+        //     WHERE `recommed`.`id_user` = '".$_SESSION['id_user']."' ;";
+        //     $result_updateLabel = $conn->query($sql_updateLabel);
+        // }
 
-        $_SESSION['Travel_Recommend'] = $Label;
-        // Stat
-        $_SESSION['stat_recom']['eco'] = $eco;
-        $_SESSION['stat_recom']['art science'] = $art_science;
-        $_SESSION['stat_recom']['history'] = $history;
-        $_SESSION['stat_recom']['nature'] = $nature;
-        $_SESSION['stat_recom']['recreation'] = $recreation;
-        $_SESSION['stat_recom']['culture'] = $culture;
-        $_SESSION['stat_recom']['natural_hot_springs'] = $natural_hot_springs;
-        $_SESSION['stat_recom']['beach'] = $beach;
-        $_SESSION['stat_recom']['waterfall'] = $waterfall;
-        $_SESSION['stat_recom']['cave'] = $cave;
-        $_SESSION['stat_recom']['island'] = $island;
-        $_SESSION['stat_recom']['rapids'] = $rapids;
+        // $_SESSION['Travel_Recommend'] = $Label;
+        // // Stat
+        // $_SESSION['stat_recom']['eco'] = $eco;
+        // $_SESSION['stat_recom']['art science'] = $art_science;
+        // $_SESSION['stat_recom']['history'] = $history;
+        // $_SESSION['stat_recom']['nature'] = $nature;
+        // $_SESSION['stat_recom']['recreation'] = $recreation;
+        // $_SESSION['stat_recom']['culture'] = $culture;
+        // $_SESSION['stat_recom']['natural_hot_springs'] = $natural_hot_springs;
+        // $_SESSION['stat_recom']['beach'] = $beach;
+        // $_SESSION['stat_recom']['waterfall'] = $waterfall;
+        // $_SESSION['stat_recom']['cave'] = $cave;
+        // $_SESSION['stat_recom']['island'] = $island;
+        // $_SESSION['stat_recom']['rapids'] = $rapids;
 
-        header("Location: ./recom_travel.php");
+        header("Location: ./recom_travel2.php");
     } else {
         header("Location: ./page4.php");
     }

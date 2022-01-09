@@ -5,14 +5,14 @@ if (!isset($_SESSION['id_user'])) {
     header('location: ../Login/Page_FormLogin.php');
 }
 
-if (isset($_POST['submitReCom'])) {
-    $_SESSION['Travel_Recommend'] = NULL;
-    $_SESSION['stat_recom'] = NULL;
-} else {
-    if (isset($_SESSION['Travel_Recommend'])) {
-        header('Location: ./recom_travel.php');
-    }
-}
+// if (isset($_POST['submitReCom'])) {
+//     $_SESSION['Travel_Recommend'] = NULL;
+//     $_SESSION['stat_recom'] = NULL;
+// } else {
+//     if (isset($_SESSION['Travel_Recommend'])) {
+//         header('Location: ./recom_travel.php');
+//     }
+// }
 
 
 
@@ -61,22 +61,22 @@ include_once('./choice.php');
             <div class="breadcrumb">
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 1</span>
-                    <span class="show-mobile">ส่วนที่ 1</span>
+                    <span class="hide-mobile">ข้อมูลทั่วไป</span>
+                    <span class="show-mobile">ส่วน 1</span>
                 </div>
                 <div class="item">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 2</span>
-                    <span class="show-mobile">ส่วนที่ 2</span>
+                    <span class="hide-mobile">ข้อมูลในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 2</span>
                 </div>
                 <div class="item">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 3</span>
-                    <span class="show-mobile">ส่วนที่ 3</span>
+                    <span class="hide-mobile">แผนในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 3</span>
                 </div>
                 <div class="item">
-                    <span class="hide-mobile">ส่วนที่ 4</span>
-                    <span class="show-mobile">ส่วนที่ 4</span>
+                    <span class="hide-mobile">ปัจจัยที่ตัดสินใจท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 4</span>
                 </div>
             </div>
         </section>
@@ -176,20 +176,7 @@ include_once('./choice.php');
                                 คุณยังไม่ได้กรอกข้อมูล
                             </div>
                         </div>
-
-                        <div class="choice label-domiclie mt-3">
-                            <label for="domicile_recom"><strong>6. ภูมิลำเนา</strong></label>
-                            <select class="custom-select" name="domicile_recom" id="inputGroupSelect01" required>
-                                <option <?php echo !isset($_SESSION['Recom']['domicile_recom']) ? 'selected' : '' ?> value="">เลือกภูมิลำเนาของท่าน</option>
-                                <?php for ($i = 0; $i < count($arr_domicile); $i++) { ?>
-                                    <option <?php echo isset($_SESSION['Recom']['domicile_recom']) && $_SESSION['Recom']['domicile_recom'] == $arr_domicile_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_domicile_choice[$i] ?>"><?php echo $arr_domicile[$i] ?></option>
-                                <?php } ?>
-                            </select>
-                            <div class="invalid-feedback">
-                                คุณยังไม่ได้กรอกข้อมูล
-                            </div>
-                        </div>
-
+                        
                         <button type="submit" name="submitChoice1" class="btn btn-blue mt-3 float-right px-5">ต่อไป</button>
 
                     </div>

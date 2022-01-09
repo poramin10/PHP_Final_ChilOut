@@ -1,5 +1,5 @@
 <?php
-include_once('../authen_backend.php'); 
+include_once('../authen_backend.php');
 
 $sql_count = "SELECT * FROM `countertravel` ORDER BY count_travel DESC";
 $result_count = $conn->query($sql_count);
@@ -21,6 +21,31 @@ $result_count = $conn->query($sql_count);
     <link rel="stylesheet" href="../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+    <style type="text/css">
+        #overlay {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: #ccc;
+            width: 100%;
+            height: 100%;
+            opacity: .75;
+            filter: alpha(opacity=75);
+            -moz-opacity: .75;
+            z-index: 999;
+            background: #fff url(http://i.imgur.com/KUJoe.gif) 50% 50% no-repeat;
+        }
+
+        .main-contain {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+
 
 </head>
 
@@ -30,6 +55,7 @@ $result_count = $conn->query($sql_count);
         <?php include_once('../include/navbar.php') ?>
 
         <?php include_once('../include/sidebar.php') ?>
+
 
         <div class="content-wrapper">
             <div class="content-header">
@@ -48,14 +74,19 @@ $result_count = $conn->query($sql_count);
             </div>
 
             <section class="content">
+
                 <div class="container-fluid">
+                    
 
                     <div iv class="card">
                         <div class="card-header">
                             <h3 class="card-title">คะแนนรีวิวสถานที่ท่องเที่ยว</h3>
+                            
                         </div>
                         <div class="card-body">
-
+<!-- Load -->
+<div id="overlay"></div>
+                    <!-- Load -->
                             <div class="table-responsive">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -166,6 +197,13 @@ $result_count = $conn->query($sql_count);
 
                 });
 
+            });
+        </script>
+
+        <script type="text/javascript">
+            $(function() {
+                $("#overlay").fadeOut();
+                $(".main-contain").removeClass("main-contain");
             });
         </script>
 

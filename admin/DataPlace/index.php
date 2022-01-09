@@ -11,7 +11,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>Data Place</title>
 
     <?php include_once('../include/inc_css.php') ?>
 
@@ -91,7 +91,7 @@ $result = $conn->query($sql);
                     <!-- Load -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">ข้อมูลสมาชิกทั้งหมด</h3>
+                            <h3 class="card-title">ข้อมูลสถานที่ท่องเที่ยวทั้งหมด</h3>
                         </div>
                         <div class="card-body">
                             <div class="main-contain">
@@ -174,11 +174,6 @@ $result = $conn->query($sql);
                     </div>
                 </div>
             </section>
-
-
-
-
-
 
         </div>
 

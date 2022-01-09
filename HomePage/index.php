@@ -46,8 +46,6 @@ if ($result_select->num_rows != 0) {
     $result_multi_carousel = $conn->query($sql_multi_carousel);
 }
 
-
-
 ?>
 
 <!doctype html>

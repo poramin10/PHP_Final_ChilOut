@@ -33,10 +33,33 @@ if (isset($_POST['submit'])) {
                 $_SESSION['gender'] = $row_check['gender'];
                 $_SESSION['email'] = $row_check['email'];
                 $_SESSION['birthdate'] = $row_check['birthdate'];
-                $_SESSION['phone'] = $row_check['phone']; 
+                $_SESSION['phone'] = $row_check['phone'];
                 $_SESSION['profile'] = $row_check['profile'];
                 $_SESSION['username'] = $row_check['username'];
                 $_SESSION['status'] = $row_check['status'];
+
+                $sql_select = "SELECT * FROM `recommed` WHERE id_user = '" . $_SESSION['id_user'] . "' ;";
+                $result_select = $conn->query($sql_select);
+
+                if ($result_select->num_rows == 1) {
+
+                    $row_select = $result_select->fetch_assoc();
+                    $_SESSION['Travel_Recommend'] = $row_select['label-categories'];
+                    $_SESSION['stat_recom']['eco'] = $row_select['score_eco'];
+                    $_SESSION['stat_recom']['art science'] = $row_select['score_art_science'];
+                    $_SESSION['stat_recom']['history'] = $row_select['score_history'];
+                    $_SESSION['stat_recom']['nature'] = $row_select['score_nature'];
+                    $_SESSION['stat_recom']['recreation'] = $row_select['score_recreation'];
+                    $_SESSION['stat_recom']['culture'] = $row_select['score_culture'];
+                    $_SESSION['stat_recom']['natural_hot_springs'] = $row_select['score_natural_hot_springs'];
+                    $_SESSION['stat_recom']['beach'] = $row_select['score_beach'];
+                    $_SESSION['stat_recom']['waterfall'] = $row_select['score_waterfall'];
+                    $_SESSION['stat_recom']['cave'] = $row_select['score_cave'];
+                    $_SESSION['stat_recom']['island'] = $row_select['score_island'];
+                    $_SESSION['stat_recom']['rapids'] = $row_select['score_rapids'];
+                }
+
+                echo $result_select->num_rows;
 
                 $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
                 // print_r($row_check);

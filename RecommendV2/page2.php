@@ -3,9 +3,9 @@ if (!isset($_SESSION['id_user'])) {
     header('location: ../Login/Page_FormLogin.php');
 }
 
-if(isset($_SESSION['Travel_Recommend'])){
-    header('Location: ./recom_travel.php');
-}
+// if(isset($_SESSION['Travel_Recommend'])){
+//     header('Location: ./recom_travel.php');
+// }
 
 
 // Check ว่า Page 1 ทำครบหรือยัง
@@ -63,22 +63,22 @@ include_once('./choice.php');
             <div class="breadcrumb">
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 1</span>
-                    <span class="show-mobile">ส่วนที่ 1</span>
+                    <span class="hide-mobile">ข้อมูลทั่วไป</span>
+                    <span class="show-mobile">ส่วน 1</span>
                 </div>
                 <div class="item active">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 2</span>
-                    <span class="show-mobile">ส่วนที่ 2</span>
+                    <span class="hide-mobile">ข้อมูลในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 2</span>
                 </div>
                 <div class="item">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ส่วนที่ 3</span>
-                    <span class="show-mobile">ส่วนที่ 3</span>
+                    <span class="hide-mobile">แผนในการท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 3</span>
                 </div>
                 <div class="item">
-                    <span class="hide-mobile">ส่วนที่ 4</span>
-                    <span class="show-mobile">ส่วนที่ 4</span>
+                    <span class="hide-mobile">ปัจจัยที่ตัดสินใจท่องเที่ยว</span>
+                    <span class="show-mobile">ส่วน 4</span>
                 </div>
             </div>
         </section>
@@ -94,7 +94,7 @@ include_once('./choice.php');
                         <h3><strong>ข้อมูลการท่องเที่ยว</strong></h3>
 
                         <div class="choice label-planning mt-3">
-                            <label for="planning_recom"><strong>7. การวางแผนในการท่องเที่ยวของท่าน</strong> </label>
+                            <label for="planning_recom"><strong>6. การวางแผนในการท่องเที่ยวของท่าน</strong> </label>
                             <select class="custom-select" name="planning_recom" id="inputGroupSelect01" required>
                                 <option <?php echo !isset($_SESSION['Recom']['planning_recom']) ? 'selected' : '' ?> value="">การวางแผนในการท่องเที่ยว</option>
                                 <?php for ($i = 0; $i < count($arr_planning); $i++) { ?>
@@ -107,7 +107,7 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice label-objective mt-3">
-                            <label for="career"><strong>8. วัตถุประสงค์หลักในการเดินทางมาท่องเที่ยว</strong> </label>
+                            <label for="career"><strong>7. วัตถุประสงค์หลักในการเดินทางมาท่องเที่ยว</strong> </label>
                             <div class="form-check">
                                 <div class="row">
                                     <?php for ($i = 0; $i < count($arr_objective); $i++) { ?>
@@ -136,7 +136,7 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice label-carTravel mt-3">
-                            <label for="car"><strong>9.การเดินทางมาเที่ยวในครั้งนี้ท่านเดินทางมาอย่างไร</strong> </label>
+                            <label for="car"><strong>8.การเดินทางมาเที่ยวในครั้งนี้ท่านเดินทางมาอย่างไร</strong> </label>
                             <div class="row">
 
                                 <?php for ($i = 0; $i < count($arr_car_travel); $i++) { ?>
@@ -168,7 +168,7 @@ include_once('./choice.php');
 
 
                         <div class="choice mt-3">
-                            <label for="car"><strong>11. บุคคลที่ท่องเที่ยวร่วมกัน</strong> </label>
+                            <label for="car"><strong>9. บุคคลที่ท่องเที่ยวร่วมกัน</strong> </label>
                             <div class="row">
                                 <?php for ($i = 0; $i < count($arr_friend); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
