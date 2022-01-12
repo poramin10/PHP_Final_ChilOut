@@ -1,8 +1,56 @@
 <?php
 require_once('../authen_frontend.php');
+// session_start();
 
 $Region = 'ภาคใต้';
-$LabelTag = 'หมู่เกาะ';
+$LabelTag = $_SESSION['label-categories'];
+
+if ($LabelTag == 'measure') {
+    $category = "วัด";
+    $categoryDB = "วัด";
+}
+if ($LabelTag == 'museum') {
+    $category = "พิพิธภัณฑ์";
+    $categoryDB = "พิพิธภัณฑ์";
+}
+if ($LabelTag == 'national park wildlife sanctuary') {
+    $category = "อุทยานแห่งชาติ";
+    $categoryDB = "อุทยานแห่งชาติ เขตรักษาพันธุ์สัตว์ป่า";
+}
+if ($LabelTag == 'landmarks and monuments') {
+    $category = "แลนด์มาร์ก";
+    $categoryDB = "แลนด์มาร์กและอนุสรณ์สถาน";
+}
+if ($LabelTag == 'waterfall') {
+    $category = "น้ำตก";
+    $categoryDB = "น้ำตก";
+}
+if ($LabelTag == 'historical attractions and monuments') {
+    $category = "เชิงประวัติศาสตร์";
+    $categoryDB = "สถานที่ท่องเที่ยวเชิงประวัติศาสตร์และอนุสาวรีย์";
+}
+if ($LabelTag == 'bay and beach') {
+    $category = "ชายหาด";
+    $categoryDB = "อ่าวและชายหาด";
+}
+if ($LabelTag == 'islands') {
+    $category = "หมู่เกาะ";
+    $categoryDB = "หมู่เกาะ";
+}
+if ($LabelTag == 'cave') {
+    $category = "ถ้ำ";
+    $categoryDB = "ถ้ำ";
+}
+if ($LabelTag == 'zoo and aquarium') {
+    $category = "สวนสัตว์";
+    $categoryDB = "สวนสัตว์ และพิพิธภัณฑ์สัตว์น้ำ";
+}
+if ($LabelTag == 'dive site') {
+    $category = "จุดดำน้ำ";
+    $categoryDB = "จุดดำน้ำ";
+}
+
+
 
 $sql_region = "SELECT * FROM `geographies`  JOIN provinces ON geographies.id = provinces.geography_id 
     WHERE  geographies.name LIKE  '" . $Region . "';";
@@ -12,7 +60,7 @@ $result_region3 = $conn->query($sql_region);
 
 
 $sql_place_rate = "SELECT  place.id_place , place.place_name , place.picture , place.province , AVG(ratestar) as ratestar FROM `comment_rating` 
-                    JOIN place ON comment_rating.id_place = place.id_place WHERE place.category = '" . $LabelTag . "' AND ( ";
+                    JOIN place ON comment_rating.id_place = place.id_place WHERE place.category = '" . $categoryDB . "' AND ( ";
 while ($row_region2 = $result_region2->fetch_assoc()) {
     $sql_place_rate .= "place.province = '" . $row_region2['name_th'] . "' ||";
 }
@@ -24,14 +72,11 @@ $result_place_rate2 = $conn->query($sql_place_rate);
 $countPlaceRate = 12 - $result_place_rate->num_rows;
 
 if ($result_place_rate->num_rows <> 0) {
-
-
     $sql_place = "SELECT id_place , place_name , picture , province FROM `place`  
-        WHERE category = '" . $LabelTag . "' AND ( ";
+        WHERE category = '" . $categoryDB . "' AND ( ";
     while ($row_place_rate2 = $result_place_rate2->fetch_assoc()) {
         $sql_place .= " id_place <> '" . $row_place_rate2['id_place'] . "' &&";
     }
-
     $sql_place = substr($sql_place, 0, -2);
 
     $sql_place .= " ) AND ( ";
@@ -45,7 +90,7 @@ if ($result_place_rate->num_rows <> 0) {
     // echo $sql_place;
 } else {
     $sql_place = "SELECT id_place , place_name , picture , province FROM `place`  
-        WHERE category = '" . $LabelTag . "' AND ( ";
+        WHERE category = '" . $categoryDB . "' AND ( ";
     while ($row_region3 = $result_region3->fetch_assoc()) {
         $sql_place .= "province = '" . $row_region3['name_th'] . "' ||";
     }
@@ -53,6 +98,76 @@ if ($result_place_rate->num_rows <> 0) {
     $sql_place .= " ) LIMIT " . $countPlaceRate . " ";
     $result_place = $conn->query($sql_place);
 }
+
+/**
+ * Recom category
+ */
+
+$num = 0;
+foreach ($_SESSION['stat_recom_south'] as $category_name => $category_value) {
+
+    if (max($_SESSION['stat_recom_south']) == $category_value) {
+        if ($category_name == 'measure') {
+            $arrCategoryNumber[$num] = "วัด";
+            $arrCategoryNumber_Eng[$num] = 'measure';
+            $num++;
+        }
+        if ($category_name == 'museum') {
+            $arrCategoryNumber[$num] = "พิพิธภัณฑ์";
+            $arrCategoryNumber_Eng[$num] = 'museum';
+            $num++;
+        }
+        if ($category_name == 'national_park') {
+            $arrCategoryNumber[$num] = "อุทยานแห่งชาติ";
+            $arrCategoryNumber_Eng[$num] = 'national park wildlife sanctuary';
+            $num++;
+        }
+        if ($category_name == 'landmarks') {
+            $arrCategoryNumber[$num] = "แลนด์มาร์ก";
+            $arrCategoryNumber_Eng[$num] = 'landmarks and monuments';
+            $num++;
+        }
+        if ($category_name == 'waterfall') {
+            $arrCategoryNumber[$num] = "น้ำตก";
+            $arrCategoryNumber_Eng[$num] = 'waterfall';
+            $num++;
+        }
+        if ($category_name == 'historical') {
+            $arrCategoryNumber[$num] = "เชิงประวัติศาสตร์";
+            $arrCategoryNumber_Eng[$num] = 'historical attractions and monuments';
+            $num++;
+        }
+        if ($category_name == 'beach') {
+            $arrCategoryNumber[$num] = "ชายหาด";
+            $arrCategoryNumber_Eng[$num] = 'bay and beach';
+            $num++;
+        }
+        if ($category_name == 'cave') {
+            $arrCategoryNumber[$num] = "ถ้ำ";
+            $arrCategoryNumber_Eng[$num] = 'islands';
+            $num++;
+        }
+        if ($category_name == 'zoo') {
+            $arrCategoryNumber[$num] = "สวนสัตว์";
+            $arrCategoryNumber_Eng[$num] = 'cave';
+            $num++;
+        }
+        if ($category_name == 'dive_site') {
+            $arrCategoryNumber[$num] = "จุดดำน้ำ";
+            $arrCategoryNumber_Eng[$num] = 'zoo and aquarium';
+            $num++;
+        }
+        if ($category_name == 'islands') {
+            $arrCategoryNumber[$num] = "หมู่เกาะ";
+            $arrCategoryNumber_Eng[$num] = 'dive site';
+            $num++;
+        }
+    }
+}
+
+
+
+
 
 ?>
 
@@ -77,12 +192,25 @@ if ($result_place_rate->num_rows <> 0) {
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mt-5">
-                <h1 class="text-center"><strong>12 อันดับสถานที่ท่องเที่ยวที่แนะนำ</strong></h1>
-                <h1 class="text-center"><strong>สถานที่ท่องเที่ยวที่แนะนำคือประเภท: <span class="text-blue"><?php echo $LabelTag ?></strong> </span></h1>
-                <h3 class="text-center"><strong>ภาคที่ท่านเลือกคือ: <span class="text-blue"><?php echo $Region ?></span> </strong></h3>
+                <h1 class="text-center"><strong>12 อันดับสถานที่ท่องเที่ยวที่แนะนำในภาคใต้</strong></h1>
+                <h1 class="text-center"><strong>สถานที่ท่องเที่ยวที่แนะนำคือประเภท: <span class="text-blue"><?php echo $category ?></strong> </span></h1>
+                <div class="text-center">
+                    <h3>คุณมี <?php echo count($arrCategoryNumber) - 1 ?> อันดับ ประเภทที่คะแนนเท่ากัน</h3>
+                    <?php for ($i = 0; $i < count($arrCategoryNumber); $i++) { ?>
+                        <?php if ($arrCategoryNumber[$i] != $category) { ?>
+                            <button onclick="SelectLabelMain('<?php echo $arrCategoryNumber_Eng[$i] ?>')" class="btn btn-blue"><?php echo $arrCategoryNumber[$i] ?></button>
+                        <?php } ?>
+                    <?php } ?>
+                </div>
+                <div class="text-center">
+                    <hr>
+                    <form action="page1.php" method="POST">
+                        <button type="submit" name="submitReCom" href="./page1.php" class="btn btn-warning text-light mt-1">ทำแบบทดสอบใหม่อีกครั้ง</button>
+                    </form>
+                </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 mt-3">
                 <!-- BAR CHART -->
                 <div class="card card-success">
                     <div class="card-header">
@@ -244,24 +372,51 @@ if ($result_place_rate->num_rows <> 0) {
     <!-- ChartJS -->
     <script src="../assets/lib/chart.js/Chart.min.js"></script>
 
+    <script src="../assets/lib/jquery/jquery.min.js"></script>
+    <script src="../assets/lib/adminlte.min.js"></script>
+
+
     <!-- Page specific script -->
     <script>
         $(function() {
             var barChartCanvas = $('#barChart').get(0).getContext('2d')
             var barChartData = {
                 labels: [
-                    'วัด',
-                    'พิพิธภัณฑ์',
-                    'น้ำตก',
-                    'ประวัติศาสตร์',
-                    'อุทยานแห่งชาติ',
-                    'อ่าวและชายหาด',
-                    'หมู่เกาะ',
-                    'ดอยภูเขา',
-                    'สวนสัตว์',
-                    'ศูนย์ศิลปะและวัฒนธรรม',
-                    'น้ำพุร้อน',
-                    'สวนสนุก',
+                    <?php
+                    $num = 0;
+                    foreach ($_SESSION['stat_recom_south'] as $category_name => $category_value) {
+
+                        $num++;
+                        if ($category_name == 'measure') {
+                            $arrDataThai[$num] = 'วัด';
+                        } else if ($category_name == 'museum') {
+                            $arrDataThai[$num] = 'พิพิธภัณฑ์';
+                        } else if ($category_name == 'national_park') {
+                            $arrDataThai[$num] = 'อุทยานแห่งชาติ';
+                        } else if ($category_name == 'landmarks') {
+                            $arrDataThai[$num] = 'แลนด์มาร์ก';
+                        } else if ($category_name == 'waterfall') {
+                            $arrDataThai[$num] = 'น้ำตก';
+                        } else if ($category_name == 'historical') {
+                            $arrDataThai[$num] = 'เชิงประวัติศาสตร์';
+                        } else if ($category_name == 'beach') {
+                            $arrDataThai[$num] = 'ชายหาด';
+                        } else if ($category_name == 'cave') {
+                            $arrDataThai[$num] = 'ถ้ำ';
+                        } else if ($category_name == 'zoo') {
+                            $arrDataThai[$num] = 'สวนสัตว์';
+                        } else if ($category_name == 'dive_site') {
+                            $arrDataThai[$num] = 'จุดดำน้ำ';
+                        } else if ($category_name == 'islands') {
+                            $arrDataThai[$num] = 'หมู่เกาะ';
+                        } else {
+                            $arrDataThai[$num] = 'เกิดข้อผิดพลาด';
+                        }
+                    ?>
+
+                        '<?php echo $arrDataThai[$num] ?>',
+
+                    <?php } ?>
                 ],
                 datasets: [{
                         label: 'คะแนนจากการประมวลผล',
@@ -273,19 +428,9 @@ if ($result_place_rate->num_rows <> 0) {
                         pointHighlightFill: '#fff',
                         pointHighlightStroke: 'rgba(60,141,188,1)',
                         data: [
-                            10,
-                            5,
-                            6,
-                            7,
-                            8,
-                            4,
-                            3,
-                            2,
-                            5,
-                            8,
-                            7,
-                            0,
-                            4,
+                            <?php foreach ($_SESSION['stat_recom_south'] as $category_name => $category_value) { ?>
+                                <?php echo $category_value * 10 ?>,
+                            <?php } ?>
                         ]
                     },
 
@@ -306,6 +451,26 @@ if ($result_place_rate->num_rows <> 0) {
                 options: barChartOptions
             })
         })
+    </script>
+
+    <!-- Category -->
+    <script>
+        function SelectLabelMain(nameLabel) {
+
+            console.log(nameLabel);
+
+            $.ajax({
+                type: "POST",
+                url: "./selectLabel.php",
+                data: {
+                    dataLabel: nameLabel
+                }
+            }).done(function() {
+                location.replace("recom_travel2.php");
+            });
+
+
+        }
     </script>
 
 </body>

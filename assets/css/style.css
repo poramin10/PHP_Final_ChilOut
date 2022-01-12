@@ -1405,6 +1405,192 @@ nav.white ul li a {
   box-shadow: 2px -2px 0 2px #444, 3px -3px 0 2px #444;
 }
 
+/* Section RecommendV2  */
+
+.breadcrumb-recomv2 .breadcrumb {
+  width: 100%;
+  min-width: 320px;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 5px;
+  counter-reset: flag;
+  font-family: arial;
+  text-align: center;
+  background-color: #fff !important;
+}
+.breadcrumb-recomv2 .breadcrumb .item {
+  position: relative;
+  display: block;
+  float: left;
+  width: 33%;
+  background: #e3e3e3;
+  color: #3d3d3d;
+  text-decoration: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 44px;
+  white-space: nowrap;
+  padding: 0 20px 0 60px;
+}
+@media screen and (max-width: 991px) {
+  .breadcrumb-recomv2 .breadcrumb .item {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .item {
+    line-height: normal;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .breadcrumb-recomv2 .breadcrumb .item:not(.active) {
+    padding-top: 2px;
+    padding-bottom: 6px;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.breadcrumb-recomv2 .breadcrumb .item:first-child:before {
+  left: 14px;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .item:first-child:before {
+    left: 0;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .item:first-child:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.breadcrumb-recomv2 .breadcrumb .arrow {
+  position: absolute;
+  top: 22px;
+  right: 1px;
+  z-index: 2;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .arrow {
+    top: 24px;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .arrow:after,
+.breadcrumb-recomv2 .breadcrumb .arrow:before {
+  content: " ";
+  position: absolute;
+  height: 0;
+  width: 0;
+  border: solid transparent;
+}
+.breadcrumb-recomv2 .breadcrumb .arrow:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-left-color: #e3e3e3;
+  border-width: 20px;
+  margin-top: -20px;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .arrow:after {
+    margin-top: -23px;
+    right: -12px;
+    border-width: 23px 0 24px 12px;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .arrow:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-left-color: #fff;
+  border-width: 23px;
+  margin-top: -23px;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .arrow:before {
+    margin-top: -28px;
+    border-width: 28px 0 28px 15px;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .item:before {
+  content: counter(flag);
+  counter-increment: flag;
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  margin: 8px 0;
+  background: white;
+  box-shadow: 0 0 0 1px #ccc;
+  font-size: 18px;
+  font-weight: bold;
+  color: #D22129;
+  line-height: 24px;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .item:before {
+    position: relative;
+    display: block;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 14px;
+    margin: 6px auto 4px;
+  }
+}
+/* .breadcrumb-recomv2 .breadcrumb .item:hover, */
+.breadcrumb-recomv2 .breadcrumb .active {
+  background: #2170B8;
+  color: #fff;
+}
+/* .breadcrumb-recomv2 .breadcrumb .item:hover .arrow:after {
+  border-left-color: #fff;
+} */
+.breadcrumb-recomv2 .breadcrumb .active {
+  border-top: 2px solid #2170B8;
+  border-bottom: 2px solid #2170B8;
+  line-height: 40px;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .active {
+    line-height: normal;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .active:before {
+  color: #2170B8;
+}
+.breadcrumb-recomv2 .breadcrumb .active .arrow {
+  top: 20px;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumb-recomv2 .breadcrumb .active .arrow {
+    top: 22px;
+  }
+}
+.breadcrumb-recomv2 .breadcrumb .active .arrow:before {
+  border-left-color: #fff;
+}
+.breadcrumb-recomv2 .breadcrumb .active .arrow:after {
+  border-left-color: #2170B8;
+}
+.breadcrumb-recomv2 .breadcrumb .active:first-child {
+  border-left: 2px solid #2170B8;
+}
+.breadcrumb-recomv2 .breadcrumb .active:last-child {
+  border-right: 2px solid #2170B8;
+}
+.breadcrumb-recomv2 .breadcrumb .item.completed {
+  background: #444;
+  color: #fff;
+}
+.breadcrumb-recomv2 .breadcrumb .item.completed .arrow:before,
+.breadcrumb-recomv2 .breadcrumb .item.completed .arrow:after {
+  border-left-color: #444;
+}
+.breadcrumb-recomv2 .breadcrumb .item.completed:after {
+  box-shadow: 2px -2px 0 2px #444, 3px -3px 0 2px #444;
+}
+
 @media screen and (max-width: 767px) {
   .hide-mobile {
     display: none;

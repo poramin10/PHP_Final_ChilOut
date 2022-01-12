@@ -163,7 +163,31 @@ if (!isset($_SESSION['YearRegisUser'])) {
               <!-- /.card -->
             </div>
 
+            <!-- ===== ข้อมูลสถิติการแนะนำ ===== -->
             <div class="col-lg-6">
+              <!-- ข้อมูลสถิติการแนะนำ -->
+              <div class="card card-primary">
+                <div class="card-header">
+                  <h3 class="card-title">ข้อมูลสถิติการแนะนำ</h3>
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <canvas id="donutChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+
+            <div class="col-lg-12">
               <!-- solid sales graph -->
               <div class="card card-primary">
                 <div class="card-header border-0">
@@ -377,7 +401,19 @@ if (!isset($_SESSION['YearRegisUser'])) {
               <?php echo $row_stat_recom['COUNT(`label-categories`)'] ?>,
             <?php } ?>
           ],
-          backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+          backgroundColor: [
+            '#0033FF', 
+            '#0027C2', 
+            '#0B29A1', 
+            '#001A81', 
+            '#12246C', 
+            '#283D8E', 
+            '#5567AF', 
+            '#516CD7', 
+            '#7D93EC', 
+            '#9CA8DB', 
+            '#C1CDFC'
+          ],
         }]
       }
       var donutOptions = {
@@ -385,6 +421,88 @@ if (!isset($_SESSION['YearRegisUser'])) {
         responsive: true,
       }
       new Chart(donutChartCanvas, {
+        type: 'doughnut',
+        data: donutData,
+        options: donutOptions
+      })
+
+      //-------------
+      //- DONUT CHART -
+      //-------------
+      <?php
+      $sql_stat_recom = "SELECT `label-categories` , COUNT(`label-categories`) FROM `recommed_south` GROUP BY `label-categories`;";
+      $result_stat_recom = $conn->query($sql_stat_recom);
+      $result_stat_recom2 = $conn->query($sql_stat_recom);
+      ?>
+      var donutChartCanvas2 = $('#donutChart2').get(0).getContext('2d')
+      var donutData = {
+        labels: [
+          <?php while ($row_stat_recom = $result_stat_recom->fetch_assoc()) {
+            if ($row_stat_recom['label-categories'] == 'measure') {
+              $nameCategory = 'วัด';
+            }
+            if ($row_stat_recom['label-categories'] == 'museum') {
+              $nameCategory = 'พิพิธภัณฑ์';
+            }
+            if ($row_stat_recom['label-categories'] == 'national park wildlife sanctuary') {
+              $nameCategory = 'อุทยานแห่งชาติ เขตรักษาพันธุ์สัตว์ป่า';
+            }
+            if ($row_stat_recom['label-categories'] == 'landmarks and monuments') {
+              $nameCategory = 'แลนด์มาร์กและอนุสรณ์สถาน';
+            }
+            if ($row_stat_recom['label-categories'] == 'waterfall') {
+              $nameCategory = 'น้ำตก';
+            }
+            if ($row_stat_recom['label-categories'] == 'historical attractions and monuments') {
+              $nameCategory = 'สถานที่ท่องเที่ยวเชิงประวัติศาสตร์และอนุสาวรีย์';
+            }
+            if ($row_stat_recom['label-categories'] == 'bay and beach') {
+              $nameCategory = 'อ่าวและชายหาด';
+            }
+            if ($row_stat_recom['label-categories'] == 'islands') {
+              $nameCategory = 'หมู่เกาะ';
+            }
+            if ($row_stat_recom['label-categories'] == 'cave') {
+              $nameCategory = 'ถ้ำ';
+            }
+            if ($row_stat_recom['label-categories'] == 'zoo and aquarium') {
+              $nameCategory = 'สวนสัตว์ และพิพิธภัณฑ์สัตว์น้ำ';
+            }
+            if ($row_stat_recom['label-categories'] == 'dive site') {
+              $nameCategory = 'จุดดำน้ำ';
+            }
+          ?>
+
+            '<?php echo $nameCategory ?>',
+          <?php } ?>
+        ],
+        datasets: [{
+
+          data: [
+            <?php while ($row_stat_recom = $result_stat_recom2->fetch_assoc()) { ?>
+              <?php echo $row_stat_recom['COUNT(`label-categories`)'] ?>,
+            <?php } ?>
+          ],
+          backgroundColor: [
+            '#0033FF', 
+            '#0027C2', 
+            '#0B29A1', 
+            '#001A81', 
+            '#12246C', 
+            '#283D8E', 
+            '#5567AF', 
+            '#516CD7', 
+            '#7D93EC', 
+            '#9CA8DB', 
+            '#C1CDFC'
+          ],
+        }]
+      }
+      var donutOptions = {
+        maintainAspectRatio: false,
+        responsive: true,
+      }
+      new Chart(donutChartCanvas2, {
         type: 'doughnut',
         data: donutData,
         options: donutOptions

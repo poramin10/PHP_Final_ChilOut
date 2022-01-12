@@ -5,17 +5,14 @@ if (!isset($_SESSION['id_user'])) {
     header('location: ../Login/Page_FormLogin.php');
 }
 
-// if (isset($_POST['submitReCom'])) {
-//     $_SESSION['Travel_Recommend'] = NULL;
-//     $_SESSION['stat_recom'] = NULL;
-// } else {
-//     if (isset($_SESSION['Travel_Recommend'])) {
-//         header('Location: ./recom_travel.php');
-//     }
-// }
-
-
-
+if (isset($_POST['submitReCom'])) {
+    $_SESSION['label-categories'] = NULL;
+    $_SESSION['stat_recom_south'] = NULL;
+} else {
+    if (isset($_SESSION['label-categories'])) {
+        header('Location: ./recom_travel2.php');
+    }
+}
 
 
 include_once('./choice.php');
@@ -49,7 +46,7 @@ include_once('./choice.php');
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="text-blue mt-3"><strong>ระบบแนะนำสถานที่ท่องเที่ยว</strong></h3>
+                <h3 class="text-blue mt-3"><strong>ระบบแนะนำสถานที่ท่องเที่ยวในภาคใต้ของประเทศไทย</strong></h3>
                 <h6>กรุณาป้อนข้อมูลของท่านเพื่อระบบจะแนะนำกิจกรรมการท่องเที่ยวที่เหมาะสำหรับคุณ</h6>
             </div>
         </div>
@@ -57,7 +54,7 @@ include_once('./choice.php');
 
     <!-- BreadCrumb -->
     <div class="container">
-        <section class="breadcrumb-recom">
+        <section class="breadcrumb-recomv2">
             <div class="breadcrumb">
                 <div class="item active">
                     <span class="arrow"></span>
@@ -66,17 +63,12 @@ include_once('./choice.php');
                 </div>
                 <div class="item">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ข้อมูลในการท่องเที่ยว</span>
+                    <span class="hide-mobile">พฤติกรรมในการท่องเที่ยว</span>
                     <span class="show-mobile">ส่วน 2</span>
                 </div>
                 <div class="item">
-                    <span class="arrow"></span>
-                    <span class="hide-mobile">แผนในการท่องเที่ยว</span>
-                    <span class="show-mobile">ส่วน 3</span>
-                </div>
-                <div class="item">
                     <span class="hide-mobile">ปัจจัยที่ตัดสินใจท่องเที่ยว</span>
-                    <span class="show-mobile">ส่วน 4</span>
+                    <span class="show-mobile">ส่วน 3</span>
                 </div>
             </div>
         </section>
@@ -93,12 +85,11 @@ include_once('./choice.php');
                         <div class="choice label-gender mt-3">
                             <label for=""><strong>1. เพศ</strong></label>
                             <div class="row">
-
                                 <?php for ($i = 0; $i < count($arr_Gender); $i++) { ?>
                                     <div class="col-lg-4 mt-3">
                                         <div class="form-check">
                                             <input <?php echo isset($_SESSION['Recom']['gender_recom']) && $_SESSION['Recom']['gender_recom'] == $arr_Gender_Choice[$i] ? 'checked' : '' ?> class="form-check-input mr-3" name="gender_recom" type="radio" value="<?php echo $arr_Gender_Choice[$i] ?>" id="gender_recom">
-                                            <label class="form-check-label" for="gender_recom">
+                                            <label class="form-check-label">
                                                 <?php echo $arr_Gender[$i] ?>
                                             </label>
                                         </div>
@@ -127,19 +118,6 @@ include_once('./choice.php');
                                 <option <?php echo !isset($_SESSION['Recom']['age_recom']) ? 'selected' : '' ?> value="">ช่วงอายุ</option>
                                 <?php for ($i = 0; $i < count($arr_age); $i++) { ?>
                                     <option <?php echo isset($_SESSION['Recom']['age_recom']) && $_SESSION['Recom']['age_recom'] == $arr_age_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_age_choice[$i] ?>"><?php echo $arr_age[$i] ?></option>
-                                <?php } ?>
-                            </select>
-                            <div class="invalid-feedback">
-                                คุณยังไม่ได้กรอกข้อมูล
-                            </div>
-                        </div>
-
-                        <div class="choice label-education mt-3">
-                            <label for="education_recom"><strong>3. การศึกษา</strong></label>
-                            <select class="custom-select" name="education_recom" id="inputGroupSelect01" required>
-                                <option <?php echo !isset($_SESSION['Recom']['education_recom']) ? 'selected' : '' ?> value="">เลือกการศึกษา</option>
-                                <?php for ($i = 0; $i < count($arr_education); $i++) { ?>
-                                    <option <?php echo isset($_SESSION['Recom']['education_recom']) && $_SESSION['Recom']['education_recom'] == $arr_education_choice[$i] ? 'selected' : ''  ?> value="<?php echo $arr_education_choice[$i] ?>"><?php echo $arr_education[$i] ?></option>
                                 <?php } ?>
                             </select>
                             <div class="invalid-feedback">
@@ -176,7 +154,7 @@ include_once('./choice.php');
                                 คุณยังไม่ได้กรอกข้อมูล
                             </div>
                         </div>
-                        
+
                         <button type="submit" name="submitChoice1" class="btn btn-blue mt-3 float-right px-5">ต่อไป</button>
 
                     </div>

@@ -40,8 +40,8 @@ include_once('./choice.php');
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-12"  style="margin-top: 150px;">
-                <h3 class="text-blue mt-3"><strong>ระบบแนะนำสถานที่ท่องเที่ยว</strong></h3>
+            <div class="col-lg-12" style="margin-top: 150px;">
+                <h3 class="text-blue mt-3"><strong>ระบบแนะนำสถานที่ท่องเที่ยวในภาคใต้ของประเทศไทย</strong></h3>
                 <h6>กรุณาป้อนข้อมูลของท่านเพื่อระบบจะแนะนำกิจกรรมการท่องเที่ยวที่เหมาะสำหรับคุณ</h6>
             </div>
         </div>
@@ -49,26 +49,21 @@ include_once('./choice.php');
 
     <!-- BreadCrumb -->
     <div class="container">
-        <section class="breadcrumb-recom">
+        <section class="breadcrumb-recomv2">
             <div class="breadcrumb">
-                <div class="item active">
+                <div class="item">
                     <span class="arrow"></span>
                     <span class="hide-mobile">ข้อมูลทั่วไป</span>
                     <span class="show-mobile">ส่วน 1</span>
                 </div>
-                <div class="item active">
+                <div class="item">
                     <span class="arrow"></span>
-                    <span class="hide-mobile">ข้อมูลในการท่องเที่ยว</span>
+                    <span class="hide-mobile">พฤติกรรมในการท่องเที่ยว</span>
                     <span class="show-mobile">ส่วน 2</span>
                 </div>
                 <div class="item active">
-                    <span class="arrow"></span>
-                    <span class="hide-mobile">แผนในการท่องเที่ยว</span>
-                    <span class="show-mobile">ส่วน 3</span>
-                </div>
-                <div class="item active">
                     <span class="hide-mobile">ปัจจัยที่ตัดสินใจท่องเที่ยว</span>
-                    <span class="show-mobile">ส่วน 4</span>
+                    <span class="show-mobile">ส่วน 3</span>
                 </div>
             </div>
         </section>
@@ -142,11 +137,11 @@ include_once('./choice.php');
                         </div>
 
                         <div class="col-lg-3">
-                            <button name="backChoice3" class="btn btn-secondary mt-3 float-left px-5 btn-block">ย้อนกลับ</button>
+                            <button name="backChoice2" class="btn btn-secondary mt-3 float-left px-5 btn-block">ย้อนกลับ</button>
                         </div>
 
                         <div class="col-lg-4 float-right">
-                            <button type="submit" name="submitChoice4" class="btn btn-blue mt-3 px-5 btn-block">ประมวลผลแบบสอบถาม</button>
+                            <button type="submit" name="submitChoice3" class="btn btn-blue mt-3 px-5 btn-block">ประมวลผลแบบสอบถาม</button>
 
                         </div>
 

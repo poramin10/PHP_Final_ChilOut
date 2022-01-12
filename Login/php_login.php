@@ -38,11 +38,11 @@ if (isset($_POST['submit'])) {
                 $_SESSION['username'] = $row_check['username'];
                 $_SESSION['status'] = $row_check['status'];
 
+
+                // RECOM สำหรับสถานที่ท่องเที่ยวทั้งหมด
                 $sql_select = "SELECT * FROM `recommed` WHERE id_user = '" . $_SESSION['id_user'] . "' ;";
                 $result_select = $conn->query($sql_select);
-
                 if ($result_select->num_rows == 1) {
-
                     $row_select = $result_select->fetch_assoc();
                     $_SESSION['Travel_Recommend'] = $row_select['label-categories'];
                     $_SESSION['stat_recom']['eco'] = $row_select['score_eco'];
@@ -59,7 +59,29 @@ if (isset($_POST['submit'])) {
                     $_SESSION['stat_recom']['rapids'] = $row_select['score_rapids'];
                 }
 
-                echo $result_select->num_rows;
+                // RECOM สำหรับสถานที่ท่องเที่ยวในจังหวัดภาคใต้
+                $sql_select_south = "SELECT * FROM `recommed_south` WHERE id_user = '" . $_SESSION['id_user'] . "' ;";
+                $result_select_south = $conn->query($sql_select_south);
+                if ($result_select_south->num_rows == 1) {
+                    $row_select_south = $result_select_south->fetch_assoc();
+                    $_SESSION['label-categories'] = $row_select_south['label-categories'];
+                    // Stat
+                    $_SESSION['stat_recom_south']['measure'] = $row_select_south['score_measure'];
+                    $_SESSION['stat_recom_south']['museum'] = $row_select_south['score_museum'];
+                    $_SESSION['stat_recom_south']['national_park'] = $row_select_south['score_national_park'];
+                    $_SESSION['stat_recom_south']['landmarks'] = $row_select_south['score_landmarks'];
+                    $_SESSION['stat_recom_south']['waterfall'] = $row_select_south['score_waterfall'];
+                    $_SESSION['stat_recom_south']['historical'] = $row_select_south['score_historical'];
+                    $_SESSION['stat_recom_south']['beach'] = $row_select_south['score_beach'];
+                    $_SESSION['stat_recom_south']['islands'] = $row_select_south['score_islands'];
+                    $_SESSION['stat_recom_south']['cave'] = $row_select_south['score_cave'];
+                    $_SESSION['stat_recom_south']['zoo'] = $row_select_south['score_zoo'];
+                    $_SESSION['stat_recom_south']['dive_site'] = $row_select_south['score_dive_site'];
+                }
+
+
+
+                // echo $result_select->num_rows;
 
                 $_SESSION['Success'] = "เข้าสู่ระบบสำเร็จ";
                 // print_r($row_check);

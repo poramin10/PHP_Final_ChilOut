@@ -79,7 +79,7 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
 
                                 <i class="nav-icon fas fa-passport"></i>
                                 <p>
-                                <small>จัดการข้อมูลสถานที่ท่องเที่ยว API</small>
+                                    <small>จัดการข้อมูลสถานที่ท่องเที่ยว API</small>
                                 </p>
                             </a>
                         </li>
@@ -88,7 +88,7 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                             <a href="../DataPlace/index.php" class="nav-link <?php echo $name == 'DataPlace' ? 'active' : '' ?>">
                                 <i class="nav-icon fas fa-globe"></i>
                                 <p>
-                                    <small>ข้อมูลสถานที่ท่องเที่ยวทั้งหมด</small> 
+                                    <small>ข้อมูลสถานที่ท่องเที่ยวทั้งหมด</small>
                                 </p>
                             </a>
                         </li>
@@ -97,7 +97,7 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                             <a href="../ManageCategory/index.php" class="nav-link <?php echo $name == 'ManageCategory' ? 'active' : '' ?>">
                                 <i class="nav-icon fas fa-pager"></i>
                                 <p>
-                                    <small>จัดการประเภทสถานที่ท่องเที่ยว (TAG)</small> 
+                                    <small>จัดการประเภทสถานที่ท่องเที่ยว (TAG)</small>
                                 </p>
                             </a>
                         </li>
@@ -137,9 +137,17 @@ $name = $array[$key + 3]; //เพื่อหาที่อยู่ที่�
                         </li>
                         <li class="nav-item">
                             <a href="../Recommed/index.php" class="nav-link <?php echo $name == 'Recommed' ? 'active' : '' ?>">
-                            <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                <small> ข้อมูลการแนะนำ</small>
+                                    <small> ข้อมูลการแนะนำของประเทศไทย</small>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../RecommedSouth/index.php" class="nav-link <?php echo $name == 'RecommedSouth' ? 'active' : '' ?>">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    <small> ข้อมูลการแนะนำของภาคใต้</small>
                                 </p>
                             </a>
                         </li>
