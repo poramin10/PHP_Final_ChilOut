@@ -43,7 +43,7 @@ $row = $result->fetch_assoc();
             </div>
 
             <section class="content">
-                <div class="container-fluid">
+                <div class="container-fluid"> 
 
                     <!-- แก้ไขข้อมูลประวัติ -->
                     <form action="./php_update.php" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">

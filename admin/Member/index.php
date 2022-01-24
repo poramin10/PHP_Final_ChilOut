@@ -177,7 +177,7 @@ $row_Member_facebook = $result_Member_facebook->fetch_assoc();
                         <td><?php echo $row['gender'] ?></td>
                         <td><?php echo $row['register_by'] ?></td>
                         <td><?php echo date_format(new DateTime($row['create_at']), 'd/m/Y H:i:s'); ?></td>
-                      </tr>
+                      </tr> 
                     <?php } ?>
 
 

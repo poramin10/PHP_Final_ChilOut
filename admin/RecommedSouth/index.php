@@ -62,7 +62,6 @@ $result = $conn->query($sql);
                             <h3 class="card-title">ข้อมูลการแนะนำทั้งหมด</h3>
                         </div>
                         <div class="card-body">
-
                             <div class="table-responsive">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -121,7 +120,7 @@ $result = $conn->query($sql);
                                                 $nameCategory = 'จุดดำน้ำ';
                                             }
                                             $num++;
-                                        ?>
+                                            ?>
                                             <tr>
                                                 <td><?php echo $num ?></td>
                                                 <td><?php echo $row['firstname'] . ' ' . $row['lastname'] ?></td>

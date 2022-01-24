@@ -1860,5 +1860,17 @@ nav.white ul li a {
   border-radius: 100%;
 }
 
+.select-recom .btn-select-recom{
+  /* padding: auto; */
+  width: 100%;
+  border-radius: 10%;
+}
+
+.select-recom .btn-select-recom:hover{
+  background-color: white;
+  border-color: #124E96;
+  color: #124E96;
+}
+
 
 

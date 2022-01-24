@@ -44,7 +44,7 @@ if (!isset($_SESSION['id_user'])) {
         <div class="container">
             <hr>
             <div class="row justify-content-center">
-                <div class="col-12 col-lg-11">
+                <div class="col-12 col-lg-11"> 
                     <div class="row">
                         <div class="col-lg-3">
                             <?php include_once('../include/sideProfile.php') ?>

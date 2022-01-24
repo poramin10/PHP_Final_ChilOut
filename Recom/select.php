@@ -49,7 +49,7 @@ require_once('../authen_frontend.php');
     <!-- Background Image -->
     <div class="bg-img">
     </div>
-    
+
 
     <div class="container">
         <div class="row">
@@ -61,7 +61,72 @@ require_once('../authen_frontend.php');
     </div>
 
 
-    <div class="container">
+    <section class="select-recom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <a href="../RecommendSourth/page1.php">
+                                <button class="btn btn-blue btn-select-recom p-5">
+                                    <img src="../assets/img/recom/re02.png" width="100%" alt="">
+                                    <div><strong>ภาคใต้</strong></div>
+                                </button>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <button class="btn btn-blue btn-select-recom p-5">
+                                <img src="../assets/img/recom/re03.png" width="100%" alt="">
+                                <div><strong>ภาคเหนือ</strong></div>
+                            </button>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <button class="btn btn-blue btn-select-recom p-5">
+                                <img src="../assets/img/recom/re04.png" width="100%" alt="">
+                                <div><strong>ภาคกลาง</strong></div>
+                            </button>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <button class="btn btn-blue btn-select-recom p-5">
+                                <img src="../assets/img/recom/re05.png" width="72%" alt="">
+                                <div><strong>ภาคตะวันออก</strong></div>
+                            </button>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <button class="btn btn-blue btn-select-recom p-5">
+                                <img src="../assets/img/recom/re07.png" width="64%" alt="">
+                                <div><strong> ภาคตะวันออกเฉียงเหนือ</strong></div>
+                            </button>
+                        </div>
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <button class="btn btn-blue btn-select-recom p-5">
+                                <img src="../assets/img/recom/re06.png" width="100%" alt="">
+                                <div><strong>ภาคตะวันตก</strong></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 mt-5">
+                    <h1><strong>ระบบแนะนำทั้งประเทศ</strong></h1>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 col-6 mt-2">
+                            <a href="../Recommend/page1.php">
+                                <button class="btn btn-blue btn-select-recom p-5">
+                                    <img src="../assets/img/recom/re01.png" width="100%" alt="">
+                                    <div><strong>ประเทศไทย</strong></div>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- <div class="container">
         <div class="row">
         <div class="col-lg-4 mt-2">
                 <div class="card h-100">
@@ -136,7 +201,7 @@ require_once('../authen_frontend.php');
 
 
         </div>
-    </div>
+    </div> -->
 
 
 
