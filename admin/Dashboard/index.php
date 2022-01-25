@@ -9,6 +9,7 @@ $sql_user = "SELECT COUNT(*) FROM `user` WHERE status <> 0";
 $result_user = $conn->query($sql_user);
 $row_user = $result_user->fetch_assoc();
 
+
 $sql_place = "SELECT COUNT(*) FROM `place`;";
 $result_place = $conn->query($sql_place);
 $row_place = $result_place->fetch_assoc();
@@ -21,6 +22,7 @@ $sql_category_all = "SELECT category , COUNT(category) FROM `place` GROUP BY cat
 $result_category_all = $conn->query($sql_category_all);
 $result_category_all_2 = $conn->query($sql_category_all);
 $result_category_all_3 = $conn->query($sql_category_all);
+
 
 
 // กำหนดปี RegisstatUser
@@ -144,7 +146,7 @@ if (!isset($_SESSION['YearRegisUser'])) {
               <!-- ข้อมูลสถิติการแนะนำ -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">ข้อมูลสถิติการแนะนำ</h3>
+                  <h3 class="card-title">ข้อมูลสถิติการแนะนำ แบบทั้งประเทศ</h3>
 
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -168,7 +170,7 @@ if (!isset($_SESSION['YearRegisUser'])) {
               <!-- ข้อมูลสถิติการแนะนำ -->
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">ข้อมูลสถิติการแนะนำ</h3>
+                  <h3 class="card-title">ข้อมูลสถิติการแนะนำ แบบภาคใต้</h3>
 
                   <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -551,7 +553,7 @@ if (!isset($_SESSION['YearRegisUser'])) {
     <?php
 
     $sql_user_stat = "SELECT create_at , MONTH(create_at) , COUNT(*) FROM `user` 
-      WHERE YEAR(create_at) = '" . $_SESSION['YearRegisUser'] . "' GROUP BY MONTH(create_at);";
+      WHERE YEAR(create_at) = '" . $_SESSION['YearRegisUser'] . "' GROUP BY create_at , MONTH(create_at);";
     $result_user_stat = $conn->query($sql_user_stat);
 
     ?>
@@ -585,12 +587,12 @@ if (!isset($_SESSION['YearRegisUser'])) {
         data: [
           <?php
           for ($i = 1; $i <= 12; $i++) {
-            $sql_checkRegis_user = "SELECT create_at ,  MONTH(create_at) , COUNT(*) FROM `user` 
+            $sql_checkRegis_user = "SELECT create_at ,  MONTH(create_at) FROM `user` 
                 WHERE YEAR(create_at) = '" . $_SESSION['YearRegisUser'] . "' AND MONTH(create_at) = '" . $i . "';";
             $result_checkRegis_user = $conn->query($sql_checkRegis_user);
             $row_checkRegis_user = $result_checkRegis_user->fetch_assoc();
           ?>
-            <?php echo $result_checkRegis_user->num_rows != 0 ? $row_checkRegis_user['COUNT(*)'] : 0 ?>,
+            <?php echo $result_checkRegis_user->num_rows != 0 ? $result_checkRegis_user->num_rows : 0 ?>,
           <?php } ?>
         ]
       }]

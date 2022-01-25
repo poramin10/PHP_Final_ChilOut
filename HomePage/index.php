@@ -20,11 +20,11 @@ if ($popularSelect == 'สถานที่ท่องเที่ยวที
     $number = 0;
 } else {
     // แสดงข้อมูลสถานที่ท่องเที่ยวที่เด่นๆ ตามคะแนน
-    $sql = "SELECT * , AVG(comment_rating.ratestar) as avg FROM `place` 
+    $sql = "SELECT comment_rating.id_place ,  place.place_name , place.province , place.picture , AVG(comment_rating.ratestar) as avg FROM `place` 
         JOIN comment_rating ON place.id_place = comment_rating.id_place
         JOIN countertravel ON place.id_place = countertravel.id_place
-        GROUP BY comment_rating.id_place
-        ORDER BY AVG(comment_rating.ratestar) DESC LIMIT 12";
+    GROUP BY comment_rating.id_place ,  place.place_name , place.province , place.picture
+    ORDER BY AVG(comment_rating.ratestar) DESC LIMIT 12";
     $result = $conn->query($sql);
     $number = 0;
 }
@@ -154,8 +154,8 @@ if ($result_select->num_rows != 0) {
             </div>
             <div class="col-md-4 mt-4">
                 <select onchange="SelectPlace(this.value)" class="form-control float-right">
-                    <option <?php echo $popularSelect == 'สถานที่ท่องเที่ยวที่มีผู้เข้าชมมากที่สุด' ? 'selected' : '' ?>  value="สถานที่ท่องเที่ยวที่มีผู้เข้าชมมากที่สุด">สถานที่ท่องเที่ยวที่มีผู้เข้าชมมากที่สุด</option>
-                    <option <?php echo $popularSelect == 'สถานที่ท่องเที่ยวที่มีคะแนนมากที่สุด' ? 'selected' : '' ?>  value="สถานที่ท่องเที่ยวที่มีคะแนนมากที่สุด">สถานที่ท่องเที่ยวที่มีคะแนนมากที่สุด</option>
+                    <option <?php echo $popularSelect == 'สถานที่ท่องเที่ยวที่มีผู้เข้าชมมากที่สุด' ? 'selected' : '' ?> value="สถานที่ท่องเที่ยวที่มีผู้เข้าชมมากที่สุด">สถานที่ท่องเที่ยวที่มีผู้เข้าชมมากที่สุด</option>
+                    <option <?php echo $popularSelect == 'สถานที่ท่องเที่ยวที่มีคะแนนมากที่สุด' ? 'selected' : '' ?> value="สถานที่ท่องเที่ยวที่มีคะแนนมากที่สุด">สถานที่ท่องเที่ยวที่มีคะแนนมากที่สุด</option>
                 </select>
             </div>
             <div class="col-md-12">

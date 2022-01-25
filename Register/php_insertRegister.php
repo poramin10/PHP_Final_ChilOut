@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
                 if ($_FILES['fileUpload']['name'] == "") {
                     $sql = "INSERT INTO `user` (
                         `id_user`, 
+                        `id_user_fb`,
                         `firstname`, 
                         `lastname`, 
                         `gender`, 
@@ -44,6 +45,7 @@ if (isset($_POST['submit'])) {
                         `phone`,
                         `birthdate`, 
                         `profile`, 
+                        `register_by`, 
                         `username`, 
                         `password`, 
                         `status`, 
@@ -51,6 +53,7 @@ if (isset($_POST['submit'])) {
                         `create_at`, 
                         `update_at`) 
                      VALUES (NULL, 
+                     0,
                      '" . $firstname . "', 
                      '" . $lastname . "', 
                      '" . $gender . "', 
@@ -59,6 +62,7 @@ if (isset($_POST['submit'])) {
                      '" . $birthdate . "', 
                      'preview.png', 
                      '" . $username . "', 
+                     'system',
                      '" . $hashed_password . "', 
                      '0', 
                      'system',
@@ -126,6 +130,7 @@ if (isset($_POST['submit'])) {
 
                     $sql = "INSERT INTO `user` (
                         `id_user`, 
+                        `id_user_fb`,
                         `firstname`, 
                         `lastname`, 
                         `gender`, 
@@ -133,6 +138,7 @@ if (isset($_POST['submit'])) {
                         `phone`,
                         `birthdate`, 
                         `profile`, 
+                        `register_by`, 
                         `username`, 
                         `password`, 
                         `status`, 
@@ -140,6 +146,7 @@ if (isset($_POST['submit'])) {
                         `update_at`) 
                          
                      VALUES (NULL, 
+                     0,
                      '" . $firstname . "', 
                      '" . $lastname . "', 
                      '" . $gender . "', 
@@ -147,6 +154,7 @@ if (isset($_POST['submit'])) {
                      '" . $phone . "', 
                      '" . $birthdate . "', 
                      '" . $newName . "', 
+                     'system', 
                      '" . $username . "', 
                      '" . $hashed_password . "', 
                      '0', 
