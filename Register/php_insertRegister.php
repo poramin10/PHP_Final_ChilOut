@@ -76,9 +76,9 @@ if (isset($_POST['submit'])) {
                     $timestamp = strtotime(date('H:i:s')) + 60;
                     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
 
-                    $name = "PaaFun";
-                    $emailName = "PaaFun@gmail.com";
-                    $subject = "มีการสมัครสมาชิกใหม่เว็บ PaaFun";
+                    $name = "ChillOut";
+                    $emailName = "ChillOut@gmail.com";
+                    $subject = "มีการสมัครสมาชิกใหม่เว็บ ChillOut";
                     $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
 
@@ -168,9 +168,9 @@ if (isset($_POST['submit'])) {
                     $timestamp = strtotime(date('H:i:s')) + 60;
                     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
 
-                    $name = "PaaFun";
-                    $emailName = "PaaFun@gmail.com";
-                    $subject = "มีการสมัครสมาชิกใหม่เว็บ PaaFun";
+                    $name = "ChillOut";
+                    $emailName = "ChillOut@gmail.com";
+                    $subject = "มีการสมัครสมาชิกใหม่เว็บ ChillOut";
                     $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
                     require_once "../assets/lib/PHPMailer/PHPMailer.php";

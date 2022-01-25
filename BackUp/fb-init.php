@@ -26,6 +26,7 @@ try {
     }
 } catch (Exception $exc) {
     echo $exc->getTraceAsString();
+    echo 'ระบบ Login ยังไม่พร้อมใช้งาน';
 }
 
 

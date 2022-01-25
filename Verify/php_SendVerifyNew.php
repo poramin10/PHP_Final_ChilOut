@@ -13,9 +13,9 @@ if (isset($_SESSION['email_Verify_Regis'])) {
     $timestamp = strtotime(date('H:i:s')) + 60;
     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
 
-    $name = "System";
-    $emailName = "system@gmail.com";
-    $subject = "มีการสมัครสมาชิกใหม่เว็บ Travel In Thailand";
+    $name = "ChillOut";
+    $emailName = "ChillOut@gmail.com";
+    $subject = "มีการสมัครสมาชิกใหม่เว็บ ChillOut";
     $body = "<h2><strong>รหัสยืนยันตัวตนคือ " . $number . "</h2></strong> <strong style='color: red'>หากไม่ใช่การกระทำของท่านกรุณาเมินการตอบกลับ Email นี้</strong>";
 
     require_once "../assets/lib/PHPMailer/PHPMailer.php";
