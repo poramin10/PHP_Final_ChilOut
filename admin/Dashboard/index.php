@@ -404,17 +404,17 @@ if (!isset($_SESSION['YearRegisUser'])) {
             <?php } ?>
           ],
           backgroundColor: [
-            '#0033FF', 
-            '#0027C2', 
-            '#0B29A1', 
-            '#001A81', 
-            '#12246C', 
-            '#283D8E', 
-            '#5567AF', 
-            '#516CD7', 
-            '#7D93EC', 
-            '#9CA8DB', 
-            '#C1CDFC'
+            '#041562', 
+            '#11468F', 
+            '#DA1212', 
+            '#4C3F91', 
+            '#9145B6', 
+            '#B958A5', 
+            '#FF5677', 
+            '#D22779', 
+            '#24A19C', 
+            '#6D9886', 
+            '#D9CAB3'
           ],
         }]
       }
@@ -440,7 +440,7 @@ if (!isset($_SESSION['YearRegisUser'])) {
       var donutData = {
         labels: [
           <?php while ($row_stat_recom = $result_stat_recom->fetch_assoc()) {
-            if ($row_stat_recom['label-categories'] == 'measure') {
+            if ($row_stat_recom['label-categories'] == 'temple') {
               $nameCategory = 'วัด';
             }
             if ($row_stat_recom['label-categories'] == 'museum') {
@@ -486,17 +486,17 @@ if (!isset($_SESSION['YearRegisUser'])) {
             <?php } ?>
           ],
           backgroundColor: [
-            '#0033FF', 
-            '#0027C2', 
-            '#0B29A1', 
-            '#001A81', 
-            '#12246C', 
-            '#283D8E', 
-            '#5567AF', 
-            '#516CD7', 
-            '#7D93EC', 
-            '#9CA8DB', 
-            '#C1CDFC'
+            '#041562', 
+            '#11468F', 
+            '#DA1212', 
+            '#4C3F91', 
+            '#9145B6', 
+            '#B958A5', 
+            '#FF5677', 
+            '#D22779', 
+            '#24A19C', 
+            '#6D9886', 
+            '#D9CAB3'
           ],
         }]
       }
@@ -587,8 +587,8 @@ if (!isset($_SESSION['YearRegisUser'])) {
         data: [
           <?php
           for ($i = 1; $i <= 12; $i++) {
-            $sql_checkRegis_user = "SELECT create_at ,  MONTH(create_at) FROM `user` 
-                WHERE YEAR(create_at) = '" . $_SESSION['YearRegisUser'] . "' AND MONTH(create_at) = '" . $i . "';";
+            $sql_checkRegis_user = "SELECT create_at ,  MONTH(create_at) FROM `user`  
+                WHERE status <> 0 && YEAR(create_at) = '" . $_SESSION['YearRegisUser'] . "' AND MONTH(create_at) = '" . $i . "';";
             $result_checkRegis_user = $conn->query($sql_checkRegis_user);
             $row_checkRegis_user = $result_checkRegis_user->fetch_assoc();
           ?>

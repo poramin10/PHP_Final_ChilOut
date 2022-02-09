@@ -13,7 +13,7 @@ if ($result->num_rows == 1) {
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
     
-    $timestamp = strtotime(date('H:i:s')) + 60;
+    $timestamp = strtotime(date('H:i:s')) + 120;
     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
     
     // echo '<script>sessionStorage.setItem("timeOTP", 30);</script>';

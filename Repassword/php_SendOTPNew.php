@@ -11,7 +11,7 @@ if (isset($_SESSION['email_Verify'])) {
     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
     $_SESSION['numberOTP'] = $number;
     
-    $timestamp = strtotime(date('H:i:s')) + 60;
+    $timestamp = strtotime(date('H:i:s')) + 120;
     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
    
     

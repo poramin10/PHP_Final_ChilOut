@@ -24,7 +24,7 @@ if ($resule->num_rows >= 1) {
     $sql = "SELECT * FROM `user` WHERE `email` LIKE '" . $email_Verify_Regis . "' ORDER BY `id_user` DESC";
     $resule = $conn->query($sql);
     $row = $resule->fetch_assoc();
-    $_SESSION["id_user"] = $row['id_user'];
+    // $_SESSION["id_user"] = $row['id_user'];
     // echo "Email ของคุณคือ ".$row['email']." กรุณายืนยันตัวตน";
 }
 

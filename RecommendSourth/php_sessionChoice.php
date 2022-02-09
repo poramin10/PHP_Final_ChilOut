@@ -281,7 +281,7 @@ if (isset($_POST['submitChoice3'])) {
         // $eco = floatval(mapLabelValue("Scored Probabilities for Class \"eco\"", $dataRecommed));
         // // echo 's='.$eco;
 
-        $measure = floatval(mapLabelValue("Scored Probabilities for Class \"measure\"", $dataRecommed));
+        $temple = floatval(mapLabelValue("Scored Probabilities for Class \"temple\"", $dataRecommed));
         $museum = floatval(mapLabelValue("Scored Probabilities for Class \"museum\"", $dataRecommed));
         $national_park = floatval(mapLabelValue("Scored Probabilities for Class \"national park wildlife sanctuary\"", $dataRecommed));
         $landmarks = floatval(mapLabelValue("Scored Probabilities for Class \"landmarks and monuments\"", $dataRecommed));
@@ -300,7 +300,7 @@ if (isset($_POST['submitChoice3'])) {
             $sql_insertLabel = "INSERT INTO `recommed_south` (
                 `id_recom`, 
                 `label-categories`, 
-                `score_measure`, 
+                `score_temple`, 
                 `score_museum`, 
                 `score_national_park`, 
                 `score_landmarks`, 
@@ -313,7 +313,7 @@ if (isset($_POST['submitChoice3'])) {
                 `score_dive_site`, 
                 `id_user`) VALUES (NULL, 
                 '" . $Label . "', 
-                '" . $measure . "', 
+                '" . $temple . "', 
                 '" . $museum . "', 
                 '" . $national_park . "', 
                 '" . $landmarks . "', 
@@ -330,7 +330,7 @@ if (isset($_POST['submitChoice3'])) {
         }else{
             $sql_updateLabel = "UPDATE `recommed_south` SET 
                 `label-categories` = '".$Label."', 
-                `score_measure` = '".$measure."', 
+                `score_temple` = '".$temple."', 
                 `score_museum` = '".$museum."', 
                 `score_national_park` = '".$national_park."', 
                 `score_landmarks` = '".$landmarks."', 
@@ -347,7 +347,7 @@ if (isset($_POST['submitChoice3'])) {
 
         $_SESSION['label-categories'] = $Label;
         // Stat
-        $_SESSION['stat_recom_south']['measure'] = $measure;
+        $_SESSION['stat_recom_south']['temple'] = $temple;
         $_SESSION['stat_recom_south']['museum'] = $museum;
         $_SESSION['stat_recom_south']['national_park'] = $national_park;
         $_SESSION['stat_recom_south']['landmarks'] = $landmarks;

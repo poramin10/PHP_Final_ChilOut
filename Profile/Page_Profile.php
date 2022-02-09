@@ -113,10 +113,8 @@ if (!isset($_SESSION['id_user'])) {
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1"><strong>เบอร์โทร</strong></label>
-                                                <input type="text" class="form-control" name="phone" placeholder="กรุณากรอกเบอร์โทร" value="<?php echo $_SESSION['phone'] ?>" required>
-                                                <div class="invalid-feedback">
-                                                    กรุณากรอกเบอร์โทร
-                                                </div>
+                                                <input type="text" class="form-control" name="phone" placeholder="กรุณากรอกเบอร์โทร" value="<?php echo $_SESSION['phone'] ?>" >
+                                              
                                             </div>
                                         </div>
 

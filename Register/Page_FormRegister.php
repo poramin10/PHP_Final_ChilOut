@@ -64,27 +64,29 @@ session_start();
                         </div>
                     </div>
                     <label for="">เพศ (Gender) <span class="text-danger">*</span></label>
-                    <div class="form-check">
 
+                    <div class="form-check">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input"  name="gender" value="ชาย" type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'ชาย' ? 'checked' : '' ?>>
+                            <input class="form-check-input"  name="gender" value="ชาย" type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'ชาย' ? 'checked' : '' ?> required>
                             <label class="form-check-label"   for="inlineRadio1" >ชาย</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input"  name="gender" value="หญิง" type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'หญิง' ? 'checked' : '' ?>>
+                            <input class="form-check-input"  name="gender" value="หญิง" type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'หญิง' ? 'checked' : '' ?> required>
                             <label class="form-check-label"   for="inlineRadio1" >หญิง</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" value="LGBT"  type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'LGBT' ? 'checked' : '' ?>>
+                            <input class="form-check-input" name="gender" value="LGBT"  type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'LGBT' ? 'checked' : '' ?> required>
                             <label class="form-check-label"  for="inlineRadio1" >LGBT</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" value="ไม่ระบุ"  type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'ไม่ระบุ' ? 'checked' : '' ?>>
+                            <input class="form-check-input" name="gender" value="ไม่ระบุ"  type="radio" name="inlineRadioOptions" id="inlineRadio1" <?php echo isset($_SESSION['check_gender']) == 'ไม่ระบุ' ? 'checked' : '' ?> required>
                             <label class="form-check-label"  for="inlineRadio1" >ไม่ระบุ</label>
                         </div>
-                        
-
+                        <div class="invalid-feedback">
+                            กรุณาเลือกเพศ
+                        </div>
                     </div>
+
                     <div class="mb-1">
                         <label for="birthday">วันเกิด (Birthday) <span class="text-danger">*</span></label>
                         <input id="testdate5" value="<?php echo isset($_SESSION['check_birthdate']) != NULL ? $_SESSION['check_birthdate'] : '' ?>" name="birthdate" class="form-control " required>
@@ -97,19 +99,19 @@ session_start();
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
                         </div>
-                        <input type="text" name="email"  value="<?php echo isset($_SESSION['check_email']) != NULL ? $_SESSION['check_email'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกอีเมลล์" aria-label="email" aria-describedby="basic-addon1" required>
+                        <input type="email" name="email"  value="<?php echo isset($_SESSION['check_email']) != NULL ? $_SESSION['check_email'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกอีเมลล์" aria-label="email" aria-describedby="basic-addon1" required>
                         <div class="invalid-feedback">
-                            กรุณากรอกข้อมูล!!
+                            กรุณากรอกข้อมูลให้ครบถ้วนถูกต้อง
                         </div>
                     </div>
-                    <label for="">เบอร์โทรศัพท์ (Phone) <span class="text-danger">*</span></label>
+                    <label for="">เบอร์โทรศัพท์ (Phone)</label>
                     <div class="input-group mb-1">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
                         </div>
-                        <input type="text" name="phone" value="<?php echo isset($_SESSION['check_phone']) != NULL ? $_SESSION['check_phone'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกเบอร์โทรศัพท์" aria-label="phone" aria-describedby="basic-addon1" required>
+                        <input type="text" minlength="10" maxlength="10" name="phone" value="<?php echo isset($_SESSION['check_phone']) != NULL ? $_SESSION['check_phone'] : '' ?>" class="form-control style-form" placeholder="กรุณากรอกเบอร์โทรศัพท์" aria-label="phone" aria-describedby="basic-addon1">
                         <div class="invalid-feedback">
-                            กรุณากรอกข้อมูล!!
+                            กรุณากรอกเบอร์โทรศัพท์มือถือให้ถูกต้อง
                         </div>
                     </div>
                     <label for="">ชื่อผู้ใช้งาน (Username) <span class="text-danger">*</span></label>

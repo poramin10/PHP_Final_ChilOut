@@ -5,7 +5,7 @@ require_once('../authen_frontend.php');
 $Region = 'ภาคใต้';
 $LabelTag = $_SESSION['label-categories'];
 
-if ($LabelTag == 'measure') {
+if ($LabelTag == 'temple') {
     $category = "วัด";
     $categoryDB = "วัด";
 }
@@ -65,7 +65,7 @@ while ($row_region2 = $result_region2->fetch_assoc()) {
     $sql_place_rate .= "place.province = '" . $row_region2['name_th'] . "' ||";
 }
 $sql_place_rate = substr($sql_place_rate, 0, -2);
-$sql_place_rate .= " ) GROUP BY place.id_place
+$sql_place_rate .= " ) GROUP BY place.id_place , place.place_name , place.picture , place.province
                     ORDER BY ratestar DESC LIMIT 12;";
 $result_place_rate = $conn->query($sql_place_rate);
 $result_place_rate2 = $conn->query($sql_place_rate);
@@ -107,9 +107,9 @@ $num = 0;
 foreach ($_SESSION['stat_recom_south'] as $category_name => $category_value) {
 
     if (max($_SESSION['stat_recom_south']) == $category_value) {
-        if ($category_name == 'measure') {
+        if ($category_name == 'temple') {
             $arrCategoryNumber[$num] = "วัด";
-            $arrCategoryNumber_Eng[$num] = 'measure';
+            $arrCategoryNumber_Eng[$num] = 'temple';
             $num++;
         }
         if ($category_name == 'museum') {
@@ -387,7 +387,7 @@ foreach ($_SESSION['stat_recom_south'] as $category_name => $category_value) {
                     foreach ($_SESSION['stat_recom_south'] as $category_name => $category_value) {
 
                         $num++;
-                        if ($category_name == 'measure') {
+                        if ($category_name == 'temple') {
                             $arrDataThai[$num] = 'วัด';
                         } else if ($category_name == 'museum') {
                             $arrDataThai[$num] = 'พิพิธภัณฑ์';

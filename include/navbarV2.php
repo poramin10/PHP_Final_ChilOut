@@ -1,5 +1,5 @@
 <?php if (isset($_SESSION['id_user'])) { ?>
-
+   
     <nav style="z-index: 1050">
         <div class="menu-icon">
             <i class="fa fa-bars fa-2x"></i>

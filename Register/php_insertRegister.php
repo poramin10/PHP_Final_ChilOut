@@ -49,7 +49,6 @@ if (isset($_POST['submit'])) {
                         `username`, 
                         `password`, 
                         `status`, 
-                        `register_by`, 
                         `create_at`, 
                         `update_at`) 
                      VALUES (NULL, 
@@ -65,7 +64,6 @@ if (isset($_POST['submit'])) {
                      'system',
                      '" . $hashed_password . "', 
                      '0', 
-                     'system',
                      '" . date("Y-m-d H:i:s") . "',
                      '" . date("Y-m-d H:i:s") . "'
                      );";
@@ -73,7 +71,7 @@ if (isset($_POST['submit'])) {
 
                     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
                     $_SESSION['numberOTP'] = $number;
-                    $timestamp = strtotime(date('H:i:s')) + 60;
+                    $timestamp = strtotime(date('H:i:s')) + 120;
                     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
 
                     $name = "ChillOut";
@@ -165,7 +163,7 @@ if (isset($_POST['submit'])) {
                     $number = random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9) . random_int(1, 9);
                     $_SESSION['numberOTP'] = $number;
 
-                    $timestamp = strtotime(date('H:i:s')) + 60;
+                    $timestamp = strtotime(date('H:i:s')) + 120;
                     $_SESSION['timeOTP'] = date('H:i:s', $timestamp);
 
                     $name = "ChillOut";

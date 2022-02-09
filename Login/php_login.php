@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
                     $row_select_south = $result_select_south->fetch_assoc();
                     $_SESSION['label-categories'] = $row_select_south['label-categories'];
                     // Stat
-                    $_SESSION['stat_recom_south']['measure'] = $row_select_south['score_measure'];
+                    $_SESSION['stat_recom_south']['temple'] = $row_select_south['score_temple'];
                     $_SESSION['stat_recom_south']['museum'] = $row_select_south['score_museum'];
                     $_SESSION['stat_recom_south']['national_park'] = $row_select_south['score_national_park'];
                     $_SESSION['stat_recom_south']['landmarks'] = $row_select_south['score_landmarks'];

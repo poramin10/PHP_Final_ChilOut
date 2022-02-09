@@ -127,7 +127,7 @@ $result = $conn->query($sql);
                                                 <td>
                                                     <?php echo $nameCategory ?>
                                                 </td>
-                                                <td><?php echo $row['score_measure'] ?></td>
+                                                <td><?php echo $row['score_temple'] ?></td>
                                                 <td><?php echo $row['score_museum'] ?></td>
                                                 <td><?php echo $row['score_national_park'] ?></td>
                                                 <td><?php echo $row['score_landmarks'] ?></td>

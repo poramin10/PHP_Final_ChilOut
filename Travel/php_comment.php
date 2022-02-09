@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
         ";
     $result = $conn->query($sql);
     if($result){
-        $_SESSION['Success'] = "แสดงความคิดเห็นสำเร็จ";
+        $_SESSION['Success'] = "รีวิวสำเร็จ";
         header("Location:./Detail.php?idTravel=".$_POST['id_place']);
     }
     
@@ -36,7 +36,7 @@ if(isset($_POST['submitUpdate'])){
           `id_place` = '".$_POST['id_place']."' ";
     $result = $conn->query($sql);
     if($result){
-        $_SESSION['Success'] = "แก้ไขความคิดเห็นสำเร็จ";
+        $_SESSION['Success'] = "แก้ไขรีวิวสำเร็จ";
         header("Location:./Detail.php?idTravel=".$_POST['id_place']);
     }
 }

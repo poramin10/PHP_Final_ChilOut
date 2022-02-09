@@ -132,8 +132,8 @@ if ($result_select->num_rows != 0) {
 
                         <h1 class="text-red"><strong>Chill Out</strong></h1>
                     </div>
-                    <h3 class="text-blue">Take time your chill out take out your strees</h3>
-                    <h4 class="text-blue">ระบบแนะนำสถานที่ท่องเที่ยวที่เหมาะ สำหรับคุณ</h4>
+                    <h3 class="text-blue">Take time your chill out, Take out your strees</h3>
+                    <h4 class="text-blue">ระบบแนะนำสถานที่ท่องเที่ยวที่เหมาะสำหรับคุณ</h4>
                 </div>
 
             </div>
