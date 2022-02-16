@@ -54,7 +54,7 @@ if ($resule->num_rows >= 1) {
                 <div class="col-md-2"></div>
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify">
-                    <a href="./Page_SendEmail.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
+                    <a href="../Register/Page_FormRegister.php" type="button" class="btn btn-light btn-circle btn-lg"><i class="fas fa-chevron-left fa-"></i></a>
                 </div>
 
                 <div class="col-md-4 col-12 mt-5 mb-1 p-3 card-verify2"> 

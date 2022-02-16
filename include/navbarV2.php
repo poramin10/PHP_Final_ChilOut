@@ -12,7 +12,7 @@
                 <li><a href="../HomePage/"><i class="fas fa-home"></i> หน้าหลัก</a></li>
                 <li><a href="../Search/travelSearch.php"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
                 <li><a href="../Recom/select.php"><i class="fas fa-passport"></i> ระบบแนะนำสถานที่ท่องเที่ยว</a></li>
-                <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
+                <li><a href="../Contact/"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
 
                     <?php if (isset($_SESSION['access_token'])) { ?>
@@ -22,8 +22,9 @@
                     <?php } ?>
 
                     <div class="dropdown-menu">
+                        <div class="dropdown-item bg-blue text-white"><?php echo $_SESSION['firstname'].' '.$_SESSION['lastname'] ?></div>
                         <a class="dropdown-item" href="../Profile/Page_Profile.php">ข้อมูลโปรไฟล์</a>
-                        <a class="dropdown-item" href="../Recommend/page1.php">ระบบแนะนำสถานที่ท่องเที่ยว</a>
+                        <a class="dropdown-item" href="../Recom/select.php">ระบบแนะนำสถานที่ท่องเที่ยว</a>
                         <a class="dropdown-item" href="../Login/php_logout.php">ออกจากระบบ</a>
                     </div>
 
@@ -46,10 +47,11 @@
         </div>
         <div class="menu">
             <ul>
+          
                 <li><a href="../HomePage/"><i class="fas fa-home"></i> หน้าหลัก</a></li>
                 <li><a href="../Search/travelSearch.php"><i class="fas fa-search"></i> ค้นหาที่เที่ยว</a></li>
                 <li><a href="../Recom/select.php"><i class="fas fa-passport"></i> ระบบแนะนำสถานที่ท่องเที่ยว</a></li>
-                <li><a href="#"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
+                <li><a href="../Contact/"><i class="fas fa-phone-alt"></i> ติดต่อ</a></li>
                 <li>
                     <div class="btn-group dropup">
                         <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

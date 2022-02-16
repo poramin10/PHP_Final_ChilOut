@@ -1,6 +1,7 @@
 <?php
 
 require_once('../authen_frontend.php');
+
 if(isset($_POST['submit'])){
 
     $sql = "INSERT INTO `comment_rating` (
@@ -39,4 +40,20 @@ if(isset($_POST['submitUpdate'])){
         $_SESSION['Success'] = "แก้ไขรีวิวสำเร็จ";
         header("Location:./Detail.php?idTravel=".$_POST['id_place']);
     }
+}
+
+if(isset($_POST['submitDelete'])){
+    // echo $_POST['id_place_delete'].'<br>';
+    // echo $_POST['id_user_delete'];
+    $sql = "DELETE FROM `comment_rating` 
+    WHERE `comment_rating`.`id_user` = '".$_POST['id_user_delete']."' AND 
+                            id_place = '".$_POST['id_place_delete']."'
+    ";
+    $result = $conn->query($sql);
+
+    if($result){
+        $_SESSION['Success'] = "ลบรีวิวสำเร็จ";
+        header("Location:./Detail.php?idTravel=".$_POST['id_place_delete']);
+    }
+    
 }

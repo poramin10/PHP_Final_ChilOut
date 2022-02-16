@@ -692,6 +692,11 @@ $result_multi_carousel = $conn->query($sql_multi_carousel);
 
                                 <button type="sutmit" name="submitUpdate" class="btn btn-primary btn-block mt-3">แก้ไขรีวิว</button>
 
+                                <input type="hidden" name="id_place_delete" value="<?php echo $_GET['idTravel'] ?>">
+                                <input type="hidden" name="id_user_delete" value="<?php echo $_SESSION['id_user'] ?>">
+
+                                <button type="sutmit" name="submitDelete" class="btn btn-danger btn-block mt-3">ลบรีวิว</button>
+
 
                             <?php } ?>
 

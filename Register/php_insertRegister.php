@@ -20,6 +20,8 @@ if (isset($_POST['submit'])) {
     $birthdate = $_POST['birthdate'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    
+    $_SESSION['email_user'] = $email;
 
     // if (move_uploaded_file($_FILES['fileUpload']['tmp_name'], '../assets/img/profile/'.$newName)) {
     if ($_POST['password'] === $_POST['confirm-password']) {
@@ -262,6 +264,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['RegisterError'] = "รหัสผ่านไม่ตรงกัน";
         header('location: ./Page_FormRegister.php');
     }
+
+    
     // } else {
     //     หากมี Error เกิดขึ้น อย่าลืมเช็ค App ที่มีความปลอดภัยน้อยที่สุดของ Email
     // }
