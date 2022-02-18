@@ -89,7 +89,7 @@ include_once('./choice.php');
                         <h3><strong>พฤติกรรมในการท่องเที่ยว</strong></h3>
 
                         <div class="choice mt-3">
-                            <label for="car"><strong>9. บุคคลที่ท่องเที่ยวร่วมกัน</strong> </label>
+                            <label for="car"><strong>5. บุคคลที่ท่องเที่ยวร่วมกัน</strong> </label>
                             <div class="row">
                                 <?php for ($i = 0; $i < count($arr_friend); $i++) { ?>
                                     <div class="col-lg-6 mt-3">
@@ -118,7 +118,7 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice mt-3">
-                            <label for="car"> <strong>10. ระยะเวลาในการท่องเที่ยวของท่าน</strong> </label>
+                            <label for="car"> <strong>6. ระยะเวลาในการท่องเที่ยวของท่าน</strong> </label>
                             <div class="row">
 
                                 <?php for ($i = 0; $i < count($arr_time_travel); $i++) { ?>
@@ -149,7 +149,7 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice mt-3">
-                            <label for="car"> <strong>11. ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร ค่าที่พัก และอื่นๆ)</strong> </label>
+                            <label for="car"> <strong>7. ค่าใช้จ่ายในการเดินทาง (ค่าเดินทาง ค่าอาหาร ค่าที่พัก และอื่นๆ)</strong> </label>
                             <div class="row">
                                 <?php for ($i = 0; $i < count($arr_expenses_travel); $i++) { ?>
                                     <div class="col-lg-6 mt-3">

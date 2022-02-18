@@ -126,7 +126,7 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice label-career mt-3">
-                            <label for="career_recom"><strong>4. อาชีพ</strong> </label>
+                            <label for="career_recom"><strong>3. อาชีพ</strong> </label>
                             <select class="custom-select" name="career_recom" id="inputGroupSelect01" required>
                                 <option <?php echo !isset($_SESSION['Recom']['career_recom']) ? 'selected' : '' ?> value="">เลือกอาชีพ</option>
 
@@ -141,7 +141,7 @@ include_once('./choice.php');
                         </div>
 
                         <div class="choice label-salary mt-3">
-                            <label for="salary_recom"><strong>5. รายได้เฉลี่ยต่อเดือน</strong> </label>
+                            <label for="salary_recom"><strong>4. รายได้เฉลี่ยต่อเดือน</strong> </label>
                             <select class="custom-select" name="salary_recom" id="inputGroupSelect01" required>
                                 <option <?php echo !isset($_SESSION['Recom']['salary_recom']) ? 'selected' : '' ?> value="">เลือกรายได้เฉลี่ย</option>
 

@@ -78,7 +78,7 @@ include_once('./choice.php');
                     <div class="col-lg-12">
                         <h3><strong>ปัจจัยที่มีผลต่อการตัดสินใจของท่าน</strong></h3>
                         <div class="choice mt-3">
-                            <label for="career"> 11. ปัจจัยที่มีผลต่อการตัดสินใจ </label>
+                            <label for="career"> 8. ปัจจัยที่มีผลต่อการตัดสินใจ </label>
                             <div class="row">
 
                                 <table class="table table-bordered">
